@@ -1,8 +1,9 @@
 # StoryPilot - Self-healing hourly scheduler
-# GitHub cron is best-effort and can drop ticks at busy times. This watcher runs
-# at a DIFFERENT minute than the main render cron; if the last "Hourly Story
-# Video" run is stale (> 65 min) or missing, it re-dispatches the workflow so an
-# hourly video is never silently skipped.
+# GitHub cron is best-effort and heavily throttled on some accounts (ticks get
+# silently dropped). This watcher runs at a DIFFERENT minute than the main
+# render cron; if the last "Hourly Story Video" run is stale (> 60 min) or
+# missing, it re-dispatches the workflow so an hourly video is never silently
+# skipped.
 name: Ensure Hourly Video
 
 on:
@@ -49,8 +50,8 @@ jobs:
             exit 0
           fi
 
-          if [ "$AGE_MIN" -gt 65 ]; then
-            echo "::notice::Last run is ${AGE_MIN}m old (> 65m) - hourly tick was missed, re-dispatching."
+          if [ "$AGE_MIN" -gt 60 ]; then
+            echo "::notice::Last run is ${AGE_MIN}m old (> 60m) - hourly tick was missed, re-dispatching."
             gh workflow run hourly-video.yml
           else
             echo "Last run is fresh (${AGE_MIN}m old) - nothing to do."
