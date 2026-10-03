@@ -89,11 +89,12 @@ def map_columns(header_cells):
         "voiceover": ["voiceover", "voice", "narration", "التعليق", "الصوتي", "الحوار", "صوت"],
         "sfx": ["sfx", "audio", "المؤثرات", "صوتيات"],
     }
+    skip_exact = ("scene", "scene #", "#", "رقم", "المشهد", "عدد", "index", "no.")
     m = {}
     for idx, c in enumerate(header_cells):
         cl = (c or "").strip().lower()
-        if not cl:
-            continue
+        if not cl or cl.strip(":#. ") in skip_exact:
+            continue  # the scene-number column is not content
         for field, names in keys.items():
             if field not in m and any(n in cl for n in names):
                 m[field] = idx
