@@ -689,6 +689,10 @@ def main():
     with open(os.path.join(OUT_DIR, "meta.json"), "w", encoding="utf-8") as f:
         json.dump(meta, f, ensure_ascii=False, indent=2)
     print("[render] done -> output/output.mp4 + meta.json + thumb.jpg", flush=True)
+    # MoviePy reader threads can keep the interpreter alive after main() returns
+    # (observed with VideoFileClip/AudioFileClip). Everything is flushed and closed
+    # at this point, so exit immediately instead of hanging CI steps.
+    os._exit(0)
 
 
 if __name__ == "__main__":
