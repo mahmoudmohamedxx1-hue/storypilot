@@ -4,7 +4,9 @@ name: Hourly Story Video
 
 on:
   schedule:
-    - cron: "0 * * * *" # every hour (UTC)
+    # Off-peak minute: GitHub Actions drops/delays start-of-hour crons under load
+    # (see docs: "High load times include the start of every hour").
+    - cron: "47 * * * *" # every hour at :47 (UTC)
   workflow_dispatch:
     inputs:
       use_ai_story:
