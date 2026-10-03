@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+build/
+output/
+story.json
+sheet_code.py
+*.log
+.env
+.env.*
+!.env.example
+.DS_Store
+web/node_modules/
+web/.next/
+web/db/
+web/download/

@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Chat {
+  id        String    @id @default(cuid())
+  title     String    @default("New chat")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  messages  Message[]
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  chatId    String
+  role      String // 'user' | 'assistant'
+  content   String
+  tools     String? // JSON array of tool invocations for rich rendering
+  createdAt DateTime @default(now())
+  chat      Chat     @relation(fields: [chatId], references: [id], onDelete: Cascade)
+}
+
+model VideoJob {
+  id            String       @id @default(cuid())
+  title         String
+  storyTitle    String?
+  status        String       @default("queued") // queued | rendering | done | failed | posted
+  source        String       @default("sheet") // sheet | generated | backfill
+  language      String       @default("en")
+  platforms     String       @default("[]") // JSON: [{platform, status, url}]
+  videoUrl      String?
+  runId         String?
+  log           String       @default("")
+  storyRecordId String?
+  tabName       String?
+  artifactId    String? // GitHub artifact ids exceed 32-bit → string
+  sizeBytes     Int?
+  durationSec   Float?
+  renderedAt    DateTime?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  story         StoryRecord? @relation(fields: [storyRecordId], references: [id], onDelete: SetNull)
+}
+
+// A story discovered in the Google Sheet (one per distinct content version per tab)
+model StoryRecord {
+  id          String     @id @default(cuid())
+  tabGid      String // sheet tab gid
+  tabName     String // sheet tab name
+  title       String
+  logline     String     @default("")
+  genre       String     @default("")
+  duration    String     @default("")
+  language    String     @default("en")
+  scenes      Int        @default(0)
+  words       Int        @default(0)
+  contentHash String // normalized-content hash → change detection
+  storyJson   String     @default("{}") // full normalized story JSON, used to render
+  status      String     @default("new") // new | queued | rendering | done | failed | gone
+  firstSeenAt DateTime   @default(now())
+  lastSeenAt  DateTime   @default(now())
+  videoJobs   VideoJob[]
+}
+
+model SyncLog {
+  id          String   @id @default(cuid())
+  startedAt   DateTime @default(now())
+  finishedAt  DateTime @default(now())
+  durationMs  Int      @default(0)
+  ok          Boolean  @default(true)
+  tabsFound   Int      @default(0)
+  storiesNew  Int      @default(0)
+  storiesSeen Int      @default(0)
+  error       String?
+}
+
+model Setting {
+  key   String @id
+  value String
+}
