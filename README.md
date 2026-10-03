@@ -8,7 +8,7 @@ GitHub Actions.
 ```
 Google Sheet (Gemini Spark, hourly)
         │
-        ▼  .github/workflows/hourly-video.yml  (cron: 0 * * * *)
+        ▼  .github/workflows/hourly-video.yml  (cron: 47 * * * * UTC)
 ┌─────────────────────────────────────────────────────────────┐
 │ 1. Fetch story      tolerant EN/AR sheet parser             │
 │      └ fallback: keyless GLM story via freellmpool          │
@@ -49,6 +49,17 @@ Google Sheet (Gemini Spark, hourly)
    bunx prisma db push
    bun run dev          # Kimi-style UI: chat + Library + live pipeline
    ```
+
+### Never miss an hour (self-healing)
+
+GitHub cron is best-effort — busy-minute ticks can be delayed or dropped. Three layers keep
+videos flowing:
+
+| Layer | What | When |
+|---|---|---|
+| 1. `hourly-video.yml` | render cron | every hour at **:47 UTC** (off-peak minute) |
+| 2. `.github/workflows/ensure-hourly.yml` | watcher that re-dispatches the render if the last run is > 65 min old | every hour at **:19 UTC** |
+| 3. StoryPilot app heartbeat | while the app is open it dispatches the render if no run started in 65 min | checks every 10 min |
 
 ## Story sheet format (tolerant)
 
