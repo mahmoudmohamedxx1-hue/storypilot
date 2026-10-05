@@ -1,25 +1,33 @@
 # StoryPilot - Hourly Story -> MP4 -> YouTube/TikTok/Instagram
 # Deployed by the StoryPilot agent app. Runs every hour on GitHub Actions.
 #
-# BATCH CATCH-UP (default): every run renders up to MAX_VIDEOS stories from the
-# sheet that do not have a video yet (tracked in state/videos.json, committed
-# back to this repo) until EVERY story in the sheet has a video. Edited stories
+# CONTINUOUS FACTORY (default): every run fans out to N PARALLEL WORKERS
+# (GitHub Actions matrix). Each worker renders ITS OWN shard of the pending
+# sheet stories (tracked in state/videos*.json, committed back to this repo)
+# until EVERY story in the sheet has a video. The StoryPilot app's continuous
+# render loop dispatches this workflow back-to-back — not just hourly — so
+# videos are generated continuously while stories are pending. Edited stories
 # change their content-hash and re-queue automatically. Hyperframes = 60fps.
+# Keyless AI: freellmpool polishes voiceovers + writes platform metadata.
 name: Hourly Story Video
 
 on:
   schedule:
     # Off-peak minute: GitHub Actions drops/delays start-of-hour crons under load
     # (see docs: "High load times include the start of every hour").
-    - cron: "47 * * * *" # every hour at :47 (UTC)
+    - cron: "47 * * * *" # every hour at :47 (UTC) — backup layer; the app loop is primary
   workflow_dispatch:
     inputs:
+      workers_json:
+        description: "Parallel workers as JSON array, e.g. [\"0\",\"1\",\"2\"]"
+        type: string
+        default: ""
       batch:
         description: "Render ALL pending sheet stories (catch-up queue)"
         type: boolean
         default: true
       max_videos:
-        description: "Max videos per run (time budget still applies)"
+        description: "Max videos per WORKER (time budget still applies)"
         type: number
         default: 4
       use_ai_story:
@@ -35,27 +43,26 @@ on:
         type: string
 
 permissions:
-  contents: write # commit render state (state/videos.json) after each run
+  contents: write # commit render state (state/videos*.json) after each run
 
 concurrency:
   group: hourly-video
   cancel-in-progress: false
 
 jobs:
-  render-and-post:
+  render:
     runs-on: ubuntu-latest
     timeout-minutes: 50
+    strategy:
+      fail-fast: false
+      matrix:
+        # N parallel workers, each owning an interleaved shard of the pending queue.
+        # Dispatched by the app with workers_json; crons fall back to 3 workers.
+        worker: ${{ fromJSON(inputs.workers_json || vars.WORKERS_JSON || '["0","1","2"]') }}
     env:
       # secrets/vars mapped at job level — step-level if: may only read the env context
-      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
-      YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
-      YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
-      TIKTOK_ACCESS_TOKEN: ${{ secrets.TIKTOK_ACCESS_TOKEN }}
-      INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
-      INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
-      YOUTUBE_PRIVACY: ${{ vars.YOUTUBE_PRIVACY || 'public' }}
-      TIKTOK_PRIVACY: ${{ vars.TIKTOK_PRIVACY || 'SELF_ONLY' }}
       FRAME_RATE: ${{ vars.FRAME_RATE || '60' }} # hyperframes
+      AI_ENHANCE: ${{ vars.AI_ENHANCE || 'true' }} # keyless freellmpool polish pass
       RENDER_MODE: batch
     steps:
       - name: Checkout
@@ -85,16 +92,16 @@ jobs:
               echo "mode: single (one explicit story)"
             else
               echo "RENDER_MODE=batch" >> "$GITHUB_ENV"
-              echo "mode: batch (catch-up queue)"
+              echo "mode: batch (catch-up queue, worker ${{ matrix.worker }})"
             fi
           else
             echo "RENDER_MODE=batch" >> "$GITHUB_ENV"
-            echo "mode: batch (hourly catch-up queue)"
+            echo "mode: batch (catch-up queue, worker ${{ matrix.worker }})"
           fi
 
       # ---------------- single mode: one explicit story (library dispatch / AI story) ----------------
       - name: Prepare story (Google Sheet by Gemini Spark + keyless GLM fallback)
-        if: env.RENDER_MODE == 'single'
+        if: matrix.worker == '0' && env.RENDER_MODE == 'single'
         env:
           SHEET_ID: ${{ vars.SHEET_ID || '1nNsUcwR9foKN_MTPm5bwMR5jz2HUE68UeRqJ0OFp-d4' }}
           FLP_MODEL: ${{ vars.FLP_MODEL || 'glm-4.7-flash' }}
@@ -104,7 +111,7 @@ jobs:
         run: python scripts/generate_story.py
 
       - name: Render cinematic MP4 (keyless AI images + Edge-TTS + MoviePy, 1080x1920)
-        if: env.RENDER_MODE == 'single'
+        if: matrix.worker == '0' && env.RENDER_MODE == 'single'
         env:
           TTS_VOICE_AR: ${{ vars.TTS_VOICE_AR || 'ar-EG-ShakirNeural' }}
           ENABLE_AI_IMAGES: ${{ vars.ENABLE_AI_IMAGES || 'true' }}
@@ -112,7 +119,7 @@ jobs:
         run: python generate_video.py
 
       - name: Upload video artifact
-        if: env.RENDER_MODE == 'single'
+        if: matrix.worker == '0' && env.RENDER_MODE == 'single'
         uses: actions/upload-artifact@v4
         with:
           name: hourly-video
@@ -123,8 +130,8 @@ jobs:
           retention-days: 14
           if-no-files-found: error
 
-      # ---------------- batch mode: render EVERY pending sheet story (default) ----------------
-      - name: Render pending stories (batch catch-up)
+      # ---------------- batch mode: every worker renders ITS shard of the pending queue ----------------
+      - name: Render pending stories (worker shard, keyless AI polish, hyperframes)
         if: env.RENDER_MODE == 'batch'
         env:
           SHEET_ID: ${{ vars.SHEET_ID || '1nNsUcwR9foKN_MTPm5bwMR5jz2HUE68UeRqJ0OFp-d4' }}
@@ -132,15 +139,17 @@ jobs:
           TTS_VOICE_AR: ${{ vars.TTS_VOICE_AR || 'ar-EG-ShakirNeural' }}
           ENABLE_AI_IMAGES: ${{ vars.ENABLE_AI_IMAGES || 'true' }}
           IMAGE_MODEL: ${{ vars.IMAGE_MODEL || 'flux' }}
-          BUDGET_MIN: ${{ vars.BUDGET_MIN || '28' }}
+          BUDGET_MIN: ${{ vars.BUDGET_MIN || '36' }}
           MAX_VIDEOS: ${{ inputs.max_videos || vars.MAX_VIDEOS || '4' }}
+          SHARD_INDEX: ${{ matrix.worker }}
+          NUM_SHARDS: ${{ strategy.job-total }}
         run: python scripts/render_pending.py
 
       - name: Upload batch video artifacts
         if: always() && env.RENDER_MODE == 'batch'
         uses: actions/upload-artifact@v4
         with:
-          name: hourly-video
+          name: hourly-video-w${{ matrix.worker }}
           path: |
             videos/*/output.mp4
             videos/*/meta.json
@@ -150,73 +159,102 @@ jobs:
           if-no-files-found: warn
 
       - name: Commit render state
-        if: always()
+        if: always() && env.RENDER_MODE == 'batch'
         run: |
-          if [ ! -f state/videos.json ]; then echo "no state file - nothing to commit"; exit 0; fi
+          shopt -s nullglob
+          files=(state/videos*.json)
+          if [ ${#files[@]} -eq 0 ]; then echo "no state files - nothing to commit"; exit 0; fi
           git config user.name "storypilot-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add state/videos.json
+          git add state/videos*.json
           if git diff --cached --quiet; then
             echo "render state unchanged"
             exit 0
           fi
-          git commit -m "chore: render state update [skip ci]"
-          # the repo may have moved on since checkout (deploys / concurrent pushes) - rebase and retry
-          for i in 1 2 3; do
+          git commit -m "chore: render state update (worker ${{ matrix.worker }}) [skip ci]"
+          # the repo may have moved on since checkout (deploys / sibling workers) - rebase and retry
+          for i in 1 2 3 4; do
             if git pull --rebase origin main && git push; then
               echo "render state committed"
               exit 0
             fi
             echo "push attempt $i rejected - rebasing and retrying..."
             git rebase --abort 2>/dev/null || true
-            sleep 3
+            sleep 5
           done
           # never fail the run for the state file: videos are already in the artifact,
           # and the worst case is one duplicate re-render on the next run
           echo "::warning::could not push render state - next run may re-render these stories (harmless)"
 
-      # ---------------- platform posting (single: one video / batch: every video) ----------------
+  # ---------------- publish: post EVERY rendered video to the platforms ----------------
+  publish:
+    needs: render
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+      YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+      YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+      TIKTOK_ACCESS_TOKEN: ${{ secrets.TIKTOK_ACCESS_TOKEN }}
+      INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+      INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+      YOUTUBE_PRIVACY: ${{ vars.YOUTUBE_PRIVACY || 'public' }}
+      TIKTOK_PRIVACY: ${{ vars.TIKTOK_PRIVACY || 'SELF_ONLY' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python deps
+        run: pip install requests
+
+      - name: Download all rendered videos (every worker artifact)
+        uses: actions/download-artifact@v4
+        with:
+          pattern: hourly-video*
+          path: dist
+          merge-multiple: false
+
       - name: Post to YouTube
         if: env.YOUTUBE_REFRESH_TOKEN != ''
         run: |
           set -uo pipefail
           shopt -s nullglob
-          if [ "$RENDER_MODE" = "single" ]; then
-            python post_video.py --youtube || exit 1
-          else
-            for d in videos/*/; do
-              echo "[youtube] posting $d"
-              VIDEO_PATH="$d/output.mp4" META_PATH="$d/meta.json" python post_video.py --youtube \
-                || echo "::warning::failed to post $d to YouTube"
-            done
-          fi
+          posted=0
+          for d in dist/*/ dist/*/*/ videos/*/; do
+            [ -f "$d/output.mp4" ] || continue
+            echo "[youtube] posting $d"
+            VIDEO_PATH="$d/output.mp4" META_PATH="$d/meta.json" python post_video.py --youtube \
+              && posted=$((posted+1)) \
+              || echo "::warning::failed to post $d to YouTube"
+          done
+          echo "posted $posted videos to YouTube"
 
       - name: Post to TikTok
         if: env.TIKTOK_ACCESS_TOKEN != ''
         run: |
           set -uo pipefail
           shopt -s nullglob
-          if [ "$RENDER_MODE" = "single" ]; then
-            python post_video.py --tiktok || exit 1
-          else
-            for d in videos/*/; do
-              echo "[tiktok] posting $d"
-              VIDEO_PATH="$d/output.mp4" META_PATH="$d/meta.json" python post_video.py --tiktok \
-                || echo "::warning::failed to post $d to TikTok"
-            done
-          fi
+          for d in dist/*/ dist/*/*/ videos/*/; do
+            [ -f "$d/output.mp4" ] || continue
+            echo "[tiktok] posting $d"
+            VIDEO_PATH="$d/output.mp4" META_PATH="$d/meta.json" python post_video.py --tiktok \
+              || echo "::warning::failed to post $d to TikTok"
+          done
 
       - name: Post to Instagram Reels
         if: env.INSTAGRAM_ACCESS_TOKEN != ''
         run: |
           set -uo pipefail
           shopt -s nullglob
-          if [ "$RENDER_MODE" = "single" ]; then
-            python post_video.py --instagram || exit 1
-          else
-            for d in videos/*/; do
-              echo "[instagram] posting $d"
-              VIDEO_PATH="$d/output.mp4" META_PATH="$d/meta.json" python post_video.py --instagram \
-                || echo "::warning::failed to post $d to Instagram"
-            done
-          fi
+          for d in dist/*/ dist/*/*/ videos/*/; do
+            [ -f "$d/output.mp4" ] || continue
+            echo "[instagram] posting $d"
+            VIDEO_PATH="$d/output.mp4" META_PATH="$d/meta.json" python post_video.py --instagram \
+              || echo "::warning::failed to post $d to Instagram"
+          done
