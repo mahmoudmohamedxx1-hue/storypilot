@@ -1,34 +1,47 @@
 # StoryPilot 🎬
 
-**Hourly AI storytelling pipeline** — turns the stories in a Google Sheet (updated every
-hour by the Gemini Spark automation) into **cinematic vertical videos (1080×1920)** and
-publishes them to YouTube, TikTok and Instagram. 100% **keyless / free** stack, driven by
-GitHub Actions.
+**Continuous AI video factory** — turns every story in a Google Sheet (updated hourly by
+the Gemini Spark automation) into **cinematic vertical videos (1080×1920, 60fps
+hyperframes)** and publishes them to YouTube, TikTok and Instagram — **generated
+continuously, back-to-back, with parallel workers**. 100% **keyless / free** stack,
+driven by GitHub Actions + the StoryPilot app's render loop.
 
 ```
-Google Sheet (Gemini Spark, hourly)
+Google Sheet (Gemini Spark)  ←──── always in sync (every ~60s)
         │
-        ▼  .github/workflows/hourly-video.yml  (cron: 47 * * * * UTC)
-┌─────────────────────────────────────────────────────────────┐
-│ 1. Fetch story      tolerant EN/AR sheet parser             │
-│      └ fallback: keyless GLM story via freellmpool          │
-│ 2. Render cinematic MP4                                     │
-│      • keyless AI scene imagery (Pollinations flux)         │
-│      • Ken Burns motion (ffmpeg zoompan)                    │
-│      • Edge-TTS voiceover (ar-EG-ShakirNeural)              │
-│      • word-synced Arabic captions (Cairo/Noto/Amiri fonts) │
-│      • title + end cards, filmic grade, 24 fps H.264/AAC    │
-│ 3. Upload artifact (MP4 + thumbnail + meta)                 │
-│ 4. Post to YouTube / TikTok / Instagram (optional secrets)  │
-└─────────────────────────────────────────────────────────────┘
+        ▼  StoryPilot app: CONTINUOUS RENDER LOOP (polls every 90s)
+│  pending stories? ──► dispatch hourly-video.yml BACK-TO-BACK
+│        (cron :47 + ensure :19 are backup layers)
+        ▼  .github/workflows/hourly-video.yml  ── parallel worker matrix
+┌──────────────────────────────────────────────────────────────┐
+│ 1. Fetch stories    every sheet tab (tolerant EN/AR parser)  │
+│      └ shard the pending queue across N workers              │
+│ 2. Keyless AI polish (freellmpool — GLM-Flash first,         │
+│      auto-failover): tighter narration + platform title/     │
+│      description/tags — falls back to original text, never   │
+│      blocks a render                                          │
+│ 3. Render cinematic MP4s (per worker, in parallel)           │
+│      • keyless AI scene imagery (Pollinations flux)          │
+│      • Ken Burns motion (ffmpeg zoompan)                     │
+│      • Edge-TTS voiceover (ar-EG-ShakirNeural)               │
+│      • word-synced Arabic captions (Cairo/Noto/Amiri fonts)  │
+│      • 60fps hyperframes, H.264/AAC, 1080×1920               │
+│ 4. Upload per-worker artifacts + commit render state         │
+│ 5. Publish job: post EVERY video to YouTube/TikTok/Instagram │
+└──────────────────────────────────────────────────────────────┘
 ```
+
+The app itself chats and polishes stories with **GLM-5.3-Flash via the z.ai SDK**; the
+pipeline's AI (story fallback + polish) is **keyless via
+[freellmpool](https://github.com/0xzr/freellmpool)**.
 
 ## Repo layout
 
 | Path | What it is |
 |---|---|
-| `.github/workflows/hourly-video.yml` | The hourly automation (schedule + manual dispatch) |
+| `.github/workflows/hourly-video.yml` | The render workflow — parallel worker matrix + publish job |
 | `generate_video.py` | Cinematic renderer — `story.json` → `output/output.mp4` |
+| `scripts/render_pending.py` | The queue: shards pending stories across workers, keyless AI polish, renders |
 | `scripts/generate_story.py` | Story source: Sheet → keyless freellmpool GLM → fallback |
 | `post_video.py` | YouTube / TikTok / Instagram publishers |
 | `fonts/` | Bundled Arabic fonts (Cairo, Noto Sans Arabic, Amiri, Montserrat) |
@@ -50,22 +63,28 @@ Google Sheet (Gemini Spark, hourly)
    bun run dev          # Kimi-style UI: chat + Library + live pipeline
    ```
 
-### Never miss an hour (self-healing)
+### Always generating (self-healing, 4 layers)
 
-GitHub cron is best-effort — busy-minute ticks can be delayed or dropped. Three layers keep
-videos flowing:
+Videos are generated CONTINUOUSLY while pending stories exist — not just hourly:
 
 | Layer | What | When |
 |---|---|---|
-| 1. `hourly-video.yml` | render cron | every hour at **:47 UTC** (off-peak minute) |
-| 2. `.github/workflows/ensure-hourly.yml` | watcher that re-dispatches the render if the last run is > 65 min old | every hour at **:19 UTC** |
-| 3. StoryPilot app heartbeat | while the app is open it dispatches the render if no run started in 65 min | checks every 10 min |
+| 1. **App render loop (primary)** | dispatches the render workflow back-to-back whenever pending stories exist (pending = sheet stories minus repo render state) | polls every **90s** |
+| 2. `hourly-video.yml` render cron | backup | every hour at **:47 UTC** (off-peak minute) |
+| 3. `.github/workflows/ensure-hourly.yml` | watcher that re-dispatches when the last run is stale | every hour at **:19 UTC** |
+| 4. cooldown guard | after 2 consecutive no-progress runs the loop pauses 20 min (no dispatch spam) | automatic |
+
+Each dispatched run fans out to **3 parallel workers** by default (override with the
+`workers_json` input or the `WORKERS_JSON` repo variable) — each worker renders its own
+shard of the pending queue, so throughput is ~3× a single run. Every worker commits its
+own `state/videos.shard*.json`, so progress is never lost and workers never collide.
 
 ## Story sheet format (tolerant)
 
-The first tab of the
+EVERY tab of the
 [sheet](https://docs.google.com/spreadsheets/d/1nNsUcwR9foKN_MTPm5bwMR5jz2HUE68UeRqJ0OFp-d4/edit)
-is parsed **tolerantly** — English or Arabic labels, any column order:
+is parsed **tolerantly** — English or Arabic labels, any column order, multiple stories
+per tab:
 
 - Label rows: `Story Title / العنوان`, `Logline`, `Genre`, `Duration`
 - A scene table whose columns are detected by keyword
