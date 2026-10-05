@@ -47,6 +47,7 @@ SHARD_INDEX = int(os.environ.get("SHARD_INDEX", "0"))
 NUM_SHARDS = max(1, int(os.environ.get("NUM_SHARDS", "1")))
 AI_ENHANCE = os.environ.get("AI_ENHANCE", "true").lower() in ("1", "true", "yes")
 FLP_MODEL = os.environ.get("FLP_MODEL", "__FLP_MODEL__")
+LLM7_MODEL = os.environ.get("LLM7_MODEL", "GLM-5.3-Flash")
 STATE_DIR = os.environ.get("STATE_DIR", "state")
 # each parallel worker owns its own shard file (no git conflicts between workers)
 STATE_PATH = os.environ.get(
@@ -617,21 +618,66 @@ POLISH_PROMPT = (
 )
 
 
+def _valid_polish(data, scenes):
+    """Validate a polish reply: one non-empty voiceover string per scene."""
+    if not isinstance(data, dict):
+        return False
+    vs = data.get("voiceovers")
+    if not isinstance(vs, list) or len(vs) != len(scenes):
+        return False
+    if not all(isinstance(v, str) and v.strip() for v in vs):
+        return False
+    data.setdefault("title", "")
+    data.setdefault("description", "")
+    data.setdefault("tags", [])
+    return True
+
+
+def llm7_chat(system, user, timeout=90):
+    """KEYLESS OpenAI-compatible chat via llm7.io (no API key; works from
+    GitHub runners - GLM-5.3-Flash is in its live catalog). Retries briefly
+    on transient rate limits (429/5xx)."""
+    import urllib.error
+    body = json.dumps(
+        {
+            "model": LLM7_MODEL,
+            "messages": [
+                {"role": "system", "content": system},
+                {"role": "user", "content": user},
+            ],
+        }
+    ).encode("utf-8")
+    last_err = None
+    for attempt in range(2):
+        try:
+            req = urllib.request.Request(
+                "https://api.llm7.io/v1/chat/completions",
+                data=body,
+                headers={"Content-Type": "application/json", "Authorization": "Bearer unused"},
+            )
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                data = json.loads(r.read().decode("utf-8", "replace"))
+            return str(((data.get("choices") or [{}])[0].get("message") or {}).get("content", "") or "")
+        except urllib.error.HTTPError as e:
+            last_err = f"HTTP {e.code}"
+            if e.code in (429, 500, 502, 503, 504) and attempt < 1:
+                time.sleep(15)
+                continue
+            raise
+        except Exception:
+            raise
+    raise RuntimeError(f"llm7 retries exhausted ({last_err})")
+
+
 def ai_polish(story):
-    """Keyless AI polish pass via freellmpool. Returns a dict or None (never raises).
-    Model chain: configured FLP_MODEL first (e.g. GLM Flash route), then guaranteed
-    keyless pool routes, then 'auto' (freellmpool picks a live keyless model)."""
+    """Keyless AI polish pass. Chain: freellmpool (FLP_MODEL first, then pool
+    routes, then auto) -> llm7 direct (GLM-5.3-Flash, no key). Returns a dict
+    or None (never raises) - the original sheet text is used on total failure."""
     if not AI_ENHANCE:
         return None
     scenes = story.get("scenes", [])
     if not scenes:
         return None
-    exe = shutil.which("freellmpool")
-    base = [exe] if exe else [sys.executable, "-m", "freellmpool"]
-    attempts = []
-    for m in [FLP_MODEL, "zhipu/glm-4.7-flash", "ovh/Qwen3-32B", "auto"]:
-        if m and m not in attempts:
-            attempts.append(m)
     compact = json.dumps(
         {
             "title": story.get("title", ""),
@@ -640,29 +686,48 @@ def ai_polish(story):
         },
         ensure_ascii=False,
     )
-    prompt = f"Story:\n{compact}\n\nPolish it exactly per the schema ({len(scenes)} scenes)."
+    prompt = f"Story:\\n{compact}\\n\\nPolish it exactly per the schema ({len(scenes)} scenes)."
+
+    # --- route 1: freellmpool CLI (pool of keyless providers) ---
+    exe = shutil.which("freellmpool")
+    base = [exe] if exe else [sys.executable, "-m", "freellmpool"]
+    attempts = []
+    for m in [FLP_MODEL, "zhipu/glm-4.7-flash", "ovh/Qwen3-32B", "auto"]:
+        if m and m not in attempts:
+            attempts.append(m)
     for model in attempts:
         try:
-            cmd = base + ["ask", "-m", model, "--json", "--timeout", "90", "-s", POLISH_PROMPT, prompt]
-            out = subprocess.run(cmd, capture_output=True, text=True, timeout=180)
+            cmd = base + ["ask", "-m", model, "--json", "--timeout", "60", "-s", POLISH_PROMPT, prompt]
+            out = subprocess.run(cmd, capture_output=True, text=True, timeout=90)
             raw = (out.stdout or "") + (out.stderr or "")
             m2 = re.search(r"\{[\s\S]*\}", raw)
             if not m2:
+                print(f"[polish] freellmpool {model}: no JSON ({raw.strip()[:90]})", flush=True)
                 continue
             data = json.loads(m2.group(0))
-            vs = data.get("voiceovers")
-            if not isinstance(vs, list) or len(vs) != len(scenes):
+            if not _valid_polish(data, scenes):
                 continue
-            if not all(isinstance(v, str) and v.strip() for v in vs):
-                continue
-            data.setdefault("title", story.get("title", ""))
-            data.setdefault("description", "")
-            data.setdefault("tags", [])
+            data["model"] = f"freellmpool keyless ({model})"
             print(f"[polish] served by freellmpool model: {model}", flush=True)
             return data
         except Exception as e:
-            print(f"[polish] {model} failed: {str(e)[:120]}", flush=True)
-    print("[polish] all freellmpool models failed - using original sheet text", flush=True)
+            print(f"[polish] freellmpool {model} failed: {str(e)[:100]}", flush=True)
+
+    # --- route 2: llm7 direct (keyless, GLM-5.3-Flash) ---
+    try:
+        raw = llm7_chat(POLISH_PROMPT, prompt)
+        m3 = re.search(r"\{[\s\S]*\}", raw)
+        if m3:
+            data = json.loads(m3.group(0))
+            if _valid_polish(data, scenes):
+                data["model"] = f"llm7 keyless ({LLM7_MODEL})"
+                print(f"[polish] served by llm7 model: {LLM7_MODEL}", flush=True)
+                return data
+        print(f"[polish] llm7 reply unusable ({raw.strip()[:90]})", flush=True)
+    except Exception as e:
+        print(f"[polish] llm7 failed: {str(e)[:100]}", flush=True)
+
+    print("[polish] all keyless routes failed - using original sheet text", flush=True)
     return None
 
 
@@ -683,7 +748,7 @@ def apply_polish(story):
         "title": str(polish.get("title", "")).strip()[:120],
         "description": str(polish.get("description", "")).strip()[:600],
         "tags": [str(t).strip() for t in polish.get("tags", []) if str(t).strip()][:12],
-        "model": "freellmpool keyless",
+        "model": str(polish.get("model", "keyless ai")),
     }
     story["_polish"] = info
     return info

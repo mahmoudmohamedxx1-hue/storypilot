@@ -63,7 +63,8 @@ jobs:
     env:
       # secrets/vars mapped at job level — step-level if: may only read the env context
       FRAME_RATE: \${{ vars.FRAME_RATE || '60' }} # hyperframes
-      AI_ENHANCE: \${{ vars.AI_ENHANCE || 'true' }} # keyless freellmpool polish pass
+      AI_ENHANCE: \${{ vars.AI_ENHANCE || 'true' }} # keyless AI polish pass
+      LLM7_MODEL: \${{ vars.LLM7_MODEL || 'GLM-5.3-Flash' }} # keyless direct fallback (llm7.io)
       RENDER_MODE: batch
     steps:
       - name: Checkout
@@ -106,6 +107,7 @@ jobs:
         env:
           SHEET_ID: \${{ vars.SHEET_ID || '${opts.sheetId}' }}
           FLP_MODEL: \${{ vars.FLP_MODEL || '${opts.flpModel}' }}
+          LLM7_MODEL: \${{ vars.LLM7_MODEL || 'GLM-5.3-Flash' }}
           USE_AI_STORY: \${{ github.event_name == 'workflow_dispatch' && inputs.use_ai_story || 'false' }}
           STORY_TOPIC: \${{ github.event_name == 'workflow_dispatch' && inputs.topic || '' }}
           STORY_JSON: \${{ github.event_name == 'workflow_dispatch' && inputs.story_json || '' }}
@@ -137,6 +139,7 @@ jobs:
         env:
           SHEET_ID: \${{ vars.SHEET_ID || '${opts.sheetId}' }}
           FLP_MODEL: \${{ vars.FLP_MODEL || '${opts.flpModel}' }}
+          LLM7_MODEL: \${{ vars.LLM7_MODEL || 'GLM-5.3-Flash' }}
           TTS_VOICE_AR: \${{ vars.TTS_VOICE_AR || '${opts.voice}' }}
           ENABLE_AI_IMAGES: \${{ vars.ENABLE_AI_IMAGES || 'true' }}
           IMAGE_MODEL: \${{ vars.IMAGE_MODEL || 'flux' }}
@@ -331,6 +334,7 @@ Add only what you need — every platform is optional and skipped gracefully:
 | Variable | Default | Meaning |
 |---|---|---|
 | \`FLP_MODEL\` | \`glm-4.7-flash\` | freellmpool model tried first for story generation & polish |
+| \`LLM7_MODEL\` | \`GLM-5.3-Flash\` | Keyless direct fallback for polish/story-gen (llm7.io, no API key) |
 | \`SHEET_ID\` | the Spark sheet | Google Sheet id with the hourly story |
 | \`TTS_VOICE_AR\` | \`ar-EG-ShakirNeural\` | Edge-TTS Arabic voice |
 | \`ENABLE_AI_IMAGES\` | \`true\` | Keyless AI scene imagery (Pollinations) |

@@ -480,18 +480,29 @@ export async function enhanceStoryWithGLM(story: {
       ],
     })
     const raw = res.choices?.[0]?.message?.content || ''
+    console.log('[enhance] GLM replied:', JSON.stringify(raw).slice(0, 160))
     const m = raw.match(/\{[\s\S]*\}/)
-    if (!m) return null
-    const data = JSON.parse(m[0]) as { voiceovers?: unknown; title?: unknown; description?: unknown; tags?: unknown }
-    if (!Array.isArray(data.voiceovers) || data.voiceovers.length !== story.scenes.length) return null
-    if (!data.voiceovers.every((v) => typeof v === 'string' && v.trim())) return null
+    if (!m) { console.log('[enhance] no JSON object in reply'); return null }
+    let data: { voiceovers?: unknown; title?: unknown; description?: unknown; tags?: unknown }
+    try {
+      data = JSON.parse(m[0])
+    } catch (e) {
+      console.log('[enhance] JSON parse failed:', (e as Error).message, '| json head:', m[0].slice(0, 120))
+      return null
+    }
+    if (!Array.isArray(data.voiceovers) || data.voiceovers.length !== story.scenes.length) {
+      console.log('[enhance] voiceovers mismatch:', Array.isArray(data.voiceovers) ? data.voiceovers.length : typeof data.voiceovers, 'vs', story.scenes.length)
+      return null
+    }
+    if (!data.voiceovers.every((v) => typeof v === 'string' && v.trim())) { console.log('[enhance] non-string voiceover entries'); return null }
     return {
       voiceovers: (data.voiceovers as string[]).map((v) => v.trim().slice(0, 1400)),
       title: String(data.title || story.title).slice(0, 120),
       description: String(data.description || '').slice(0, 600),
       tags: Array.isArray(data.tags) ? (data.tags as unknown[]).map(String).map((t) => t.trim()).filter(Boolean).slice(0, 12) : [],
     }
-  } catch {
+  } catch (e) {
+    console.log('[enhance] call failed:', (e as Error).message)
     return null
   }
 }

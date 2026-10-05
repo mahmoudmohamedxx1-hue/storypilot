@@ -35,8 +35,10 @@ gen_story = extract_ts_const(BUNDLE + "/generate-story-py.ts", "GENERATE_STORY_P
 render_pending = extract_ts_const(BUNDLE + "/render-pending-py.ts", "RENDER_PENDING_PY")
 gen_video = extract_ts_const(BUNDLE + "/generate-video-py.ts", "GENERATE_VIDEO_PY")
 
-# un-escape TS template escapes (replicate JS template literal evaluation:
-# \\ -> \ , \$ -> $ , \` -> ` ; single \ before other chars stays)
+# un-escape TS template escapes — FAITHFUL to JS template literal evaluation:
+# \\ -> \ , \$ -> $ , \` -> ` , \n -> newline , \t -> tab , \r -> CR
+# (single backslash + letter IS an escape in JS — reproducing it exactly is what
+#  caught/fails real deploy bugs like a literal newline inside a python f-string)
 def ts_unescape(s):
     out = []
     i = 0
@@ -50,6 +52,12 @@ def ts_unescape(s):
                 out.append('$'); i += 2; continue
             if nxt == '`':
                 out.append('`'); i += 2; continue
+            if nxt == 'n':
+                out.append('\n'); i += 2; continue
+            if nxt == 't':
+                out.append('\t'); i += 2; continue
+            if nxt == 'r':
+                out.append('\r'); i += 2; continue
         out.append(c)
         i += 1
     return ''.join(out)
