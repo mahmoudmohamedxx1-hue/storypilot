@@ -1,9 +1,9 @@
-# StoryPilot - Self-healing hourly scheduler
+# StoryPilot - Self-healing hourly scheduler (backup layer)
 # GitHub cron is best-effort and heavily throttled on some accounts (ticks get
 # silently dropped). This watcher runs at a DIFFERENT minute than the main
 # render cron; if the last "Hourly Story Video" run is stale (> 60 min) or
 # missing, it re-dispatches the workflow so an hourly video is never silently
-# skipped.
+# skipped. The StoryPilot app's continuous render loop is the PRIMARY layer.
 name: Ensure Hourly Video
 
 on:
