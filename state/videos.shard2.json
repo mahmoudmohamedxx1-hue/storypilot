@@ -17,6 +17,24 @@
       "dir": "02-bcd79e19",
       "worker": 2,
       "aiPolish": false
+    },
+    "2c11a498e7a597c6de3bd24a28047baf": {
+      "title": "Dividend Traps vs. Total Return Investing",
+      "tab": "Batch 5 - Advanced Mastery",
+      "renderedAt": "2026-10-05T22:57:56Z",
+      "fps": 60,
+      "dir": "01-2c11a498",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "f0bacb285329b470d02667c4a4fd2d8f": {
+      "title": "Building Generational Wealth: Custodial Accounts & 529s",
+      "tab": "Batch 5 - Advanced Mastery",
+      "renderedAt": "2026-10-05T23:12:18Z",
+      "fps": 60,
+      "dir": "02-f0bacb28",
+      "worker": 2,
+      "aiPolish": false
     }
   },
   "failed": {}
