@@ -1,0 +1,23 @@
+{
+  "rendered": {
+    "fa6f122fa13ae71eba818fa41e217502": {
+      "title": "Real Estate vs. Stock Market: The Unbiased Reality",
+      "tab": "Batch 3 - Wealth Protection",
+      "renderedAt": "2026-10-05T21:37:59Z",
+      "fps": 60,
+      "dir": "01-fa6f122f",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "bcd79e1993213379dc2648218de9ed61": {
+      "title": "Life Insurance: Term vs. Whole Life (Avoiding the Sales Trap)",
+      "tab": "Batch 4 - Strategic Wealth",
+      "renderedAt": "2026-10-05T21:51:40Z",
+      "fps": 60,
+      "dir": "02-bcd79e19",
+      "worker": 2,
+      "aiPolish": false
+    }
+  },
+  "failed": {}
+}
