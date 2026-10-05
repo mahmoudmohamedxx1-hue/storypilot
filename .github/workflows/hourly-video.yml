@@ -158,11 +158,22 @@ jobs:
           git add state/videos.json
           if git diff --cached --quiet; then
             echo "render state unchanged"
-          else
-            git commit -m "chore: render state update [skip ci]"
-            git push
-            echo "render state committed"
+            exit 0
           fi
+          git commit -m "chore: render state update [skip ci]"
+          # the repo may have moved on since checkout (deploys / concurrent pushes) - rebase and retry
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              echo "render state committed"
+              exit 0
+            fi
+            echo "push attempt $i rejected - rebasing and retrying..."
+            git rebase --abort 2>/dev/null || true
+            sleep 3
+          done
+          # never fail the run for the state file: videos are already in the artifact,
+          # and the worst case is one duplicate re-render on the next run
+          echo "::warning::could not push render state - next run may re-render these stories (harmless)"
 
       # ---------------- platform posting (single: one video / batch: every video) ----------------
       - name: Post to YouTube
