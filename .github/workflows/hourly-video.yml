@@ -137,7 +137,7 @@ jobs:
         run: python scripts/render_pending.py
 
       - name: Upload batch video artifacts
-        if: env.RENDER_MODE == 'batch'
+        if: always() && env.RENDER_MODE == 'batch'
         uses: actions/upload-artifact@v4
         with:
           name: hourly-video
