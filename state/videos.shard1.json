@@ -1,0 +1,32 @@
+{
+  "rendered": {
+    "b11c0d2a533746c68d5f18cec0e43cea": {
+      "title": "The 4% Retirement Rule (The Trinity Study Explained)",
+      "tab": "Batch 3 - Wealth Protection",
+      "renderedAt": "2026-10-05T21:34:15Z",
+      "fps": 60,
+      "dir": "01-b11c0d2a",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "7c29c1c31e01bc0f5663f05398178260": {
+      "title": "The HSA: The Ultimate Triple-Tax Advantage",
+      "tab": "Batch 4 - Strategic Wealth",
+      "renderedAt": "2026-10-05T21:45:49Z",
+      "fps": 60,
+      "dir": "02-7c29c1c3",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "0535f8977e92d93aa38f12d04b22d838": {
+      "title": "Capital Gains Taxes: Short-Term vs. Long-Term Demystified",
+      "tab": "Batch 4 - Strategic Wealth",
+      "renderedAt": "2026-10-05T21:56:41Z",
+      "fps": 60,
+      "dir": "03-0535f897",
+      "worker": 1,
+      "aiPolish": false
+    }
+  },
+  "failed": {}
+}
