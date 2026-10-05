@@ -22,6 +22,7 @@ import urllib.request
 SHEET_ID = os.environ.get("SHEET_ID", "1nNsUcwR9foKN_MTPm5bwMR5jz2HUE68UeRqJ0OFp-d4")
 CODE_TAB = os.environ.get("CODE_TAB", "كود بايثون - المولد الآلي")
 USE_AI_STORY = os.environ.get("USE_AI_STORY", "false").lower() in ("1", "true", "yes")
+AI_ENHANCE = os.environ.get("AI_ENHANCE", "true").lower() in ("1", "true", "yes")
 FLP_MODEL = os.environ.get("FLP_MODEL", "glm-4.7-flash")
 STORY_TOPIC = os.environ.get("STORY_TOPIC", "").strip()
 STORY_JSON = os.environ.get("STORY_JSON", "").strip()
@@ -252,7 +253,9 @@ def story_from_freellmpool():
 
 
 def story_from_payload():
-    """Full story JSON provided by the StoryPilot app (any sheet tab, any format)."""
+    """Full story JSON provided by the StoryPilot app (any sheet tab, any format).
+    May carry _story_hash (stable library matching) and _polish (app-side GLM
+    enhancement via the z.ai SDK) which pass straight through."""
     data = json.loads(STORY_JSON)
     if not data.get("title") or not data.get("scenes"):
         raise ValueError("payload missing title/scenes")
@@ -267,6 +270,76 @@ def story_from_payload():
         s.setdefault("voiceover", "")
         s.setdefault("sfx", "")
     return data
+
+
+POLISH_PROMPT = (
+    "You are StoryPilot's script doctor for short vertical videos. "
+    "Reply with ONE JSON object and nothing else. No markdown fences. Given a story, "
+    "improve the voiceover lines for narration: tighten pacing, strengthen the opening "
+    "hook, keep the SAME language and meaning, 1-3 spoken sentences per line. Also write "
+    "platform metadata. Schema: "
+    '{"voiceovers": [str, ...] (exactly one entry per scene, same order), '
+    '"title": str (catchy, same language, max 80 chars), '
+    '"description": str (2-3 sentences, same language), '
+    '"tags": [str, ...] (8-12 short tags without #, same language)}'
+)
+
+
+def ai_polish_story(story):
+    """Keyless AI polish via freellmpool (single-story mode). Never raises;
+    returns the story with polished voiceovers + _polish metadata, or unchanged."""
+    if not AI_ENHANCE or story.get("_polish"):
+        return story  # already polished app-side (GLM) or disabled
+    scenes = story.get("scenes", [])
+    if not scenes:
+        return story
+    exe = shutil.which("freellmpool")
+    base = [exe] if exe else [sys.executable, "-m", "freellmpool"]
+    attempts = []
+    for m in [FLP_MODEL, "zhipu/glm-4.7-flash", "ovh/Qwen3-32B", "auto"]:
+        if m and m not in attempts:
+            attempts.append(m)
+    compact = json.dumps(
+        {
+            "title": story.get("title", ""),
+            "logline": story.get("logline", ""),
+            "scenes": [{"visual": s.get("visual", ""), "voiceover": s.get("voiceover", "")} for s in scenes],
+        },
+        ensure_ascii=False,
+    )
+    prompt = f"Story:
+{compact}
+
+Polish it exactly per the schema ({len(scenes)} scenes)."
+    for model in attempts:
+        try:
+            cmd = base + ["ask", "-m", model, "--json", "--timeout", "90", "-s", POLISH_PROMPT, prompt]
+            out = subprocess.run(cmd, capture_output=True, text=True, timeout=180)
+            raw = (out.stdout or "") + (out.stderr or "")
+            m2 = re.search(r"{[sS]*}", raw)
+            if not m2:
+                continue
+            data = json.loads(m2.group(0))
+            vs = data.get("voiceovers")
+            if not isinstance(vs, list) or len(vs) != len(scenes):
+                continue
+            if not all(isinstance(v, str) and v.strip() for v in vs):
+                continue
+            for s, v in zip(scenes, vs):
+                if v.strip():
+                    s["voiceover"] = v.strip()[:1400]
+            story["_polish"] = {
+                "title": str(data.get("title", story.get("title", ""))).strip()[:120],
+                "description": str(data.get("description", "")).strip()[:600],
+                "tags": [str(t).strip() for t in data.get("tags", []) if str(t).strip()][:12],
+                "model": f"freellmpool keyless ({model})",
+            }
+            print(f"[polish] served by freellmpool model: {model}", flush=True)
+            return story
+        except Exception as e:
+            print(f"[polish] {model} failed: {str(e)[:120]}", flush=True)
+    print("[polish] all freellmpool models failed - using original text", flush=True)
+    return story
 
 
 def main():
@@ -292,6 +365,9 @@ def main():
             print(f"[story] freellmpool failed: {e}", flush=True)
             story = FALLBACK_STORY
             source = "built-in fallback"
+    elif source != "storypilot library payload":
+        # sheet story (not an app payload) - keyless AI polish of the narration
+        story = ai_polish_story(story)
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(story, f, ensure_ascii=False, indent=2)
     if source != "storypilot library payload":
