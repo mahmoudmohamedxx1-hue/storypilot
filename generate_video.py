@@ -680,9 +680,12 @@ def main():
     genre = str(story.get("genre", "")).strip()
     base_tags = [genre] if genre and is_ar(genre) else [w for w in (genre + " short story ai storytelling vertical video").split() if len(w) > 2]
     tags_raw = [w for w in base_tags if w]
+    polish = story.get("_polish") or {}
+    if polish.get("tags"):
+        tags_raw = [str(t) for t in polish["tags"]]
     meta = {
-        "title": title,
-        "description": (story.get("logline", "") or title) + "\n\nCinematic vertical video generated automatically by the StoryPilot pipeline - keyless AI imagery + Edge-TTS voiceover + word-synced captions.",
+        "title": (polish.get("title") or title)[:95],
+        "description": (polish.get("description") or (story.get("logline", "") or title) + "\n\nCinematic vertical video generated automatically by the StoryPilot pipeline - keyless AI imagery + Edge-TTS voiceover + word-synced captions."),
         "tags": list(dict.fromkeys(tags_raw))[:12],
         "language": lang,
         "duration_sec": round(total, 1),
@@ -692,6 +695,8 @@ def main():
         "hyperframes": FPS >= 48,
         "story_hash": story.get("_story_hash", ""),
         "ai_images": f"{ai_used}/{len(scenes)} (pollinations {IMAGE_MODEL}, keyless)",
+        "ai_enhanced": bool(polish),
+        "ai_model": polish.get("model", "") if polish else "",
     }
     with open(os.path.join(OUT_DIR, "meta.json"), "w", encoding="utf-8") as f:
         json.dump(meta, f, ensure_ascii=False, indent=2)
