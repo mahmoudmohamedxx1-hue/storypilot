@@ -1,0 +1,32 @@
+{
+  "rendered": {
+    "7f45eb2e5b8f08d3831d883aa589fac6": {
+      "title": "Roth IRA vs. Traditional 401(k): Tax Strategy for Beginners",
+      "tab": "Batch 2 - Wealth Building",
+      "renderedAt": "2026-10-05T20:33:03Z",
+      "fps": 60,
+      "dir": "01-7f45eb2e",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "d08386416df618e66dac98df3dd75a99": {
+      "title": "High-Yield Savings (HYSA) vs. CDs: Maximizing Liquid Cash",
+      "tab": "Batch 3 - Wealth Protection",
+      "renderedAt": "2026-10-05T20:46:29Z",
+      "fps": 60,
+      "dir": "02-d0838641",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "d291c24c889a479197b8da054a0acd0a": {
+      "title": "Beating Lifestyle Inflation: The 50% Raise Rule",
+      "tab": "Batch 3 - Wealth Protection",
+      "renderedAt": "2026-10-05T20:59:06Z",
+      "fps": 60,
+      "dir": "03-d291c24c",
+      "worker": 0,
+      "aiPolish": false
+    }
+  },
+  "failed": {}
+}
