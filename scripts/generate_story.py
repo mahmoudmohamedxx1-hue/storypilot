@@ -307,10 +307,7 @@ def ai_polish_story(story):
         },
         ensure_ascii=False,
     )
-    prompt = f"Story:
-{compact}
-
-Polish it exactly per the schema ({len(scenes)} scenes)."
+    prompt = f"Story:\n{compact}\n\nPolish it exactly per the schema ({len(scenes)} scenes)."
     for model in attempts:
         try:
             cmd = base + ["ask", "-m", model, "--json", "--timeout", "90", "-s", POLISH_PROMPT, prompt]
