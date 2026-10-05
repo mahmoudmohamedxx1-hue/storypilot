@@ -80,9 +80,9 @@ jobs:
       - name: Select render mode
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            if [ -n "${{ inputs.story_json }}" ] || [ "${{ inputs.use_ai_story }}" = "true" ]; then
+            if [ -n "${{ inputs.story_json }}" ] || [ "${{ inputs.use_ai_story }}" = "true" ] || [ "${{ inputs.batch }}" = "false" ]; then
               echo "RENDER_MODE=single" >> "$GITHUB_ENV"
-              echo "mode: single (explicit story)"
+              echo "mode: single (one explicit story)"
             else
               echo "RENDER_MODE=batch" >> "$GITHUB_ENV"
               echo "mode: batch (catch-up queue)"
