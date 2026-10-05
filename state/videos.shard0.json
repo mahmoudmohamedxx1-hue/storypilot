@@ -53,6 +53,33 @@
       "dir": "03-76aba045",
       "worker": 0,
       "aiPolish": false
+    },
+    "afbd158efbdae675fac7e853ed5ee00a": {
+      "title": "The Automated Money Machine: Eliminating Willpower",
+      "tab": "Batch 4 - Strategic Wealth",
+      "renderedAt": "2026-10-05T22:54:11Z",
+      "fps": 60,
+      "dir": "01-afbd158e",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "f73625e61c0157300f3ea77d8295dfae": {
+      "title": "Bond Markets & The Inverted Yield Curve",
+      "tab": "Batch 5 - Advanced Mastery",
+      "renderedAt": "2026-10-05T23:05:27Z",
+      "fps": 60,
+      "dir": "02-f73625e6",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "5c1186580b1e025146bb88473f96c532": {
+      "title": "The Backdoor Roth IRA: High-Earner Wealth Strategy",
+      "tab": "Batch 6 - Market Intelligence",
+      "renderedAt": "2026-10-05T23:16:58Z",
+      "fps": 60,
+      "dir": "03-5c118658",
+      "worker": 0,
+      "aiPolish": false
     }
   },
   "failed": {}
