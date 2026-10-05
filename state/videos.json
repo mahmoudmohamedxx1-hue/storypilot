@@ -27,6 +27,20 @@
       "renderedAt": 1791208855892,
       "fps": 24,
       "dir": "seeded"
+    },
+    "1a7c0193d7bd4fe733311cc0c048dca2": {
+      "title": "Crushing Debt: Avalanche vs. Snowball",
+      "tab": "Financial Literacy Series",
+      "renderedAt": "2026-10-05T14:13:00Z",
+      "fps": 60,
+      "dir": "01-1a7c0193"
+    },
+    "4b5d8b13eb67744f13f810daecc17f25": {
+      "title": "Understanding Inflation: The Silent Wealth Destroyer",
+      "tab": "Financial Literacy Series",
+      "renderedAt": "2026-10-05T14:23:14Z",
+      "fps": 60,
+      "dir": "02-4b5d8b13"
     }
   },
   "failed": {}
