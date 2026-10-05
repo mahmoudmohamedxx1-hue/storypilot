@@ -26,6 +26,33 @@
       "dir": "03-d291c24c",
       "worker": 0,
       "aiPolish": false
+    },
+    "73c8e72d399f12f8fcad78baa320ac7a": {
+      "title": "The Truth About Opportunity Cost: Big Levers vs. Small Sacrifices",
+      "tab": "Batch 2 - Wealth Building",
+      "renderedAt": "2026-10-05T21:31:26Z",
+      "fps": 60,
+      "dir": "01-73c8e72d",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "809c44be32f6612ad60a444a3e93c815": {
+      "title": "Asset Allocation & Risk Tolerance: Surviving Market Crashes",
+      "tab": "Batch 3 - Wealth Protection",
+      "renderedAt": "2026-10-05T21:45:30Z",
+      "fps": 60,
+      "dir": "02-809c44be",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "76aba045aea5621dd2cf211405789d7a": {
+      "title": "The Psychology of Money: Conquering the Sunk Cost Fallacy",
+      "tab": "Batch 4 - Strategic Wealth",
+      "renderedAt": "2026-10-05T21:58:46Z",
+      "fps": 60,
+      "dir": "03-76aba045",
+      "worker": 0,
+      "aiPolish": false
     }
   },
   "failed": {}
