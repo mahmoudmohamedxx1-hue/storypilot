@@ -55,6 +55,7 @@ Add only what you need — every platform is optional and skipped gracefully:
 | Variable | Default | Meaning |
 |---|---|---|
 | `FLP_MODEL` | `glm-4.7-flash` | freellmpool model tried first for story generation & polish |
+| `LLM7_MODEL` | `GLM-5.3-Flash` | Keyless direct fallback for polish/story-gen (llm7.io, no API key) |
 | `SHEET_ID` | the Spark sheet | Google Sheet id with the hourly story |
 | `TTS_VOICE_AR` | `ar-EG-ShakirNeural` | Edge-TTS Arabic voice |
 | `ENABLE_AI_IMAGES` | `true` | Keyless AI scene imagery (Pollinations) |
