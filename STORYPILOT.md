@@ -1,21 +1,30 @@
 # StoryPilot — Hourly Cinematic Story Video Pipeline
 
-This repo runs an **hourly automation** on GitHub Actions:
+This repo runs an **hourly automation** on GitHub Actions that guarantees **every story in the
+Google Sheet becomes a video**:
 
-1. **Fetch the story** from the Google Sheet that Gemini Spark updates every hour
-   (fallback: generate a fresh story **keyless** with [`freellmpool`](https://github.com/0xzr/freellmpool) — GLM Flash first, auto-failover to live keyless routes).
-2. **Render a cinematic vertical 1080×1920 MP4** — keyless AI scene imagery (Pollinations flux)
-   with Ken Burns motion + Edge-TTS voiceover + word-synced Arabic captions
-   (MoviePy + Pillow + arabic-reshaper + python-bidi, bundled Cairo/Noto/Amiri fonts).
-3. **Post** to YouTube, TikTok and Instagram Reels (each platform activates as soon as you add its secrets).
+1. **Batch catch-up (default)**: each run scans ALL sheet tabs, hashes every story (same parser
+   as the app), skips stories already rendered (tracked in `state/videos.json`, committed back to
+   this repo) and renders up to **4 pending stories per run** — so the queue drains until every
+   story has a video. Edited stories change their hash and re-queue automatically.
+2. **Render cinematic vertical 1080×1920 MP4s** at **60fps hyperframes** — keyless AI scene
+   imagery (Pollinations flux) with Ken Burns motion + Edge-TTS voiceover + word-synced Arabic
+   captions (MoviePy + Pillow + arabic-reshaper + python-bidi, bundled Cairo/Noto/Amiri fonts).
+3. **Post** every rendered video to YouTube, TikTok and Instagram Reels (each platform activates
+   as soon as you add its secrets).
+
+Single-story renders are still available: dispatch the workflow with `use_ai_story` or a
+`story_json` payload (the app's **Make video** button uses this).
 
 ## Files
 
 | File | Purpose |
 |---|---|
-| `.github/workflows/hourly-video.yml` | The hourly GitHub Actions workflow |
-| `scripts/generate_story.py` | Story source: Google Sheet (tolerant parser) → keyless GLM → fallback |
-| `generate_video.py` | Cinematic renderer: `story.json` → `output/output.mp4` |
+| `.github/workflows/hourly-video.yml` | The hourly GitHub Actions workflow (batch catch-up + single mode) |
+| `scripts/render_pending.py` | Batch queue: all tabs → pending stories → renders them within a time budget |
+| `scripts/generate_story.py` | Single-story source: Google Sheet (tolerant parser) → keyless GLM → fallback |
+| `generate_video.py` | Cinematic renderer: `story.json` → 1080×1920 60fps MP4 |
+| `state/videos.json` | Render state committed by the bot — which stories already have videos |
 | `fonts/` | Bundled Arabic fonts (Cairo, Noto Sans Arabic, Amiri, Montserrat) |
 | `post_video.py` | Posts to YouTube / TikTok / Instagram |
 | `requirements.txt` | Python dependencies |
@@ -43,13 +52,18 @@ Add only what you need — every platform is optional and skipped gracefully:
 | `TTS_VOICE_AR` | `ar-EG-ShakirNeural` | Edge-TTS Arabic voice |
 | `ENABLE_AI_IMAGES` | `true` | Keyless AI scene imagery (Pollinations) |
 | `IMAGE_MODEL` | `flux` | Pollinations image model (`flux` / `turbo`) |
+| `FRAME_RATE` | `60` | Hyperframes — 60fps silky motion (set `24` for the old rate) |
+| `BUDGET_MIN` | `28` | Minutes per batch run spent rendering (never exceeds the job timeout) |
+| `MAX_VIDEOS` | `4` | Max videos rendered per batch run |
 | `YOUTUBE_PRIVACY` | `public` | `public` / `unlisted` / `private` |
 | `TIKTOK_PRIVACY` | `SELF_ONLY` | `SELF_ONLY` until your TikTok app is approved |
 
 ## Run it now
 
 Actions tab → **Hourly Story Video** → **Run workflow**.
-Every finished run leaves the MP4 + thumbnail in the **hourly-video** artifact (14-day retention).
+Every run leaves its rendered MP4s (one folder per video: `output.mp4`, `meta.json`,
+`thumb.jpg`, `story.json`) in the **hourly-video** artifact (14-day retention), commits the
+render state, and the next hourly run automatically continues any remaining queue.
 
 ## Story sheet
 
