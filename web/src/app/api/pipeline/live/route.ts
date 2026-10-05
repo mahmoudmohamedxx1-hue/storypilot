@@ -1,14 +1,16 @@
 import { NextRequest } from 'next/server'
 import { getSettings } from '@/lib/settings'
 import { getGithubStatus, listWorkflowRuns, getRunJobs, listArtifacts, listWorkflows } from '@/lib/github'
+import { getLoopState, getHeartbeatState, loopCheckOnce } from '@/lib/render-loop'
 
 export const runtime = 'nodejs'
 export const maxDuration = 60
 
 /**
  * Live pipeline state for the n8n-style canvas.
- * GET ?runId=<id>  → runs list + per-step state of the selected run + artifacts.
+ * GET ?runId=<id>  → runs list + per-step state of the selected run + artifacts + heartbeat.
  * Omit runId → latest run is selected automatically.
+ * POST { force?: boolean } → run one continuous-loop check now (manual "ensure video").
  */
 export async function GET(req: NextRequest) {
   const s = await getSettings()
@@ -43,8 +45,21 @@ export async function GET(req: NextRequest) {
       jobs,
       artifacts,
       workflows,
+      loop: getLoopState(),
+      heartbeat: getHeartbeatState(), // back-compat
     })
   } catch (e) {
-    return Response.json({ ok: false, connected: false, error: (e as Error).message }, { status: 200 })
+    return Response.json({ ok: false, connected: false, error: (e as Error).message, loop: getLoopState(), heartbeat: getHeartbeatState() }, { status: 200 })
+  }
+}
+
+export async function POST(req: NextRequest) {
+  try {
+    const body = await req.json().catch(() => ({}))
+    const force = body?.force === true
+    const result = await loopCheckOnce(force)
+    return Response.json({ ok: !result.startsWith('error') && !result.startsWith('no GitHub'), result, loop: getLoopState(), heartbeat: getHeartbeatState() })
+  } catch (e) {
+    return Response.json({ ok: false, error: (e as Error).message }, { status: 200 })
   }
 }

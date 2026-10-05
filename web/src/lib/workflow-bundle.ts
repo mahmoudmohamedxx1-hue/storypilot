@@ -1,7 +1,8 @@
 import { GENERATE_VIDEO_PY } from '@/lib/bundle/generate-video-py'
 import { GENERATE_STORY_PY } from '@/lib/bundle/generate-story-py'
 import { POST_VIDEO_PY } from '@/lib/bundle/post-video-py'
-import { buildWorkflowYaml, buildSetupMd, REQUIREMENTS_TXT } from '@/lib/bundle/workflow-yaml'
+import { RENDER_PENDING_PY } from '@/lib/bundle/render-pending-py'
+import { buildWorkflowYaml, buildEnsureHourlyYaml, buildSetupMd, REQUIREMENTS_TXT } from '@/lib/bundle/workflow-yaml'
 import { getSettings } from '@/lib/settings'
 
 export interface BundleFile {
@@ -22,10 +23,22 @@ export async function buildWorkflowBundle(): Promise<BundleFile[]> {
       content: buildWorkflowYaml({ sheetId: s.sheetId, flpModel: s.flpModel, voice: s.voice }),
     },
     {
+      path: '.github/workflows/ensure-hourly.yml',
+      language: 'yaml',
+      description: 'Self-healing watcher: re-dispatches the render workflow when GitHub cron drops an hourly tick',
+      content: buildEnsureHourlyYaml(),
+    },
+    {
       path: 'scripts/generate_story.py',
       language: 'python',
       description: 'Story source: Google Sheet (Gemini Spark) → keyless freellmpool GLM → fallback',
       content: GENERATE_STORY_PY.replace(/__SHEET_ID__/g, s.sheetId).replace(/__FLP_MODEL__/g, s.flpModel),
+    },
+    {
+      path: 'scripts/render_pending.py',
+      language: 'python',
+      description: 'Batch catch-up queue: renders EVERY pending sheet story per run (state committed to the repo)',
+      content: RENDER_PENDING_PY.replace(/__SHEET_ID__/g, s.sheetId).replace(/__FLP_MODEL__/g, s.flpModel),
     },
     {
       path: 'generate_video.py',

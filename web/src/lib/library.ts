@@ -29,8 +29,12 @@ export interface LibraryVideo {
   runConclusion: string | null
   runUrl: string | null
   artifactId: string | null
+  artifactEntry: string | null
   sizeBytes: number | null
   durationSec: number | null
+  fps: number | null
+  hyperframes: boolean
+  aiEnhanced: boolean
   renderedAt: string | null
   createdAt: string
   platforms: PlatformState[]
@@ -63,10 +67,24 @@ export interface LibraryStats {
   totalVideos: number
 }
 
+/** Catch-up queue progress: is EVERY sheet story becoming a video? */
+export interface CatchupInfo {
+  total: number
+  done: number
+  pending: number
+  failed: number
+  /** rough number of continuous-factory dispatches still needed */
+  runsNeeded: number
+  /** parallel workers per dispatch (from settings) */
+  workers: number
+  active: boolean
+}
+
 export interface LibraryPayload {
   ok: boolean
   items: LibraryItem[]
   stats: LibraryStats
+  catchup: CatchupInfo | null
   lastSyncAt: string | null
   error?: string
 }
@@ -135,49 +153,106 @@ async function reconcile(runs: Run[], artifacts: Artifact[]): Promise<void> {
   }
 }
 
-/** Past successful runs (with artifacts) that have no library entry yet → create one. */
-async function backfill(runs: Run[], artifacts: Artifact[], limit = 3): Promise<number> {
+/** Past successful runs (with artifacts) that have no library entry yet → create one per video. */
+async function backfill(runs: Run[], artifacts: Artifact[], limit = 6): Promise<number> {
   const settings = await getSettings()
   let created = 0
-  const existingRunIds = new Set(
-    (await db.videoJob.findMany({ select: { runId: true }, take: 200 })).map((j) => j.runId).filter(Boolean)
+  const existing = new Set(
+    (await db.videoJob.findMany({ select: { runId: true, artifactId: true, artifactEntry: true }, take: 400 }))
+      .map((j) => `${j.runId || ''}|${j.artifactId || ''}|${j.artifactEntry || ''}`),
   )
-  const artByRun = new Map<number, Artifact>()
+  const artByRun = new Map<number, Artifact[]>()
   for (const a of artifacts) {
     const rid = a.workflow_run?.id
-    if (rid) artByRun.set(rid, a)
+    if (rid) {
+      if (!artByRun.has(rid)) artByRun.set(rid, [])
+      artByRun.get(rid)!.push(a)
+    }
   }
   for (const run of runs) {
     if (created >= limit) break
-    if (run.status !== 'completed' || run.conclusion !== 'success') continue
-    if (existingRunIds.has(String(run.id))) continue
-    const art = artByRun.get(run.id)
-    if (!art) continue
-    // read meta.json from the artifact for the real story title
-    let title = `Hourly story · ${new Date(run.created_at).toLocaleDateString()}`
-    let durationSec: number | null = null
-    try {
-      const meta = await readArtifactJson(art.id, 'output/meta.json')
-      if (meta?.title) title = `Hourly video · ${meta.title}`
-      if (meta?.duration_sec) durationSec = meta.duration_sec as number
-    } catch { /* keep defaults */ }
-    await db.videoJob.create({
-      data: {
-        title,
-        storyTitle: title.replace(/^Hourly video · /, ''),
-        status: 'done',
-        source: 'backfill',
-        runId: String(run.id),
-        artifactId: String(art.id),
-        sizeBytes: art.size_in_bytes,
-        durationSec,
-        renderedAt: new Date(run.updated_at || run.created_at),
-        platforms: JSON.stringify(platformStates(settings, { platforms: '[]', runConclusion: run.conclusion })),
-      },
-    })
-    created++
+    if (run.status !== 'completed') continue
+    // NOTE: even a FAILED run can carry rendered videos (e.g. a later step like the
+    // state commit failed while the artifact upload succeeded) - import them.
+    const runArts = artByRun.get(run.id) || []
+    if (!runArts.length) continue
+    for (const art of runArts) {
+      if (created >= limit) break
+      // a batch artifact can contain MANY videos (one per rendered story)
+      const videos = await listArtifactVideos(art.id)
+      for (const v of videos) {
+        if (created >= limit) break
+        const key = `${run.id}|${art.id}|${v.mp4Entry}`
+        if (existing.has(key)) continue
+        const title = String(v.meta?.title || `Hourly video · ${new Date(run.created_at).toLocaleDateString()}`)
+        const storyHash = (v.meta?.story_hash as string) || ''
+        const fps = typeof v.meta?.fps === 'number' ? (v.meta.fps as number) : null
+        const durationSec = typeof v.meta?.duration_sec === 'number' ? (v.meta.duration_sec as number) : null
+        const aiEnhanced = v.meta?.ai_enhanced === true
+        // match the video to a story record: exact content hash first, then normalized title
+        let story = storyHash
+          ? await db.storyRecord.findFirst({ where: { contentHash: storyHash } })
+          : null
+        if (!story) {
+          const norm = title.toLowerCase().replace(/\s+/g, ' ').trim()
+          story = await db.storyRecord.findFirst({ where: { title: title } }) || null
+          if (story && story.title.toLowerCase().replace(/\s+/g, ' ').trim() !== norm) story = null
+        }
+        await db.videoJob.create({
+          data: {
+            title: story ? story.title : `Hourly video · ${String(title)}`,
+            storyTitle: story ? story.title : String(title),
+            status: 'done',
+            source: 'backfill',
+            language: (v.meta?.language as string) || (story?.language ?? 'en'),
+            runId: String(run.id),
+            artifactId: String(art.id),
+            artifactEntry: v.mp4Entry,
+            sizeBytes: Math.round(v.mp4SizeBytes ?? art.size_in_bytes / Math.max(1, videos.length)),
+            durationSec,
+            fps,
+            aiEnhanced,
+            storyRecordId: story?.id || null,
+            tabName: story?.tabName || null,
+            renderedAt: new Date(run.updated_at || run.created_at),
+            platforms: JSON.stringify(platformStates(settings, { platforms: '[]', runConclusion: run.conclusion })),
+          },
+        })
+        if (story) {
+          await db.storyRecord.update({ where: { id: story.id }, data: { status: 'done' } }).catch(() => {})
+        }
+        existing.add(key)
+        created++
+      }
+    }
   }
   return created
+}
+
+/** One video inside an artifact zip (legacy zips: files at root; batch zips: one dir per video). */
+interface ArtifactVideo {
+  mp4Entry: string
+  mp4SizeBytes: number | null
+  metaEntry: string
+  meta: Record<string, unknown> | null
+}
+
+async function listArtifactVideos(artifactId: number): Promise<ArtifactVideo[]> {
+  const zip = await loadArtifactZip(artifactId)
+  const metaEntries = Object.values(zip.files)
+    .filter((f) => !f.dir && /(^|\/)meta\.json$/.test(f.name))
+    .sort((a, b) => a.name.localeCompare(b.name))
+  const out: ArtifactVideo[] = []
+  for (const m of metaEntries) {
+    const dir = m.name.includes('/') ? m.name.slice(0, m.name.lastIndexOf('/')) : ''
+    const mp4Name = dir ? `${dir}/output.mp4` : 'output.mp4'
+    const mp4 = zip.file(mp4Name) || Object.values(zip.files).find((f) => !f.dir && f.name.endsWith('.mp4'))
+    if (!mp4) continue
+    let meta: Record<string, unknown> | null = null
+    try { meta = JSON.parse(await m.async('string')) as Record<string, unknown> } catch { /* keep null */ }
+    out.push({ mp4Entry: mp4.name, mp4SizeBytes: null, metaEntry: m.name, meta })
+  }
+  return out
 }
 
 /** Attach a runId to just-dispatched jobs (dispatch API returns 204 with no id). */
@@ -238,6 +313,9 @@ export async function buildLibrary(): Promise<LibraryPayload> {
 
   const items: LibraryItem[] = []
   const stats: LibraryStats = { totalStories: 0, toMake: 0, inProgress: 0, done: 0, failed: 0, storageBytes: 0, totalVideos: 0 }
+  // catch-up counts unique SHEET stories (standalone backfilled job cards are not part of the queue)
+  let storyItems = 0
+  let storyDone = 0
 
   const seenJobIds = new Set<string>()
 
@@ -253,8 +331,12 @@ export async function buildLibrary(): Promise<LibraryPayload> {
       runConclusion,
       runUrl: run?.html_url ?? null,
       artifactId: art ? String(art.id) : job.artifactId ?? null,
+      artifactEntry: job.artifactEntry ?? null,
       sizeBytes: art?.size_in_bytes ?? job.sizeBytes ?? null,
       durationSec: job.durationSec ?? null,
+      fps: job.fps ?? null,
+      hyperframes: (job.fps ?? 0) >= 48,
+      aiEnhanced: job.aiEnhanced,
       renderedAt: job.renderedAt ? job.renderedAt.toISOString() : null,
       createdAt: job.createdAt.toISOString(),
       platforms: platformStates(settings, { platforms: job.platforms, runConclusion, runStatus }),
@@ -265,6 +347,10 @@ export async function buildLibrary(): Promise<LibraryPayload> {
   const pushItem = (item: LibraryItem) => {
     items.push(item)
     stats.totalStories++
+    if (!item.storyId.startsWith('job-')) {
+      storyItems++
+      if (item.status === 'done') storyDone++
+    }
     if (item.status === 'new') stats.toMake++
     else if (item.status === 'queued' || item.status === 'rendering') stats.inProgress++
     else if (item.status === 'done') stats.done++
@@ -335,10 +421,25 @@ export async function buildLibrary(): Promise<LibraryPayload> {
   items.sort((a, b) => (order[a.status] ?? 9) - (order[b.status] ?? 9) || b.lastSeenAt.localeCompare(a.lastSeenAt))
 
   const lastLog = await db.syncLog.findFirst({ orderBy: { startedAt: 'desc' } })
+
+  // catch-up progress: is EVERY sheet story becoming a video?
+  const workers = Math.max(1, Math.min(6, settings.workers || 3))
+  const catchup: CatchupInfo = {
+    total: storyItems,
+    done: storyDone,
+    pending: Math.max(0, storyItems - storyDone),
+    failed: stats.failed,
+    /** rough number of continuous-factory dispatches still needed (~4/worker) */
+    runsNeeded: Math.ceil(Math.max(0, storyItems - storyDone) / (workers * 4)),
+    workers,
+    active: storyItems - storyDone === 0 || stats.inProgress > 0,
+  }
+
   return {
     ok: true,
     items,
     stats,
+    catchup,
     lastSyncAt: syncRes?.finishedAt || lastLog?.startedAt.toISOString() || null,
     error: ghError,
   }
@@ -352,6 +453,49 @@ export interface RenderResult {
   message: string
 }
 
+const GLM_POLISH_SYSTEM =
+  'You are StoryPilot\'s script doctor for short vertical videos. Reply with ONE JSON object only, no markdown fences. Given a story, improve the voiceover lines for narration: tighten pacing, strengthen the opening hook, keep the SAME language and meaning, 1-3 spoken sentences per line. Also write platform metadata. Schema: {"voiceovers":[str,...] (exactly one entry per scene, same order), "title":str (catchy, same language, max 80 chars), "description":str (2-3 sentences, same language), "tags":[str,...] (8-12 short tags without #, same language)}'
+
+/** App-side story polish via the z.ai SDK (GLM-5.3-Flash). Returns polished
+ *  story fields or null on any failure — never blocks rendering. */
+export async function enhanceStoryWithGLM(story: {
+  title: string
+  logline: string
+  scenes: Array<{ visual?: string; voiceover?: string }>
+}): Promise<{ voiceovers: string[]; title: string; description: string; tags: string[] } | null> {
+  try {
+    const ZAI = (await import('z-ai-web-dev-sdk')).default
+    const zai = await ZAI.create()
+    const s = await getSettings()
+    const compact = JSON.stringify({
+      title: story.title,
+      logline: story.logline,
+      scenes: story.scenes.map((sc) => ({ visual: sc.visual || '', voiceover: sc.voiceover || '' })),
+    })
+    const res = await zai.chat.completions.create({
+      model: s.chatModel, // glm-5.3-flash via the z.ai SDK
+      messages: [
+        { role: 'system', content: GLM_POLISH_SYSTEM },
+        { role: 'user', content: `Story:\n${compact}\n\nPolish it exactly per the schema (${story.scenes.length} scenes).` },
+      ],
+    })
+    const raw = res.choices?.[0]?.message?.content || ''
+    const m = raw.match(/\{[\s\S]*\}/)
+    if (!m) return null
+    const data = JSON.parse(m[0]) as { voiceovers?: unknown; title?: unknown; description?: unknown; tags?: unknown }
+    if (!Array.isArray(data.voiceovers) || data.voiceovers.length !== story.scenes.length) return null
+    if (!data.voiceovers.every((v) => typeof v === 'string' && v.trim())) return null
+    return {
+      voiceovers: (data.voiceovers as string[]).map((v) => v.trim().slice(0, 1400)),
+      title: String(data.title || story.title).slice(0, 120),
+      description: String(data.description || '').slice(0, 600),
+      tags: Array.isArray(data.tags) ? (data.tags as unknown[]).map(String).map((t) => t.trim()).filter(Boolean).slice(0, 12) : [],
+    }
+  } catch {
+    return null
+  }
+}
+
 export async function renderStoryById(storyId: string): Promise<RenderResult> {
   const settings = await getSettings()
   const story = await db.storyRecord.findUnique({ where: { id: storyId } })
@@ -363,9 +507,39 @@ export async function renderStoryById(storyId: string): Promise<RenderResult> {
   })
   if (active) return { ok: false, message: 'This story already has a render in progress' }
 
-  // dispatch with the full story JSON so ANY tab (any format) can be rendered
+  // build the payload: full story JSON so ANY tab (any format) can be rendered
+  let payload: Record<string, unknown>
+  try {
+    payload = JSON.parse(story.storyJson || '{}')
+  } catch {
+    return { ok: false, message: 'Story JSON unreadable' }
+  }
+  payload._story_hash = story.contentHash // stable library matching even after polish
+
+  // app-side AI polish via GLM-5.3-Flash (z.ai SDK); the workflow still applies
+  // its keyless freellmpool polish only when this hasn't already been done
+  let aiEnhanced = false
+  if (settings.aiEnhance) {
+    const scenes = (payload.scenes as Array<{ visual?: string; voiceover?: string }>) || []
+    const polish = await enhanceStoryWithGLM({ title: story.title, logline: story.logline, scenes })
+    if (polish) {
+      scenes.forEach((sc, i) => {
+        if (polish.voiceovers[i]) sc.voiceover = polish.voiceovers[i]
+      })
+      payload._polish = {
+        title: polish.title,
+        description: polish.description,
+        tags: polish.tags,
+        model: 'glm-5.3-flash (z.ai sdk)',
+      }
+      aiEnhanced = true
+    }
+  }
+
+  // single story → single worker (no fan-out needed)
   await dispatchWorkflow(settings.githubRepo, 'hourly-video.yml', 'main', {
-    story_json: JSON.stringify(JSON.parse(story.storyJson || '{}')),
+    story_json: JSON.stringify(payload),
+    workers_json: '["0"]',
   })
   const job = await db.videoJob.create({
     data: {
@@ -376,23 +550,48 @@ export async function renderStoryById(storyId: string): Promise<RenderResult> {
       language: story.language,
       storyRecordId: story.id,
       tabName: story.tabName,
+      aiEnhanced,
     },
   })
   await db.storyRecord.update({ where: { id: story.id }, data: { status: 'queued' } }).catch(() => {})
-  return { ok: true, jobId: job.id, message: `Dispatched render for "${story.title}"` }
+  return {
+    ok: true,
+    jobId: job.id,
+    message: `Dispatched render for "${story.title}"${aiEnhanced ? ' — polished by GLM-5.3-Flash first' : ''}`,
+  }
+}
+
+/** Dispatches the CONTINUOUS FACTORY batch run: N parallel workers render every
+ *  pending sheet story. The app's render loop re-dispatches back-to-back. */
+export async function renderAllPending(): Promise<RenderResult> {
+  const settings = await getSettings()
+  if (!settings.githubToken) return { ok: false, message: 'GitHub not connected — add a token in Settings' }
+
+  const inProgress = await db.videoJob.count({ where: { status: { in: ['queued', 'rendering'] } } })
+  const runs = await listWorkflowRuns(settings.githubRepo, 5).catch(() => [] as Run[])
+  const activeRun = runs.find((r) => r.status === 'in_progress' || r.status === 'queued')
+  if (activeRun) {
+    return { ok: false, message: `A render run is already in progress (#${activeRun.id}) — its workers keep draining the queue, and the continuous loop dispatches the next one automatically.` }
+  }
+  if (inProgress > 0 && !activeRun) {
+    // stale local jobs with no live run — still safe to dispatch a fresh batch
+    await db.videoJob.updateMany({ where: { status: { in: ['queued', 'rendering'] } }, data: { status: 'failed', log: 'superseded by a continuous factory batch run' } }).catch(() => {})
+  }
+
+  const pending = await db.storyRecord.count({ where: { status: 'new' } })
+  const workers = Math.max(1, Math.min(6, settings.workers || 3))
+  await dispatchWorkflow(settings.githubRepo, 'hourly-video.yml', 'main', {
+    workers_json: JSON.stringify(Array.from({ length: workers }, (_, i) => String(i))),
+  })
+  return {
+    ok: true,
+    message: `Continuous factory dispatched — ${workers} parallel workers rendering up to ${workers * 4} of ${pending} pending stories, keyless AI polish on. The loop re-dispatches automatically until every story has a video.`,
+  }
 }
 
 /* ------------------------- playable MP4 from artifacts --------------------- */
 
 const CACHE_DIR = path.join(process.cwd(), '.cache', 'videos')
-
-/** Reads a JSON file out of an artifact zip (files are stored at the zip root). */
-async function readArtifactJson(artifactId: number, name: string): Promise<Record<string, unknown> | null> {
-  const zip = await loadArtifactZip(artifactId)
-  const file = zip.file(name) || zip.file(name.replace(/^output\//, ''))
-  if (!file) return null
-  return JSON.parse(await file.async('string')) as Record<string, unknown>
-}
 
 async function loadArtifactZip(artifactId: number | string): Promise<JSZip> {
   await mkdir(CACHE_DIR, { recursive: true })
@@ -402,7 +601,7 @@ async function loadArtifactZip(artifactId: number | string): Promise<JSZip> {
     buf = await readFile(zipPath)
   } catch {
     const settings = await getSettings()
-    const ab = await downloadArtifactZip(settings.githubRepo, artifactId)
+    const ab = await downloadArtifactZip(settings.githubRepo, Number(artifactId))
     buf = Buffer.from(ab)
     await writeFile(zipPath, buf).catch(() => {})
   }
@@ -410,15 +609,20 @@ async function loadArtifactZip(artifactId: number | string): Promise<JSZip> {
   return zip
 }
 
-/** Returns a cached MP4 buffer for the artifact, extracting it from the zip once. */
-export async function getArtifactMp4(artifactId: number | string): Promise<Buffer> {
+/** Returns a cached MP4 buffer for the artifact, extracting the requested entry once.
+ *  `entry` selects one video inside a multi-video batch artifact (falls back to the first MP4). */
+export async function getArtifactMp4(artifactId: number | string, entry?: string | null): Promise<Buffer> {
   await mkdir(CACHE_DIR, { recursive: true })
-  const mp4Path = path.join(CACHE_DIR, `${artifactId}.mp4`)
+  const entryKey = entry ? entry.replace(/[^a-zA-Z0-9_-]/g, '_') : 'root'
+  const mp4Path = path.join(CACHE_DIR, `${artifactId}-${entryKey}.mp4`)
   try {
     return await readFile(mp4Path)
   } catch { /* not cached yet */ }
   const zip = await loadArtifactZip(artifactId)
-  const file = zip.file('output/output.mp4') || Object.values(zip.files).find((f) => f.name.endsWith('.mp4'))
+  const file =
+    (entry && zip.file(entry)) ||
+    zip.file('output/output.mp4') ||
+    Object.values(zip.files).find((f) => !f.dir && f.name.endsWith('.mp4'))
   if (!file) throw new Error('No MP4 inside the artifact')
   const buf = await file.async('nodebuffer')
   await writeFile(mp4Path, buf).catch(() => {})
@@ -426,17 +630,17 @@ export async function getArtifactMp4(artifactId: number | string): Promise<Buffe
 }
 
 /** Finds the artifact for a library job (by artifact id or its run). */
-export async function findArtifactForJob(jobId: string): Promise<string | null> {
+export async function findArtifactForJob(jobId: string): Promise<{ artifactId: string; entry: string | null } | null> {
   const job = await db.videoJob.findUnique({ where: { id: jobId } })
   if (!job) return null
-  if (job.artifactId) return job.artifactId
+  if (job.artifactId) return { artifactId: job.artifactId, entry: job.artifactEntry }
   if (job.runId) {
     const settings = await getSettings()
     const artifacts = await listArtifacts(settings.githubRepo).catch(() => [])
     const art = artifacts.find((a) => a.workflow_run?.id === Number(job.runId))
     if (art) {
       await db.videoJob.update({ where: { id: job.id }, data: { artifactId: String(art.id), sizeBytes: art.size_in_bytes } })
-      return String(art.id)
+      return { artifactId: String(art.id), entry: job.artifactEntry }
     }
   }
   return null

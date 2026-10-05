@@ -39,7 +39,8 @@ except ImportError:  # MoviePy 1.x
 
 import numpy as np
 
-W, H, FPS = 1080, 1920, 24
+W, H = 1080, 1920
+FPS = max(24, min(60, int(os.environ.get("FRAME_RATE", "60"))))   # hyperframes: 60fps silky motion
 KB_W, KB_H = int(W * 1.18), int(H * 1.18)   # oversized source for Ken Burns headroom
 OUT_DIR = os.environ.get("OUT_DIR", "output")
 STORY_PATH = os.environ.get("STORY_PATH", "story.json")
@@ -662,13 +663,16 @@ def main():
     clips.append(VideoFileClip(zoompan(ep, os.path.join(OUT_DIR, "seg_end.mp4"), END_DUR, 4)).with_duration(END_DUR).with_effects([vfx.FadeIn(0.35), vfx.FadeOut(0.6)]))
 
     # 6) final encode
-    final = concatenate_videoclips(clips, method="compose")
+    # "chain" concat: all clips share the exact canvas size, and chaining streams
+    # one clip at a time instead of compositing everything (compose) — bounded RAM,
+    # essential at 60fps where compose balloons past 1GB and gets OOM-killed.
+    final = concatenate_videoclips(clips, method="chain")
     out_path = os.path.join(OUT_DIR, "output.mp4")
     total = float(final.duration)
     print(f"[render] writing {out_path} ({total:.1f}s, {W}x{H}@{FPS})", flush=True)
     final.write_videofile(
         out_path, fps=FPS, codec="libx264", audio_codec="aac", audio_bitrate="192k",
-        preset="medium", threads=os.cpu_count() or 2,
+        preset="faster", threads=max(1, min(4, os.cpu_count() or 2)),
         ffmpeg_params=["-pix_fmt", "yuv420p", "-crf", "21", "-movflags", "+faststart"],
     )
 
@@ -676,19 +680,31 @@ def main():
     genre = str(story.get("genre", "")).strip()
     base_tags = [genre] if genre and is_ar(genre) else [w for w in (genre + " short story ai storytelling vertical video").split() if len(w) > 2]
     tags_raw = [w for w in base_tags if w]
+    polish = story.get("_polish") or {}
+    if polish.get("tags"):
+        tags_raw = [str(t) for t in polish["tags"]]
     meta = {
-        "title": title,
-        "description": (story.get("logline", "") or title) + "\\n\\nCinematic vertical video generated automatically by the StoryPilot pipeline - keyless AI imagery + Edge-TTS voiceover + word-synced captions.",
+        "title": (polish.get("title") or title)[:95],
+        "description": (polish.get("description") or (story.get("logline", "") or title) + "\\n\\nCinematic vertical video generated automatically by the StoryPilot pipeline - keyless AI imagery + Edge-TTS voiceover + word-synced captions."),
         "tags": list(dict.fromkeys(tags_raw))[:12],
         "language": lang,
         "duration_sec": round(total, 1),
         "scenes": len(scenes),
         "renderer": "cinematic-v2",
+        "fps": FPS,
+        "hyperframes": FPS >= 48,
+        "story_hash": story.get("_story_hash", ""),
         "ai_images": f"{ai_used}/{len(scenes)} (pollinations {IMAGE_MODEL}, keyless)",
+        "ai_enhanced": bool(polish),
+        "ai_model": polish.get("model", "") if polish else "",
     }
     with open(os.path.join(OUT_DIR, "meta.json"), "w", encoding="utf-8") as f:
         json.dump(meta, f, ensure_ascii=False, indent=2)
     print("[render] done -> output/output.mp4 + meta.json + thumb.jpg", flush=True)
+    # MoviePy reader threads can keep the interpreter alive after main() returns
+    # (observed with VideoFileClip/AudioFileClip). Everything is flushed and closed
+    # at this point, so exit immediately instead of hanging CI steps.
+    os._exit(0)
 
 
 if __name__ == "__main__":

@@ -39,8 +39,11 @@ model VideoJob {
   storyRecordId String?
   tabName       String?
   artifactId    String? // GitHub artifact ids exceed 32-bit → string
+  artifactEntry String? // mp4 path inside a multi-video batch artifact zip
   sizeBytes     Int?
   durationSec   Float?
+  fps           Int? // rendered frame rate (hyperframes = 60)
+  aiEnhanced    Boolean     @default(false) // keyless/GLM AI polish applied before render
   renderedAt    DateTime?
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt

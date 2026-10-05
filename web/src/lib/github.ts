@@ -128,6 +128,37 @@ export async function listWorkflows(repo: string) {
   return data.workflows
 }
 
+/** Runs of one specific workflow file (e.g. hourly-video.yml). */
+export async function listWorkflowFileRuns(repo: string, workflowFile: string, perPage = 5) {
+  const data = await ghJson<{
+    total_count: number
+    workflow_runs: Array<{
+      id: number
+      name: string
+      status: string
+      conclusion: string | null
+      event: string
+      created_at: string
+      updated_at: string
+      run_attempt: number
+      html_url: string
+      display_title: string
+    }>
+  }>(`/repos/${repo}/actions/workflows/${workflowFile}/runs?per_page=${perPage}`)
+  return data.workflow_runs.map(r => ({
+    id: r.id,
+    name: r.name,
+    status: r.status,
+    conclusion: r.conclusion,
+    event: r.event,
+    created_at: r.created_at,
+    updated_at: r.updated_at,
+    run_attempt: r.run_attempt || 1,
+    html_url: r.html_url,
+    display_title: r.display_title,
+  }))
+}
+
 export async function dispatchWorkflow(repo: string, workflowFile: string, ref = 'main', inputs: Record<string, string> = {}) {
   return ghJson(`/repos/${repo}/actions/workflows/${workflowFile}/dispatches`, {
     method: 'POST',

@@ -12,6 +12,12 @@ export interface AppSettings {
   instagramToken: string
   autoPost: boolean
   voice: string
+  /** continuous 24/7 render loop (back-to-back dispatches while stories are pending) */
+  continuousMode: boolean
+  /** parallel render workers per dispatched run (GitHub Actions matrix) */
+  workers: number
+  /** keyless AI polish pass (freellmpool on GitHub, GLM-5.3-Flash in the app) */
+  aiEnhance: boolean
 }
 
 export const DEFAULT_SETTINGS: AppSettings = {
@@ -26,6 +32,9 @@ export const DEFAULT_SETTINGS: AppSettings = {
   instagramToken: '',
   autoPost: true,
   voice: 'ar-EG-ShakirNeural',
+  continuousMode: true,
+  workers: 3,
+  aiEnhance: true,
 }
 
 const KEYS: (keyof AppSettings)[] = [
@@ -40,6 +49,9 @@ const KEYS: (keyof AppSettings)[] = [
   'instagramToken',
   'autoPost',
   'voice',
+  'continuousMode',
+  'workers',
+  'aiEnhance',
 ]
 
 export async function getSettings(): Promise<AppSettings> {
@@ -53,8 +65,14 @@ export async function getSettings(): Promise<AppSettings> {
     for (const r of rows) {
       if ((KEYS as string[]).includes(r.key)) {
         const k = r.key as keyof AppSettings
-        if (k === 'autoPost') (merged as Record<string, unknown>)[k] = r.value === 'true'
-        else (merged as Record<string, unknown>)[k] = r.value
+        const target = merged as unknown as Record<string, unknown>
+        if (k === 'autoPost' || k === 'continuousMode' || k === 'aiEnhance') {
+          target[k] = r.value === 'true'
+        } else if (k === 'workers') {
+          target[k] = Math.max(1, Math.min(6, parseInt(r.value, 10) || 3))
+        } else {
+          target[k] = r.value
+        }
       }
     }
   } catch {

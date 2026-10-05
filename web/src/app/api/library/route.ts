@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 import { db } from '@/lib/db'
-import { buildLibrary, renderStoryById } from '@/lib/library'
+import { buildLibrary, renderStoryById, renderAllPending } from '@/lib/library'
 
 export const runtime = 'nodejs'
 export const maxDuration = 120
@@ -19,6 +19,10 @@ export async function POST(req: NextRequest) {
   try {
     if (action === 'render' && storyId) {
       const result = await renderStoryById(storyId)
+      return Response.json(result, { status: result.ok ? 200 : 400 })
+    }
+    if (action === 'renderAll') {
+      const result = await renderAllPending()
       return Response.json(result, { status: result.ok ? 200 : 400 })
     }
     if (action === 'delete' && jobId) {

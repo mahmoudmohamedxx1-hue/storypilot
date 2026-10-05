@@ -12,11 +12,11 @@ export const maxDuration = 300
 export async function GET(req: NextRequest, ctx: { params: Promise<{ jobId: string }> }) {
   try {
     const { jobId } = await ctx.params
-    const artifactId = await findArtifactForJob(jobId)
-    if (!artifactId) {
+    const found = await findArtifactForJob(jobId)
+    if (!found) {
       return Response.json({ ok: false, error: 'No artifact for this video (yet)' }, { status: 404 })
     }
-    const mp4 = await getArtifactMp4(artifactId)
+    const mp4 = await getArtifactMp4(found.artifactId, found.entry)
 
     const range = req.headers.get('range')
     const total = mp4.length

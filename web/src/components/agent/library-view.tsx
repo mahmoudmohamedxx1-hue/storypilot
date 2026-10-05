@@ -8,18 +8,19 @@ import {
   Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription,
 } from '@/components/ui/dialog'
 import { toast } from 'sonner'
-import {
+import {Factory, 
   RefreshCw, Loader2, Film, Clapperboard, Play, Youtube, Trash2,
   ExternalLink, Languages, Clock, Sparkles, HardDrive, CheckCircle2,
-  XCircle, Video, Ghost, CircleDashed, Layers,
+  XCircle, Video, Ghost, CircleDashed, Layers, Zap, Rocket,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface PlatformState { platform: string; configured: boolean; status: string; url?: string }
 interface LibraryVideo {
   jobId: string; runId: string | null; runStatus: string | null; runConclusion: string | null
-  runUrl: string | null; artifactId: number | null; sizeBytes: number | null
-  durationSec: number | null; renderedAt: string | null; createdAt: string
+  runUrl: string | null; artifactId: number | null; artifactEntry: string | null
+  sizeBytes: number | null; durationSec: number | null; fps: number | null; hyperframes: boolean; aiEnhanced: boolean
+  renderedAt: string | null; createdAt: string
   platforms: PlatformState[]; watchable: boolean
 }
 interface LibraryItem {
@@ -32,8 +33,13 @@ interface LibraryStats {
   totalStories: number; toMake: number; inProgress: number; done: number
   failed: number; storageBytes: number; totalVideos: number
 }
+interface CatchupInfo {
+  total: number; done: number; pending: number; failed: number
+  runsNeeded: number; workers: number; active: boolean
+}
 interface LibraryData {
-  ok: boolean; items: LibraryItem[]; stats: LibraryStats; lastSyncAt: string | null; error?: string
+  ok: boolean; items: LibraryItem[]; stats: LibraryStats; catchup: CatchupInfo | null
+  lastSyncAt: string | null; error?: string
 }
 
 type Filter = 'all' | 'tomake' | 'progress' | 'done' | 'failed'
@@ -194,8 +200,18 @@ function VideoCard({ item, onWatch, onRender, busyId }: {
         )}
 
         {item.video?.renderedAt && (
-          <p className="mt-2 text-[10.5px] text-[#b3b8c2] flex items-center gap-1">
+          <p className="mt-2 text-[10.5px] text-[#b3b8c2] flex items-center gap-1 flex-wrap">
             <HardDrive size={10} /> {fmtBytes(item.video.sizeBytes)} · rendered {timeAgo(item.video.renderedAt)}
+            {item.video.hyperframes && (
+              <span className="inline-flex items-center gap-0.5 text-[#7c3aed] font-medium" title="Rendered at 60fps — hyperframes smooth motion">
+                <Zap size={9} /> 60fps
+              </span>
+            )}
+            {item.video.aiEnhanced && (
+              <span className="inline-flex items-center gap-0.5 text-[#0e9f6e] font-medium" title="Narration polished by keyless AI (freellmpool / GLM-5.3-Flash) before rendering">
+                <Sparkles size={9} /> AI polish
+              </span>
+            )}
           </p>
         )}
       </div>
@@ -210,6 +226,7 @@ export function LibraryView() {
   const [filter, setFilter] = useState<Filter>('all')
   const [busyId, setBusyId] = useState<string | null>(null)
   const [syncing, setSyncing] = useState(false)
+  const [makingAll, setMakingAll] = useState(false)
   const [watching, setWatching] = useState<LibraryItem | null>(null)
 
   const load = useCallback(async () => {
@@ -271,6 +288,26 @@ export function LibraryView() {
     }
   }
 
+  const renderAll = async () => {
+    setMakingAll(true)
+    try {
+      const res = await fetch('/api/library', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'renderAll' }),
+      })
+      const j = await res.json()
+      if (j.ok) {
+        toast.success('Catch-up run dispatched 🚀', { description: j.message })
+        setTimeout(load, 2500)
+      } else toast.error(j.message || 'Failed to dispatch')
+    } catch (e) {
+      toast.error((e as Error).message)
+    } finally {
+      setMakingAll(false)
+    }
+  }
+
   const items = useMemo(() => {
     const list = data?.items || []
     switch (filter) {
@@ -329,6 +366,49 @@ export function LibraryView() {
             ))}
           </div>
 
+          {/* catch-up banner: every sheet story becomes a video */}
+          {data?.catchup && data.catchup.total > 0 && (
+            <div className="rounded-2xl border border-[#E5E7EB] bg-gradient-to-r from-[#F5F3FF] via-[#F0F4FF] to-[#E9F9F0] p-4 sm:p-5">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <Rocket size={15} className="text-[#315CEA]" />
+                    <h3 className="text-[13.5px] font-semibold text-[#1a1c20]">
+                      {data.catchup.pending === 0
+                        ? 'All caught up — every sheet story has a video'
+                        : `Continuous factory · ${data.catchup.done}/${data.catchup.total} sheet stories made`}
+                    </h3>
+                    <span className="inline-flex items-center gap-1 rounded-full bg-white/80 border border-[#E5E7EB] px-2 py-0.5 text-[10.5px] font-medium text-[#7c3aed]">
+                      <Zap size={9} /> 60fps hyperframes
+                    </span>
+                    {data.catchup.workers > 1 && (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-white/80 border border-[#E5E7EB] px-2 py-0.5 text-[10.5px] font-medium text-[#315CEA]">
+                        <Factory size={9} /> {data.catchup.workers}× parallel workers
+                      </span>
+                    )}
+                  </div>
+                  <div className="mt-2.5 h-2 rounded-full bg-white/70 overflow-hidden" role="progressbar"
+                    aria-valuenow={data.catchup.done} aria-valuemin={0} aria-valuemax={data.catchup.total}>
+                    <div className="h-full rounded-full bg-gradient-to-r from-[#315CEA] to-[#0e9f6e] transition-all duration-700"
+                      style={{ width: `${Math.min(100, (data.catchup.done / data.catchup.total) * 100)}%` }} />
+                  </div>
+                  <p className="mt-1.5 text-[11.5px] text-[#6b7280] leading-relaxed">
+                    {data.catchup.pending === 0
+                      ? 'New or edited stories from Gemini Spark are picked up automatically and rendered continuously.'
+                      : `${data.catchup.pending} pending · ${data.catchup.workers} parallel workers render up to ${data.catchup.workers * 4} per dispatch (~${data.catchup.runsNeeded} more ${data.catchup.runsNeeded === 1 ? 'dispatch' : 'dispatches'}) with keyless AI polish — the loop re-dispatches back-to-back automatically.`}
+                  </p>
+                </div>
+                {data.catchup.pending > 0 && (
+                  <Button size="sm" onClick={renderAll} disabled={makingAll || data.catchup.active}
+                    className="gap-1.5 shrink-0 bg-[#315CEA] hover:bg-[#2a50d4]">
+                    {makingAll ? <Loader2 size={13} className="animate-spin" /> : <Rocket size={13} />}
+                    Make all videos
+                  </Button>
+                )}
+              </div>
+            </div>
+          )}
+
           {/* filters */}
           <div className="flex items-center gap-2 flex-wrap" role="tablist" aria-label="Filter library">
             {([
@@ -369,9 +449,10 @@ export function LibraryView() {
           )}
 
           <p className="text-[11.5px] text-[#b3b8c2] leading-relaxed">
-            The library mirrors the whole Google Sheet (14 tabs, English + العربية). New or changed stories appear automatically —
-            hit <span className="font-medium text-[#315CEA]">Make video</span> to render any of them on GitHub Actions
-            (1080×1920, Edge-TTS voiceover, keyless GLM), then watch it right here.
+            The library mirrors the whole Google Sheet (English + العربية). New or changed stories appear automatically —
+            the hourly catch-up run renders them on GitHub Actions (1080×1920, 60fps hyperframes, Edge-TTS voiceover, keyless GLM),
+            and every finished video is watchable right here. Single stories can also be made on demand with
+            <span className="font-medium text-[#315CEA]"> Make video</span>.
           </p>
         </div>
       )}

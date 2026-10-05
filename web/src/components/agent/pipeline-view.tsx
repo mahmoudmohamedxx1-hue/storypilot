@@ -8,7 +8,7 @@ import { toast } from 'sonner'
 import {
   RefreshCw, Rocket, Github, PlayCircle, ExternalLink, Loader2,
   Clock, FileCode2, Package, BookOpenText, Clapperboard, Film, Youtube,
-  Music2, Instagram, ZoomIn, ZoomOut, Maximize2, Radio, ChevronRight, Ban,
+  Music2, Instagram, ZoomIn, ZoomOut, Maximize2, Radio, ChevronRight, Ban, HeartPulse, Factory,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -21,6 +21,23 @@ interface Run {
 interface Step { name: string; status: string; conclusion: string | null; number: number; started_at: string | null; completed_at: string | null }
 interface Job { id: number; name: string; status: string; conclusion: string | null; started_at: string | null; completed_at: string | null; html_url: string; steps: Step[] }
 interface Artifact { id: number; name: string; size_in_bytes: number; created_at: string; workflow_run?: { id: number } }
+interface HeartbeatInfo {
+  enabled: boolean; intervalMs: number; staleAfterMin: number
+  startedAt: string | null; lastCheckAt: string | null; lastCheckResult: string | null
+  lastRunAt: string | null; lastRunStatus: string | null
+  lastDispatchAt: string | null; lastDispatchReason: string | null
+  lastError: string | null; checkCount: number; dispatchCount: number
+}
+type LoopPhase = 'boot' | 'disabled' | 'error' | 'rendering' | 'dispatched' | 'settling' | 'cooldown' | 'idle'
+interface LoopInfo {
+  mode: 'continuous'; enabled: boolean; phase: LoopPhase; workers: number; intervalMs: number
+  startedAt: string | null; lastCheckAt: string | null; lastCheckResult: string | null; lastError: string | null
+  checkCount: number; dispatchCount: number; lastDispatchAt: string | null; lastDispatchReason: string | null
+  activeRunId: string | null; activeRunStatus: string | null
+  lastRunAt: string | null; lastRunStatus: string | null
+  pendingCount: number; pendingTitles: string[]
+  lastSyncAt: string | null; emptyStreak: number; cooldownUntil: string | null
+}
 interface LiveData {
   ok: boolean; connected: boolean; error?: string
   user?: { login: string; avatar_url: string }
@@ -30,6 +47,8 @@ interface LiveData {
   jobs: Job[]
   artifacts: Artifact[]
   workflows: Array<{ id: number; name: string; state: string; html_url: string }>
+  heartbeat?: HeartbeatInfo
+  loop?: LoopInfo
 }
 
 /* ------------------------------- node graph -------------------------------- */
@@ -47,22 +66,24 @@ interface NodeDef {
 }
 
 const NODES: NodeDef[] = [
-  { id: 'trigger', label: 'Hourly Schedule', sub: 'cron · 0 * * * * (UTC)', icon: Clock, kind: 'trigger', steps: [], color: 'bg-[#FFF6E5] text-[#b45309]' },
+  { id: 'trigger', label: 'Continuous Loop', sub: 'app render loop · cron :47 backup', icon: Factory, kind: 'trigger', steps: [], color: 'bg-[#FFF6E5] text-[#b45309]' },
   { id: 'checkout', label: 'Checkout', sub: 'actions/checkout@v4', icon: Github, kind: 'setup', steps: ['Checkout'], color: 'bg-[#F5F7FA] text-[#3c4658]' },
   { id: 'python', label: 'Python 3.11', sub: 'setup-python@v5', icon: FileCode2, kind: 'setup', steps: ['Set up Python'], color: 'bg-[#F5F7FA] text-[#3c4658]' },
   { id: 'deps', label: 'Dependencies', sub: 'ffmpeg · edge-tts · moviepy', icon: Package, kind: 'setup', steps: ['Install system deps (ffmpeg + fonts incl. Arabic)', 'Install Python deps'], color: 'bg-[#F0F4FF] text-[#315CEA]' },
-  { id: 'story', label: 'Fetch Story', sub: 'Google Sheet · keyless GLM', icon: BookOpenText, kind: 'story', steps: ['Prepare story (Google Sheet by Gemini Spark + keyless GLM fallback)'], color: 'bg-[#F0F4FF] text-[#315CEA]' },
-  { id: 'render', label: 'Render MP4', sub: '1080×1920 · 24fps · Edge-TTS', icon: Clapperboard, kind: 'render', steps: ['Render MP4 (Edge-TTS + MoviePy, 1080x1920)'], color: 'bg-[#F3EEFF] text-[#7c3aed]' },
-  { id: 'library', label: 'Save to Library', sub: 'artifact · output.mp4', icon: Film, kind: 'library', steps: ['Upload video artifact'], color: 'bg-[#E9F9F0] text-[#0e9f6e]' },
+  { id: 'story', label: 'Fetch Stories', sub: 'all sheet tabs · freellmpool AI polish', icon: BookOpenText, kind: 'story', steps: ['Prepare story (Google Sheet by Gemini Spark + keyless GLM fallback)', 'Render pending stories (worker shard, keyless AI polish, hyperframes)'], color: 'bg-[#F0F4FF] text-[#315CEA]' },
+  { id: 'render', label: 'Render MP4', sub: 'parallel workers · 60fps hyperframes', icon: Clapperboard, kind: 'render', steps: ['Render cinematic MP4 (keyless AI images + Edge-TTS + MoviePy, 1080x1920)', 'Render pending stories (worker shard, keyless AI polish, hyperframes)'], color: 'bg-[#F3EEFF] text-[#7c3aed]' },
+  { id: 'library', label: 'Save to Library', sub: 'per-worker artifacts + render state', icon: Film, kind: 'library', steps: ['Upload video artifact', 'Upload batch video artifacts', 'Commit render state', 'Download all rendered videos (every worker artifact)'], color: 'bg-[#E9F9F0] text-[#0e9f6e]' },
   { id: 'youtube', label: 'YouTube', sub: 'post_video.py --youtube', icon: Youtube, kind: 'platform', steps: ['Post to YouTube'], color: 'bg-[#FDECEC] text-[#d13438]' },
   { id: 'tiktok', label: 'TikTok', sub: 'post_video.py --tiktok', icon: Music2, kind: 'platform', steps: ['Post to TikTok'], color: 'bg-[#1a1c20] text-white' },
   { id: 'instagram', label: 'Instagram Reels', sub: 'post_video.py --instagram', icon: Instagram, kind: 'platform', steps: ['Post to Instagram Reels'], color: 'bg-[#FCE7F3] text-[#c026d3]' },
 ]
 
 const POS: Record<string, { x: number; y: number }> = {
-  trigger: { x: 0, y: 0 }, checkout: { x: 288, y: 0 }, python: { x: 576, y: 0 }, deps: { x: 864, y: 0 },
-  story: { x: 1152, y: 0 }, render: { x: 1440, y: 0 }, library: { x: 1728, y: 0 },
-  youtube: { x: 2016, y: -100 }, tiktok: { x: 2016, y: 0 }, instagram: { x: 2016, y: 100 },
+  // row 1: the main hourly flow
+  trigger: { x: 0, y: 0 }, checkout: { x: 296, y: 0 }, python: { x: 592, y: 0 }, deps: { x: 888, y: 0 },
+  story: { x: 1184, y: 0 }, render: { x: 1480, y: 0 }, library: { x: 1776, y: 0 },
+  // row 2: the platform fan-out below the library
+  youtube: { x: 1200, y: 158 }, tiktok: { x: 1496, y: 158 }, instagram: { x: 1792, y: 158 },
 }
 
 const EDGES: Array<[string, string]> = [
@@ -70,9 +91,10 @@ const EDGES: Array<[string, string]> = [
   ['story', 'render'], ['render', 'library'], ['library', 'youtube'], ['library', 'tiktok'], ['library', 'instagram'],
 ]
 
-const NODE_W = 200, NODE_H = 68
-const CONTENT_W = 2016 + NODE_W + 40
-const CONTENT_H = 320
+const NODE_W = 236, NODE_H = 68
+const NODE_Y = 56 // vertical offset of row 1 inside the canvas
+const CONTENT_W = 1792 + NODE_W + 40
+const CONTENT_H = 158 + NODE_Y + NODE_H + 100
 
 function stepToStatus(step?: { status: string; conclusion: string | null }): NodeStatus {
   if (!step) return 'idle'
@@ -87,9 +109,34 @@ function stepToStatus(step?: { status: string; conclusion: string | null }): Nod
 
 interface NodeState { status: NodeStatus; steps: Step[]; note?: string }
 
+/** With the parallel-worker matrix a run has MULTIPLE jobs (one per worker).
+ *  Aggregate same-named steps across workers: the busiest state wins
+ *  (running > queued > failed > success > skipped). */
+function aggregateWorkerSteps(jobs: Job[]): Step[] {
+  const rank = (s: Step): number => {
+    if (s.status === 'in_progress') return 0
+    if (s.status === 'queued') return 1
+    if (s.status === 'completed') {
+      if (s.conclusion === 'failure') return 2
+      if (s.conclusion === 'success') return 3
+      return 4 // skipped / cancelled
+    }
+    return 5
+  }
+  const byName = new Map<string, Step>()
+  for (const j of jobs) {
+    for (const s of j.steps || []) {
+      if (/^Post |Complete job|Set up job/.test(s.name)) continue
+      const prev = byName.get(s.name)
+      if (!prev || rank(s) < rank(prev)) byName.set(s.name, s)
+    }
+  }
+  return [...byName.values()]
+}
+
 function computeNodeStates(defs: NodeDef[], run: Run | undefined, jobs: Job[]): Record<string, NodeState> {
   const out: Record<string, NodeState> = {}
-  const allSteps: Step[] = (jobs[0]?.steps || []).filter((s) => !/^Post |Complete job|Set up job/.test(s.name))
+  const allSteps: Step[] = aggregateWorkerSteps(jobs)
   for (const def of defs) {
     if (def.kind === 'trigger') {
       if (!run) { out[def.id] = { status: 'idle', steps: [] }; continue }
@@ -137,10 +184,31 @@ function fmtBytes(b: number): string {
 function nextRunLabel(): string {
   const now = new Date()
   const next = new Date(now)
-  next.setUTCHours(next.getUTCHours() + 1, 0, 0, 0)
+  // hourly render cron fires at minute 47 (UTC) — backup layer for the continuous loop
+  if (next.getUTCMinutes() >= 47) next.setUTCHours(next.getUTCHours() + 1)
+  next.setUTCMinutes(47, 0, 0)
   const cairo = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Cairo' }).format(next)
   const utc = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' }).format(next)
   return `${utc} UTC · ${cairo} Cairo`
+}
+
+const LOOP_PHASE_META: Record<LoopPhase, { label: string; color: string }> = {
+  boot: { label: 'starting', color: 'text-[#6b7280]' },
+  rendering: { label: 'rendering', color: 'text-[#315CEA]' },
+  dispatched: { label: 'dispatching', color: 'text-[#315CEA]' },
+  settling: { label: 'settling', color: 'text-[#6b7280]' },
+  idle: { label: 'idle — all caught up', color: 'text-[#0e9f6e]' },
+  cooldown: { label: 'cooldown', color: 'text-[#b45309]' },
+  error: { label: 'error', color: 'text-[#d13438]' },
+  disabled: { label: 'disabled', color: 'text-[#9aa0ab]' },
+}
+
+function fmtAgo(iso: string | null): string {
+  if (!iso) return 'never'
+  const ms = Date.now() - new Date(iso).getTime()
+  if (ms < 60000) return `${Math.max(1, Math.round(ms / 1000))}s ago`
+  if (ms < 3600000) return `${Math.round(ms / 60000)}m ago`
+  return `${Math.round(ms / 3600000)}h ago`
 }
 
 const STATUS_STYLES: Record<NodeStatus, { ring: string; dot: string; label: string }> = {
@@ -161,8 +229,8 @@ export function PipelineView() {
   const [busy, setBusy] = useState<string | null>(null)
   const [selectedRunId, setSelectedRunId] = useState<number | null>(null) // null = follow latest
   const [inspected, setInspected] = useState<string | null>(null)
-  const [zoom, setZoom] = useState(0.5)
-  const [pan, setPan] = useState({ x: 24, y: 60 })
+  const [zoom, setZoom] = useState(0.62) // n8n-style: open readable, pan/zoom freely (Fit shows all)
+  const [pan, setPan] = useState({ x: 40, y: 90 })
   const dragRef = useRef<{ x: number; y: number; px: number; py: number } | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -181,7 +249,9 @@ export function PipelineView() {
   useEffect(() => { load() }, [load])
 
   const run = useMemo(
-    () => data?.runs.find((r) => r.id === (selectedRunId ?? data.selectedRunId)) || data?.runs[0],
+    () =>
+      (data?.runs || []).find((r) => r.id === (selectedRunId ?? data?.selectedRunId)) ||
+      (data?.runs || [])[0],
     [data, selectedRunId]
   )
   const isActive = run?.status === 'in_progress' || run?.status === 'queued'
@@ -209,13 +279,13 @@ export function PipelineView() {
     const el = containerRef.current
     const w = el?.clientWidth || 900
     const h = el?.clientHeight || 420
-    const z = Math.min(1, Math.max(0.25, (w - 48) / CONTENT_W))
+    const z = Math.min(1, Math.max(0.3, Math.min((w - 48) / CONTENT_W, (h - 40) / CONTENT_H)))
     setZoom(z)
-    setPan({ x: 24, y: Math.max(10, (h - CONTENT_H * z) / 2) })
+    setPan({ x: Math.max(12, (w - CONTENT_W * z) / 2), y: Math.max(10, (h - CONTENT_H * z) / 2) })
   }, [])
-  useEffect(() => { fit() }, [fit])
 
   const nodeStates = useMemo(() => computeNodeStates(NODES, run, data?.jobs || []), [run, data])
+  const runs: Run[] = useMemo(() => (Array.isArray(data?.runs) ? data.runs : []), [data])
 
   const totalSteps = useMemo(
     () => NODES.filter((n) => n.kind !== 'trigger').reduce((acc, n) => acc + n.steps.length, 0),
@@ -263,8 +333,15 @@ export function PipelineView() {
 
   const edgePath = (a: string, b: string) => {
     const p1 = POS[a], p2 = POS[b]
-    const x1 = p1.x + NODE_W, y1 = p1.y + NODE_H / 2
-    const x2 = p2.x, y2 = p2.y + NODE_H / 2
+    if (p2.y > p1.y) {
+      // fan-out to row 2: library bottom-center → platform top-center (n8n style)
+      const x1 = p1.x + NODE_W / 2, y1 = p1.y + NODE_Y + NODE_H
+      const x2 = p2.x + NODE_W / 2, y2 = p2.y + NODE_Y
+      const dy = Math.max(30, (y2 - y1) * 0.55)
+      return `M ${x1} ${y1} C ${x1} ${y1 + dy}, ${x2} ${y2 - dy}, ${x2} ${y2}`
+    }
+    const x1 = p1.x + NODE_W, y1 = p1.y + NODE_Y + NODE_H / 2
+    const x2 = p2.x, y2 = p2.y + NODE_Y + NODE_H / 2
     const dx = Math.max(40, (x2 - x1) * 0.45)
     return `M ${x1} ${y1} C ${x1 + dx} ${y1}, ${x2 - dx} ${y2}, ${x2} ${y2}`
   }
@@ -283,6 +360,14 @@ export function PipelineView() {
   const inspectedNode = NODES.find((n) => n.id === inspected)
   const inspectedState = inspected ? nodeStates[inspected] : null
   const artByRun = useMemo(() => new Map((data?.artifacts || []).map((a) => [a.workflow_run?.id, a])), [data])
+  const loop = data?.loop
+  const loopNextLabel = () => {
+    if (!loop || !loop.enabled) return nextRunLabel()
+    if (loop.phase === 'rendering' || loop.phase === 'dispatched') return 'run in progress — auto'
+    if (loop.pendingCount > 0) return 'dispatch auto (continuous)'
+    return `cron backup ${nextRunLabel()}`
+  }
+  const workerCount = (data?.jobs || []).filter((j) => j.steps?.some((s) => /worker shard/i.test(s.name)) || /render/.test(j.name)).length
 
   return (
     <ViewShell
@@ -321,16 +406,42 @@ export function PipelineView() {
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 rounded-2xl border border-[#E5E7EB] px-4 py-3 text-[12.5px] text-[#6b7280]">
             <span className="flex items-center gap-1.5 font-medium text-[#1a1c20]"><Github size={13} /> {data?.user?.login}</span>
             <span className="hidden sm:inline text-[#d5d9e0]">|</span>
-            <span className="truncate max-w-[220px]" title={data?.repo}>{data?.repo}</span>
+            <span className="truncate max-w-[220px]" title={data?.repo}>{(data?.repo || '').replace(/^.*\//, '')}</span>
             <span className="text-[#d5d9e0]">|</span>
-            <span className="flex items-center gap-1.5"><Clock size={12} /> next run {nextRunLabel()}</span>
+            <span className="flex items-center gap-1.5" title="The continuous loop dispatches back-to-back while stories are pending; the hourly cron :47 is only a backup layer">
+              <Clock size={12} /> next {loopNextLabel()}
+            </span>
+            {loop && loop.enabled ? (
+              <>
+                <span className="text-[#d5d9e0]">|</span>
+                <span
+                  className="flex items-center gap-1.5 font-medium"
+                  title={`Continuous render loop: polls every 90s, dispatches the workflow with ${loop.workers} parallel workers whenever pending stories exist — back-to-back, not just hourly.${loop.lastCheckResult ? `\nLast check: ${loop.lastCheckResult}` : ''}${loop.pendingTitles?.length ? `\nNext pending: ${loop.pendingTitles.join(' · ')}` : ''}`}
+                >
+                  <Factory size={12} className={cn('shrink-0', LOOP_PHASE_META[loop.phase].color, (loop.phase === 'rendering' || loop.phase === 'dispatched') && 'animate-pulse')} />
+                  <span className={LOOP_PHASE_META[loop.phase].color}>{LOOP_PHASE_META[loop.phase].label}</span>
+                  <span className="text-[#9aa0ab] font-normal">· {loop.workers}× workers · {loop.pendingCount} pending · {loop.dispatchCount} auto-dispatch{loop.dispatchCount === 1 ? '' : 's'}</span>
+                </span>
+              </>
+            ) : data?.heartbeat?.enabled ? (
+              <>
+                <span className="text-[#d5d9e0]">|</span>
+                <span
+                  className="flex items-center gap-1.5"
+                  title={`Hourly heartbeat (continuous mode off): re-dispatches the render workflow whenever no run started in the last 60 min${data.heartbeat.lastCheckResult ? `\nLast check: ${data.heartbeat.lastCheckResult}` : ''}`}
+                >
+                  <HeartPulse size={12} className={data.heartbeat.lastError ? 'text-[#d13438]' : 'text-[#0e9f6e]'} />
+                  heartbeat {data.heartbeat.lastError ? 'error' : 'armed'}
+                </span>
+              </>
+            ) : null}
             <span className="text-[#d5d9e0]">|</span>
             {run ? (
               <span className="flex items-center gap-1.5">
                 {isActive ? (
                   <><Radio size={12} className="text-[#315CEA] animate-pulse" />
                     <span className="font-medium text-[#315CEA]">LIVE</span>
-                    <span className="text-[#9aa0ab]">run #{run.id} · {doneSteps}/{totalSteps} steps</span></>
+                    <span className="text-[#9aa0ab]" title="GitHub steps grouped into the canvas nodes">run #{run.id} · {doneSteps}/{totalSteps} steps{workerCount > 1 ? ` · ${workerCount}× workers` : ''}</span></>
                 ) : (
                   <><Ban size={0} className="hidden" />
                     <span className="text-[#9aa0ab]">viewing run #{run.id} · {run.conclusion ?? run.status} · {new Date(run.created_at).toLocaleString()}</span></>
@@ -403,14 +514,17 @@ export function PipelineView() {
                       inspected === def.id && 'ring-2 ring-[#315CEA]/30',
                       def.kind === 'trigger' && 'rounded-[14px] border-2'
                     )}
-                    style={{ left: pos.x, top: pos.y + 126, width: NODE_W, height: NODE_H }}
+                    style={{ left: pos.x, top: pos.y + NODE_Y, width: NODE_W, height: NODE_H }}
                     aria-label={`${def.label} — ${style.label}`}
                   >
                     {/* ports */}
-                    {def.id !== 'trigger' && (
+                    {def.id !== 'trigger' && def.kind !== 'platform' && (
                       <span className="absolute -left-[5px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-white border-2 border-[#c9ced8]" />
                     )}
-                    {def.id !== 'youtube' && def.id !== 'tiktok' && def.id !== 'instagram' && (
+                    {def.kind === 'platform' && (
+                      <span className="absolute left-1/2 -translate-x-1/2 -top-[5px] w-2.5 h-2.5 rounded-full bg-white border-2 border-[#c9ced8]" />
+                    )}
+                    {def.id !== 'library' && def.kind !== 'platform' && (
                       <span className="absolute -right-[5px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-white border-2 border-[#c9ced8]" />
                     )}
                     <span className="flex items-center gap-2.5 px-3 h-full">
@@ -463,9 +577,13 @@ export function PipelineView() {
                 </div>
                 {inspectedNode.kind === 'trigger' ? (
                   <div className="mt-3 space-y-1.5 text-[11.5px] text-[#6b7280]">
-                    <p className="flex justify-between"><span>schedule</span><span className="font-medium text-[#1a1c20]">hourly</span></p>
-                    <p className="flex justify-between"><span>cron</span><span className="font-mono text-[#1a1c20]">0 * * * *</span></p>
-                    <p className="flex justify-between"><span>next</span><span className="font-medium text-[#1a1c20]">{nextRunLabel()}</span></p>
+                    <p className="flex justify-between"><span>mode</span><span className="font-medium text-[#1a1c20]">{loop?.enabled ? 'continuous (back-to-back)' : 'hourly only'}</span></p>
+                    <p className="flex justify-between"><span>poll</span><span className="font-mono text-[#1a1c20]">every 90s (app loop)</span></p>
+                    <p className="flex justify-between"><span>workers</span><span className="font-medium text-[#1a1c20]">{loop?.workers ?? 3}× parallel</span></p>
+                    <p className="flex justify-between"><span>pending</span><span className="font-medium text-[#1a1c20]">{loop?.pendingCount ?? '—'} stories</span></p>
+                    <p className="flex justify-between"><span>self-heal</span><span className="font-medium text-[#1a1c20]">cron :47 + ensure :19 + loop</span></p>
+                    <p className="flex justify-between"><span>next</span><span className="font-medium text-[#1a1c20]">{loopNextLabel()}</span></p>
+                    {loop?.lastCheckResult && <p className="pt-1.5 text-[10.5px] text-[#9aa0ab] leading-relaxed border-t border-[#F0F2F5]">{loop.lastCheckResult}</p>}
                   </div>
                 ) : inspectedState.steps.length ? (
                   <div className="mt-3 space-y-2">
@@ -507,10 +625,10 @@ export function PipelineView() {
               </h2>
               <p className="text-[11px] text-[#b3b8c2]">click a run to replay its state on the canvas</p>
             </div>
-            {data?.runs?.length ? (
+            {runs.length ? (
               <div className="flex gap-2 overflow-x-auto pb-2 sp-scroll">
-                {data.runs.map((r) => {
-                  const sel = (selectedRunId ?? data.selectedRunId) === r.id
+                {runs.map((r) => {
+                  const sel = (selectedRunId ?? data?.selectedRunId) === r.id
                   const active = r.status !== 'completed'
                   return (
                     <button key={r.id}
@@ -547,7 +665,7 @@ export function PipelineView() {
           </section>
 
           {/* artifacts */}
-          {data?.artifacts?.length ? (
+          {Array.isArray(data?.artifacts) && data.artifacts.length ? (
             <section aria-label="Artifacts">
               <h2 className="text-[13.5px] font-semibold text-[#1a1c20] mb-2.5">Rendered videos (artifacts)</h2>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">

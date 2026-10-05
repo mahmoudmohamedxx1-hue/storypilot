@@ -93,7 +93,7 @@ export function WorkflowsView() {
               <CheckCircle2 size={18} className="text-[#0e9f6e] mt-0.5 shrink-0" />
               <div className="text-[13px] text-[#0b6b4a] leading-relaxed">
                 <span className="font-semibold">Deployed to GitHub.</span> Files: {deployed.join(', ')}. The workflow runs
-                hourly (<span className="font-mono text-[12px]">cron 0 * * * *</span>) — watch runs in the Pipeline view.
+                hourly (<span className="font-mono text-[12px]">cron 47 * * * * UTC</span>) — watch runs in the Pipeline view.
               </div>
             </div>
           )}

@@ -176,7 +176,7 @@ export function Sidebar({ collapsed, onToggle, onNavigate }: { collapsed: boolea
                 const q = e.target.value.toLowerCase()
                 document.querySelectorAll('[data-chat-item]').forEach((el) => {
                   const t = (el as HTMLElement).dataset.title || ''
-                  el.classList.toggle('hidden', q && !t.toLowerCase().includes(q))
+                  el.classList.toggle('hidden', !!q && !t.toLowerCase().includes(q))
                 })
               }}
             />
