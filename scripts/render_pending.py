@@ -1,22 +1,31 @@
 #!/usr/bin/env python3
-"""StoryPilot - Batch catch-up renderer (the "make ALL videos" queue).
+"""StoryPilot - Continuous factory batch renderer (the "make ALL videos" queue).
 
 Guarantees every story in the Google Sheet eventually becomes a video:
 
   1. discovers every tab of the sheet (keyless, public htmlview)
   2. parses ALL stories with the same universal multi-format parser the app uses
      (Story / Batch EN+AR / Tracker / Arabic tabs - tolerant to Spark updates)
-  3. loads state/videos.json (committed to this repo by previous runs)
+  3. loads the render state: union of state/videos.json (legacy) + every
+     state/videos.shard*.json (parallel workers each own one shard file)
   4. a story is PENDING when its content-hash is not in the rendered state yet;
      edited stories (new Spark content) change their hash and re-queue
-  5. renders each pending story via generate_video.py (hyperframes FRAME_RATE)
-  6. writes videos/<nn>-<hash8>/{output.mp4,meta.json,thumb.jpg,story.json}
-     + updates state/videos.json + batch_summary.json
+  5. SHARDING: with NUM_SHARDS > 1 the pending queue is interleaved across
+     workers (story i -> worker i % NUM_SHARDS); all workers check out the
+     same commit so the split is deterministic and lossless
+  6. KEYLESS AI POLISH: each story's voiceovers are tightened by freellmpool
+     (FLP_MODEL first, auto-failover) which also writes the platform
+     title/description/tags - on ANY failure the original text is used
+  7. renders each story via generate_video.py (hyperframes FRAME_RATE)
+  8. writes videos/<nn>-<hash8>/{output.mp4,meta.json,thumb.jpg,story.json}
+     + updates this worker's state file + batch_summary.json
 
 Time-budgeted: stops STARTING new videos near BUDGET_MIN so the workflow never
-times out; the next hourly run resumes the queue where it left off.
-Failed stories are retried once on a later run, then left alone until edited.
+times out; the next dispatch (app continuous loop / hourly cron) resumes the
+queue where it left off. Failed stories are retried once on a later run, then
+left alone until edited.
 """
+import glob
 import hashlib
 import json
 import os
@@ -29,12 +38,21 @@ import urllib.request
 
 SHEET_ID = os.environ.get("SHEET_ID", "1nNsUcwR9foKN_MTPm5bwMR5jz2HUE68UeRqJ0OFp-d4")
 CODE_TAB_EXACT = "\u0643\u0648\u062f \u0628\u0627\u064a\u062b\u0648\u0646 - \u0627\u0644\u0645\u0648\u0644\u062f \u0627\u0644\u0622\u0644\u064a"  # the sheet's code tab
-BUDGET_MIN = float(os.environ.get("BUDGET_MIN", "28"))
+BUDGET_MIN = float(os.environ.get("BUDGET_MIN", "36"))
 MAX_VIDEOS = int(os.environ.get("MAX_VIDEOS", "4"))
 FRAME_RATE = os.environ.get("FRAME_RATE", "60")  # hyperframes
 RENDER_MARGIN_SEC = float(os.environ.get("RENDER_MARGIN_SEC", "480"))
 SUBPROC_TIMEOUT = int(os.environ.get("SUBPROC_TIMEOUT", "1500"))
-STATE_PATH = os.environ.get("STATE_PATH", "state/videos.json")
+SHARD_INDEX = int(os.environ.get("SHARD_INDEX", "0"))
+NUM_SHARDS = max(1, int(os.environ.get("NUM_SHARDS", "1")))
+AI_ENHANCE = os.environ.get("AI_ENHANCE", "true").lower() in ("1", "true", "yes")
+FLP_MODEL = os.environ.get("FLP_MODEL", "glm-4.7-flash")
+STATE_DIR = os.environ.get("STATE_DIR", "state")
+# each parallel worker owns its own shard file (no git conflicts between workers)
+STATE_PATH = os.environ.get(
+    "STATE_PATH",
+    os.path.join(STATE_DIR, f"videos.shard{SHARD_INDEX}.json") if NUM_SHARDS > 1 else os.path.join(STATE_DIR, "videos.json"),
+)
 VIDEOS_DIR = os.environ.get("VIDEOS_DIR", "videos")
 UA = {"User-Agent": "Mozilla/5.0 (compatible; StoryPilotAgent/1.0)"}
 
@@ -520,6 +538,26 @@ def load_state():
     return {"rendered": {}, "failed": {}}
 
 
+def load_union_state():
+    """Done-set across ALL workers: legacy state/videos.json + every shard file.
+    All workers of a run check out the same commit, so this union (and therefore
+    the pending queue below) is identical on every worker - the interleaved
+    sharding in main() partitions it deterministically."""
+    done = {"rendered": {}, "failed": {}}
+    paths = [os.path.join(STATE_DIR, "videos.json")] + sorted(glob.glob(os.path.join(STATE_DIR, "videos.shard*.json")))
+    for p in paths:
+        if not os.path.exists(p):
+            continue
+        try:
+            with open(p, encoding="utf-8") as f:
+                data = json.load(f)
+            done["rendered"].update(data.get("rendered", {}))
+            done["failed"].update(data.get("failed", {}))
+        except Exception as e:
+            print(f"[state] skipping unreadable {p}: {e}", flush=True)
+    return done
+
+
 def save_state(state):
     os.makedirs(os.path.dirname(STATE_PATH) or ".", exist_ok=True)
     rendered = state.get("rendered", {})
@@ -564,6 +602,96 @@ def is_pending(st, state):
     return True
 
 
+# ------------------------- keyless AI polish (freellmpool) -------------------
+
+POLISH_PROMPT = (
+    "You are StoryPilot's script doctor for short vertical videos. "
+    "Reply with ONE JSON object and nothing else. No markdown fences. Given a story, "
+    "improve the voiceover lines for narration: tighten pacing, strengthen the opening "
+    "hook, keep the SAME language and meaning, 1-3 spoken sentences per line. Also write "
+    "platform metadata. Schema: "
+    '{"voiceovers": [str, ...] (exactly one entry per scene, same order), '
+    '"title": str (catchy, same language, max 80 chars), '
+    '"description": str (2-3 sentences, same language), '
+    '"tags": [str, ...] (8-12 short tags without #, same language)}'
+)
+
+
+def ai_polish(story):
+    """Keyless AI polish pass via freellmpool. Returns a dict or None (never raises).
+    Model chain: configured FLP_MODEL first (e.g. GLM Flash route), then guaranteed
+    keyless pool routes, then 'auto' (freellmpool picks a live keyless model)."""
+    if not AI_ENHANCE:
+        return None
+    scenes = story.get("scenes", [])
+    if not scenes:
+        return None
+    exe = shutil.which("freellmpool")
+    base = [exe] if exe else [sys.executable, "-m", "freellmpool"]
+    attempts = []
+    for m in [FLP_MODEL, "zhipu/glm-4.7-flash", "ovh/Qwen3-32B", "auto"]:
+        if m and m not in attempts:
+            attempts.append(m)
+    compact = json.dumps(
+        {
+            "title": story.get("title", ""),
+            "logline": story.get("logline", ""),
+            "scenes": [{"visual": s.get("visual", ""), "voiceover": s.get("voiceover", "")} for s in scenes],
+        },
+        ensure_ascii=False,
+    )
+    prompt = f"Story:
+{compact}
+
+Polish it exactly per the schema ({len(scenes)} scenes)."
+    for model in attempts:
+        try:
+            cmd = base + ["ask", "-m", model, "--json", "--timeout", "90", "-s", POLISH_PROMPT, prompt]
+            out = subprocess.run(cmd, capture_output=True, text=True, timeout=180)
+            raw = (out.stdout or "") + (out.stderr or "")
+            m2 = re.search(r"{[sS]*}", raw)
+            if not m2:
+                continue
+            data = json.loads(m2.group(0))
+            vs = data.get("voiceovers")
+            if not isinstance(vs, list) or len(vs) != len(scenes):
+                continue
+            if not all(isinstance(v, str) and v.strip() for v in vs):
+                continue
+            data.setdefault("title", story.get("title", ""))
+            data.setdefault("description", "")
+            data.setdefault("tags", [])
+            print(f"[polish] served by freellmpool model: {model}", flush=True)
+            return data
+        except Exception as e:
+            print(f"[polish] {model} failed: {str(e)[:120]}", flush=True)
+    print("[polish] all freellmpool models failed - using original sheet text", flush=True)
+    return None
+
+
+def apply_polish(story):
+    """Polish voiceovers in-place (hash stays keyed to the ORIGINAL sheet story)."""
+    try:
+        polish = ai_polish(story)
+    except Exception as e:
+        print(f"[polish] unexpected error: {e}", flush=True)
+        polish = None
+    if not polish:
+        return None
+    for s, v in zip(story["scenes"], polish["voiceovers"]):
+        v = v.strip()
+        if v:
+            s["voiceover"] = v[:1400]
+    info = {
+        "title": str(polish.get("title", "")).strip()[:120],
+        "description": str(polish.get("description", "")).strip()[:600],
+        "tags": [str(t).strip() for t in polish.get("tags", []) if str(t).strip()][:12],
+        "model": "freellmpool keyless",
+    }
+    story["_polish"] = info
+    return info
+
+
 # --------------------------------- rendering --------------------------------
 
 def render_one(story, out_dir):
@@ -572,6 +700,8 @@ def render_one(story, out_dir):
     os.makedirs(out_dir, exist_ok=True)
     payload = {k: v for k, v in story.items() if not k.startswith("_")}
     payload["_story_hash"] = story["_hash"]
+    if story.get("_polish"):
+        payload["_polish"] = story["_polish"]
     story_path = os.path.join(out_dir, "story.json")
     with open(story_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
@@ -601,7 +731,10 @@ def render_one(story, out_dir):
 def main():
     t0 = time.time()
     os.makedirs(VIDEOS_DIR, exist_ok=True)
-    state = load_state()
+    os.makedirs(STATE_DIR, exist_ok=True)
+    # my own shard file (what I write) + the union across all workers (what I skip)
+    my_state = load_state()
+    union = load_union_state() if NUM_SHARDS > 1 else my_state
 
     stories = collect_stories()
     if not stories:
@@ -619,22 +752,28 @@ def main():
         st["_hash"] = h
         queue_all.append(st)
 
-    pending_before = [st for st in queue_all if is_pending(st, state)]
+    pending_all = [st for st in queue_all if is_pending(st, union)]
+    # interleaved sharding: story i belongs to worker i % NUM_SHARDS.
+    # every worker computes the same pending_all (same checkout commit) so the
+    # shards partition the queue with no overlap and no gaps.
+    my_pending = [st for i, st in enumerate(pending_all) if i % NUM_SHARDS == SHARD_INDEX]
     print(
-        f"[queue] {len(queue_all)} stories in the sheet | {len(pending_before)} pending | "
-        f"budget {BUDGET_MIN:.0f}m | max {MAX_VIDEOS}/run | hyperframes {FRAME_RATE}fps",
+        f"[queue] worker {SHARD_INDEX}/{NUM_SHARDS}: {len(queue_all)} stories in the sheet | "
+        f"{len(pending_all)} pending overall | {len(my_pending)} mine | "
+        f"budget {BUDGET_MIN:.0f}m | max {MAX_VIDEOS}/worker | hyperframes {FRAME_RATE}fps | "
+        f"AI polish {'on (freellmpool keyless)' if AI_ENHANCE else 'off'}",
         flush=True,
     )
 
     rendered, failed = [], []
     budget_sec = BUDGET_MIN * 60.0
-    todo = pending_before if MAX_VIDEOS <= 0 else pending_before[:MAX_VIDEOS]
+    todo = my_pending if MAX_VIDEOS <= 0 else my_pending[:MAX_VIDEOS]
     for st in todo:
         elapsed = time.time() - t0
         if elapsed + RENDER_MARGIN_SEC > budget_sec:
             print(
                 f"[queue] time budget nearly exhausted ({elapsed / 60:.1f}m used) - "
-                f"deferring the rest to the next hourly run",
+                f"deferring the rest to the next dispatch",
                 flush=True,
             )
             break
@@ -642,41 +781,48 @@ def main():
         slug = f"{len(rendered) + len(failed) + 1:02d}-{h[:8]}"
         out_dir = os.path.join(VIDEOS_DIR, slug)
         print(f"[render] ({len(rendered) + len(failed) + 1}/{len(todo)}) '{st['title']}' [{st['tabName']}]", flush=True)
+        polish_info = apply_polish(st)
+        if polish_info:
+            print(f"[polish] AI title: {polish_info['title'][:60]}", flush=True)
         try:
             render_one(st, out_dir)
-            state["rendered"][h] = {
+            my_state["rendered"][h] = {
                 "title": st["title"],
                 "tab": st["tabName"],
                 "renderedAt": now_iso(),
                 "fps": int(FRAME_RATE),
                 "dir": slug,
+                "worker": SHARD_INDEX,
+                "aiPolish": bool(polish_info),
             }
-            state["failed"].pop(h, None)
-            rendered.append({"hash": h, "title": st["title"], "dir": slug, "tab": st["tabName"]})
-            save_state(state)  # persist progress after every video
+            my_state["failed"].pop(h, None)
+            rendered.append({"hash": h, "title": st["title"], "dir": slug, "tab": st["tabName"], "aiPolish": bool(polish_info)})
+            save_state(my_state)  # persist progress after every video
         except Exception as e:
             msg = str(e)[:300]
             print(f"[render] FAILED '{st['title']}': {msg}", flush=True)
-            prev = state["failed"].get(h, {})
-            state["failed"][h] = {
+            prev = my_state["failed"].get(h, {})
+            my_state["failed"][h] = {
                 "title": st["title"], "error": msg, "at": now_iso(),
                 "tries": int(prev.get("tries", 0)) + 1,
             }
             failed.append({"hash": h, "title": st["title"], "error": msg})
-            save_state(state)
+            save_state(my_state)
 
-    pending_after = len([st for st in queue_all if is_pending(st, state)])
-    write_summary(rendered, failed, len(pending_before), pending_after, len(queue_all))
-    save_state(state)
+    pending_after = len([st for st in queue_all if is_pending(st, load_union_state() if NUM_SHARDS > 1 else my_state)])
+    write_summary(rendered, failed, len(pending_all), pending_after, len(queue_all))
+    save_state(my_state)
     print(
-        f"[queue] done: {len(rendered)} rendered, {len(failed)} failed, "
-        f"{pending_after} still pending -> next hourly runs continue the queue",
+        f"[queue] worker {SHARD_INDEX} done: {len(rendered)} rendered, {len(failed)} failed, "
+        f"{pending_after} still pending overall -> the continuous loop / next cron continues",
         flush=True,
     )
 
 
 def write_summary(rendered, failed, pending_before, pending_after, total):
     data = {
+        "worker": SHARD_INDEX,
+        "num_shards": NUM_SHARDS,
         "rendered": rendered,
         "failed": failed,
         "pending_before": pending_before,
