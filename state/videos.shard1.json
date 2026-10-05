@@ -26,6 +26,24 @@
       "dir": "03-0535f897",
       "worker": 1,
       "aiPolish": false
+    },
+    "ef89820cd3757e0dd71ca84dd323de57": {
+      "title": "The 5% Rule: Renting vs. Buying an Unbiased Breakdown",
+      "tab": "Batch 5 - Advanced Mastery",
+      "renderedAt": "2026-10-05T22:57:10Z",
+      "fps": 60,
+      "dir": "01-ef89820c",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "cdf0cd71bd8edb08d3d7bbcce7942006": {
+      "title": "The Tiered Cash Architecture for Maximum Yield",
+      "tab": "Batch 5 - Advanced Mastery",
+      "renderedAt": "2026-10-05T23:10:56Z",
+      "fps": 60,
+      "dir": "02-cdf0cd71",
+      "worker": 1,
+      "aiPolish": false
     }
   },
   "failed": {}
