@@ -107,6 +107,24 @@
       "dir": "03-b3c31755",
       "worker": 0,
       "aiPolish": false
+    },
+    "fc7e44a99456a595e519e038aea45c90": {
+      "title": "The Mega Backdoor Roth: Sheltering an Extra $40k+ Tax-Free",
+      "tab": "Batch 8 - Advanced Wealth",
+      "renderedAt": "2026-10-06T10:41:50Z",
+      "fps": 60,
+      "dir": "01-fc7e44a9",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "b1ffaa5dc3dbc876b0356d8bf9ffcb93": {
+      "title": "The Early Retirement SWR: Why 3.25% Beats 4% for FIRE",
+      "tab": "Batch 8 - Advanced Wealth",
+      "renderedAt": "2026-10-06T10:55:44Z",
+      "fps": 60,
+      "dir": "02-b1ffaa5d",
+      "worker": 0,
+      "aiPolish": false
     }
   },
   "failed": {}
