@@ -80,6 +80,33 @@
       "dir": "02-6274a482",
       "worker": 2,
       "aiPolish": false
+    },
+    "110058f8673daaf61065b60f9f8416c3": {
+      "title": "Tech Equity 101: Demystifying RSUs, ISOs, and Vesting",
+      "tab": "Batch 9 - Wealth Architecture",
+      "renderedAt": "2026-10-06T17:25:01Z",
+      "fps": 60,
+      "dir": "01-110058f8",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "cde0a1dba1b27c7ed608edfc633b5f02": {
+      "title": "Missing the 10 Best Days: Why Market Timing Destroys Returns",
+      "tab": "Batch 10 - Enduring Wealth",
+      "renderedAt": "2026-10-06T17:34:39Z",
+      "fps": 60,
+      "dir": "02-cde0a1db",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "8abc161d0a5feb5092bb07619fe16120": {
+      "title": "Estate Planning Essentials: Why Beneficiary Designations Override Wills",
+      "tab": "Batch 10 - Enduring Wealth",
+      "renderedAt": "2026-10-06T17:45:13Z",
+      "fps": 60,
+      "dir": "03-8abc161d",
+      "worker": 2,
+      "aiPolish": false
     }
   },
   "failed": {}
