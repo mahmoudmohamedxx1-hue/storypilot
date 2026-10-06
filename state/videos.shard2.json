@@ -62,6 +62,24 @@
       "dir": "03-1813c415",
       "worker": 2,
       "aiPolish": false
+    },
+    "101b0f10386364ed6b1152f08f3087e6": {
+      "title": "Umbrella Insurance: The $200 Shield for Your Net Worth",
+      "tab": "Batch 8 - Advanced Wealth",
+      "renderedAt": "2026-10-06T10:40:29Z",
+      "fps": 60,
+      "dir": "01-101b0f10",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "6274a482487f1c9a40ca0b1fe9083f0d": {
+      "title": "The 20/4/10 Rule: How to Buy a Car Without Going Broke",
+      "tab": "Batch 9 - Wealth Architecture",
+      "renderedAt": "2026-10-06T10:55:44Z",
+      "fps": 60,
+      "dir": "02-6274a482",
+      "worker": 2,
+      "aiPolish": false
     }
   },
   "failed": {}
