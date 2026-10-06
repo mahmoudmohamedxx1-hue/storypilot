@@ -89,6 +89,33 @@
       "dir": "02-8945ea4b",
       "worker": 1,
       "aiPolish": false
+    },
+    "bd33bec03a4016242e6d9a2985ae8199": {
+      "title": "Mental Accounting: The Brain Glitch Costing You Thousands",
+      "tab": "Batch 9 - Wealth Architecture",
+      "renderedAt": "2026-10-06T17:26:13Z",
+      "fps": 60,
+      "dir": "01-bd33bec0",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "37105469eee615a0c2dd4bbb5191cfbc": {
+      "title": "Credit Card Rewards Arbitrage: Free Travel vs. The 25% Interest Trap",
+      "tab": "Batch 10 - Enduring Wealth",
+      "renderedAt": "2026-10-06T17:37:08Z",
+      "fps": 60,
+      "dir": "02-37105469",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "8f3dcccbb401058bf265263b2d79b443": {
+      "title": "The Social Security Break-Even Math: Age 62 vs. 67 vs. 70",
+      "tab": "Batch 10 - Enduring Wealth",
+      "renderedAt": "2026-10-06T17:48:01Z",
+      "fps": 60,
+      "dir": "03-8f3dcccb",
+      "worker": 1,
+      "aiPolish": false
     }
   },
   "failed": {}
