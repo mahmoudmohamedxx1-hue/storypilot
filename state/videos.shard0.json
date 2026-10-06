@@ -143,6 +143,33 @@
       "dir": "02-a262b4e8",
       "worker": 0,
       "aiPolish": false
+    },
+    "e2bcbe59c9a64ca0949e65d6d7e068b3": {
+      "title": "Public REITs vs. Direct Landlording: Truly Passive Property Exposure",
+      "tab": "Batch 10 - Enduring Wealth",
+      "renderedAt": "2026-10-06T21:54:17Z",
+      "fps": 60,
+      "dir": "01-e2bcbe59",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "a1e48d26050986db8f0e9078fdaccd9b": {
+      "title": "الاستثمار في الذهب: الحماية من التضخم وهبوط العملة",
+      "tab": "سلسلة الاستثمار بالعربي",
+      "renderedAt": "2026-10-06T22:07:37Z",
+      "fps": 60,
+      "dir": "02-a1e48d26",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "dbd11ab6d4ca4524589844085c6b756a": {
+      "title": "الاستثمار الحلال: دليلك الشامل لصناديق المؤشرات المتوافقة مع الشريعة",
+      "tab": "الاستثمار بالعربي - الدفعة 2",
+      "renderedAt": "2026-10-06T22:23:23Z",
+      "fps": 60,
+      "dir": "03-dbd11ab6",
+      "worker": 0,
+      "aiPolish": false
     }
   },
   "failed": {}
