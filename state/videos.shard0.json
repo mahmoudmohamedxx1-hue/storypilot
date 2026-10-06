@@ -125,6 +125,24 @@
       "dir": "02-b1ffaa5d",
       "worker": 0,
       "aiPolish": false
+    },
+    "57129d6f2de2f518b5303c575f7cee5e": {
+      "title": "Private Mortgage Insurance (PMI) & Escrow Shock",
+      "tab": "Batch 9 - Wealth Architecture",
+      "renderedAt": "2026-10-06T17:28:49Z",
+      "fps": 60,
+      "dir": "01-57129d6f",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "a262b4e8c9363b0ff9f4e282a279321f": {
+      "title": "Asset Location: Where to Hold Stocks, Bonds, and Real Estate",
+      "tab": "Batch 9 - Wealth Architecture",
+      "renderedAt": "2026-10-06T17:45:07Z",
+      "fps": 60,
+      "dir": "02-a262b4e8",
+      "worker": 0,
+      "aiPolish": false
     }
   },
   "failed": {}
