@@ -71,6 +71,24 @@
       "dir": "03-6c0fdd60",
       "worker": 1,
       "aiPolish": false
+    },
+    "e8388c0a8e59f59d6d131d37634b81bb": {
+      "title": "Volatility Decay: Why Leveraged ETFs Destroy Long-Term Wealth",
+      "tab": "Batch 8 - Advanced Wealth",
+      "renderedAt": "2026-10-06T10:42:20Z",
+      "fps": 60,
+      "dir": "01-e8388c0a",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "8945ea4b2233a5b350cb6962ba5dcb84": {
+      "title": "The Bond Tent Strategy: Conquering Retirement Date Risk",
+      "tab": "Batch 8 - Advanced Wealth",
+      "renderedAt": "2026-10-06T10:55:45Z",
+      "fps": 60,
+      "dir": "02-8945ea4b",
+      "worker": 1,
+      "aiPolish": false
     }
   },
   "failed": {}
