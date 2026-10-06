@@ -80,6 +80,33 @@
       "dir": "03-5c118658",
       "worker": 0,
       "aiPolish": false
+    },
+    "536ecc775b031743ffb24982cd295c0b": {
+      "title": "Anatomy of Market Cycles: From Euphoria to Accumulation",
+      "tab": "Batch 6 - Market Intelligence",
+      "renderedAt": "2026-10-06T03:18:58Z",
+      "fps": 60,
+      "dir": "01-536ecc77",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "862bfd3de5409e501fe51345999b5b82": {
+      "title": "Liquid Net Worth vs. Total Net Worth: The Real Scorecard",
+      "tab": "Batch 6 - Market Intelligence",
+      "renderedAt": "2026-10-06T03:31:26Z",
+      "fps": 60,
+      "dir": "02-862bfd3d",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "b3c317559b06d3a95aa4cdb740f8cd28": {
+      "title": "I-Bonds and TIPS: Government-Guaranteed Inflation Shields",
+      "tab": "Batch 7 - Tactical Wealth",
+      "renderedAt": "2026-10-06T03:45:06Z",
+      "fps": 60,
+      "dir": "03-b3c31755",
+      "worker": 0,
+      "aiPolish": false
     }
   },
   "failed": {}
