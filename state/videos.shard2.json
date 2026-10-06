@@ -35,6 +35,33 @@
       "dir": "02-f0bacb28",
       "worker": 2,
       "aiPolish": false
+    },
+    "e1b1ab4bfd6da36ee406c23a836d8e9e": {
+      "title": "ETFs vs. Mutual Funds: Tax Efficiency & Mechanics",
+      "tab": "Batch 6 - Market Intelligence",
+      "renderedAt": "2026-10-06T03:17:12Z",
+      "fps": 60,
+      "dir": "01-e1b1ab4b",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "c993a661d073352ca3e365b50767a5f3": {
+      "title": "15-Year vs. 30-Year Mortgages: The Math vs. Flexibility Debate",
+      "tab": "Batch 7 - Tactical Wealth",
+      "renderedAt": "2026-10-06T03:30:36Z",
+      "fps": 60,
+      "dir": "02-c993a661",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "1813c4157fcbaaba03a717dbe6c9b931": {
+      "title": "The Financial Order of Operations: Where Every Dollar Goes",
+      "tab": "Batch 7 - Tactical Wealth",
+      "renderedAt": "2026-10-06T03:44:37Z",
+      "fps": 60,
+      "dir": "03-1813c415",
+      "worker": 2,
+      "aiPolish": false
     }
   },
   "failed": {}
