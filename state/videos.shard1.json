@@ -44,6 +44,33 @@
       "dir": "02-cdf0cd71",
       "worker": 1,
       "aiPolish": false
+    },
+    "af54da27ecccffa2ac207e77a14f2b0e": {
+      "title": "The Hazard of Margin Debt & Lifestyle Leverage",
+      "tab": "Batch 6 - Market Intelligence",
+      "renderedAt": "2026-10-06T03:16:38Z",
+      "fps": 60,
+      "dir": "01-af54da27",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "0a8a05ad01e5bdcdb695afda52832710": {
+      "title": "Tax-Loss Harvesting: Turn Market Dips into Tax Breaks",
+      "tab": "Batch 7 - Tactical Wealth",
+      "renderedAt": "2026-10-06T03:29:48Z",
+      "fps": 60,
+      "dir": "02-0a8a05ad",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "6c0fdd60e39900c30805b2d8e0d9e3c9": {
+      "title": "Price Anchoring: How Marketers Trick You & How to Win Salary Talks",
+      "tab": "Batch 7 - Tactical Wealth",
+      "renderedAt": "2026-10-06T03:43:02Z",
+      "fps": 60,
+      "dir": "03-6c0fdd60",
+      "worker": 1,
+      "aiPolish": false
     }
   },
   "failed": {}
