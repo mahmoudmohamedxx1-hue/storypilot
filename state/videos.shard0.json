@@ -170,6 +170,15 @@
       "dir": "03-dbd11ab6",
       "worker": 0,
       "aiPolish": false
+    },
+    "7ed2b4298e56fc281aac9fcf79a00d3e": {
+      "title": "العقار التجاري مقابل السكني: أين تضع رأس مالك؟",
+      "tab": "الاستثمار بالعربي - الدفعة 2",
+      "renderedAt": "2026-10-07T01:52:00Z",
+      "fps": 60,
+      "dir": "01-7ed2b429",
+      "worker": 0,
+      "aiPolish": false
     }
   },
   "failed": {}
