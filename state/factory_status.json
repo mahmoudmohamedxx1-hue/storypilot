@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "أول رأس مال: سر الاستثمار بخمسة دولارات",
-    "source": "ai-invented",
-    "started_at": "2026-10-08T22:12:09Z",
-    "elapsed_sec": 503
+    "title": "قاعدة الـ 72: احسب وقت مضاعفة أموالك بخطوة واحدة",
+    "source": "builtin-bank",
+    "started_at": "2026-10-08T22:29:33Z",
+    "elapsed_sec": 779
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 2,
-  "videos_total": 66,
-  "ai_invented_total": 3,
+  "videos_this_run": 3,
+  "videos_total": 67,
+  "ai_invented_total": 4,
   "recent": [
     {
       "title": "صندوق الطوارئ: درسك المالي الأول ضد المفاجآت",
@@ -40,6 +40,15 @@
       "code_by": "generate_video.py",
       "seconds": 567,
       "at": "2026-10-08T22:11:12Z"
+    },
+    {
+      "title": "أول رأس مال: سر الاستثمار بخمسة دولارات",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 514,
+      "at": "2026-10-08T22:20:44Z"
     }
   ],
   "drive": {
@@ -51,5 +60,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-08T22:20:32Z"
+  "updated_at": "2026-10-08T22:42:32Z"
 }
