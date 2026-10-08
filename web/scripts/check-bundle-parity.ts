@@ -1,10 +1,11 @@
 /* Verify app bundle templates produce files identical to the live repo */
-import { buildWorkflowYaml, buildEnsureHourlyYaml, REQUIREMENTS_TXT } from '../src/lib/bundle/workflow-yaml'
+import { buildWorkflowYaml, REQUIREMENTS_TXT } from '../src/lib/bundle/workflow-yaml'
 import { GENERATE_VIDEO_PY } from '../src/lib/bundle/generate-video-py'
 import { GENERATE_STORY_PY } from '../src/lib/bundle/generate-story-py'
 import { POST_VIDEO_PY } from '../src/lib/bundle/post-video-py'
 import { RENDER_PENDING_PY } from '../src/lib/bundle/render-pending-py'
 import { AI_FORGE_PY } from '../src/lib/bundle/ai-forge-py'
+import { SCHEDULE_GATE_PY } from '../src/lib/bundle/schedule-gate-py'
 import { FACTORY_PY } from '../src/lib/bundle/factory-py'
 import { FACTORY_YAML } from '../src/lib/bundle/factory-yaml'
 import { ENSURE_FACTORY_YAML } from '../src/lib/bundle/ensure-factory-yml'
@@ -23,9 +24,9 @@ const pairs: Array<[string, string]> = [
   [`${repo}/.github/workflows/factory.yml`, FACTORY_YAML],
   [`${repo}/.github/workflows/ensure-factory.yml`, ENSURE_FACTORY_YAML],
   [`${repo}/.github/workflows/hourly-video.yml`, buildWorkflowYaml(settings)],
-  [`${repo}/.github/workflows/ensure-hourly.yml`, buildEnsureHourlyYaml()],
   [`${repo}/generate_video.py`, GENERATE_VIDEO_PY],
   [`${repo}/scripts/factory.py`, FACTORY_PY],
+  [`${repo}/scripts/schedule_gate.py`, SCHEDULE_GATE_PY],
   [`${repo}/scripts/ai_forge.py`, AI_FORGE_PY],
   [`${repo}/scripts/drive_sync.py`, DRIVE_SYNC_PY],
   [`${repo}/scripts/drive_webapp.js`, DRIVE_WEBAPP_JS],

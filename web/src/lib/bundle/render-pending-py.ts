@@ -1,6 +1,6 @@
 // Auto-generated from scripts/render_pending.py - do not edit by hand;
 // regenerate with scripts/gen-bundle-templates.py
-// Batch catch-up queue: sharded parallel workers + union render state + keyless AI polish (freellmpool -> llm7 GLM-5.3-Flash), renders every pending sheet story
+// Batch catch-up queue: sharded parallel workers + union render state + keyless AI polish (freellmpool -> llm7 GLM-5.3-Flash), renders every pending sheet story (manual/on-demand)
 export const RENDER_PENDING_PY = `#!/usr/bin/env python3
 """StoryPilot - Continuous factory batch renderer (the "make ALL videos" queue).
 

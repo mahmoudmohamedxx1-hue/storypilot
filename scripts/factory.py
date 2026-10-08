@@ -1,22 +1,26 @@
 #!/usr/bin/env python3
-"""StoryPilot - Continuous Video Factory (THE INFINITE LOOP).
+"""StoryPilot - Video Factory supervisor (SCHEDULED mode by default).
 
-Runs inside a long GitHub Actions job (factory.yml, up to ~5.8h) and NEVER stops
-making videos:
+Runs inside a GitHub Actions job (factory.yml) that ticks hourly - the
+schedule gate decides which hours are video slots (SCHEDULE_HOURS,
+Africa/Cairo; default 11,12,13,15,20 = videos at 11:00, 12:00, 13:00,
+15:00, 20:00). ONE slot makes a bounded number of videos and STOPS:
 
-    +-------------------- the forever loop ---------------------+
-    |  1. sync the Google Sheet (Spark adds stories all day)    |
-    |  2. every story without a video -> AI HYPERFRAME FORGE    |
-    |     (the keyless AI WRITES the renderer code, we run it,  |
-    |      it repairs itself, built-in renderer as last resort) |
-    |  3. queue empty + INFINITE_STORIES=true ->                |
-    |     the keyless AI invents a FRESH story and we forge it  |
-    |  4. repeat until the job's time budget is nearly spent    |
-    +------------------------------------------------------------+
-          |                                        ^
-          v                                        |
-    job ends -> factory.yml chains the next run ->-+   (plus */10 cron heartbeat
-                                                       + app heartbeat as backstops)
+    SCHEDULED SLOT (SCHEDULED_SLOT=true, the workflow's mode)
+      1. sync the Google Sheet (Spark's live edits first)
+      2. every story without a video -> AI HYPERFRAME FORGE
+         (the keyless AI WRITES the renderer code, we run it,
+          it repairs itself, built-in renderer as last resort)
+      3. stop after MAX_VIDEOS_PER_SLOT videos (default 2)
+      4. queue empty + INVENT_WHEN_EMPTY=true -> invent ONE fresh story
+         (max one per slot) so the slot still produces a video
+      5. record the slot in state/schedule_state.json (the gate's dedup:
+         one video session per scheduled hour, never two) and exit.
+         NO chaining - the next video comes at the next scheduled hour.
+
+    CONTINUOUS mode (SCHEDULED_SLOT=false, legacy/manual): the old
+    forever-loop - drain the queue, invent forever, respect only the
+    time budget. Kept for manual catch-up runs.
 
 Progress survives runs: state/videos.json (committed to the repo) records every
 rendered story-hash, so nothing is ever re-processed and new/edited Spark rows
@@ -24,7 +28,7 @@ are picked up automatically. state/factory_status.json is the live heartbeat
 file the StoryPilot app reads (phase, current story, queue depth, recent runs).
 
 Stop the factory: create state/FACTORY_STOP in the repo (the app exposes this),
-or disable the "Continuous Video Factory" workflow.
+or disable the "Scheduled Video Factory" workflow.
 """
 import json
 import os
@@ -41,8 +45,14 @@ os.chdir(ROOT)
 import ai_forge          # noqa: E402
 import drive_sync        # noqa: E402
 import render_pending as rp  # noqa: E402
+import schedule_gate     # noqa: E402
 
-FACTORY_BUDGET_MIN = float(os.environ.get("FACTORY_BUDGET_MIN", "300"))
+SCHEDULED_SLOT = os.environ.get("SCHEDULED_SLOT", "true").lower() in ("1", "true", "yes")
+MAX_VIDEOS_PER_SLOT = max(1, int(os.environ.get("MAX_VIDEOS_PER_SLOT", "2")))
+INVENT_WHEN_EMPTY = os.environ.get("INVENT_WHEN_EMPTY", "true").lower() in ("1", "true", "yes")
+SLOT_STATE_PATH = os.environ.get("SLOT_STATE_PATH", "state/schedule_state.json")
+SCHEDULE_HOURS = os.environ.get("SCHEDULE_HOURS", schedule_gate.DEFAULT_HOURS)
+FACTORY_BUDGET_MIN = float(os.environ.get("FACTORY_BUDGET_MIN", "45" if SCHEDULED_SLOT else "300"))
 MARGIN_SEC = float(os.environ.get("FACTORY_MARGIN_SEC", "300"))
 MIN_VIDEO_SLOT_SEC = float(os.environ.get("MIN_VIDEO_SLOT_SEC", "900"))
 INFINITE_STORIES = os.environ.get("INFINITE_STORIES", "true").lower() in ("1", "true", "yes")
@@ -86,6 +96,10 @@ def log(msg):
 
 STATUS = {
     "phase": "boot",
+    "mode": "scheduled" if SCHEDULED_SLOT else "continuous",
+    "slot": None,
+    "schedule_hours": SCHEDULE_HOURS,
+    "max_videos_per_slot": MAX_VIDEOS_PER_SLOT,
     "should_continue": True,
     "run": {},
     "current": None,
@@ -96,6 +110,44 @@ STATUS = {
     "drive": None,
     "updated_at": now_iso(),
 }
+
+
+def record_slot(videos, stop_reason):
+    """Mark the current Cairo-hour slot as completed (the gate's dedup).
+
+    Even a slot that produced 0 videos is recorded, so an empty queue does
+    not retry all hour long - the next scheduled hour picks new stories up.
+    """
+    try:
+        now = schedule_gate.cairo_now()
+        key = schedule_gate.slot_key(now)
+        data = {"slots": {}}
+        try:
+            with open(SLOT_STATE_PATH, encoding="utf-8") as f:
+                loaded = json.load(f)
+            if isinstance(loaded, dict) and isinstance(loaded.get("slots"), dict):
+                data = loaded
+        except Exception:
+            pass
+        slots = data["slots"]
+        slots[key] = {
+            "videos": videos,
+            "stop_reason": stop_reason,
+            "completed_at": now_iso(),
+            "mode": "scheduled" if SCHEDULED_SLOT else "continuous",
+        }
+        # keep the newest 90 slots (about four days of heavy scheduling)
+        for old in sorted(slots)[:-90]:
+            slots.pop(old, None)
+        os.makedirs(os.path.dirname(SLOT_STATE_PATH) or ".", exist_ok=True)
+        tmp = SLOT_STATE_PATH + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        os.replace(tmp, SLOT_STATE_PATH)
+        STATUS["slot"] = {"key": key, "videos": videos, "stop_reason": stop_reason}
+        log(f"slot {key} recorded: {videos} video(s) ({stop_reason})")
+    except Exception as e:
+        log(f"::warning::could not record the slot: {e}")
 
 
 def refresh_drive_status():
@@ -233,15 +285,23 @@ def forge_one(story, out_dir, deadline, source_label):
 def main():
     t0 = time.time()
     deadline = t0 + FACTORY_BUDGET_MIN * 60
+    STATUS["slot"] = {"key": schedule_gate.slot_key(schedule_gate.cairo_now()),
+                      "videos": 0, "stop_reason": None}
     STATUS["run"] = {
         "started_at": now_iso(),
         "deadline_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(deadline)),
         "budget_min": FACTORY_BUDGET_MIN,
+        "mode": "scheduled" if SCHEDULED_SLOT else "continuous",
         "infinite_stories": INFINITE_STORIES,
     }
     write_status()
-    log(f"factory boot: budget {FACTORY_BUDGET_MIN:.0f}m | infinite-stories={INFINITE_STORIES} "
-        f"| hyperframes {rp.FRAME_RATE}fps")
+    if SCHEDULED_SLOT:
+        log(f"factory boot [SCHEDULED]: hours {SCHEDULE_HOURS} Africa/Cairo | "
+            f"max {MAX_VIDEOS_PER_SLOT} video(s) this slot | invent-when-empty={INVENT_WHEN_EMPTY} "
+            f"| budget {FACTORY_BUDGET_MIN:.0f}m | hyperframes {rp.FRAME_RATE}fps")
+    else:
+        log(f"factory boot [CONTINUOUS]: budget {FACTORY_BUDGET_MIN:.0f}m | "
+            f"infinite-stories={INFINITE_STORIES} | hyperframes {rp.FRAME_RATE}fps")
 
     # union of state/videos.json + every state/videos.shard*.json written by the
     # parallel hourly-video workers - without this the factory would re-render
@@ -253,6 +313,7 @@ def main():
     cache = {"data": None, "at": 0.0}
     made = 0
     seq = 0
+    invented_this_run = 0
     attempted: set = set()  # story hashes already tried this run (no instant re-loops)
     stop_reason = "budget"
 
@@ -268,6 +329,11 @@ def main():
             STATUS["should_continue"] = False
             log("STOP file found - shutting the factory down gracefully")
             break
+        if SCHEDULED_SLOT and made >= MAX_VIDEOS_PER_SLOT:
+            stop_reason = "slot_complete"
+            log(f"slot budget reached ({made} video(s), max {MAX_VIDEOS_PER_SLOT}) - "
+                f"next videos at the next scheduled hour ({SCHEDULE_HOURS} Cairo)")
+            break
         remaining = deadline - time.time()
         if remaining < MARGIN_SEC:
             stop_reason = "deadline"
@@ -282,7 +348,10 @@ def main():
         stories = _sheet_stories(cache)
         pending = [st for st in stories if rp.is_pending(st, state) and st["_hash"] not in attempted]
         STATUS["queue"]["pending"] = len(pending)
-        STATUS["phase"] = "rendering" if pending else ("inventing" if INFINITE_STORIES else "idle")
+        want_invent = ((INFINITE_STORIES and not SCHEDULED_SLOT)
+                       or (SCHEDULED_SLOT and INVENT_WHEN_EMPTY and invented_this_run == 0))
+        STATUS["phase"] = ("rendering" if pending
+                           else ("inventing" if want_invent else "idle"))
         write_status()
 
         if pending:
@@ -325,10 +394,16 @@ def main():
             write_status()
             continue
 
-        if INFINITE_STORIES:
+        if want_invent:
             try:
                 story = invent_story(state)
             except Exception as e:
+                if SCHEDULED_SLOT:
+                    # don't burn the slot retrying invention - record it and
+                    # let the next scheduled hour try again with a fresh queue
+                    log(f"story invention failed: {str(e)[:200]} - ending this slot")
+                    stop_reason = "invent_failed"
+                    break
                 log(f"story invention failed: {str(e)[:200]} - retrying after a pause")
                 STATUS["phase"] = "inventing"
                 write_status()
@@ -349,6 +424,7 @@ def main():
                 state["ai_invented_count"] = int(state.get("ai_invented_count", 0)) + 1
                 state["ai_titles"] = (state.get("ai_titles", []) + [{"title": story["title"]}])[-60:]
                 made += 1
+                invented_this_run += 1
                 STATUS["videos_this_run"] = made
                 STATUS["ai_invented_total"] = state["ai_invented_count"]
                 STATUS["recent"] = (STATUS["recent"] + [{
@@ -372,14 +448,23 @@ def main():
             write_status()
             continue
 
-        # finite mode: nothing pending -> wait for Spark to add stories
+        # scheduled mode: nothing pending and no invention -> the slot is
+        # done for this hour; do NOT sit and poll (that's continuous
+        # behavior) - the next scheduled hour picks new Spark stories up
+        if SCHEDULED_SLOT:
+            stop_reason = "slot_idle"
+            log("queue empty - slot complete, next videos at the next scheduled hour")
+            break
+
+        # continuous mode: nothing pending -> wait for Spark to add stories
         STATUS["phase"] = "idle"
         write_status()
         log(f"queue empty - re-checking the sheet in {IDLE_POLL_SEC}s")
         time.sleep(IDLE_POLL_SEC)
         cache["at"] = 0.0  # force a fresh sync next pass
 
-    STATUS["phase"] = "stopped" if stop_reason == "stopped" else "waiting_for_chain"
+    STATUS["phase"] = ("stopped" if stop_reason == "stopped"
+                       else ("slot_done" if SCHEDULED_SLOT else "waiting_for_chain"))
     STATUS["current"] = None
     STATUS["queue"]["pending"] = len([
         st for st in (cache["data"] or []) if rp.is_pending(st, state)])
@@ -394,6 +479,10 @@ def main():
         except Exception as e:
             log(f"::warning::final drive sync failed: {str(e)[:200]}")
     refresh_drive_status()
+    if SCHEDULED_SLOT:
+        # record BEFORE pushing so the schedule gate sees this slot as done
+        # (one video session per scheduled hour, never two)
+        record_slot(made, stop_reason)
     write_status()
     rp.save_state(state)
     push_state()

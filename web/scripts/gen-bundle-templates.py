@@ -5,6 +5,7 @@ Keeps the app's deploy bundle byte-identical to the repo files we validated.
 Escapes JS template-literal specials: backslash, backtick, ${.
 """
 import os
+import re
 
 ROOT = "/home/z/my-project"
 LIVE = os.path.join(ROOT, "storypilot-live")
@@ -15,25 +16,28 @@ JOBS = [
     (os.path.join(LIVE, "scripts", "ai_forge.py"),
      os.path.join(BUNDLE, "ai-forge-py.ts"), "AI_FORGE_PY",
      "Keyless AI hyperframe forge: the AI WRITES the renderer code per story (freellmpool -> Pollinations), self-repairs, falls back to the built-in renderer"),
+    (os.path.join(LIVE, "scripts", "schedule_gate.py"),
+     os.path.join(BUNDLE, "schedule-gate-py.ts"), "SCHEDULE_GATE_PY",
+     "The schedule gate: decides whether the current hour (Africa/Cairo) is a video slot - SCHEDULE_HOURS check + slot dedup + manual/agent bypass; shared by factory.yml and ensure-factory.yml"),
     (os.path.join(LIVE, "scripts", "factory.py"),
      os.path.join(BUNDLE, "factory-py.ts"), "FACTORY_PY",
-     "Continuous factory supervisor: infinite loop (drain pending queue -> AI-invented stories -> repeat), deadline-aware, hourly Drive sync, live status + state push"),
+     "Scheduled factory supervisor: one slot renders up to MAX_VIDEOS_PER_SLOT videos (pending sheet stories first, ONE AI-invented story when empty), records the slot in state/schedule_state.json, then STOPS - no chaining, no continuous making; Drive sync + live status"),
     (os.path.join(LIVE, "scripts", "drive_sync.py"),
      os.path.join(BUNDLE, "drive-sync-py.ts"), "DRIVE_SYNC_PY",
-     "Hourly Google Drive sync: uploads every finished video bundle to the user's Drive via their Apps Script web app (base64 protocol, deduped in state/drive_sync.json, never blocks rendering)"),
+     "Google Drive sync: uploads every finished video bundle to the user's Drive via their Apps Script web app (base64 protocol, deduped in state/drive_sync.json, never blocks rendering)"),
     (os.path.join(LIVE, "scripts", "drive_webapp.js"),
      os.path.join(BUNDLE, "drive-webapp-js.ts"), "DRIVE_WEBAPP_JS",
      "The Apps Script the user pastes at script.google.com (one-time setup): accepts ping + base64 file uploads into the 'StoryPilot Videos' Drive folder"),
     (os.path.join(LIVE, ".github", "workflows", "factory.yml"),
      os.path.join(BUNDLE, "factory-yaml.ts"), "FACTORY_YAML",
-     "Continuous Video Factory workflow: ~5.8h job + VERIFIED self-chaining (dispatch->check->retry x5) + singleton guard + hourly Drive sync + platform posting"),
+     "Scheduled Video Factory workflow: hourly :07 tick -> schedule gate (Africa/Cairo, SCHEDULE_HOURS) -> capped slot render -> Drive flush + platform posting; NO self-chaining, NO continuous loop"),
     (os.path.join(LIVE, "scripts", "generate_story.py"),
      os.path.join(BUNDLE, "generate-story-py.ts"), "GENERATE_STORY_PY",
      "Story source: Google Sheet (Gemini Spark director storyboard, 10 scenes + hook/lesson) -> keyless freellmpool/llm7 -> fallback",
      lambda b: b.replace("1nNsUcwR9foKN_MTPm5bwMR5jz2HUE68UeRqJ0OFp-d4", "__SHEET_ID__")),
     (os.path.join(LIVE, "scripts", "render_pending.py"),
      os.path.join(BUNDLE, "render-pending-py.ts"), "RENDER_PENDING_PY",
-     "Batch catch-up queue: sharded parallel workers + union render state + keyless AI polish (freellmpool -> llm7 GLM-5.3-Flash), renders every pending sheet story",
+     "Batch catch-up queue: sharded parallel workers + union render state + keyless AI polish (freellmpool -> llm7 GLM-5.3-Flash), renders every pending sheet story (manual/on-demand)",
      lambda b: b.replace("1nNsUcwR9foKN_MTPm5bwMR5jz2HUE68UeRqJ0OFp-d4", "__SHEET_ID__")),
     (os.path.join(LIVE, "generate_video.py"),
      os.path.join(BUNDLE, "generate-video-py.ts"), "GENERATE_VIDEO_PY",
@@ -43,7 +47,7 @@ JOBS = [
      "Posts the MP4 to YouTube, TikTok and Instagram Reels (each platform activates when its secrets exist)"),
     (os.path.join(LIVE, ".github", "workflows", "ensure-factory.yml"),
      os.path.join(BUNDLE, "ensure-factory-yml.ts"), "ENSURE_FACTORY_YAML",
-     "Factory watcher: re-dispatches the Continuous Video Factory when the chain breaks and no run is queued (*/20 best-effort cron)"),
+     "Ensure Scheduled Slot watcher: at :37 every hour, same gate logic - re-dispatches the factory ONLY when the current scheduled hour produced nothing (heals dropped :07 ticks; no action outside the schedule)"),
 ]
 
 
@@ -82,9 +86,10 @@ def esc_fn_body(body, interpolations=None):
     return out
 
 
-# ---- regenerate workflow-yaml.ts (hourly + ensure templates) from live files ----
+# ---- regenerate workflow-yaml.ts (hourly template) from the live file ----
+# buildSetupMd is hand-maintained in workflow-yaml.ts (scheduled-mode docs);
+# the splice below only refreshes buildWorkflowYaml + REQUIREMENTS_TXT.
 WY = os.path.join(BUNDLE, "workflow-yaml.ts")
-SHEET_ID = "1nNsUcwR9foKN_MTPm5bwMR5jz2HUE68UeRqJ0OFp-d4"
 with open(WY, encoding="utf-8") as f:
     wy = f.read()
 
@@ -93,31 +98,41 @@ with open(os.path.join(LIVE, ".github", "workflows", "hourly-video.yml"), encodi
 hourly_fn = (
     "export function buildWorkflowYaml(opts: { sheetId: string; flpModel: string; voice: string }): string {\n"
     "  return `" + esc_fn_body(hourly, {
-        SHEET_ID: "${opts.sheetId}",
+        "1nNsUcwR9foKN_MTPm5bwMR5jz2HUE68UeRqJ0OFp-d4": "${opts.sheetId}",
         "vars.TTS_VOICE_AR || 'ar-EG-ShakirNeural'": "vars.TTS_VOICE_AR || '${opts.voice}'",
         "vars.FLP_MODEL || 'auto'": "vars.FLP_MODEL || '${opts.flpModel}'",
     }) + "`\n}\n"
 )
 
-with open(os.path.join(LIVE, ".github", "workflows", "ensure-hourly.yml"), encoding="utf-8") as f:
-    ensure = f.read()
-ensure_fn = (
-    "export function buildEnsureHourlyYaml(): string {\n"
-    "  return `" + esc(ensure) + "`\n}\n"
-)
-
-# splice: replace buildWorkflowYaml (start .. REQUIREMENTS_TXT) and buildEnsureHourlyYaml (start .. EOF)
+# splice: replace buildWorkflowYaml (start of file .. REQUIREMENTS_TXT) and refresh
+# the REQUIREMENTS_TXT const; keep buildSetupMd (from its export line to EOF)
 anchor1 = "export const REQUIREMENTS_TXT"
-anchor2 = "export function buildEnsureHourlyYaml"
-# refresh the requirements const from the live repo (the splice keeps it otherwise)
+anchor3 = "export function buildSetupMd"
 with open(os.path.join(LIVE, "requirements.txt"), encoding="utf-8") as f:
     req_body = f.read()
 req_const = f"export const REQUIREMENTS_TXT = `{esc(req_body)}`\n\n"
-mid = wy[wy.index(anchor1):wy.index(anchor2)]
-# swap the old REQUIREMENTS_TXT const inside `mid` for the freshly read one
-mid = mid[: mid.index(anchor1)] + req_const + mid[mid.index("export function buildSetupMd"):]
-new_wy = hourly_fn + "\n" + mid + ensure_fn
+mid = wy[wy.index(anchor1):]
+mid = mid[: mid.index(anchor1)] + req_const + mid[mid.index(anchor3):]
+new_wy = hourly_fn + "\n" + mid
 with open(WY, "w", encoding="utf-8") as f:
     f.write(new_wy)
 print(f"OK  workflow-yaml.ts regenerated ({len(new_wy)} chars)")
 print("all bundle templates generated + round-trip verified")
+
+# round-trip check: every generated template must reproduce the live file exactly
+fail = 0
+for job in JOBS:
+    src, dst, const, desc = job[0], job[1], job[2], job[3]
+    transform = job[4] if len(job) > 4 else None
+    with open(src, encoding="utf-8") as f:
+        live = f.read()
+    if transform:
+        live = transform(live)
+    with open(dst, encoding="utf-8") as f:
+        generated = f.read()
+    if f"export const {const} = `{esc(live)}`" not in generated:
+        print(f"ROUND-TRIP FAIL: {dst}")
+        fail += 1
+if fail:
+    raise SystemExit(f"{fail} round-trip failures")
+print("round-trip: all templates byte-identical to source")

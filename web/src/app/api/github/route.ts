@@ -50,8 +50,8 @@ export async function POST(req: NextRequest) {
   const s = await getSettings()
   try {
     if (action === 'dispatch') {
-      await dispatchWorkflow(repo || s.githubRepo, 'factory.yml', 'main', { reason: 'ui' })
-      return Response.json({ ok: true, message: `Continuous Video Factory dispatched on ${repo || s.githubRepo}` })
+      await dispatchWorkflow(repo || s.githubRepo, 'factory.yml', 'main', { reason: 'force' })
+      return Response.json({ ok: true, message: `Scheduled Video Factory dispatched on ${repo || s.githubRepo} (schedule bypassed for this manual run)` })
     }
     if (action === 'deploy') {
       const result = await deployBundle(repo || s.githubRepo)

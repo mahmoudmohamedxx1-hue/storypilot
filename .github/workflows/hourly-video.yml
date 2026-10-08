@@ -1,21 +1,19 @@
-# StoryPilot - Hourly Story -> MP4 -> YouTube/TikTok/Instagram
-# Deployed by the StoryPilot agent app. Runs every hour on GitHub Actions.
+# StoryPilot - On-demand Story -> MP4 -> YouTube/TikTok/Instagram (MANUAL ONLY)
+# Deployed by the StoryPilot agent app.
 #
-# CONTINUOUS FACTORY (default): every run fans out to N PARALLEL WORKERS
-# (GitHub Actions matrix). Each worker renders ITS OWN shard of the pending
-# sheet stories (tracked in state/videos*.json, committed back to this repo)
-# until EVERY story in the sheet has a video. The StoryPilot app's continuous
-# render loop dispatches this workflow back-to-back — not just hourly — so
-# videos are generated continuously while stories are pending. Edited stories
-# change their content-hash and re-queue automatically. Hyperframes = 60fps.
+# NO SCHEDULE: videos are made on the SCHEDULE (factory.yml + SCHEDULE_HOURS,
+# default 11:00, 12:00, 13:00, 15:00, 20:00 Africa/Cairo). This workflow is
+# the manual catch-up tool: run it from the StoryPilot app (Library "Make
+# video" button) or GitHub's "Run workflow" button when you want a batch
+# RIGHT NOW (e.g. after adding many stories to the Spark sheet).
+# Every run fans out to N PARALLEL WORKERS (GitHub Actions matrix). Each
+# worker renders ITS OWN shard of the pending sheet stories (tracked in
+# state/videos*.json, committed back to this repo). Edited stories change
+# their content-hash and re-queue automatically. Hyperframes = 60fps.
 # Keyless AI: freellmpool polishes voiceovers + writes platform metadata.
-name: Hourly Story Video
+name: On-demand Story Video
 
 on:
-  schedule:
-    # Off-peak minute: GitHub Actions drops/delays start-of-hour crons under load
-    # (see docs: "High load times include the start of every hour").
-    - cron: "47 * * * *" # every hour at :47 (UTC) — backup layer; the app loop is primary
   workflow_dispatch:
     inputs:
       workers_json:

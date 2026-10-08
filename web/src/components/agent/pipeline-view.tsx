@@ -9,7 +9,7 @@ import {
   RefreshCw, Rocket, Github, PlayCircle, ExternalLink, Loader2,
   Clock, FileCode2, Package, BookOpenText, Clapperboard, Film, Youtube,
   Music2, Instagram, ZoomIn, ZoomOut, Maximize2, Radio, ChevronRight, Ban, HeartPulse,
-  ShieldCheck, Sparkles, Repeat2,
+  ShieldCheck, Sparkles, CalendarClock, CheckCircle2,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -24,6 +24,7 @@ interface Job { id: number; name: string; status: string; conclusion: string | n
 interface Artifact { id: number; name: string; size_in_bytes: number; created_at: string; workflow_run?: { id: number } }
 interface HeartbeatInfo {
   enabled: boolean; intervalMs: number; staleAfterMin: number
+  scheduleHours?: string; inScheduledHour?: boolean
   startedAt: string | null; lastCheckAt: string | null; lastCheckResult: string | null
   lastRunAt: string | null; lastRunStatus: string | null
   lastDispatchAt: string | null; lastDispatchReason: string | null
@@ -69,37 +70,38 @@ const NODES: NodeDef[] = [
   { id: 'instagram', label: 'Instagram Reels', sub: 'post_video.py --instagram', icon: Instagram, kind: 'platform', steps: ['Post to Instagram Reels'], color: 'bg-[#FCE7F3] text-[#c026d3]' },
 ]
 
-/* -------------------- Continuous Video Factory node graph -------------------- */
+/* -------------------- Scheduled Video Factory node graph -------------------- */
 
-export const FACTORY_WORKFLOW_NAME = 'Continuous Video Factory'
+export const FACTORY_WORKFLOW_NAME = 'Scheduled Video Factory'
 
 const FACTORY_NODES: NodeDef[] = [
-  { id: 'trigger', label: 'Continuous Chain', sub: 'self-chaining · never stops', icon: Repeat2, kind: 'trigger', steps: [], color: 'bg-[#FFF6E5] text-[#b45309]' },
+  { id: 'trigger', label: 'Hourly Tick', sub: ':07 every hour · cron', icon: Clock, kind: 'trigger', steps: [], color: 'bg-[#FFF6E5] text-[#b45309]' },
   { id: 'guard', label: 'Singleton Guard', sub: 'one factory at a time', icon: ShieldCheck, kind: 'setup', steps: ['Singleton guard (skip if another factory run is already working)'], color: 'bg-[#F5F7FA] text-[#3c4658]' },
+  { id: 'gate', label: 'Schedule Gate', sub: 'SCHEDULE_HOURS · Africa/Cairo', icon: CalendarClock, kind: 'setup', steps: ['Schedule gate (is this hour a video slot? - Africa/Cairo)'], color: 'bg-[#FFF6E5] text-[#b45309]' },
   { id: 'checkout', label: 'Checkout', sub: 'actions/checkout@v4', icon: Github, kind: 'setup', steps: ['Checkout'], color: 'bg-[#F5F7FA] text-[#3c4658]' },
   { id: 'python', label: 'Python 3.11', sub: 'setup-python@v5', icon: FileCode2, kind: 'setup', steps: ['Set up Python'], color: 'bg-[#F5F7FA] text-[#3c4658]' },
   { id: 'deps', label: 'Dependencies', sub: 'ffmpeg · edge-tts · freellmpool', icon: Package, kind: 'setup', steps: ['Install system deps (ffmpeg + fonts incl. Arabic)', 'Install Python deps'], color: 'bg-[#F0F4FF] text-[#315CEA]' },
-  { id: 'forge', label: 'Keyless AI Forge', sub: 'AI writes the hyperframe code', icon: Sparkles, kind: 'render', steps: ['Run the continuous factory (infinite loop supervisor)'], color: 'bg-[#F3EEFF] text-[#7c3aed]' },
-  { id: 'upload', label: 'Save to Library', sub: 'videos + AI-written code', icon: Film, kind: 'library', steps: ['Upload factory videos'], color: 'bg-[#E9F9F0] text-[#0e9f6e]' },
+  { id: 'forge', label: 'Keyless AI Forge', sub: 'up to 2 videos per slot', icon: Sparkles, kind: 'render', steps: ['Run the scheduled factory (slot supervisor)'], color: 'bg-[#F3EEFF] text-[#7c3aed]' },
+  { id: 'upload', label: 'Save + Drive Sync', sub: 'artifacts + Drive flush', icon: Film, kind: 'library', steps: ['Upload factory videos', 'Sync new videos to Google Drive (slot flush)'], color: 'bg-[#E9F9F0] text-[#0e9f6e]' },
   { id: 'youtube', label: 'YouTube', sub: 'every video', icon: Youtube, kind: 'platform', steps: ['Post to YouTube'], color: 'bg-[#FDECEC] text-[#d13438]' },
   { id: 'tiktok', label: 'TikTok', sub: 'every video', icon: Music2, kind: 'platform', steps: ['Post to TikTok'], color: 'bg-[#1a1c20] text-white' },
   { id: 'instagram', label: 'Instagram Reels', sub: 'every video', icon: Instagram, kind: 'platform', steps: ['Post to Instagram Reels'], color: 'bg-[#FCE7F3] text-[#c026d3]' },
-  { id: 'chain', label: 'Chain Next Run', sub: 'the infinite loop', icon: Repeat2, kind: 'loop', steps: ['Chain the next factory run (THE INFINITE LOOP)'], color: 'bg-[#FFF6E5] text-[#b45309]' },
+  { id: 'done', label: 'Slot Complete', sub: 'records + STOPS · no chain', icon: CheckCircle2, kind: 'setup', steps: [], color: 'bg-[#E9F9F0] text-[#0e9f6e]', sink: true },
 ]
 
 const FACTORY_POS: Record<string, { x: number; y: number }> = {
-  // row 1: the factory flow
-  trigger: { x: 0, y: 0 }, guard: { x: 296, y: 0 }, checkout: { x: 592, y: 0 }, python: { x: 888, y: 0 },
-  deps: { x: 1184, y: 0 }, forge: { x: 1480, y: 0 }, upload: { x: 1776, y: 0 },
-  // row 2: platforms + the loop-back chain node
-  youtube: { x: 1200, y: 158 }, tiktok: { x: 1496, y: 158 }, instagram: { x: 1792, y: 158 },
-  chain: { x: 2088, y: 158 },
+  // row 1: the scheduled flow (tick -> guard -> GATE -> ... -> slot complete)
+  trigger: { x: 0, y: 0 }, guard: { x: 296, y: 0 }, gate: { x: 592, y: 0 }, checkout: { x: 888, y: 0 },
+  python: { x: 1184, y: 0 }, deps: { x: 1480, y: 0 }, forge: { x: 1776, y: 0 }, upload: { x: 2072, y: 0 },
+  done: { x: 2368, y: 0 },
+  // row 2: platform fan-out
+  youtube: { x: 1690, y: 158 }, tiktok: { x: 1986, y: 158 }, instagram: { x: 2282, y: 158 },
 }
 
 const FACTORY_EDGES: Array<[string, string]> = [
-  ['trigger', 'guard'], ['guard', 'checkout'], ['checkout', 'python'], ['python', 'deps'],
-  ['deps', 'forge'], ['forge', 'upload'], ['upload', 'youtube'], ['upload', 'tiktok'],
-  ['upload', 'instagram'], ['upload', 'chain'], ['chain', 'trigger'],
+  ['trigger', 'guard'], ['guard', 'gate'], ['gate', 'checkout'], ['checkout', 'python'],
+  ['python', 'deps'], ['deps', 'forge'], ['forge', 'upload'], ['upload', 'done'],
+  ['upload', 'youtube'], ['upload', 'tiktok'], ['upload', 'instagram'],
 ]
 
 
@@ -120,7 +122,7 @@ const NODE_W = 236, NODE_H = 68
 const NODE_Y = 56 // vertical offset of row 1 inside the canvas
 const CONTENT_W = 1792 + NODE_W + 40
 const CONTENT_H = 158 + NODE_Y + NODE_H + 100
-const FACTORY_CONTENT_W = 2088 + NODE_W + 40
+const FACTORY_CONTENT_W = 2368 + NODE_W + 40
 const FACTORY_CONTENT_H = 158 + NODE_Y + NODE_H + 120
 
 function stepToStatus(step?: { status: string; conclusion: string | null }): NodeStatus {
@@ -246,7 +248,7 @@ export function PipelineView() {
     [data, selectedRunId]
   )
   const isActive = run?.status === 'in_progress' || run?.status === 'queued'
-  const isFactory = run?.name === FACTORY_WORKFLOW_NAME
+  const isFactory = run?.name === FACTORY_WORKFLOW_NAME || run?.name === 'Continuous Video Factory'
   const graph = useMemo(
     () =>
       isFactory
@@ -305,8 +307,10 @@ export function PipelineView() {
       })
       const j = await res.json()
       if (j.ok) {
-        toast.success(action === 'dispatch' ? 'Workflow dispatched' : 'Pipeline deployed', {
-          description: action === 'dispatch' ? 'Rendering now — the canvas will light up live.' : undefined,
+        toast.success(action === 'dispatch' ? 'Factory dispatched' : 'Pipeline deployed', {
+          description: action === 'dispatch'
+            ? 'One slot is rendering now (schedule bypassed for this manual run) — the canvas will light up live.'
+            : undefined,
         })
         setSelectedRunId(null)
         setTimeout(load, 2500)
@@ -371,7 +375,7 @@ export function PipelineView() {
     <ViewShell
       title="Pipeline"
       subtitle={isFactory
-        ? 'n8n-style live view of the Continuous Video Factory — keyless AI writes the code, videos never stop'
+        ? 'n8n-style live view of the Scheduled Video Factory — videos only at the scheduled hours (Africa/Cairo), never continuous'
         : 'n8n-style live view of the on-demand render workflow — story → MP4 → YouTube / TikTok / Instagram'}
       actions={
         <>
@@ -409,7 +413,7 @@ export function PipelineView() {
             <span className="truncate max-w-[220px]" title={data?.repo}>{(data?.repo || '').replace(/^.*\//, '')}</span>
             <span className="text-[#d5d9e0]">|</span>
             {isFactory ? (
-              <span className="flex items-center gap-1.5 font-medium text-[#0e9f6e]"><Repeat2 size={12} /> continuous mode · self-chaining</span>
+              <span className="flex items-center gap-1.5 font-medium text-[#0e9f6e]"><CalendarClock size={12} /> scheduled mode · {data?.heartbeat?.scheduleHours || '11:00, 12:00, 13:00, 15:00, 20:00'} (Cairo)</span>
             ) : (
               <span className="flex items-center gap-1.5"><Clock size={12} /> next run {nextRunLabel()}</span>
             )}
@@ -418,10 +422,10 @@ export function PipelineView() {
                 <span className="text-[#d5d9e0]">|</span>
                 <span
                   className="flex items-center gap-1.5"
-                  title={`Self-healing heartbeat: while the app runs it re-dispatches the Continuous Video Factory whenever no factory run started in the last ${data.heartbeat.staleAfterMin} min${data.heartbeat.lastCheckResult ? `\nLast check: ${data.heartbeat.lastCheckResult}` : ''}`}
+                  title={`Schedule-guard heartbeat: while the app runs it checks every 10 min and revives the factory ONLY inside a scheduled hour when the slot produced nothing${data.heartbeat.lastCheckResult ? `\nLast check: ${data.heartbeat.lastCheckResult}` : ''}`}
                 >
                   <HeartPulse size={12} className={data.heartbeat.lastError ? 'text-[#d13438]' : 'text-[#0e9f6e]'} />
-                  heartbeat {data.heartbeat.lastError ? 'error' : 'armed'}
+                  heartbeat {data.heartbeat.lastError ? 'error' : (data.heartbeat.inScheduledHour ? 'in scheduled hour' : 'idle (off-schedule)')}
                   <span className="text-[#9aa0ab]">· checked {fmtAgo(data.heartbeat.lastCheckAt)}</span>
                   {data.heartbeat.dispatchCount > 0 && (
                     <span className="text-[#9aa0ab]">· {data.heartbeat.dispatchCount} auto-dispatch{data.heartbeat.dispatchCount > 1 ? 'es' : ''}</span>
@@ -571,10 +575,21 @@ export function PipelineView() {
                 </div>
                 {inspectedNode.kind === 'trigger' ? (
                   <div className="mt-3 space-y-1.5 text-[11.5px] text-[#6b7280]">
-                    <p className="flex justify-between"><span>schedule</span><span className="font-medium text-[#1a1c20]">hourly</span></p>
-                    <p className="flex justify-between"><span>cron</span><span className="font-mono text-[#1a1c20]">47 * * * * UTC</span></p>
-                    <p className="flex justify-between"><span>self-heal</span><span className="font-medium text-[#1a1c20]">ensure-hourly :19 + app heartbeat</span></p>
-                    <p className="flex justify-between"><span>next</span><span className="font-medium text-[#1a1c20]">{nextRunLabel()}</span></p>
+                    {isFactory ? (
+                      <>
+                        <p className="flex justify-between"><span>tick</span><span className="font-medium text-[#1a1c20]">hourly :07 UTC</span></p>
+                        <p className="flex justify-between"><span>video hours</span><span className="font-medium text-[#1a1c20]">{data?.heartbeat?.scheduleHours || '11:00, 12:00, 13:00, 15:00, 20:00'} Cairo</span></p>
+                        <p className="flex justify-between"><span>self-heal</span><span className="font-medium text-[#1a1c20]">ensure-slot :37 + app heartbeat</span></p>
+                        <p className="flex justify-between"><span>manual run</span><span className="font-medium text-[#1a1c20]">bypasses the schedule</span></p>
+                      </>
+                    ) : (
+                      <>
+                        <p className="flex justify-between"><span>schedule</span><span className="font-medium text-[#1a1c20]">manual only</span></p>
+                        <p className="flex justify-between"><span>used by</span><span className="font-medium text-[#1a1c20]">Library · Make video</span></p>
+                        <p className="flex justify-between"><span>workers</span><span className="font-medium text-[#1a1c20]">3 parallel (matrix)</span></p>
+                        <p className="flex justify-between"><span>next</span><span className="font-medium text-[#1a1c20]">{nextRunLabel()}</span></p>
+                      </>
+                    )}
                   </div>
                 ) : inspectedState.steps.length ? (
                   <div className="mt-3 space-y-2">

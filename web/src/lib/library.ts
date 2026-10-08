@@ -462,7 +462,7 @@ export async function renderStoryById(storyId: string): Promise<RenderResult> {
   })
   const job = await db.videoJob.create({
     data: {
-      title: `Hourly video · ${story.title}`,
+      title: `On-demand video · ${story.title}`,
       storyTitle: story.title,
       status: 'queued',
       source: 'sheet',
@@ -492,10 +492,13 @@ export async function renderAllPending(): Promise<RenderResult> {
   }
 
   const pending = await db.storyRecord.count({ where: { status: 'new' } })
-  await dispatchWorkflow(settings.githubRepo, 'factory.yml', 'main', { reason: 'catchup' })
+  await dispatchWorkflow(settings.githubRepo, 'hourly-video.yml', 'main', {
+    workers_json: '["0","1","2"]',
+    batch: 'true',
+  })
   return {
     ok: true,
-    message: `Continuous Video Factory dispatched — ${pending} pending ${pending === 1 ? 'story' : 'stories'} will render back-to-back (keyless-AI-written hyperframe code), and the factory keeps chaining itself so generation never stops.`,
+    message: `On-demand batch dispatched — ${pending} pending ${pending === 1 ? 'story' : 'stories'} render now on 3 parallel workers (keyless-AI-written hyperframe code). Scheduled slots keep running at their hours.`,
   }
 }
 

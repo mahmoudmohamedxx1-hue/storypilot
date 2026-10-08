@@ -1,6 +1,6 @@
 // Auto-generated from scripts/drive_sync.py - do not edit by hand;
 // regenerate with scripts/gen-bundle-templates.py
-// Hourly Google Drive sync: uploads every finished video bundle to the user's Drive via their Apps Script web app (base64 protocol, deduped in state/drive_sync.json, never blocks rendering)
+// Google Drive sync: uploads every finished video bundle to the user's Drive via their Apps Script web app (base64 protocol, deduped in state/drive_sync.json, never blocks rendering)
 export const DRIVE_SYNC_PY = `#!/usr/bin/env python3
 """StoryPilot - Hourly Google Drive sync.
 

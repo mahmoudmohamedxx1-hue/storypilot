@@ -6,7 +6,8 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Switch } from '@/components/ui/switch'
 import { toast } from 'sonner'
-import { Loader2, Save, Sparkles, Sheet, Github, Volume2, ShieldAlert } from 'lucide-react'
+import { Loader2, Save, Sparkles, Sheet, Github, Volume2, ShieldAlert, CalendarClock } from 'lucide-react'
+import { formatScheduleHours, nextSlot } from '@/lib/schedule'
 
 const MODELS = [
   { id: 'glm-5.3-flash', label: 'GLM-5.3-Flash', note: 'default · fastest, via z.ai SDK' },
@@ -136,6 +137,37 @@ export function SettingsView() {
           </p>
         </section>
 
+        {/* video schedule */}
+        <section className="rounded-2xl border border-[#E5E7EB] p-5">
+          <h2 className="text-[14px] font-semibold text-[#1a1c20] flex items-center gap-2">
+            <CalendarClock size={15} className="text-[#315CEA]" /> Video schedule (Africa/Cairo)
+          </h2>
+          <label className="block mt-3">
+            <span className="text-[11px] font-medium text-[#8a8f99] uppercase tracking-wide">Scheduled hours — comma-separated, 0-23</span>
+            <Input
+              value={form.scheduleHours ?? (s.scheduleHours as string) ?? '11,12,13,15,20'}
+              onChange={(e) => setForm((f) => ({ ...f, scheduleHours: e.target.value }))}
+              placeholder="11,12,13,15,20"
+              className="mt-1 h-9 text-[13px] font-mono"
+            />
+          </label>
+          <div className="mt-2.5 flex items-center gap-2 text-[12px] text-[#6b7280]">
+            <span className="inline-flex items-center gap-1 rounded-full bg-[#F0F4FF] text-[#315CEA] px-2.5 py-1 font-medium">
+              <CalendarClock size={11} /> {formatScheduleHours((form.scheduleHours ?? (s.scheduleHours as string)) || '11,12,13,15,20')}
+            </span>
+            {(() => {
+              const nx = nextSlot((form.scheduleHours ?? (s.scheduleHours as string)) || '11,12,13,15,20')
+              return nx ? <span>next slot ≈ {String(nx.hour).padStart(2, '0')}:00 Cairo</span> : null
+            })()}
+          </div>
+          <p className="mt-2 text-[12px] text-[#9aa0ab] leading-relaxed">
+            Videos are made ONLY at these hours (your local time) — e.g. <span className="font-mono">11,12,13,15,20</span> = videos at
+            11:00, 12:00, 13:00, 15:00 and 20:00. Between them nothing renders, and each slot makes up to 2 videos (repo variable
+            <span className="font-mono"> MAX_VIDEOS_PER_SLOT</span>). Saving updates the app heartbeat immediately; hit <span className="font-medium">Deploy files</span> (Pipeline view) to push it to the repo as the
+            <span className="font-mono"> SCHEDULE_HOURS</span> variable. Manual runs and "make a video now" always bypass the schedule.
+          </p>
+        </section>
+
         {/* story source */}
         <section className="rounded-2xl border border-[#E5E7EB] p-5">
           <h2 className="text-[14px] font-semibold text-[#1a1c20] flex items-center gap-2">
@@ -221,7 +253,7 @@ export function SettingsView() {
           <div className="mt-4 flex items-center justify-between">
             <div>
               <p className="text-[13.5px] font-medium text-[#1a1c20]">Auto-post after render</p>
-              <p className="text-[12px] text-[#8a8f99]">Post to all connected platforms on every hourly run</p>
+              <p className="text-[12px] text-[#8a8f99]">Post to all connected platforms after each scheduled slot</p>
             </div>
             <Switch checked={autoPost} onCheckedChange={setAutoPost} aria-label="Auto-post after render" />
           </div>

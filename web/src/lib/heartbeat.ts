@@ -1,29 +1,35 @@
 import { getSettings } from '@/lib/settings'
 import { listWorkflowFileRuns, dispatchWorkflow } from '@/lib/github'
+import { isScheduledHour, runSlotKey, cairoSlotKey, formatScheduleHours } from '@/lib/schedule'
 
 /**
- * App-side heartbeat for the CONTINUOUS VIDEO FACTORY.
+ * App-side heartbeat for the SCHEDULED VIDEO FACTORY.
  *
- * The factory (factory.yml) is designed to never stop: each ~5h run chains
- * the next one, backed by an every-15-min cron + the ensure-factory watcher.
- * But GitHub schedules are heavily throttled on this account and a chain
- * dispatch can fail, so while the StoryPilot app is running it checks every
- * 10 minutes and re-dispatches the factory whenever no factory run is
- * queued/in_progress and the last one is older than 25 minutes.
+ * Videos are made only at scheduled hours (SCHEDULE_HOURS, Africa/Cairo -
+ * default 11:00, 12:00, 13:00, 15:00, 20:00). While the StoryPilot app is
+ * running it checks every 10 minutes and, ONLY inside a scheduled hour,
+ * revives the factory when the slot looks skipped:
+ *   - a factory run is queued/in_progress        -> nothing to do
+ *   - the latest run started in THIS Cairo hour  -> slot already handled
+ *   - otherwise                                  -> dispatch (reason=app-heartbeat)
  *
- * Safe against overlap: it skips when a run is queued/in_progress, the
- * workflow's concurrency group keeps exactly one pending run, and the job's
- * own singleton guard no-ops any accidental double dispatch.
+ * Outside the scheduled hours the heartbeat NEVER dispatches - that is the
+ * whole point of the schedule. force=true (the manual "make a video now"
+ * button) bypasses it, and the workflow's own schedule gate
+ * (scripts/schedule_gate.py) double-checks everything on the runner side
+ * (including slot dedup in state/schedule_state.json), so a double
+ * dispatch can't make double videos.
  */
 
 const HEARTBEAT_INTERVAL_MS = 10 * 60 * 1000 // check every 10 minutes
-const STALE_AFTER_MS = 25 * 60 * 1000 // revive if no factory run started in 25 min
 const WORKFLOW_FILE = 'factory.yml'
 
 export interface HeartbeatState {
   enabled: boolean
   intervalMs: number
   staleAfterMin: number
+  scheduleHours: string
+  inScheduledHour: boolean
   startedAt: string | null
   lastCheckAt: string | null
   lastCheckResult: string | null
@@ -52,7 +58,9 @@ function ensureHolder() {
       state: {
         enabled: true,
         intervalMs: HEARTBEAT_INTERVAL_MS,
-        staleAfterMin: Math.round(STALE_AFTER_MS / 60000),
+        staleAfterMin: 0,
+        scheduleHours: '',
+        inScheduledHour: false,
         startedAt: null,
         lastCheckAt: null,
         lastCheckResult: null,
@@ -93,6 +101,19 @@ export async function heartbeatCheckOnce(force = false): Promise<string> {
       return 'no GitHub repo configured'
     }
 
+    const hoursLabel = formatScheduleHours(s.scheduleHours)
+    const scheduledNow = isScheduledHour(s.scheduleHours)
+    holder.state.scheduleHours = hoursLabel
+    holder.state.inScheduledHour = scheduledNow
+
+    if (!force && !scheduledNow) {
+      holder.state.checkCount++
+      holder.state.lastCheckAt = new Date().toISOString()
+      holder.state.lastError = null
+      holder.state.lastCheckResult = `idle — outside the schedule (${hoursLabel} Africa/Cairo); no videos outside scheduled hours`
+      return holder.state.lastCheckResult
+    }
+
     const runs = await listWorkflowFileRuns(s.githubRepo, WORKFLOW_FILE, 5)
     holder.state.checkCount++
     holder.state.lastCheckAt = new Date().toISOString()
@@ -109,22 +130,24 @@ export async function heartbeatCheckOnce(force = false): Promise<string> {
       return holder.state.lastCheckResult
     }
 
-    const ageMs = latest ? Date.now() - new Date(latest.created_at).getTime() : Infinity
-    const ageMin = latest ? Math.round(ageMs / 60000) : -1
-
-    if (!force && latest && ageMs < STALE_AFTER_MS) {
-      holder.state.lastCheckResult = `healthy — last run ${ageMin}m old`
+    // a run that STARTED in this Cairo hour means the slot was already
+    // handled (it either completed or crashed - the :37 ensure-slot watcher
+    // is the healer for crashed slots; don't double-make from the app)
+    if (!force && latest && runSlotKey(latest.created_at) === cairoSlotKey()) {
+      holder.state.lastCheckResult = `slot already handled — run #${latest.id} started this hour (${latest.conclusion ?? latest.status})`
       return holder.state.lastCheckResult
     }
 
-    const reason = latest
-      ? `last factory run ${ageMin}m old (> ${Math.round(STALE_AFTER_MS / 60000)}m) — the chain broke`
-      : 'no factory run found'
-    await dispatchWorkflow(s.githubRepo, WORKFLOW_FILE, 'main', { reason: 'app-heartbeat' })
+    const reason = force
+      ? 'manual "make a video now" (schedule bypassed)'
+      : `scheduled hour ${cairoSlotKey().slice(-2)}:00 with no factory run this hour — reviving the slot`
+    await dispatchWorkflow(s.githubRepo, WORKFLOW_FILE, 'main', {
+      reason: force ? 'force' : 'app-heartbeat',
+    })
     holder.state.dispatchCount++
     holder.state.lastDispatchAt = new Date().toISOString()
     holder.state.lastDispatchReason = reason
-    holder.state.lastCheckResult = `dispatched Continuous Video Factory (${reason})`
+    holder.state.lastCheckResult = `dispatched Scheduled Video Factory (${reason})`
     return holder.state.lastCheckResult
   } catch (e) {
     holder.state.lastError = (e as Error).message
@@ -145,5 +168,5 @@ export function startHeartbeat() {
   setTimeout(() => void heartbeatCheckOnce(), 30_000)
   holder.timer = setInterval(() => void heartbeatCheckOnce(), HEARTBEAT_INTERVAL_MS)
   if (typeof holder.timer.unref === 'function') holder.timer.unref()
-  console.log(`[heartbeat] started — checking ${WORKFLOW_FILE} every ${HEARTBEAT_INTERVAL_MS / 60000} min`)
+  console.log(`[heartbeat] started — guarding the video schedule every ${HEARTBEAT_INTERVAL_MS / 60000} min`)
 }

@@ -186,6 +186,36 @@ export async function getFileSha(repo: string, path: string, branch = 'main'): P
   return undefined
 }
 
+/** Delete a file from the repo (used to retire old workflow files on deploy). */
+export async function deleteFile(repo: string, path: string, message: string, branch = 'main'): Promise<boolean> {
+  const sha = await getFileSha(repo, path, branch)
+  if (!sha) return false // already gone
+  const res = await gh(`/repos/${repo}/contents/${path}`, {
+    method: 'DELETE',
+    body: JSON.stringify({ sha, message, branch }),
+  })
+  return res.ok || res.status === 204
+}
+
+/** Create or update a repo Actions VARIABLE (vars.NAME in workflows). */
+export async function putRepoVariable(repo: string, name: string, value: string): Promise<'created' | 'updated' | 'failed'> {
+  try {
+    const put = await gh(`/repos/${repo}/actions/variables/${name}`, {
+      method: 'PUT',
+      body: JSON.stringify({ name, value }),
+    })
+    if (put.ok || put.status === 204) return 'updated'
+    if (put.status === 404) {
+      const post = await gh(`/repos/${repo}/actions/variables`, {
+        method: 'POST',
+        body: JSON.stringify({ name, value }),
+      })
+      if (post.ok || post.status === 201) return 'created'
+    }
+  } catch { /* fall through */ }
+  return 'failed'
+}
+
 export async function getDefaultBranch(repo: string): Promise<string> {
   const data = await ghJson<{ default_branch: string }>(`/repos/${repo}`)
   return data.default_branch

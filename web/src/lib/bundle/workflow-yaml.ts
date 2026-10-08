@@ -1,22 +1,20 @@
 export function buildWorkflowYaml(opts: { sheetId: string; flpModel: string; voice: string }): string {
-  return `# StoryPilot - Hourly Story -> MP4 -> YouTube/TikTok/Instagram
-# Deployed by the StoryPilot agent app. Runs every hour on GitHub Actions.
+  return `# StoryPilot - On-demand Story -> MP4 -> YouTube/TikTok/Instagram (MANUAL ONLY)
+# Deployed by the StoryPilot agent app.
 #
-# CONTINUOUS FACTORY (default): every run fans out to N PARALLEL WORKERS
-# (GitHub Actions matrix). Each worker renders ITS OWN shard of the pending
-# sheet stories (tracked in state/videos*.json, committed back to this repo)
-# until EVERY story in the sheet has a video. The StoryPilot app's continuous
-# render loop dispatches this workflow back-to-back — not just hourly — so
-# videos are generated continuously while stories are pending. Edited stories
-# change their content-hash and re-queue automatically. Hyperframes = 60fps.
+# NO SCHEDULE: videos are made on the SCHEDULE (factory.yml + SCHEDULE_HOURS,
+# default 11:00, 12:00, 13:00, 15:00, 20:00 Africa/Cairo). This workflow is
+# the manual catch-up tool: run it from the StoryPilot app (Library "Make
+# video" button) or GitHub's "Run workflow" button when you want a batch
+# RIGHT NOW (e.g. after adding many stories to the Spark sheet).
+# Every run fans out to N PARALLEL WORKERS (GitHub Actions matrix). Each
+# worker renders ITS OWN shard of the pending sheet stories (tracked in
+# state/videos*.json, committed back to this repo). Edited stories change
+# their content-hash and re-queue automatically. Hyperframes = 60fps.
 # Keyless AI: freellmpool polishes voiceovers + writes platform metadata.
-name: Hourly Story Video
+name: On-demand Story Video
 
 on:
-  schedule:
-    # Off-peak minute: GitHub Actions drops/delays start-of-hour crons under load
-    # (see docs: "High load times include the start of every hour").
-    - cron: "47 * * * *" # every hour at :47 (UTC) — backup layer; the app loop is primary
   workflow_dispatch:
     inputs:
       workers_json:
@@ -277,14 +275,16 @@ freellmpool>=0.13.0
 `
 
 export function buildSetupMd(opts: { repo: string; sheetUrl: string }): string {
-  return `# StoryPilot — Continuous Video Factory (infinite loop)
+  return `# StoryPilot — Scheduled Video Factory (videos by the clock)
 
-This repo generates videos **nonstop** on GitHub Actions — an infinite, self-chaining loop
-that never waits for a cron:
+This repo makes videos **on a schedule** — default **11:00, 12:00, 13:00, 15:00, 20:00
+Africa/Cairo** — and **never continuously**:
 
-1. **Continuous Video Factory (\`.github/workflows/factory.yml\`)** — each job runs ~5 hours,
-   renders video after video, and **chains the next run** before it ends. Generation only
-   stops if you ask it to (\`state/FACTORY_STOP\` or disable the workflow).
+1. **Scheduled Video Factory (\`.github/workflows/factory.yml\`)** — ticks hourly at :07.
+   The **schedule gate** (\`scripts/schedule_gate.py\`) checks whether the current hour
+   (Africa/Cairo) is in the \`SCHEDULE_HOURS\` variable; outside the schedule the run exits
+   in ~20 seconds having made **nothing**. A scheduled slot renders up to
+   \`MAX_VIDEOS_PER_SLOT\` videos (default 2) and **stops** — no chaining, no infinite loop.
 2. **The KEYLESS AI WRITES THE HYPERFRAME CODE** — for every story, \`scripts/ai_forge.py\`
    asks a keyless AI (freellmpool pool first: \`auto\`, gpt-oss-120b, Qwen3-Coder… then the
    Pollinations text API — no API keys anywhere) to write a COMPLETE Python renderer for that
@@ -294,48 +294,57 @@ that never waits for a cron:
    error back to the AI for a **self-repair** round (3 attempts). The battle-tested built-in
    renderer is the final fallback, so **a video ALWAYS comes out**. Whichever model actually
    wrote the code is recorded in \`meta.json\`.
-3. **Never-ending source of stories** — every sheet tab is re-synced mid-run (Spark edits are
-   picked up within minutes, hash-tracked in \`state/videos.json\` so nothing is re-rendered);
-   when the queue is empty the keyless AI **invents fresh stories** (rotating Arabic finance
-   topics, no repeats) so the output never stops. Set \`INFINITE_STORIES=false\` to wait for
-   the sheet instead.
+3. **Slot stories** — every sheet tab is re-synced (Spark edits are picked up, hash-tracked in
+   \`state/videos.json\` so nothing is re-rendered). At a scheduled slot, pending sheet stories
+   render first; if the queue is empty and \`INVENT_WHEN_EMPTY=true\` (default), the keyless AI
+   invents **ONE** fresh story (rotating Arabic finance topics, no repeats) so the slot still
+   produces a video. Set \`INVENT_WHEN_EMPTY=false\` to render only what the sheet holds.
 4. **Publish everywhere** — every finished video posts to YouTube, TikTok and Instagram Reels
    (each platform activates as soon as its secrets exist).
-5. **Hourly Google Drive sync** — every finished video is ALSO uploaded to a folder in your
-   Google Drive (same account as the Spark sheet) at most once an hour, deduped in
-   \`state/drive_sync.json\`. One-time 3-minute setup via your own Apps Script web app —
-   see **Google Drive backup** below.
+5. **Google Drive sync** — every finished video is uploaded right after it renders (deduped in
+   \`state/drive_sync.json\`) plus a flush at the end of each slot. One-time 3-minute setup via
+   your own Apps Script web app — see **Google Drive backup** below.
 
-\`hourly-video.yml\` remains as the **on-demand** renderer: the app's Library **Make video**
-button (single story) and manual batch catch-up.
+\`hourly-video.yml\` is the **manual/on-demand** renderer (the app's Library **Make video**
+button and manual batch catch-up) — it has **no cron**.
 
-## Reliability layers (why it never silently stops)
+## Changing the schedule (not just static)
+
+- **Repo variable** \`SCHEDULE_HOURS\` — Settings → Secrets and variables → Actions →
+  Variables → e.g. \`9,11,12,13,15,17,20,22\`. Takes effect on the next hourly tick, no
+  commit needed.
+- **Or in the app**: Settings → Video schedule → Save → **Deploy files** (Pipeline view) —
+  the app pushes the files AND the \`SCHEDULE_HOURS\` variable together.
+- Manual runs ("Run workflow" in GitHub, the app's Run now button, or asking the agent)
+  **bypass the schedule** — explicit human intent always makes videos immediately.
+
+## Reliability layers (a scheduled hour is never silently skipped)
 
 | Layer | What it does |
 |---|---|
-| Self-chaining | every factory run dispatches the next one before finishing — VERIFIED with 5 retries (GITHUB_TOKEN) |
-| \`*/15\` cron heartbeat | factory.yml schedule — revives the chain if a dispatch fails |
-| ensure-factory.yml | every 20 min: re-dispatches the factory if it looks dead |
-| hourly-video.yml cron + ensure-hourly.yml | hourly backup: parallel workers drain any pending queue |
-| App heartbeat | while the StoryPilot app runs: dispatches the factory if idle > 25 min |
+| \`:07\` hourly tick | factory.yml cron — the gate decides; slot dedup means a re-tick can never double-make |
+| ensure-factory.yml | \`:37\` every hour — same gate logic: re-dispatches the factory if a scheduled slot produced nothing |
+| App heartbeat | while the StoryPilot app runs: revives a skipped slot, ONLY inside scheduled hours |
 | Singleton guard + concurrency group | never two factories at once; queued noise auto-collapses |
 
 ## Files
 
 | File | Purpose |
 |---|---|
-| \`.github/workflows/factory.yml\` | **THE infinite loop** — ~5h self-chaining factory job |
-| \`.github/workflows/ensure-factory.yml\` | Factory watcher — re-dispatches when the chain breaks |
-| \`scripts/factory.py\` | Factory supervisor: sync → forge → invent stories → repeat (deadline-aware) |
+| \`.github/workflows/factory.yml\` | **THE scheduled factory** — hourly tick + schedule gate + capped slot |
+| \`.github/workflows/ensure-factory.yml\` | Slot watcher — heals a skipped scheduled hour at :37 |
+| \`scripts/schedule_gate.py\` | The schedule gate: hour check (Africa/Cairo) + slot dedup + manual bypass |
+| \`scripts/factory.py\` | Slot supervisor: sync → forge (up to the cap) → record slot → stop |
 | \`scripts/ai_forge.py\` | **Keyless AI code-writer**: AI writes the hyperframe renderer per story, sandbox-run + self-repair + fallback |
-| \`scripts/drive_sync.py\` | Hourly Google Drive upload of every finished video (deduped, never blocks rendering) |
+| \`scripts/drive_sync.py\` | Google Drive upload of every finished video (deduped, never blocks rendering) |
 | \`scripts/drive_webapp.js\` | The Apps Script you paste into script.google.com (one-time Drive setup) |
-| \`.github/workflows/hourly-video.yml\` | On-demand renders (single story / manual batch) |
+| \`.github/workflows/hourly-video.yml\` | Manual/on-demand renders (single story / batch catch-up, 3 parallel workers) |
 | \`scripts/render_pending.py\` | Batch queue used by hourly-video (same parser/state as the factory) |
 | \`scripts/generate_story.py\` | Single-story source: Google Sheet (tolerant parser) → keyless AI → fallback |
 | \`generate_video.py\` | Built-in cinematic renderer (the guaranteed fallback): \`story.json\` → 1080×1920 60fps MP4 |
 | \`state/videos*.json\` | Render state committed by the bot — which stories already have videos (the factory reads the UNION of videos.json + every shard file) |
-| \`state/factory_status.json\` | Live factory status (phase, current story, queue depth, Drive sync) — read by the app |
+| \`state/schedule_state.json\` | Slot ledger — one record per scheduled hour (the gate's dedup) |
+| \`state/factory_status.json\` | Live factory status (phase, slot, queue depth, Drive sync) — read by the app |
 | \`state/drive_sync.json\` | Drive sync dedup state — which video folders were already uploaded |
 | \`fonts/\` | Bundled Arabic fonts (Cairo, Noto Sans Arabic, Amiri, Montserrat) |
 | \`post_video.py\` | Posts to YouTube / TikTok / Instagram |
@@ -360,7 +369,7 @@ Add only what you need — every platform is optional and skipped gracefully:
 ### Google Drive backup (one-time, ~3 minutes, no OAuth keys)
 
 Every finished video lands in **StoryPilot Videos / <date> <title> [<id>]/** in your Drive,
-within an hour of rendering. Setup:
+right after it renders. Setup:
 
 1. Open [script.google.com](https://script.google.com) (the account that owns the Spark sheet) → **New project**.
 2. Delete everything in \`Code.gs\` and paste the contents of \`scripts/drive_webapp.js\` from this repo.
@@ -368,39 +377,41 @@ within an hour of rendering. Setup:
 4. **Deploy → New deployment → Web app**: *Execute as*: **Me**, *Who has access*: **Anyone** → Deploy → authorize the Drive scope → copy the **/exec URL**.
 5. Put that URL in the \`DRIVE_WEBAPP_URL\` secret (repo settings, or paste it in the app's **Platforms → Google Drive** card and hit *Save & push secrets*).
 
-Done — the factory uploads each video bundle (\`output.mp4\`, \`meta.json\`, \`story.json\`,
-\`thumb.jpg\`, \`ai_renderer.py\`) hourly and right before each run ends. Failed uploads retry
-on the next tick and never block video production.
+Done — each video bundle (\`output.mp4\`, \`meta.json\`, \`story.json\`,
+\`thumb.jpg\`, \`ai_renderer.py\`) is uploaded as soon as it renders, with a flush at
+the end of every slot. Failed uploads retry on the next tick and never block video production.
 
 ### Optional repository variables
 
 | Variable | Default | Meaning |
 |---|---|---|
+| \`SCHEDULE_HOURS\` | \`11,12,13,15,20\` | Hours (Africa/Cairo) when videos are made — the schedule |
+| \`MAX_VIDEOS_PER_SLOT\` | \`2\` | Videos per scheduled slot |
+| \`INVENT_WHEN_EMPTY\` | \`true\` | Keyless AI invents ONE story when the queue is empty |
 | \`FLP_MODEL\` | \`auto\` | Keyless model tried first for code/story writing (freellmpool) |
 | \`AI_ATTEMPTS\` | \`3\` | Self-repair rounds when the AI-written renderer fails |
-| \`FACTORY_BUDGET_MIN\` | \`300\` | Minutes per factory run before it chains the next |
-| \`INFINITE_STORIES\` | \`true\` | AI invents new stories when the sheet queue is empty |
+| \`FACTORY_BUDGET_MIN\` | \`45\` | Minutes per slot run |
 | \`SHEET_ID\` | the Spark sheet | Google Sheet id with the stories |
 | \`TTS_VOICE_AR\` | \`ar-EG-ShakirNeural\` | Edge-TTS Arabic voice |
 | \`ENABLE_AI_IMAGES\` | \`true\` | Keyless AI scene imagery (Pollinations) |
 | \`IMAGE_MODEL\` | \`flux\` | Pollinations image model (\`flux\` / \`turbo\`) |
 | \`FRAME_RATE\` | \`60\` | Hyperframes — 60fps silky motion (set \`24\` for the old rate) |
-| \`DRIVE_ROOT_FOLDER\` | \`StoryPilot Videos\` | Drive folder name for the hourly video backup |
-| \`DRIVE_SYNC_INTERVAL\` | \`3600\` | Seconds between Drive sync passes (default: hourly) |
+| \`DRIVE_ROOT_FOLDER\` | \`StoryPilot Videos\` | Drive folder name for the video backup |
+| \`DRIVE_SYNC_INTERVAL\` | \`3600\` | Seconds between Drive sync passes |
 | \`YOUTUBE_PRIVACY\` | \`public\` | \`public\` / \`unlisted\` / \`private\` |
 | \`TIKTOK_PRIVACY\` | \`SELF_ONLY\` | \`SELF_ONLY\` until your TikTok app is approved |
 
 ## Run it now
 
-Actions tab → **Continuous Video Factory** → **Run workflow**. It keeps running and chaining
-itself until you stop it. **Stop:** create the file \`state/FACTORY_STOP\` (or ask the app:
-"stop the factory") or disable the workflow.
+Actions tab → **Scheduled Video Factory** → **Run workflow** — this one run bypasses the
+schedule and renders a slot immediately. Otherwise just wait: the next videos arrive at the
+next scheduled hour. **Stop everything:** create the file \`state/FACTORY_STOP\` (or ask the
+app: "stop the factory") or disable the workflow.
 
 Every run leaves its rendered MP4s (one folder per video: \`output.mp4\`, \`meta.json\`,
 \`thumb.jpg\`, \`story.json\` and \`ai_renderer.py\` — the code the AI wrote) in the
 **factory-videos** artifact (14-day retention), and commits the render state + live factory
 status back to this repo.
-
 ## Story sheet
 
 
@@ -414,64 +425,3 @@ back to a keyless AI story so it never breaks.
 `
 }
 
-export function buildEnsureHourlyYaml(): string {
-  return `# StoryPilot - Self-healing hourly scheduler (backup layer)
-# GitHub cron is best-effort and heavily throttled on some accounts (ticks get
-# silently dropped). This watcher runs at a DIFFERENT minute than the main
-# render cron; if the last "Hourly Story Video" run is stale (> 60 min) or
-# missing, it re-dispatches the workflow so an hourly video is never silently
-# skipped. The StoryPilot app's continuous render loop is the PRIMARY layer.
-name: Ensure Hourly Video
-
-on:
-  schedule:
-    - cron: "19 * * * *" # offset from the main :47 render cron
-  workflow_dispatch: {}
-
-permissions:
-  actions: write
-
-concurrency:
-  group: ensure-hourly
-  cancel-in-progress: false
-
-jobs:
-  ensure:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: Re-dispatch Hourly Story Video if the last run is stale or missing
-        env:
-          GH_TOKEN: \${{ github.token }}
-          GH_REPO: \${{ github.repository }}
-        run: |
-          set -euo pipefail
-
-          LATEST=$(gh run list --workflow hourly-video.yml --limit 1 --json status,createdAt --jq '.[0] // empty')
-          echo "Latest hourly-video run: \${LATEST:-none}"
-
-          if [ -z "$LATEST" ]; then
-            echo "::notice::No previous run found - dispatching Hourly Story Video now."
-            gh workflow run hourly-video.yml
-            exit 0
-          fi
-
-          STATUS=$(echo "$LATEST" | jq -r .status)
-          CREATED=$(echo "$LATEST" | jq -r .createdAt)
-          AGE_MIN=$(( ($(date +%s) - $(date -d "$CREATED" +%s)) / 60 ))
-          echo "status=\${STATUS} created=\${CREATED} age=\${AGE_MIN}m"
-
-          # Never interrupt a run that is queued or in progress
-          if [ "$STATUS" = "queued" ] || [ "$STATUS" = "in_progress" ]; then
-            echo "A run is already queued/in progress - nothing to do."
-            exit 0
-          fi
-
-          if [ "$AGE_MIN" -gt 60 ]; then
-            echo "::notice::Last run is \${AGE_MIN}m old (> 60m) - hourly tick was missed, re-dispatching."
-            gh workflow run hourly-video.yml
-          else
-            echo "Last run is fresh (\${AGE_MIN}m old) - nothing to do."
-          fi
-`
-}
