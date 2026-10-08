@@ -8,17 +8,27 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "سحر الأرقام",
+    "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
     "source": "ai-invented",
-    "started_at": "2026-10-08T10:45:47Z"
+    "started_at": "2026-10-08T11:13:25Z"
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 0,
-  "ai_invented_total": 0,
-  "recent": [],
+  "videos_this_run": 1,
+  "ai_invented_total": 1,
+  "recent": [
+    {
+      "title": "سحر الأرقام",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 1093,
+      "at": "2026-10-08T11:04:00Z"
+    }
+  ],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -28,5 +38,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-08T10:45:47Z"
+  "updated_at": "2026-10-08T11:13:25Z"
 }
