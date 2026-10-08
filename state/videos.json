@@ -612,10 +612,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التضخم: اللص الصامت الذي يأكل مدخراتك"
+    },
+    "16699e69c12c5cf82309e864b19dbd93": {
+      "title": "فخ الخصومات: كيف تجعلك العروض تشتري ما لا تحتاج",
+      "tab": "builtin-bank",
+      "renderedAt": "2026-10-08T23:02:45Z",
+      "fps": 60,
+      "dir": "ai05-16699e69",
+      "source": "builtin-bank",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الانضباط المالي: عادة صغيرة تغير حياتك"
     }
   },
   "failed": {},
-  "ai_invented_count": 5,
+  "ai_invented_count": 6,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -631,6 +643,9 @@
     },
     {
       "title": "قاعدة الـ 72: احسب وقت مضاعفة أموالك بخطوة واحدة"
+    },
+    {
+      "title": "فخ الخصومات: كيف تجعلك العروض تشتري ما لا تحتاج"
     }
   ]
 }
