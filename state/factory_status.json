@@ -1,25 +1,26 @@
 {
-  "phase": "slot_done",
+  "phase": "inventing",
   "mode": "scheduled",
   "slot": {
     "key": "2026-10-08T23",
     "videos": 0,
-    "stop_reason": "invent_failed"
+    "stop_reason": null
   },
   "schedule_hours": "11,12,13,15,20",
   "max_videos_per_slot": 2,
   "should_continue": true,
   "run": {
-    "started_at": "2026-10-08T20:00:37Z",
-    "deadline_at": "2026-10-08T20:45:37Z",
+    "started_at": "2026-10-08T20:13:17Z",
+    "deadline_at": "2026-10-08T20:58:17Z",
     "budget_min": 45.0,
     "mode": "scheduled",
-    "infinite_stories": true,
-    "finished_at": "2026-10-08T20:00:51Z",
-    "videos_made": 0,
-    "stop_reason": "invent_failed"
+    "infinite_stories": true
   },
-  "current": null,
+  "current": {
+    "title": "الربح المركب: سر ثروة المستقبل",
+    "source": "ai-invented",
+    "started_at": "2026-10-08T20:13:22Z"
+  },
   "queue": {
     "pending": 0,
     "total": 61
@@ -36,5 +37,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-08T20:00:51Z"
+  "updated_at": "2026-10-08T20:13:22Z"
 }
