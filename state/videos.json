@@ -564,13 +564,28 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
+    },
+    "fc967e6bf5beb21d63c1925ba9dd5d40": {
+      "title": "صندوق الطوارئ: درسك المالي الأول ضد المفاجآت",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-08T22:00:49Z",
+      "fps": 60,
+      "dir": "ai01-fc967e6b",
+      "source": "ai-invented",
+      "renderer": "ai",
+      "code_by": "freellmpool:auto",
+      "ai_attempts": 3,
+      "topic": "صندوق الطوارئ: درسك المالي الأول ضد المفاجآت"
     }
   },
   "failed": {},
-  "ai_invented_count": 1,
+  "ai_invented_count": 2,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
+    },
+    {
+      "title": "صندوق الطوارئ: درسك المالي الأول ضد المفاجآت"
     }
   ]
 }

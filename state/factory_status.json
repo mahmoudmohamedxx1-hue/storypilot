@@ -1,42 +1,28 @@
 {
-  "phase": "slot_done",
-  "mode": "scheduled",
-  "slot": {
-    "key": "2026-10-08T23",
-    "videos": 1,
-    "stop_reason": "slot_idle"
-  },
-  "schedule_hours": "11,12,13,15,20",
-  "max_videos_per_slot": 2,
+  "phase": "inventing",
+  "mode": "continuous",
   "should_continue": true,
   "run": {
-    "started_at": "2026-10-08T20:13:17Z",
-    "deadline_at": "2026-10-08T20:58:17Z",
-    "budget_min": 45.0,
-    "mode": "scheduled",
-    "infinite_stories": true,
-    "finished_at": "2026-10-08T20:24:42Z",
-    "videos_made": 1,
-    "stop_reason": "slot_idle"
+    "started_at": "2026-10-08T21:56:02Z",
+    "deadline_at": "2026-10-09T02:56:02Z",
+    "budget_min": 300.0,
+    "mode": "continuous",
+    "infinite_stories": true
   },
-  "current": null,
+  "current": {
+    "title": "صندوق الطوارئ: درسك المالي الأول ضد المفاجآت",
+    "source": "ai-invented",
+    "started_at": "2026-10-08T21:56:38Z",
+    "elapsed_sec": 234
+  },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 1,
-  "ai_invented_total": 1,
-  "recent": [
-    {
-      "title": "الربح المركب: سر ثروة المستقبل",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 674,
-      "at": "2026-10-08T20:24:36Z"
-    }
-  ],
+  "videos_this_run": 0,
+  "videos_total": 64,
+  "ai_invented_total": 0,
+  "recent": [],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -46,5 +32,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-08T20:24:42Z"
+  "updated_at": "2026-10-08T22:00:32Z"
 }
