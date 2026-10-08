@@ -69,6 +69,7 @@ jobs:
         id: guard
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }} # gh runs BEFORE checkout - no .git to infer from
         run: |
           OTHER=$(gh run list --workflow factory.yml --limit 50 --json status,databaseId \
             --jq "[.[] | select((.status == \"queued\" or .status == \"in_progress\") and .databaseId != ${{ github.run_id }})] | length")
@@ -177,6 +178,7 @@ jobs:
         if: always() && steps.guard.outputs.go == 'run'
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
           set -uo pipefail
           # honor the STOP request
