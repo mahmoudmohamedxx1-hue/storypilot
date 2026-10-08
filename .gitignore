@@ -16,3 +16,4 @@ web/db/
 web/download/
 __pycache__/
 *.tsbuildinfo
+videos/
