@@ -1,10 +1,10 @@
 {
-  "phase": "inventing",
+  "phase": "slot_done",
   "mode": "scheduled",
   "slot": {
     "key": "2026-10-08T23",
-    "videos": 0,
-    "stop_reason": null
+    "videos": 1,
+    "stop_reason": "slot_idle"
   },
   "schedule_hours": "11,12,13,15,20",
   "max_videos_per_slot": 2,
@@ -14,20 +14,29 @@
     "deadline_at": "2026-10-08T20:58:17Z",
     "budget_min": 45.0,
     "mode": "scheduled",
-    "infinite_stories": true
+    "infinite_stories": true,
+    "finished_at": "2026-10-08T20:24:42Z",
+    "videos_made": 1,
+    "stop_reason": "slot_idle"
   },
-  "current": {
-    "title": "الربح المركب: سر ثروة المستقبل",
-    "source": "ai-invented",
-    "started_at": "2026-10-08T20:13:22Z"
-  },
+  "current": null,
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 0,
-  "ai_invented_total": 0,
-  "recent": [],
+  "videos_this_run": 1,
+  "ai_invented_total": 1,
+  "recent": [
+    {
+      "title": "الربح المركب: سر ثروة المستقبل",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 674,
+      "at": "2026-10-08T20:24:36Z"
+    }
+  ],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -37,5 +46,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-08T20:13:22Z"
+  "updated_at": "2026-10-08T20:24:42Z"
 }
