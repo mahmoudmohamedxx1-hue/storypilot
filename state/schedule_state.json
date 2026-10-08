@@ -1,0 +1,10 @@
+{
+  "slots": {
+    "2026-10-08T23": {
+      "videos": 0,
+      "stop_reason": "invent_failed",
+      "completed_at": "2026-10-08T20:00:51Z",
+      "mode": "scheduled"
+    }
+  }
+}

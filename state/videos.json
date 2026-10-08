@@ -555,13 +555,6 @@
     }
   },
   "failed": {},
-  "ai_invented_count": 2,
-  "ai_titles": [
-    {
-      "title": "سحر الأرقام"
-    },
-    {
-      "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
-    }
-  ]
+  "ai_invented_count": 0,
+  "ai_titles": []
 }
