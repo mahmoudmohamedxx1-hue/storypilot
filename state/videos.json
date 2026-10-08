@@ -684,10 +684,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "مخاطر محاولة توقيت السوق ولماذا يخسر معظم الناس"
+    },
+    "3369da9c039d0156ffc82e4934f98005": {
+      "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-08T23:59:52Z",
+      "fps": 60,
+      "dir": "ai11-3369da9c",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الادخار التلقائي: ادفع لنفسك أولا"
     }
   },
   "failed": {},
-  "ai_invented_count": 11,
+  "ai_invented_count": 12,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -721,6 +733,9 @@
     },
     {
       "title": "السوق المخطط: لماذا تفقد الكثير منا الفرصة"
+    },
+    {
+      "title": "العقلية طويلة الأجل: سر كبار المستثمرين"
     }
   ]
 }
