@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "توزيع المخاطر: لعبة البيض والسلال",
+    "title": "التنويع الاستثماري: لعبة السلال المتعددة",
     "source": "ai-invented",
-    "started_at": "2026-10-08T23:25:14Z",
-    "elapsed_sec": 533
+    "started_at": "2026-10-08T23:34:43Z",
+    "elapsed_sec": 204
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 7,
-  "videos_total": 71,
-  "ai_invented_total": 8,
+  "videos_this_run": 8,
+  "videos_total": 72,
+  "ai_invented_total": 9,
   "recent": [
     {
       "title": "صندوق الطوارئ: درسك المالي الأول ضد المفاجآت",
@@ -85,6 +85,15 @@
       "code_by": "generate_video.py",
       "seconds": 469,
       "at": "2026-10-08T23:24:14Z"
+    },
+    {
+      "title": "توزيع المخاطر: لعبة البيض والسلال",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 535,
+      "at": "2026-10-08T23:34:09Z"
     }
   ],
   "drive": {
@@ -96,5 +105,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-08T23:34:07Z"
+  "updated_at": "2026-10-08T23:38:07Z"
 }

@@ -660,10 +660,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟"
+    },
+    "8f9e42888ee1d70c40302abd30e76d4c": {
+      "title": "التنويع الاستثماري: لعبة السلال المتعددة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-08T23:38:34Z",
+      "fps": 60,
+      "dir": "ai09-8f9e4288",
+      "source": "ai-invented",
+      "renderer": "ai",
+      "code_by": "freellmpool:ovh/gpt-oss-120b",
+      "ai_attempts": 2,
+      "topic": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
     }
   },
   "failed": {},
-  "ai_invented_count": 9,
+  "ai_invented_count": 10,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -691,6 +703,9 @@
     },
     {
       "title": "توزيع المخاطر: لعبة البيض والسلال"
+    },
+    {
+      "title": "التنويع الاستثماري: لعبة السلال المتعددة"
     }
   ]
 }
