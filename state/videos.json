@@ -648,10 +648,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الذهب أم الأسهم؟ أين تضع أموالك"
+    },
+    "e445b1511397334f7295bd8a23aff070": {
+      "title": "توزيع المخاطر: لعبة البيض والسلال",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-08T23:34:09Z",
+      "fps": 60,
+      "dir": "ai08-e445b151",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟"
     }
   },
   "failed": {},
-  "ai_invented_count": 8,
+  "ai_invented_count": 9,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -676,6 +688,9 @@
     },
     {
       "title": "المخاطرة بين الفرص: كيف تختار مشروعك الأول"
+    },
+    {
+      "title": "توزيع المخاطر: لعبة البيض والسلال"
     }
   ]
 }
