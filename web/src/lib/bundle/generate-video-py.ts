@@ -1,3 +1,6 @@
+// Auto-generated from generate_video.py - do not edit by hand;
+// regenerate with scripts/gen-bundle-templates.py
+// Built-in cinematic renderer: story.json -> 1080x1920 60fps MP4 (keyless AI images + Edge-TTS + Ken Burns + Arabic captions), guaranteed fallback for the AI forge
 export const GENERATE_VIDEO_PY = `#!/usr/bin/env python3
 """StoryPilot - Cinematic Renderer v2 (100% keyless).
 

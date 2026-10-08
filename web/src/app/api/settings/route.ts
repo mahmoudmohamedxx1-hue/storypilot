@@ -12,12 +12,8 @@ export async function PUT(req: NextRequest) {
   const body = (await req.json()) as Record<string, unknown>
   const updated: string[] = []
   for (const [key, value] of Object.entries(body)) {
-    if (key === 'autoPost' || key === 'continuousMode' || key === 'aiEnhance') {
+    if (key === 'autoPost') {
       await setSetting(key, value ? 'true' : 'false')
-      updated.push(key)
-    } else if (key === 'workers') {
-      const n = Math.max(1, Math.min(6, parseInt(String(value), 10) || 3))
-      await setSetting(key, String(n))
       updated.push(key)
     } else if (typeof value === 'string') {
       // ignore masked placeholder values (unchanged tokens)
@@ -35,7 +31,7 @@ export async function POST(req: NextRequest) {
   const { keys } = (await req.json()) as { keys?: string[] }
   const target = keys || Object.keys(DEFAULT_SETTINGS)
   for (const k of target) {
-    await setSetting(k, String((DEFAULT_SETTINGS as unknown as Record<string, unknown>)[k]))
+    await setSetting(k, String((DEFAULT_SETTINGS as Record<string, unknown>)[k]))
   }
   const s = await getSettings()
   return Response.json({ ok: true, settings: publicSettings(s) })

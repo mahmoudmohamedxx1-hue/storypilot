@@ -6,10 +6,13 @@ import {
   listWorkflowRuns,
   dispatchWorkflow,
   listRepos,
+  putFile,
+  getFileSha,
+  ghJson,
 } from '@/lib/github'
 import { buildWorkflowBundle } from '@/lib/workflow-bundle'
 import { syncSheet } from '@/lib/sync'
-import { buildLibrary, renderStoryById, renderAllPending, enhanceStoryWithGLM } from '@/lib/library'
+import { buildLibrary, renderStoryById, renderAllPending } from '@/lib/library'
 
 export interface ToolResult {
   name: string
@@ -28,19 +31,20 @@ export async function buildSystemPrompt(): Promise<string> {
     s.youtubeToken ? 'YouTube: connected' : 'YouTube: not configured (YOUTUBE_REFRESH_TOKEN/CLIENT_ID/CLIENT_SECRET secrets needed)',
     s.tiktokToken ? 'TikTok: connected' : 'TikTok: not configured (TIKTOK_ACCESS_TOKEN secret needed)',
     s.instagramToken ? 'Instagram: connected' : 'Instagram: not configured (INSTAGRAM_ACCESS_TOKEN/USER_ID secrets needed)',
+    s.driveWebappUrl ? 'Google Drive: connected (hourly video sync)' : 'Google Drive: not configured (DRIVE_WEBAPP_URL secret needed - one-time Apps Script setup, see Platforms view)',
   ].join(' | ')
-  return `You are ${AGENT_NAME}, an AI agent that operates a CONTINUOUS AI video factory.
+  return `You are ${AGENT_NAME}, an AI agent that operates a CONTINUOUS video factory.
 
-MISSION — videos are generated CONTINUOUSLY, not just hourly:
-1. Read every story from the Google Sheet that Gemini Spark updates (sheet id: ${s.sheetId}) — always in sync.
-2. Render each one into a vertical 1080x1920 60fps MP4 with keyless AI imagery + Edge-TTS + MoviePy (GitHub Actions, keyless & free).
-3. The app's CONTINUOUS RENDER LOOP polls every 90s and dispatches the render workflow BACK-TO-BACK with ${s.workers} PARALLEL WORKERS whenever pending stories exist — so the whole sheet becomes videos as fast as possible, then keeps up with new Spark stories automatically. Hourly crons (:47 render, :19 watcher) are backup layers.
-4. Post every finished MP4 to YouTube, TikTok and Instagram Reels.
+MISSION — videos are generated nonstop, in an infinite loop:
+1. The Continuous Video Factory (factory.yml on GitHub Actions) runs ~5h jobs that chain themselves - generation never stops.
+2. Every story from the Google Sheet that Gemini Spark updates (sheet id: ${s.sheetId}) gets a video; new/edited rows are picked up automatically mid-run.
+3. For EVERY video, the KEYLESS AI WRITES THE HYPERFRAME CODE first (scripts/ai_forge.py: freellmpool → Pollinations, no API keys) - a full Python renderer for that story, sandbox-run and self-repaired on errors; the battle-tested built-in renderer is the guaranteed fallback so a video ALWAYS comes out.
+4. When the sheet queue is empty, the keyless AI invents fresh stories so output never stops.
+5. Finished MP4s post to YouTube, TikTok and Instagram Reels, and every video is synced to Google Drive hourly (deduped in state/drive_sync.json) when the DRIVE_WEBAPP_URL secret is set.
 
 CURRENT STATE
-- Chat model: ${s.chatModel} via z.ai SDK (GLM-5.3-Flash is the default — it also polishes stories on-demand before rendering)
-- Keyless AI in the workflow: ${s.flpModel} via freellmpool (github.com/0xzr/freellmpool) — story generation fallback + AI polish of voiceovers and platform metadata (title/description/tags) with auto-failover across keyless routes
-- AI polish: ${s.aiEnhance ? 'ON — every video narration is tightened by keyless AI (freellmpool in the workflow, GLM-5.3-Flash for app-dispatched single renders)' : 'OFF (enable in Settings)'}
+- Chat model: ${s.chatModel} via z.ai SDK (GLM-5.3-Flash is the default chat model)
+- Keyless code-writing/story models in the workflow: freellmpool "${s.flpModel}" first, then live keyless routes (ovh/gpt-oss-120b, Qwen3-Coder, kilo/openrouter), then Pollinations text API (gpt-oss) - all keyless with auto-failover
 - GitHub: ${gh.connected === true ? 'connected' : 'NOT connected (add a token in Settings)'} (pipeline repo: ${s.githubRepo})
 - Platforms: ${platformBits}
 - TTS voice (Arabic): ${s.voice}
@@ -55,12 +59,13 @@ Available tools:
 - sync_sheet {} — re-sync the app with the Google Sheet now (all tabs, all stories, change detection)
 - get_library {} — the video library: every story from the sheet + its render status (to make / rendering / done) + stats
 - render_story {"storyId": str} — dispatch a GitHub Actions render for one library story (any tab, any format)
-- make_all_videos {} — dispatch the continuous factory: N parallel workers render EVERY pending sheet story (keyless AI polish on); the app's render loop re-dispatches back-to-back until all are done
-- enhance_story {"storyId": str} — preview the GLM-5.3-Flash (z.ai SDK) polish of one story's narration without rendering it
+- make_all_videos {} — dispatch the Continuous Video Factory: renders EVERY pending sheet story back-to-back, then keeps going forever
 - get_pipeline {} — GitHub connection, recent workflow runs, local job list
 - create_job {"storyTitle": str} — queue a video job in the app's job board
-- trigger_workflow {} — dispatch the hourly-video GitHub Actions workflow right now
-- deploy_workflow {} — push the workflow bundle files (.github/workflows/hourly-video.yml + python scripts) to the repo
+- trigger_workflow {} — dispatch the Continuous Video Factory right now
+- control_factory {"action": "start"|"stop"|"status"} — start/resume the infinite-loop factory, stop it gracefully (state/FACTORY_STOP), or check if it's alive
+- drive_status {} — live health check of the Google Drive sync (pings the user's Apps Script web app; explains setup if not configured)
+- deploy_workflow {} — push the full bundle (factory.yml + hourly-video.yml + python scripts) to the repo
 - list_repos {} — list the GitHub repos available to pick as pipeline repo
 - generate_story {"topic": str} — write a brand-new 4-6 scene story JSON (same schema as the sheet) for the next video
 - setup_guide {} — the step-by-step guide for wiring YouTube/TikTok/Instagram secrets
@@ -72,7 +77,7 @@ RULES
 - Never invent workflow run statuses or story content — always read them via tools.
 - If GitHub is not connected, guide the user to Settings to add a token.
 - For anything about rendering tech: 1080x1920 9:16, 60fps hyperframes (FRAME_RATE var), H.264+AAC, Edge-TTS voices (ar-EG-ShakirNeural default), arabic-reshaper + python-bidi for Arabic text.
-- The factory is CONTINUOUS: each dispatched run fans out to ${s.workers} parallel workers, each rendering its own shard of the pending queue (tracked in state/videos*.json committed to the repo) until every story has a video. Edited stories re-queue automatically (content-hash change). Pending counts come from the sheet stories minus the repo render state — always truthful.`
+- The factory is THE engine: one ~5h run drains the whole pending queue (keyless-AI-written renderer per story, tracked in state/videos.json committed to the repo), invents keyless-AI stories when idle, then chains the next run. Edited sheet stories re-queue automatically. The hourly-video workflow is now on-demand only (Library "Make video" button).`
 }
 
 export async function executeTool(name: string, args: Record<string, unknown>): Promise<ToolResult> {
@@ -118,21 +123,6 @@ export async function executeTool(name: string, args: Record<string, unknown>): 
           data: result,
         }
       }
-      case 'enhance_story': {
-        const storyId = args.storyId as string
-        if (!storyId) return { name, args, ok: false, summary: 'enhance_story needs a storyId (get one from get_library).' }
-        const story = await db.storyRecord.findUnique({ where: { id: storyId } })
-        if (!story) return { name, args, ok: false, summary: 'Story not found.' }
-        let scenes: Array<{ visual?: string; voiceover?: string }> = []
-        try { scenes = JSON.parse(story.storyJson || '{}').scenes || [] } catch { /* none */ }
-        const polish = await enhanceStoryWithGLM({ title: story.title, logline: story.logline, scenes })
-        if (!polish) return { name, args, ok: true, summary: `GLM-5.3-Flash polish unavailable right now — "${story.title}" would render with its original sheet narration (the keyless freellmpool polish in the workflow is the fallback).` }
-        return {
-          name, args, ok: true,
-          summary: `GLM-5.3-Flash polish preview for "${story.title}":\n• AI title: ${polish.title}\n• First line: ${polish.voiceovers[0]?.slice(0, 140)}\n• Tags: ${polish.tags.slice(0, 6).join(', ')}\n(render_story applies this automatically before dispatching)`,
-          data: { polish },
-        }
-      }
       case 'make_all_videos': {
         const result = await renderAllPending()
         return {
@@ -150,7 +140,7 @@ export async function executeTool(name: string, args: Record<string, unknown>): 
         ])
         return {
           name, args, ok: true,
-          summary: `Continuous factory: ${gh.connected ? 'GitHub connected' : `not connected (${(gh as { error?: string }).error || ''})`}. Recent runs: ${runs.length ? runs.map(r => `#${r.id} ${r.status}${r.conclusion ? '/' + r.conclusion : ''} (${r.created_at})`).join('; ') : 'none yet'}. Local jobs: ${jobs.length}.`,
+          summary: `GitHub: ${gh.connected ? 'connected' : `not connected (${(gh as { error?: string }).error || ''})`}. Recent runs: ${runs.length ? runs.map(r => `#${r.id} ${r.status}${r.conclusion ? '/' + r.conclusion : ''} (${r.created_at})`).join('; ') : 'none yet'}. Local jobs: ${jobs.length}.`,
           data: { github: gh, runs, jobs },
         }
       }
@@ -167,10 +157,77 @@ export async function executeTool(name: string, args: Record<string, unknown>): 
       }
       case 'trigger_workflow': {
         const s = await getSettings()
-        await dispatchWorkflow(s.githubRepo, 'hourly-video.yml')
+        await dispatchWorkflow(s.githubRepo, 'factory.yml', 'main', { reason: 'chat' })
         return {
           name, args, ok: true,
-          summary: `Dispatched the hourly-video workflow on ${s.githubRepo}. It fetches the story, renders the MP4 and posts to the connected platforms. Watch it in the Pipeline view.`,
+          summary: `Dispatched the Continuous Video Factory on ${s.githubRepo}. It drains every pending story (keyless AI writes the renderer code per video), invents new stories when idle, posts to the connected platforms, and chains the next run so generation never stops. Watch it in the Pipeline view.`,
+        }
+      }
+      case 'control_factory': {
+        const s = await getSettings()
+        const action = String(args.action || 'status')
+        if (action === 'stop') {
+          await putFile(s.githubRepo, 'state/FACTORY_STOP',
+            `Factory stop requested by ${AGENT_NAME} at ${new Date().toISOString()}\nDelete this file (or ask "start the factory") to resume.\n`,
+            'chore: graceful factory stop [skip ci]')
+          return {
+            name, args, ok: true,
+            summary: 'Factory STOP requested (state/FACTORY_STOP committed). The current run finishes its video, uploads it, and does NOT chain the next run. Say "start the factory" to resume.',
+          }
+        }
+        if (action === 'start') {
+          const sha = await getFileSha(s.githubRepo, 'state/FACTORY_STOP').catch(() => undefined)
+          if (sha) {
+            await ghJson(`/repos/${s.githubRepo}/contents/state/FACTORY_STOP`, {
+              method: 'DELETE',
+              body: JSON.stringify({ message: 'chore: resume the factory [skip ci]', sha }),
+            })
+          }
+          await dispatchWorkflow(s.githubRepo, 'factory.yml', 'main', { reason: 'chat-start' })
+          return {
+            name, args, ok: true,
+            summary: `Factory RESUMED: stop flag removed${sha ? '' : ' (was not set)'} and a fresh run dispatched on ${s.githubRepo}. The infinite loop continues.`,
+          }
+        }
+        const runs = await listWorkflowRuns(s.githubRepo, 10).catch(() => [])
+        const factoryRuns = runs.filter((r) => r.name === 'Continuous Video Factory')
+        const live = factoryRuns.find((r) => r.status === 'in_progress' || r.status === 'queued')
+        return {
+          name, args, ok: true,
+          summary: live
+            ? `Factory is ALIVE: run #${live.id} ${live.status} (started ${new Date(live.created_at).toLocaleString()}). It self-chains, so generation is continuous.`
+            : `Factory has no active run right now (last: ${factoryRuns[0] ? `#${factoryRuns[0].id} ${factoryRuns[0].conclusion ?? factoryRuns[0].status}` : 'none'}). The app heartbeat should revive it within ~10 minutes, or use control_factory {"action":"start"}.`,
+          data: { live: live?.id ?? null },
+        }
+      }
+      case 'drive_status': {
+        const s = await getSettings()
+        if (!s.driveWebappUrl) {
+          return {
+            name, args, ok: true,
+            summary: 'Google Drive sync is NOT configured yet. The factory still renders + posts without it. To turn on the hourly Drive backup (3 minutes, one-time): 1) open script.google.com and create a new project, 2) paste the code from scripts/drive_webapp.js in the repo, 3) Deploy as Web app (Execute as: Me, Access: Anyone) and copy the /exec URL, 4) paste it in the Platforms view (Google Drive card) and hit Save & push secrets. Videos then land in a "StoryPilot Videos" folder in your Drive within an hour.',
+          }
+        }
+        try {
+          const url = new URL(s.driveWebappUrl)
+          url.searchParams.set('action', 'ping')
+          if (s.driveWebappKey) url.searchParams.set('key', s.driveWebappKey)
+          const res = await fetch(url, { signal: AbortSignal.timeout(20000) })
+          const j = (await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))) as { ok?: boolean; root?: string; error?: string }
+          if (j.ok) {
+            return {
+              name, args, ok: true,
+              summary: `Google Drive sync is LIVE: web app reachable, uploading into the "${j.root || 'StoryPilot Videos'}" folder. The factory syncs every finished video hourly (deduped) plus a final flush before each chained run ends.`,
+              data: j,
+            }
+          }
+          return {
+            name, args, ok: false,
+            summary: `Drive web app reachable but rejected the ping: ${j.error || 'unknown error'}. If you set a KEY in the Apps Script, make sure the same value is in the DRIVE_WEBAPP_KEY secret (Platforms view).`,
+            data: j,
+          }
+        } catch (e) {
+          return { name, args, ok: false, summary: `Could not reach the Drive web app: ${(e as Error).message}. Check the /exec URL in the Platforms view (redeploy the Apps Script web app if it was revoked).` }
         }
       }
       case 'deploy_workflow': {
@@ -179,7 +236,7 @@ export async function executeTool(name: string, args: Record<string, unknown>): 
         const result = await deployBundle(s.githubRepo)
         return {
           name, args, ok: true,
-          summary: `Deployed ${result.pushed.length} files to ${s.githubRepo}: ${result.pushed.join(', ')}. ${result.skipped.length ? `Skipped (unchanged): ${result.skipped.join(', ')}.` : ''} The hourly schedule (cron: 0 * * * *) is now live.`,
+          summary: `Deployed ${result.pushed.length} files to ${s.githubRepo}: ${result.pushed.join(', ')}. ${result.skipped.length ? `Skipped (unchanged): ${result.skipped.join(', ')}.` : ''} The Continuous Video Factory (factory.yml) is live - dispatch it with trigger_workflow or control_factory {"action":"start"}.`,
           data: result,
         }
       }

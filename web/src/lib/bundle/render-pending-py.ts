@@ -1,3 +1,6 @@
+// Auto-generated from scripts/render_pending.py - do not edit by hand;
+// regenerate with scripts/gen-bundle-templates.py
+// Batch catch-up queue: sharded parallel workers + union render state + keyless AI polish (freellmpool -> llm7 GLM-5.3-Flash), renders every pending sheet story
 export const RENDER_PENDING_PY = `#!/usr/bin/env python3
 """StoryPilot - Continuous factory batch renderer (the "make ALL videos" queue).
 
@@ -46,7 +49,7 @@ SUBPROC_TIMEOUT = int(os.environ.get("SUBPROC_TIMEOUT", "1500"))
 SHARD_INDEX = int(os.environ.get("SHARD_INDEX", "0"))
 NUM_SHARDS = max(1, int(os.environ.get("NUM_SHARDS", "1")))
 AI_ENHANCE = os.environ.get("AI_ENHANCE", "true").lower() in ("1", "true", "yes")
-FLP_MODEL = os.environ.get("FLP_MODEL", "__FLP_MODEL__")
+FLP_MODEL = os.environ.get("FLP_MODEL", "glm-4.7-flash")
 LLM7_MODEL = os.environ.get("LLM7_MODEL", "GLM-5.3-Flash")
 STATE_DIR = os.environ.get("STATE_DIR", "state")
 # each parallel worker owns its own shard file (no git conflicts between workers)
@@ -700,7 +703,7 @@ def ai_polish(story):
             cmd = base + ["ask", "-m", model, "--json", "--timeout", "60", "-s", POLISH_PROMPT, prompt]
             out = subprocess.run(cmd, capture_output=True, text=True, timeout=90)
             raw = (out.stdout or "") + (out.stderr or "")
-            m2 = re.search(r"\{[\s\S]*\}", raw)
+            m2 = re.search(r"{[sS]*}", raw)
             if not m2:
                 print(f"[polish] freellmpool {model}: no JSON ({raw.strip()[:90]})", flush=True)
                 continue
@@ -716,7 +719,7 @@ def ai_polish(story):
     # --- route 2: llm7 direct (keyless, GLM-5.3-Flash) ---
     try:
         raw = llm7_chat(POLISH_PROMPT, prompt)
-        m3 = re.search(r"\{[\s\S]*\}", raw)
+        m3 = re.search(r"{[sS]*}", raw)
         if m3:
             data = json.loads(m3.group(0))
             if _valid_polish(data, scenes):

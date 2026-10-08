@@ -8,7 +8,7 @@ import {
   Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription,
 } from '@/components/ui/dialog'
 import { toast } from 'sonner'
-import {Factory, 
+import {
   RefreshCw, Loader2, Film, Clapperboard, Play, Youtube, Trash2,
   ExternalLink, Languages, Clock, Sparkles, HardDrive, CheckCircle2,
   XCircle, Video, Ghost, CircleDashed, Layers, Zap, Rocket,
@@ -19,7 +19,7 @@ interface PlatformState { platform: string; configured: boolean; status: string;
 interface LibraryVideo {
   jobId: string; runId: string | null; runStatus: string | null; runConclusion: string | null
   runUrl: string | null; artifactId: number | null; artifactEntry: string | null
-  sizeBytes: number | null; durationSec: number | null; fps: number | null; hyperframes: boolean; aiEnhanced: boolean
+  sizeBytes: number | null; durationSec: number | null; fps: number | null; hyperframes: boolean
   renderedAt: string | null; createdAt: string
   platforms: PlatformState[]; watchable: boolean
 }
@@ -35,7 +35,7 @@ interface LibraryStats {
 }
 interface CatchupInfo {
   total: number; done: number; pending: number; failed: number
-  runsNeeded: number; workers: number; active: boolean
+  runsNeeded: number; active: boolean
 }
 interface LibraryData {
   ok: boolean; items: LibraryItem[]; stats: LibraryStats; catchup: CatchupInfo | null
@@ -207,11 +207,6 @@ function VideoCard({ item, onWatch, onRender, busyId }: {
                 <Zap size={9} /> 60fps
               </span>
             )}
-            {item.video.aiEnhanced && (
-              <span className="inline-flex items-center gap-0.5 text-[#0e9f6e] font-medium" title="Narration polished by keyless AI (freellmpool / GLM-5.3-Flash) before rendering">
-                <Sparkles size={9} /> AI polish
-              </span>
-            )}
           </p>
         )}
       </div>
@@ -376,16 +371,11 @@ export function LibraryView() {
                     <h3 className="text-[13.5px] font-semibold text-[#1a1c20]">
                       {data.catchup.pending === 0
                         ? 'All caught up — every sheet story has a video'
-                        : `Continuous factory · ${data.catchup.done}/${data.catchup.total} sheet stories made`}
+                        : `Catch-up in progress · ${data.catchup.done}/${data.catchup.total} sheet stories made`}
                     </h3>
                     <span className="inline-flex items-center gap-1 rounded-full bg-white/80 border border-[#E5E7EB] px-2 py-0.5 text-[10.5px] font-medium text-[#7c3aed]">
                       <Zap size={9} /> 60fps hyperframes
                     </span>
-                    {data.catchup.workers > 1 && (
-                      <span className="inline-flex items-center gap-1 rounded-full bg-white/80 border border-[#E5E7EB] px-2 py-0.5 text-[10.5px] font-medium text-[#315CEA]">
-                        <Factory size={9} /> {data.catchup.workers}× parallel workers
-                      </span>
-                    )}
                   </div>
                   <div className="mt-2.5 h-2 rounded-full bg-white/70 overflow-hidden" role="progressbar"
                     aria-valuenow={data.catchup.done} aria-valuemin={0} aria-valuemax={data.catchup.total}>
@@ -394,8 +384,8 @@ export function LibraryView() {
                   </div>
                   <p className="mt-1.5 text-[11.5px] text-[#6b7280] leading-relaxed">
                     {data.catchup.pending === 0
-                      ? 'New or edited stories from Gemini Spark are picked up automatically and rendered continuously.'
-                      : `${data.catchup.pending} pending · ${data.catchup.workers} parallel workers render up to ${data.catchup.workers * 4} per dispatch (~${data.catchup.runsNeeded} more ${data.catchup.runsNeeded === 1 ? 'dispatch' : 'dispatches'}) with keyless AI polish — the loop re-dispatches back-to-back automatically.`}
+                      ? 'New or edited stories from Gemini Spark are picked up automatically and rendered by the hourly run.'
+                      : `${data.catchup.pending} pending · each hourly run renders up to 4 (about ${data.catchup.runsNeeded} more ${data.catchup.runsNeeded === 1 ? 'run' : 'runs'}) — or start one now.`}
                   </p>
                 </div>
                 {data.catchup.pending > 0 && (

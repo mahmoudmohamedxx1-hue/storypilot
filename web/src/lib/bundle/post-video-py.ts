@@ -1,3 +1,6 @@
+// Auto-generated from post_video.py - do not edit by hand;
+// regenerate with scripts/gen-bundle-templates.py
+// Posts the MP4 to YouTube, TikTok and Instagram Reels (each platform activates when its secrets exist)
 export const POST_VIDEO_PY = `#!/usr/bin/env python3
 """StoryPilot - Multi-platform poster.
 

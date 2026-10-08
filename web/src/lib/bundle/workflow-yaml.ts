@@ -106,7 +106,7 @@ jobs:
         if: matrix.worker == '0' && env.RENDER_MODE == 'single'
         env:
           SHEET_ID: \${{ vars.SHEET_ID || '${opts.sheetId}' }}
-          FLP_MODEL: \${{ vars.FLP_MODEL || '${opts.flpModel}' }}
+          FLP_MODEL: \${{ vars.FLP_MODEL || 'glm-4.7-flash' }}
           LLM7_MODEL: \${{ vars.LLM7_MODEL || 'GLM-5.3-Flash' }}
           USE_AI_STORY: \${{ github.event_name == 'workflow_dispatch' && inputs.use_ai_story || 'false' }}
           STORY_TOPIC: \${{ github.event_name == 'workflow_dispatch' && inputs.topic || '' }}
@@ -138,7 +138,7 @@ jobs:
         if: env.RENDER_MODE == 'batch'
         env:
           SHEET_ID: \${{ vars.SHEET_ID || '${opts.sheetId}' }}
-          FLP_MODEL: \${{ vars.FLP_MODEL || '${opts.flpModel}' }}
+          FLP_MODEL: \${{ vars.FLP_MODEL || 'glm-4.7-flash' }}
           LLM7_MODEL: \${{ vars.LLM7_MODEL || 'GLM-5.3-Flash' }}
           TTS_VOICE_AR: \${{ vars.TTS_VOICE_AR || '${opts.voice}' }}
           ENABLE_AI_IMAGES: \${{ vars.ENABLE_AI_IMAGES || 'true' }}
@@ -231,13 +231,13 @@ jobs:
           shopt -s nullglob
           posted=0
           for d in dist/*/ dist/*/*/ videos/*/; do
-            [ -f "\$d/output.mp4" ] || continue
-            echo "[youtube] posting \$d"
-            VIDEO_PATH="\$d/output.mp4" META_PATH="\$d/meta.json" python post_video.py --youtube \\
-              && posted=\$((posted+1)) \\
-              || echo "::warning::failed to post \$d to YouTube"
+            [ -f "$d/output.mp4" ] || continue
+            echo "[youtube] posting $d"
+            VIDEO_PATH="$d/output.mp4" META_PATH="$d/meta.json" python post_video.py --youtube \\
+              && posted=$((posted+1)) \\
+              || echo "::warning::failed to post $d to YouTube"
           done
-          echo "posted \$posted videos to YouTube"
+          echo "posted $posted videos to YouTube"
 
       - name: Post to TikTok
         if: env.TIKTOK_ACCESS_TOKEN != ''
@@ -245,10 +245,10 @@ jobs:
           set -uo pipefail
           shopt -s nullglob
           for d in dist/*/ dist/*/*/ videos/*/; do
-            [ -f "\$d/output.mp4" ] || continue
-            echo "[tiktok] posting \$d"
-            VIDEO_PATH="\$d/output.mp4" META_PATH="\$d/meta.json" python post_video.py --tiktok \\
-              || echo "::warning::failed to post \$d to TikTok"
+            [ -f "$d/output.mp4" ] || continue
+            echo "[tiktok] posting $d"
+            VIDEO_PATH="$d/output.mp4" META_PATH="$d/meta.json" python post_video.py --tiktok \\
+              || echo "::warning::failed to post $d to TikTok"
           done
 
       - name: Post to Instagram Reels
@@ -257,10 +257,10 @@ jobs:
           set -uo pipefail
           shopt -s nullglob
           for d in dist/*/ dist/*/*/ videos/*/; do
-            [ -f "\$d/output.mp4" ] || continue
-            echo "[instagram] posting \$d"
-            VIDEO_PATH="\$d/output.mp4" META_PATH="\$d/meta.json" python post_video.py --instagram \\
-              || echo "::warning::failed to post \$d to Instagram"
+            [ -f "$d/output.mp4" ] || continue
+            echo "[instagram] posting $d"
+            VIDEO_PATH="$d/output.mp4" META_PATH="$d/meta.json" python post_video.py --instagram \\
+              || echo "::warning::failed to post $d to Instagram"
           done
 `
 }
@@ -277,43 +277,69 @@ freellmpool>=0.13.0
 `
 
 export function buildSetupMd(opts: { repo: string; sheetUrl: string }): string {
-  return `# StoryPilot — Continuous Story Video Factory
+  return `# StoryPilot — Continuous Video Factory (infinite loop)
 
-This repo renders **every story in the Google Sheet into a video**, continuously:
+This repo generates videos **nonstop** on GitHub Actions — an infinite, self-chaining loop
+that never waits for a cron:
 
-1. **Continuous factory**: the StoryPilot app's render loop dispatches this workflow
-   **back-to-back** whenever pending stories exist (not just hourly). Each run fans
-   out to **N parallel workers** (GitHub Actions matrix) — every worker renders its
-   own shard of the queue, so throughput multiplies. Hourly crons (:47 render, :19
-   watcher) act as backup layers when the app is offline.
-2. **Keyless AI everywhere**: [freellmpool](https://github.com/0xzr/freellmpool)
-   polishes each story's voiceovers (tighter pacing, stronger hooks) and writes the
-   platform title/description/hashtags before rendering — no API keys needed, with
-   automatic model failover. The app itself uses the z.ai SDK (GLM-5.3-Flash) for
-   chat and on-demand story polish.
-3. **Cinematic vertical 1080×1920 MP4s** at **60fps hyperframes** — keyless AI scene
-   imagery (Pollinations flux) with Ken Burns motion + Edge-TTS voiceover +
-   word-synced Arabic captions (MoviePy + Pillow + arabic-reshaper + python-bidi,
-   bundled Cairo/Noto/Amiri fonts).
-4. **Post** every rendered video to YouTube, TikTok and Instagram Reels (each
-   platform activates as soon as you add its secrets).
+1. **Continuous Video Factory (\`.github/workflows/factory.yml\`)** — each job runs ~5 hours,
+   renders video after video, and **chains the next run** before it ends. Generation only
+   stops if you ask it to (\`state/FACTORY_STOP\` or disable the workflow).
+2. **The KEYLESS AI WRITES THE HYPERFRAME CODE** — for every story, \`scripts/ai_forge.py\`
+   asks a keyless AI (freellmpool pool first: \`auto\`, gpt-oss-120b, Qwen3-Coder… then the
+   Pollinations text API — no API keys anywhere) to write a COMPLETE Python renderer for that
+   specific story: 1080×1920 @ 60fps hyperframes, Edge-TTS narration (ar-EG-ShakirNeural),
+   shaped Arabic RTL text, keyless AI scene imagery, ken-burns motion, ffmpeg-pipe streaming.
+   The forge sandbox-runs the AI-written script, validates the MP4 with ffprobe, and feeds any
+   error back to the AI for a **self-repair** round (3 attempts). The battle-tested built-in
+   renderer is the final fallback, so **a video ALWAYS comes out**. Whichever model actually
+   wrote the code is recorded in \`meta.json\`.
+3. **Never-ending source of stories** — every sheet tab is re-synced mid-run (Spark edits are
+   picked up within minutes, hash-tracked in \`state/videos.json\` so nothing is re-rendered);
+   when the queue is empty the keyless AI **invents fresh stories** (rotating Arabic finance
+   topics, no repeats) so the output never stops. Set \`INFINITE_STORIES=false\` to wait for
+   the sheet instead.
+4. **Publish everywhere** — every finished video posts to YouTube, TikTok and Instagram Reels
+   (each platform activates as soon as its secrets exist).
+5. **Hourly Google Drive sync** — every finished video is ALSO uploaded to a folder in your
+   Google Drive (same account as the Spark sheet) at most once an hour, deduped in
+   \`state/drive_sync.json\`. One-time 3-minute setup via your own Apps Script web app —
+   see **Google Drive backup** below.
 
-Single-story renders are still available: dispatch the workflow with \`use_ai_story\`
-or a \`story_json\` payload (the app's **Make video** button uses this).
+\`hourly-video.yml\` remains as the **on-demand** renderer: the app's Library **Make video**
+button (single story) and manual batch catch-up.
+
+## Reliability layers (why it never silently stops)
+
+| Layer | What it does |
+|---|---|
+| Self-chaining | every factory run dispatches the next one before finishing — VERIFIED with 5 retries (GITHUB_TOKEN) |
+| \`*/15\` cron heartbeat | factory.yml schedule — revives the chain if a dispatch fails |
+| ensure-factory.yml | every 20 min: re-dispatches the factory if it looks dead |
+| hourly-video.yml cron + ensure-hourly.yml | hourly backup: parallel workers drain any pending queue |
+| App heartbeat | while the StoryPilot app runs: dispatches the factory if idle > 25 min |
+| Singleton guard + concurrency group | never two factories at once; queued noise auto-collapses |
 
 ## Files
 
 | File | Purpose |
 |---|---|
-| \`.github/workflows/hourly-video.yml\` | The render workflow — parallel worker matrix + publish job |
-| \`.github/workflows/ensure-hourly.yml\` | Backup watcher — re-dispatches when the last run goes stale |
-| \`scripts/render_pending.py\` | Batch queue: shards the pending stories across workers and renders them |
-| \`scripts/generate_story.py\` | Single-story source: Google Sheet (tolerant parser) → keyless GLM → fallback |
-| \`generate_video.py\` | Cinematic renderer: \`story.json\` → 1080×1920 60fps MP4 |
-| \`state/videos*.json\` | Render state committed by the bot — which stories already have videos |
+| \`.github/workflows/factory.yml\` | **THE infinite loop** — ~5h self-chaining factory job |
+| \`.github/workflows/ensure-factory.yml\` | Factory watcher — re-dispatches when the chain breaks |
+| \`scripts/factory.py\` | Factory supervisor: sync → forge → invent stories → repeat (deadline-aware) |
+| \`scripts/ai_forge.py\` | **Keyless AI code-writer**: AI writes the hyperframe renderer per story, sandbox-run + self-repair + fallback |
+| \`scripts/drive_sync.py\` | Hourly Google Drive upload of every finished video (deduped, never blocks rendering) |
+| \`scripts/drive_webapp.js\` | The Apps Script you paste into script.google.com (one-time Drive setup) |
+| \`.github/workflows/hourly-video.yml\` | On-demand renders (single story / manual batch) |
+| \`scripts/render_pending.py\` | Batch queue used by hourly-video (same parser/state as the factory) |
+| \`scripts/generate_story.py\` | Single-story source: Google Sheet (tolerant parser) → keyless AI → fallback |
+| \`generate_video.py\` | Built-in cinematic renderer (the guaranteed fallback): \`story.json\` → 1080×1920 60fps MP4 |
+| \`state/videos*.json\` | Render state committed by the bot — which stories already have videos (the factory reads the UNION of videos.json + every shard file) |
+| \`state/factory_status.json\` | Live factory status (phase, current story, queue depth, Drive sync) — read by the app |
+| \`state/drive_sync.json\` | Drive sync dedup state — which video folders were already uploaded |
 | \`fonts/\` | Bundled Arabic fonts (Cairo, Noto Sans Arabic, Amiri, Montserrat) |
 | \`post_video.py\` | Posts to YouTube / TikTok / Instagram |
-| \`requirements.txt\` | Python dependencies |
+| \`requirements.txt\` | Python dependencies (all free / keyless) |
 | \`web/\` | The full Kimi-style agent app (Next.js) source |
 
 ## Secrets (Settings → Secrets and variables → Actions)
@@ -328,42 +354,63 @@ Add only what you need — every platform is optional and skipped gracefully:
 | \`TIKTOK_ACCESS_TOKEN\` | TikTok | TikTok for Developers → Content Posting API |
 | \`INSTAGRAM_ACCESS_TOKEN\` | Instagram | Meta Graph API (IG business account) |
 | \`INSTAGRAM_USER_ID\` | Instagram | Your Instagram Business account id |
+| \`DRIVE_WEBAPP_URL\` | Google Drive | The \`/exec\` URL of your Apps Script web app (see below) |
+| \`DRIVE_WEBAPP_KEY\` | Google Drive | Optional shared secret you set as \`KEY\` in the Apps Script |
 
-### Optional repository variables (Settings → Secrets and variables → Actions → Variables)
+### Google Drive backup (one-time, ~3 minutes, no OAuth keys)
+
+Every finished video lands in **StoryPilot Videos / <date> <title> [<id>]/** in your Drive,
+within an hour of rendering. Setup:
+
+1. Open [script.google.com](https://script.google.com) (the account that owns the Spark sheet) → **New project**.
+2. Delete everything in \`Code.gs\` and paste the contents of \`scripts/drive_webapp.js\` from this repo.
+3. *(Optional)* set \`KEY\` in the script to a long random string — you will reuse it as the \`DRIVE_WEBAPP_KEY\` secret.
+4. **Deploy → New deployment → Web app**: *Execute as*: **Me**, *Who has access*: **Anyone** → Deploy → authorize the Drive scope → copy the **/exec URL**.
+5. Put that URL in the \`DRIVE_WEBAPP_URL\` secret (repo settings, or paste it in the app's **Platforms → Google Drive** card and hit *Save & push secrets*).
+
+Done — the factory uploads each video bundle (\`output.mp4\`, \`meta.json\`, \`story.json\`,
+\`thumb.jpg\`, \`ai_renderer.py\`) hourly and right before each run ends. Failed uploads retry
+on the next tick and never block video production.
+
+### Optional repository variables
 
 | Variable | Default | Meaning |
 |---|---|---|
-| \`FLP_MODEL\` | \`glm-4.7-flash\` | freellmpool model tried first for story generation & polish |
-| \`LLM7_MODEL\` | \`GLM-5.3-Flash\` | Keyless direct fallback for polish/story-gen (llm7.io, no API key) |
-| \`SHEET_ID\` | the Spark sheet | Google Sheet id with the hourly story |
+| \`FLP_MODEL\` | \`auto\` | Keyless model tried first for code/story writing (freellmpool) |
+| \`AI_ATTEMPTS\` | \`3\` | Self-repair rounds when the AI-written renderer fails |
+| \`FACTORY_BUDGET_MIN\` | \`300\` | Minutes per factory run before it chains the next |
+| \`INFINITE_STORIES\` | \`true\` | AI invents new stories when the sheet queue is empty |
+| \`SHEET_ID\` | the Spark sheet | Google Sheet id with the stories |
 | \`TTS_VOICE_AR\` | \`ar-EG-ShakirNeural\` | Edge-TTS Arabic voice |
 | \`ENABLE_AI_IMAGES\` | \`true\` | Keyless AI scene imagery (Pollinations) |
 | \`IMAGE_MODEL\` | \`flux\` | Pollinations image model (\`flux\` / \`turbo\`) |
 | \`FRAME_RATE\` | \`60\` | Hyperframes — 60fps silky motion (set \`24\` for the old rate) |
-| \`AI_ENHANCE\` | \`true\` | Keyless AI polish of voiceovers + platform metadata before render |
-| \`BUDGET_MIN\` | \`36\` | Minutes each worker spends rendering per run |
-| \`MAX_VIDEOS\` | \`4\` | Max videos rendered **per worker** per run |
-| \`WORKERS_JSON\` | \`["0","1","2"]\` | Parallel workers for cron-triggered runs (app dispatches override) |
+| \`DRIVE_ROOT_FOLDER\` | \`StoryPilot Videos\` | Drive folder name for the hourly video backup |
+| \`DRIVE_SYNC_INTERVAL\` | \`3600\` | Seconds between Drive sync passes (default: hourly) |
 | \`YOUTUBE_PRIVACY\` | \`public\` | \`public\` / \`unlisted\` / \`private\` |
 | \`TIKTOK_PRIVACY\` | \`SELF_ONLY\` | \`SELF_ONLY\` until your TikTok app is approved |
 
 ## Run it now
 
-Actions tab → **Hourly Story Video** → **Run workflow**.
+Actions tab → **Continuous Video Factory** → **Run workflow**. It keeps running and chaining
+itself until you stop it. **Stop:** create the file \`state/FACTORY_STOP\` (or ask the app:
+"stop the factory") or disable the workflow.
+
 Every run leaves its rendered MP4s (one folder per video: \`output.mp4\`, \`meta.json\`,
-\`thumb.jpg\`, \`story.json\`) in per-worker **hourly-video-w\*** artifacts (14-day
-retention), commits the render state, and the app's continuous loop (or the next
-hourly cron) automatically continues any remaining queue.
+\`thumb.jpg\`, \`story.json\` and \`ai_renderer.py\` — the code the AI wrote) in the
+**factory-videos** artifact (14-day retention), and commits the render state + live factory
+status back to this repo.
 
 ## Story sheet
 
+
 ${opts.sheetUrl}
 
-Every non-code tab is parsed tolerantly (English or Arabic labels, any column
-order): label rows for Title / Logline / Genre / Duration, scene tables whose
-columns are detected by keyword, and optional complete-narration sections. If
-parsing finds no scenes, the pipeline falls back to a keyless AI story so it
-never breaks.
+EVERY non-code tab is parsed tolerantly (English or Arabic labels, any column order):
+label rows for Title / Logline / Genre / Duration, a scene table whose columns are
+detected by keyword (time, visual, prompt, voiceover, sfx — Arabic or English), and an
+optional complete-narration section. If parsing finds no scenes, the pipeline falls
+back to a keyless AI story so it never breaks.
 `
 }
 

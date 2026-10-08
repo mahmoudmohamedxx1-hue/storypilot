@@ -5,9 +5,9 @@ import { ViewShell, Badge, StatusDot } from '@/components/agent/view-shell'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { toast } from 'sonner'
-import { Youtube, Instagram, Music2, Loader2, KeyRound, ShieldCheck, ExternalLink } from 'lucide-react'
+import { Youtube, Instagram, Music2, Loader2, KeyRound, ShieldCheck, ExternalLink, HardDrive } from 'lucide-react'
 
-type PlatformKey = 'youtubeToken' | 'tiktokToken' | 'instagramToken'
+type PlatformKey = 'youtubeToken' | 'tiktokToken' | 'instagramToken' | 'driveWebappUrl'
 
 interface Platform {
   key: PlatformKey
@@ -58,6 +58,18 @@ const PLATFORMS: Platform[] = [
     link: 'https://developers.facebook.com/docs/instagram-api/getting-started',
     linkLabel: 'Instagram Graph API docs',
   },
+  {
+    key: 'driveWebappUrl',
+    extra: [{ env: 'DRIVE_WEBAPP_KEY', label: 'Web app key (optional)' }],
+    name: 'Google Drive',
+    icon: HardDrive,
+    color: '#1a73e8',
+    bg: '#E8F0FE',
+    desc: 'Syncs every finished video to your Drive folder hourly (deduped) — a permanent backup next to the Spark sheet.',
+    hint: 'One-time, 3 minutes: script.google.com → New project → paste the code from scripts/drive_webapp.js in the repo (or STORYPILOT.md) → Deploy as Web app (Execute as: Me, Access: Anyone) → copy the /exec URL here. No OAuth keys needed.',
+    link: 'https://script.google.com',
+    linkLabel: 'Open Apps Script',
+  },
 ]
 
 export function PlatformsView() {
@@ -72,8 +84,8 @@ export function PlatformsView() {
       const j = await res.json()
       setSettings(j.settings || {})
       setForm({
-        youtubeToken: '', tiktokToken: '', instagramToken: '',
-        YOUTUBE_CLIENT_ID: '', YOUTUBE_CLIENT_SECRET: '', INSTAGRAM_USER_ID: '',
+        youtubeToken: '', tiktokToken: '', instagramToken: '', driveWebappUrl: '',
+        YOUTUBE_CLIENT_ID: '', YOUTUBE_CLIENT_SECRET: '', INSTAGRAM_USER_ID: '', DRIVE_WEBAPP_KEY: '',
       })
     } catch { /* ignore */ }
   }, [])
@@ -99,6 +111,17 @@ export function PlatformsView() {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(mapped),
+          })
+          const j = await res.json()
+          if (j.settings) setSettings(j.settings)
+        }
+        // the Drive web app key is stored in the app too (masked) so the
+        // built-in health check can ping the web app with it
+        if (payload.DRIVE_WEBAPP_KEY) {
+          const res = await fetch('/api/settings', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ driveWebappKey: payload.DRIVE_WEBAPP_KEY }),
           })
           const j = await res.json()
           if (j.settings) setSettings(j.settings)
@@ -138,7 +161,7 @@ export function PlatformsView() {
   return (
     <ViewShell
       title="Platforms"
-      subtitle="Connect YouTube, TikTok and Instagram — secrets are encrypted (libsodium) before hitting GitHub"
+      subtitle="Connect YouTube, TikTok, Instagram and Google Drive — secrets are encrypted (libsodium) before hitting GitHub"
       actions={
         <Button size="sm" onClick={saveAll} disabled={saving || busy === 'secrets'} className="gap-1.5 bg-[#315CEA] hover:bg-[#2a50d4]">
           {saving || busy === 'secrets' ? <Loader2 size={13} className="animate-spin" /> : <ShieldCheck size={13} />}
@@ -146,7 +169,7 @@ export function PlatformsView() {
         </Button>
       }
     >
-      <div className="grid lg:grid-cols-3 gap-4">
+      <div className="grid lg:grid-cols-4 gap-4">
         {PLATFORMS.map((p) => {
           const connected = has(p.key)
           return (
@@ -193,7 +216,7 @@ export function PlatformsView() {
         <h3 className="text-[13.5px] font-semibold text-[#1a1c20] flex items-center gap-2"><KeyRound size={14} className="text-[#315CEA]" /> How posting works</h3>
         <ol className="mt-2.5 space-y-1.5 text-[13px] text-[#6b7280] leading-relaxed list-decimal pl-5">
           <li>Paste tokens above and hit <span className="font-medium">Save &amp; push secrets</span> — they are stored in the app and encrypted into your repo&apos;s GitHub Actions secrets.</li>
-          <li>Each hourly run renders <span className="font-mono text-[12px]">output/output.mp4</span> first, then posts to every connected platform.</li>
+          <li>Each factory run renders <span className="font-mono text-[12px]">videos/*/output.mp4</span> continuously, posts to every connected platform, and syncs everything new to Google Drive hourly (deduped in <span className="font-mono text-[12px]">state/drive_sync.json</span>).</li>
           <li>Missing platforms are skipped gracefully — the pipeline never fails because one network is unset.</li>
         </ol>
       </div>

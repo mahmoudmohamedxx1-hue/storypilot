@@ -1,3 +1,6 @@
+// Auto-generated from scripts/generate_story.py - do not edit by hand;
+// regenerate with scripts/gen-bundle-templates.py
+// Story source: Google Sheet (Gemini Spark director storyboard, 10 scenes + hook/lesson) -> keyless freellmpool/llm7 -> fallback
 export const GENERATE_STORY_PY = `#!/usr/bin/env python3
 """StoryPilot - Hourly story source.
 
@@ -23,7 +26,7 @@ SHEET_ID = os.environ.get("SHEET_ID", "__SHEET_ID__")
 CODE_TAB = os.environ.get("CODE_TAB", "كود بايثون - المولد الآلي")
 USE_AI_STORY = os.environ.get("USE_AI_STORY", "false").lower() in ("1", "true", "yes")
 AI_ENHANCE = os.environ.get("AI_ENHANCE", "true").lower() in ("1", "true", "yes")
-FLP_MODEL = os.environ.get("FLP_MODEL", "__FLP_MODEL__")
+FLP_MODEL = os.environ.get("FLP_MODEL", "glm-4.7-flash")
 LLM7_MODEL = os.environ.get("LLM7_MODEL", "GLM-5.3-Flash")
 STORY_TOPIC = os.environ.get("STORY_TOPIC", "").strip()
 STORY_JSON = os.environ.get("STORY_JSON", "").strip()
@@ -253,7 +256,7 @@ def story_from_freellmpool():
     # llm7 direct fallback (keyless GLM-5.3-Flash) when the whole pool is down
     try:
         raw = llm7_chat(SYSTEM_PROMPT, prompt)
-        m3 = re.search(r"\{[\s\S]*\}", raw)
+        m3 = re.search(r"{[sS]*}", raw)
         if m3:
             data = json.loads(m3.group(0))
             if data.get("scenes"):
@@ -396,7 +399,7 @@ def ai_polish_story(story):
             cmd = base + ["ask", "-m", model, "--json", "--timeout", "60", "-s", POLISH_PROMPT, prompt]
             out = subprocess.run(cmd, capture_output=True, text=True, timeout=90)
             raw = (out.stdout or "") + (out.stderr or "")
-            m2 = re.search(r"\{[\s\S]*\}", raw)
+            m2 = re.search(r"{[sS]*}", raw)
             if not m2:
                 print(f"[polish] freellmpool {model}: no JSON ({raw.strip()[:90]})", flush=True)
                 continue
@@ -410,7 +413,7 @@ def ai_polish_story(story):
     # --- route 2: llm7 direct (keyless GLM-5.3-Flash) ---
     try:
         raw = llm7_chat(POLISH_PROMPT, prompt)
-        m3 = re.search(r"\{[\s\S]*\}", raw)
+        m3 = re.search(r"{[sS]*}", raw)
         if m3:
             data = json.loads(m3.group(0))
             if _valid_polish(data, scenes):

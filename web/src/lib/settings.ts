@@ -10,31 +10,26 @@ export interface AppSettings {
   youtubeToken: string
   tiktokToken: string
   instagramToken: string
+  driveWebappUrl: string
+  driveWebappKey: string
   autoPost: boolean
   voice: string
-  /** continuous 24/7 render loop (back-to-back dispatches while stories are pending) */
-  continuousMode: boolean
-  /** parallel render workers per dispatched run (GitHub Actions matrix) */
-  workers: number
-  /** keyless AI polish pass (freellmpool on GitHub, GLM-5.3-Flash in the app) */
-  aiEnhance: boolean
 }
 
 export const DEFAULT_SETTINGS: AppSettings = {
   chatModel: 'glm-5.3-flash',
   chatProvider: 'zai',
-  flpModel: 'glm-4.7-flash',
+  flpModel: 'auto',
   sheetId: '1nNsUcwR9foKN_MTPm5bwMR5jz2HUE68UeRqJ0OFp-d4',
   githubToken: '',
   githubRepo: 'mahmoudmohamedxx1-hue/storypilot',
   youtubeToken: '',
   tiktokToken: '',
   instagramToken: '',
+  driveWebappUrl: '',
+  driveWebappKey: '',
   autoPost: true,
   voice: 'ar-EG-ShakirNeural',
-  continuousMode: true,
-  workers: 3,
-  aiEnhance: true,
 }
 
 const KEYS: (keyof AppSettings)[] = [
@@ -47,11 +42,10 @@ const KEYS: (keyof AppSettings)[] = [
   'youtubeToken',
   'tiktokToken',
   'instagramToken',
+  'driveWebappUrl',
+  'driveWebappKey',
   'autoPost',
   'voice',
-  'continuousMode',
-  'workers',
-  'aiEnhance',
 ]
 
 export async function getSettings(): Promise<AppSettings> {
@@ -65,14 +59,8 @@ export async function getSettings(): Promise<AppSettings> {
     for (const r of rows) {
       if ((KEYS as string[]).includes(r.key)) {
         const k = r.key as keyof AppSettings
-        const target = merged as unknown as Record<string, unknown>
-        if (k === 'autoPost' || k === 'continuousMode' || k === 'aiEnhance') {
-          target[k] = r.value === 'true'
-        } else if (k === 'workers') {
-          target[k] = Math.max(1, Math.min(6, parseInt(r.value, 10) || 3))
-        } else {
-          target[k] = r.value
-        }
+        if (k === 'autoPost') (merged as Record<string, unknown>)[k] = r.value === 'true'
+        else (merged as Record<string, unknown>)[k] = r.value
       }
     }
   } catch {
@@ -99,9 +87,12 @@ export function publicSettings(s: AppSettings) {
     youtubeToken: maskToken(s.youtubeToken),
     tiktokToken: maskToken(s.tiktokToken),
     instagramToken: maskToken(s.instagramToken),
+    driveWebappUrl: maskToken(s.driveWebappUrl),
+    driveWebappKey: maskToken(s.driveWebappKey),
     hasGithubToken: !!s.githubToken,
     hasYoutubeToken: !!s.youtubeToken,
     hasTiktokToken: !!s.tiktokToken,
     hasInstagramToken: !!s.instagramToken,
+    hasDriveWebappUrl: !!s.driveWebappUrl,
   }
 }

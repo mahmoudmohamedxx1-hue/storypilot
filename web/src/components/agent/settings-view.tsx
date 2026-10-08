@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Switch } from '@/components/ui/switch'
 import { toast } from 'sonner'
-import { Loader2, Save, Sparkles, Sheet, Github, Volume2, ShieldAlert, Factory, Wand2 } from 'lucide-react'
+import { Loader2, Save, Sparkles, Sheet, Github, Volume2, ShieldAlert } from 'lucide-react'
 
 const MODELS = [
   { id: 'glm-5.3-flash', label: 'GLM-5.3-Flash', note: 'default · fastest, via z.ai SDK' },
@@ -14,9 +14,10 @@ const MODELS = [
 ]
 
 const FLP_MODELS = [
-  { id: 'glm-4.7-flash', label: 'GLM-4.7-Flash', note: 'GLM Flash · tried first, needs a Z.ai key in the pool' },
-  { id: 'auto', label: 'Auto pool', note: 'keyless · freellmpool picks a live free model' },
-  { id: 'ovh/Qwen3-32B', label: 'Qwen3-32B', note: 'keyless · OVHcloud route' },
+  { id: 'auto', label: 'Auto pool', note: 'default · keyless, freellmpool picks a live free model (writes the hyperframe code)' },
+  { id: 'ovh/gpt-oss-120b', label: 'gpt-oss-120b', note: 'keyless · big open-weight coder via OVHcloud' },
+  { id: 'ovh/Qwen3-Coder-30B-A3B-Instruct', label: 'Qwen3-Coder-30B', note: 'keyless · dedicated code model' },
+  { id: 'glm-4.7-flash', label: 'GLM-4.7-Flash', note: 'GLM Flash tier · only live when the pool has a GLM route' },
 ]
 
 const VOICES = [
@@ -30,9 +31,6 @@ export function SettingsView() {
   const [s, setS] = useState<Record<string, unknown> | null>(null)
   const [form, setForm] = useState<Record<string, string>>({})
   const [autoPost, setAutoPost] = useState(true)
-  const [continuousMode, setContinuousMode] = useState(true)
-  const [aiEnhance, setAiEnhance] = useState(true)
-  const [workers, setWorkers] = useState(3)
   const [saving, setSaving] = useState(false)
   const [repos, setRepos] = useState<Array<{ full_name: string }>>([])
 
@@ -41,9 +39,6 @@ export function SettingsView() {
     const j = await res.json()
     setS(j.settings)
     setAutoPost(!!j.settings.autoPost)
-    setContinuousMode(j.settings.continuousMode !== false)
-    setAiEnhance(j.settings.aiEnhance !== false)
-    setWorkers(typeof j.settings.workers === 'number' ? j.settings.workers : 3)
     try {
       const r = await fetch('/api/github?view=repos')
       const rj = await r.json()
@@ -56,7 +51,7 @@ export function SettingsView() {
   const save = async () => {
     setSaving(true)
     try {
-      const payload: Record<string, string | boolean | number> = { ...form, autoPost, continuousMode, aiEnhance, workers }
+      const payload: Record<string, string | boolean> = { ...form, autoPost }
       const res = await fetch('/api/settings', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -229,45 +224,6 @@ export function SettingsView() {
               <p className="text-[12px] text-[#8a8f99]">Post to all connected platforms on every hourly run</p>
             </div>
             <Switch checked={autoPost} onCheckedChange={setAutoPost} aria-label="Auto-post after render" />
-          </div>
-        </section>
-
-        {/* Continuous factory automation */}
-        <section className="rounded-2xl border border-[#E5E7EB] bg-white p-5">
-          <div className="flex items-center gap-2">
-            <span className="w-8 h-8 rounded-lg bg-[#F0F4FF] text-[#315CEA] flex items-center justify-center"><Factory size={15} /></span>
-            <div>
-              <h2 className="text-[14px] font-semibold text-[#1a1c20]">Continuous factory</h2>
-              <p className="text-[12px] text-[#8a8f99]">Back-to-back rendering with parallel workers + keyless AI polish</p>
-            </div>
-          </div>
-          <div className="mt-4 flex items-center justify-between">
-            <div>
-              <p className="text-[13.5px] font-medium text-[#1a1c20]">Continuous mode</p>
-              <p className="text-[12px] text-[#8a8f99] leading-relaxed">While the app runs, the render loop polls every 90s and dispatches the workflow back-to-back whenever pending stories exist — not just hourly. Hourly crons stay as backups.</p>
-            </div>
-            <Switch checked={continuousMode} onCheckedChange={setContinuousMode} aria-label="Continuous render loop" />
-          </div>
-          <div className="mt-4 flex items-center justify-between gap-4">
-            <div className="min-w-0">
-              <p className="text-[13.5px] font-medium text-[#1a1c20]">Parallel workers per dispatch</p>
-              <p className="text-[12px] text-[#8a8f99]">GitHub Actions matrix — each worker renders its own shard of the pending queue (up to ~4 videos each)</p>
-            </div>
-            <select
-              value={workers}
-              onChange={(e) => setWorkers(parseInt(e.target.value, 10))}
-              aria-label="Parallel workers"
-              className="shrink-0 h-9 rounded-md border border-input bg-white px-2.5 text-[13px] outline-none focus:ring-1 focus:ring-[#315CEA]"
-            >
-              {[1, 2, 3, 4, 5, 6].map((n) => <option key={n} value={n}>{n}×</option>)}
-            </select>
-          </div>
-          <div className="mt-4 flex items-center justify-between">
-            <div>
-              <p className="text-[13.5px] font-medium text-[#1a1c20] flex items-center gap-1.5"><Wand2 size={13} className="text-[#7c3aed]" /> Keyless AI polish</p>
-              <p className="text-[12px] text-[#8a8f99] leading-relaxed">freellmpool (keyless, GLM-Flash first with auto-failover) tightens every story's narration and writes the platform title/description/tags before rendering. App-dispatched single renders are polished by GLM-5.3-Flash via the z.ai SDK. On any AI failure the original sheet text is used.</p>
-            </div>
-            <Switch checked={aiEnhance} onCheckedChange={setAiEnhance} aria-label="Keyless AI polish" />
           </div>
         </section>
       </div>

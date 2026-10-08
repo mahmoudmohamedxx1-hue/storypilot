@@ -42,8 +42,6 @@ async function* sseDeltas(body: unknown): AsyncGenerator<string> {
 const KNOWN_TOOLS = [
   'fetch_stories', 'get_pipeline', 'create_job', 'trigger_workflow',
   'deploy_workflow', 'list_repos', 'generate_story', 'setup_guide',
-  // library / continuous-factory tools (keep in sync with src/lib/agent.ts)
-  'sync_sheet', 'get_library', 'render_story', 'make_all_videos', 'enhance_story',
 ]
 
 function parseToolBlock(text: string): { name: string; args: Record<string, unknown> } | null {
