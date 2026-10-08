@@ -10,19 +10,29 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "صندوق الطوارئ: درسك المالي الأول ضد المفاجآت",
+    "title": "الاستثمار الذكي: كيف يفرق الأغنياء بين الأصول والالتزامات؟",
     "source": "ai-invented",
-    "started_at": "2026-10-08T21:56:38Z",
-    "elapsed_sec": 234
+    "started_at": "2026-10-08T22:01:45Z",
+    "elapsed_sec": 557
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 0,
-  "videos_total": 64,
-  "ai_invented_total": 0,
-  "recent": [],
+  "videos_this_run": 1,
+  "videos_total": 65,
+  "ai_invented_total": 2,
+  "recent": [
+    {
+      "title": "صندوق الطوارئ: درسك المالي الأول ضد المفاجآت",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "ai",
+      "code_by": "freellmpool:auto",
+      "seconds": 252,
+      "at": "2026-10-08T22:00:49Z"
+    }
+  ],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -32,5 +42,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-08T22:00:32Z"
+  "updated_at": "2026-10-08T22:11:02Z"
 }

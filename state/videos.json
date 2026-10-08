@@ -576,16 +576,31 @@
       "code_by": "freellmpool:auto",
       "ai_attempts": 3,
       "topic": "صندوق الطوارئ: درسك المالي الأول ضد المفاجآت"
+    },
+    "504127544134b7b69a6bedc552e2d934": {
+      "title": "الاستثمار الذكي: كيف يفرق الأغنياء بين الأصول والالتزامات؟",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-08T22:11:12Z",
+      "fps": 60,
+      "dir": "ai02-50412754",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الفرق بين الأصول والالتزامات ولماذا يفرق الأغنياء"
     }
   },
   "failed": {},
-  "ai_invented_count": 2,
+  "ai_invented_count": 3,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
     },
     {
       "title": "صندوق الطوارئ: درسك المالي الأول ضد المفاجآت"
+    },
+    {
+      "title": "الاستثمار الذكي: كيف يفرق الأغنياء بين الأصول والالتزامات؟"
     }
   ]
 }
