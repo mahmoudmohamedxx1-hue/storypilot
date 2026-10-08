@@ -1,0 +1,32 @@
+{
+  "phase": "inventing",
+  "should_continue": true,
+  "run": {
+    "started_at": "2026-10-08T10:34:08Z",
+    "deadline_at": "2026-10-08T15:34:08Z",
+    "budget_min": 300.0,
+    "infinite_stories": true
+  },
+  "current": {
+    "title": "سحر الأرقام",
+    "source": "ai-invented",
+    "started_at": "2026-10-08T10:45:47Z"
+  },
+  "queue": {
+    "pending": 0,
+    "total": 61
+  },
+  "videos_this_run": 0,
+  "ai_invented_total": 0,
+  "recent": [],
+  "drive": {
+    "configured": false,
+    "root_folder": "",
+    "last_sync": null,
+    "dirs_uploaded": 0,
+    "files_total": 0,
+    "last_error": null,
+    "interval_sec": 3600
+  },
+  "updated_at": "2026-10-08T10:45:47Z"
+}

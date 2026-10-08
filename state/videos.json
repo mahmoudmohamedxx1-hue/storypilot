@@ -69,7 +69,484 @@
       "renderedAt": "2026-10-05T16:27:15Z",
       "fps": 60,
       "dir": "02-26a2e67c"
+    },
+    "7f45eb2e5b8f08d3831d883aa589fac6": {
+      "title": "Roth IRA vs. Traditional 401(k): Tax Strategy for Beginners",
+      "tab": "Batch 2 - Wealth Building",
+      "renderedAt": "2026-10-05T20:33:03Z",
+      "fps": 60,
+      "dir": "01-7f45eb2e",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "d08386416df618e66dac98df3dd75a99": {
+      "title": "High-Yield Savings (HYSA) vs. CDs: Maximizing Liquid Cash",
+      "tab": "Batch 3 - Wealth Protection",
+      "renderedAt": "2026-10-05T20:46:29Z",
+      "fps": 60,
+      "dir": "02-d0838641",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "d291c24c889a479197b8da054a0acd0a": {
+      "title": "Beating Lifestyle Inflation: The 50% Raise Rule",
+      "tab": "Batch 3 - Wealth Protection",
+      "renderedAt": "2026-10-05T20:59:06Z",
+      "fps": 60,
+      "dir": "03-d291c24c",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "73c8e72d399f12f8fcad78baa320ac7a": {
+      "title": "The Truth About Opportunity Cost: Big Levers vs. Small Sacrifices",
+      "tab": "Batch 2 - Wealth Building",
+      "renderedAt": "2026-10-05T21:31:26Z",
+      "fps": 60,
+      "dir": "01-73c8e72d",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "809c44be32f6612ad60a444a3e93c815": {
+      "title": "Asset Allocation & Risk Tolerance: Surviving Market Crashes",
+      "tab": "Batch 3 - Wealth Protection",
+      "renderedAt": "2026-10-05T21:45:30Z",
+      "fps": 60,
+      "dir": "02-809c44be",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "76aba045aea5621dd2cf211405789d7a": {
+      "title": "The Psychology of Money: Conquering the Sunk Cost Fallacy",
+      "tab": "Batch 4 - Strategic Wealth",
+      "renderedAt": "2026-10-05T21:58:46Z",
+      "fps": 60,
+      "dir": "03-76aba045",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "afbd158efbdae675fac7e853ed5ee00a": {
+      "title": "The Automated Money Machine: Eliminating Willpower",
+      "tab": "Batch 4 - Strategic Wealth",
+      "renderedAt": "2026-10-05T22:54:11Z",
+      "fps": 60,
+      "dir": "01-afbd158e",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "f73625e61c0157300f3ea77d8295dfae": {
+      "title": "Bond Markets & The Inverted Yield Curve",
+      "tab": "Batch 5 - Advanced Mastery",
+      "renderedAt": "2026-10-05T23:05:27Z",
+      "fps": 60,
+      "dir": "02-f73625e6",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "5c1186580b1e025146bb88473f96c532": {
+      "title": "The Backdoor Roth IRA: High-Earner Wealth Strategy",
+      "tab": "Batch 6 - Market Intelligence",
+      "renderedAt": "2026-10-05T23:16:58Z",
+      "fps": 60,
+      "dir": "03-5c118658",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "536ecc775b031743ffb24982cd295c0b": {
+      "title": "Anatomy of Market Cycles: From Euphoria to Accumulation",
+      "tab": "Batch 6 - Market Intelligence",
+      "renderedAt": "2026-10-06T03:18:58Z",
+      "fps": 60,
+      "dir": "01-536ecc77",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "862bfd3de5409e501fe51345999b5b82": {
+      "title": "Liquid Net Worth vs. Total Net Worth: The Real Scorecard",
+      "tab": "Batch 6 - Market Intelligence",
+      "renderedAt": "2026-10-06T03:31:26Z",
+      "fps": 60,
+      "dir": "02-862bfd3d",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "b3c317559b06d3a95aa4cdb740f8cd28": {
+      "title": "I-Bonds and TIPS: Government-Guaranteed Inflation Shields",
+      "tab": "Batch 7 - Tactical Wealth",
+      "renderedAt": "2026-10-06T03:45:06Z",
+      "fps": 60,
+      "dir": "03-b3c31755",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "fc7e44a99456a595e519e038aea45c90": {
+      "title": "The Mega Backdoor Roth: Sheltering an Extra $40k+ Tax-Free",
+      "tab": "Batch 8 - Advanced Wealth",
+      "renderedAt": "2026-10-06T10:41:50Z",
+      "fps": 60,
+      "dir": "01-fc7e44a9",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "b1ffaa5dc3dbc876b0356d8bf9ffcb93": {
+      "title": "The Early Retirement SWR: Why 3.25% Beats 4% for FIRE",
+      "tab": "Batch 8 - Advanced Wealth",
+      "renderedAt": "2026-10-06T10:55:44Z",
+      "fps": 60,
+      "dir": "02-b1ffaa5d",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "57129d6f2de2f518b5303c575f7cee5e": {
+      "title": "Private Mortgage Insurance (PMI) & Escrow Shock",
+      "tab": "Batch 9 - Wealth Architecture",
+      "renderedAt": "2026-10-06T17:28:49Z",
+      "fps": 60,
+      "dir": "01-57129d6f",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "a262b4e8c9363b0ff9f4e282a279321f": {
+      "title": "Asset Location: Where to Hold Stocks, Bonds, and Real Estate",
+      "tab": "Batch 9 - Wealth Architecture",
+      "renderedAt": "2026-10-06T17:45:07Z",
+      "fps": 60,
+      "dir": "02-a262b4e8",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "e2bcbe59c9a64ca0949e65d6d7e068b3": {
+      "title": "Public REITs vs. Direct Landlording: Truly Passive Property Exposure",
+      "tab": "Batch 10 - Enduring Wealth",
+      "renderedAt": "2026-10-06T21:54:17Z",
+      "fps": 60,
+      "dir": "01-e2bcbe59",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "a1e48d26050986db8f0e9078fdaccd9b": {
+      "title": "الاستثمار في الذهب: الحماية من التضخم وهبوط العملة",
+      "tab": "سلسلة الاستثمار بالعربي",
+      "renderedAt": "2026-10-06T22:07:37Z",
+      "fps": 60,
+      "dir": "02-a1e48d26",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "dbd11ab6d4ca4524589844085c6b756a": {
+      "title": "الاستثمار الحلال: دليلك الشامل لصناديق المؤشرات المتوافقة مع الشريعة",
+      "tab": "الاستثمار بالعربي - الدفعة 2",
+      "renderedAt": "2026-10-06T22:23:23Z",
+      "fps": 60,
+      "dir": "03-dbd11ab6",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "7ed2b4298e56fc281aac9fcf79a00d3e": {
+      "title": "العقار التجاري مقابل السكني: أين تضع رأس مالك؟",
+      "tab": "الاستثمار بالعربي - الدفعة 2",
+      "renderedAt": "2026-10-07T01:52:00Z",
+      "fps": 60,
+      "dir": "01-7ed2b429",
+      "worker": 0,
+      "aiPolish": false
+    },
+    "b11c0d2a533746c68d5f18cec0e43cea": {
+      "title": "The 4% Retirement Rule (The Trinity Study Explained)",
+      "tab": "Batch 3 - Wealth Protection",
+      "renderedAt": "2026-10-05T21:34:15Z",
+      "fps": 60,
+      "dir": "01-b11c0d2a",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "7c29c1c31e01bc0f5663f05398178260": {
+      "title": "The HSA: The Ultimate Triple-Tax Advantage",
+      "tab": "Batch 4 - Strategic Wealth",
+      "renderedAt": "2026-10-05T21:45:49Z",
+      "fps": 60,
+      "dir": "02-7c29c1c3",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "0535f8977e92d93aa38f12d04b22d838": {
+      "title": "Capital Gains Taxes: Short-Term vs. Long-Term Demystified",
+      "tab": "Batch 4 - Strategic Wealth",
+      "renderedAt": "2026-10-05T21:56:41Z",
+      "fps": 60,
+      "dir": "03-0535f897",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "ef89820cd3757e0dd71ca84dd323de57": {
+      "title": "The 5% Rule: Renting vs. Buying an Unbiased Breakdown",
+      "tab": "Batch 5 - Advanced Mastery",
+      "renderedAt": "2026-10-05T22:57:10Z",
+      "fps": 60,
+      "dir": "01-ef89820c",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "cdf0cd71bd8edb08d3d7bbcce7942006": {
+      "title": "The Tiered Cash Architecture for Maximum Yield",
+      "tab": "Batch 5 - Advanced Mastery",
+      "renderedAt": "2026-10-05T23:10:56Z",
+      "fps": 60,
+      "dir": "02-cdf0cd71",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "af54da27ecccffa2ac207e77a14f2b0e": {
+      "title": "The Hazard of Margin Debt & Lifestyle Leverage",
+      "tab": "Batch 6 - Market Intelligence",
+      "renderedAt": "2026-10-06T03:16:38Z",
+      "fps": 60,
+      "dir": "01-af54da27",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "0a8a05ad01e5bdcdb695afda52832710": {
+      "title": "Tax-Loss Harvesting: Turn Market Dips into Tax Breaks",
+      "tab": "Batch 7 - Tactical Wealth",
+      "renderedAt": "2026-10-06T03:29:48Z",
+      "fps": 60,
+      "dir": "02-0a8a05ad",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "6c0fdd60e39900c30805b2d8e0d9e3c9": {
+      "title": "Price Anchoring: How Marketers Trick You & How to Win Salary Talks",
+      "tab": "Batch 7 - Tactical Wealth",
+      "renderedAt": "2026-10-06T03:43:02Z",
+      "fps": 60,
+      "dir": "03-6c0fdd60",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "e8388c0a8e59f59d6d131d37634b81bb": {
+      "title": "Volatility Decay: Why Leveraged ETFs Destroy Long-Term Wealth",
+      "tab": "Batch 8 - Advanced Wealth",
+      "renderedAt": "2026-10-06T10:42:20Z",
+      "fps": 60,
+      "dir": "01-e8388c0a",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "8945ea4b2233a5b350cb6962ba5dcb84": {
+      "title": "The Bond Tent Strategy: Conquering Retirement Date Risk",
+      "tab": "Batch 8 - Advanced Wealth",
+      "renderedAt": "2026-10-06T10:55:45Z",
+      "fps": 60,
+      "dir": "02-8945ea4b",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "bd33bec03a4016242e6d9a2985ae8199": {
+      "title": "Mental Accounting: The Brain Glitch Costing You Thousands",
+      "tab": "Batch 9 - Wealth Architecture",
+      "renderedAt": "2026-10-06T17:26:13Z",
+      "fps": 60,
+      "dir": "01-bd33bec0",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "37105469eee615a0c2dd4bbb5191cfbc": {
+      "title": "Credit Card Rewards Arbitrage: Free Travel vs. The 25% Interest Trap",
+      "tab": "Batch 10 - Enduring Wealth",
+      "renderedAt": "2026-10-06T17:37:08Z",
+      "fps": 60,
+      "dir": "02-37105469",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "8f3dcccbb401058bf265263b2d79b443": {
+      "title": "The Social Security Break-Even Math: Age 62 vs. 67 vs. 70",
+      "tab": "Batch 10 - Enduring Wealth",
+      "renderedAt": "2026-10-06T17:48:01Z",
+      "fps": 60,
+      "dir": "03-8f3dcccb",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "9c496850046388c1dcc3bb222a1f42f1": {
+      "title": "كيف تبدأ الاستثمار في صناديق المؤشرات والبورصة من الصفر",
+      "tab": "سلسلة الاستثمار بالعربي",
+      "renderedAt": "2026-10-06T21:55:29Z",
+      "fps": 60,
+      "dir": "01-9c496850",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "abf9459dd85b87e39ebad5613e878b5f": {
+      "title": "خطة توزيع الراتب الذكية: من الادخار إلى الاستثمار",
+      "tab": "سلسلة الاستثمار بالعربي",
+      "renderedAt": "2026-10-06T22:09:35Z",
+      "fps": 60,
+      "dir": "02-abf9459d",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "ce9e78d6c2916600895d470930bab286": {
+      "title": "محفظة كل الفصول: كيف تحمي ثروتك في جميع الأزمات",
+      "tab": "الاستثمار بالعربي - الدفعة 2",
+      "renderedAt": "2026-10-07T01:51:58Z",
+      "fps": 60,
+      "dir": "01-ce9e78d6",
+      "worker": 1,
+      "aiPolish": false
+    },
+    "fa6f122fa13ae71eba818fa41e217502": {
+      "title": "Real Estate vs. Stock Market: The Unbiased Reality",
+      "tab": "Batch 3 - Wealth Protection",
+      "renderedAt": "2026-10-05T21:37:59Z",
+      "fps": 60,
+      "dir": "01-fa6f122f",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "bcd79e1993213379dc2648218de9ed61": {
+      "title": "Life Insurance: Term vs. Whole Life (Avoiding the Sales Trap)",
+      "tab": "Batch 4 - Strategic Wealth",
+      "renderedAt": "2026-10-05T21:51:40Z",
+      "fps": 60,
+      "dir": "02-bcd79e19",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "2c11a498e7a597c6de3bd24a28047baf": {
+      "title": "Dividend Traps vs. Total Return Investing",
+      "tab": "Batch 5 - Advanced Mastery",
+      "renderedAt": "2026-10-05T22:57:56Z",
+      "fps": 60,
+      "dir": "01-2c11a498",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "f0bacb285329b470d02667c4a4fd2d8f": {
+      "title": "Building Generational Wealth: Custodial Accounts & 529s",
+      "tab": "Batch 5 - Advanced Mastery",
+      "renderedAt": "2026-10-05T23:12:18Z",
+      "fps": 60,
+      "dir": "02-f0bacb28",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "e1b1ab4bfd6da36ee406c23a836d8e9e": {
+      "title": "ETFs vs. Mutual Funds: Tax Efficiency & Mechanics",
+      "tab": "Batch 6 - Market Intelligence",
+      "renderedAt": "2026-10-06T03:17:12Z",
+      "fps": 60,
+      "dir": "01-e1b1ab4b",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "c993a661d073352ca3e365b50767a5f3": {
+      "title": "15-Year vs. 30-Year Mortgages: The Math vs. Flexibility Debate",
+      "tab": "Batch 7 - Tactical Wealth",
+      "renderedAt": "2026-10-06T03:30:36Z",
+      "fps": 60,
+      "dir": "02-c993a661",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "1813c4157fcbaaba03a717dbe6c9b931": {
+      "title": "The Financial Order of Operations: Where Every Dollar Goes",
+      "tab": "Batch 7 - Tactical Wealth",
+      "renderedAt": "2026-10-06T03:44:37Z",
+      "fps": 60,
+      "dir": "03-1813c415",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "101b0f10386364ed6b1152f08f3087e6": {
+      "title": "Umbrella Insurance: The $200 Shield for Your Net Worth",
+      "tab": "Batch 8 - Advanced Wealth",
+      "renderedAt": "2026-10-06T10:40:29Z",
+      "fps": 60,
+      "dir": "01-101b0f10",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "6274a482487f1c9a40ca0b1fe9083f0d": {
+      "title": "The 20/4/10 Rule: How to Buy a Car Without Going Broke",
+      "tab": "Batch 9 - Wealth Architecture",
+      "renderedAt": "2026-10-06T10:55:44Z",
+      "fps": 60,
+      "dir": "02-6274a482",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "110058f8673daaf61065b60f9f8416c3": {
+      "title": "Tech Equity 101: Demystifying RSUs, ISOs, and Vesting",
+      "tab": "Batch 9 - Wealth Architecture",
+      "renderedAt": "2026-10-06T17:25:01Z",
+      "fps": 60,
+      "dir": "01-110058f8",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "cde0a1dba1b27c7ed608edfc633b5f02": {
+      "title": "Missing the 10 Best Days: Why Market Timing Destroys Returns",
+      "tab": "Batch 10 - Enduring Wealth",
+      "renderedAt": "2026-10-06T17:34:39Z",
+      "fps": 60,
+      "dir": "02-cde0a1db",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "8abc161d0a5feb5092bb07619fe16120": {
+      "title": "Estate Planning Essentials: Why Beneficiary Designations Override Wills",
+      "tab": "Batch 10 - Enduring Wealth",
+      "renderedAt": "2026-10-06T17:45:13Z",
+      "fps": 60,
+      "dir": "03-8abc161d",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "9fe68d8e5f7788e4c93020f47844e3ae": {
+      "title": "قوة الفائدة المركبة: كيف تصنع ثروة من مبالغ صغيرة",
+      "tab": "سلسلة الاستثمار بالعربي",
+      "renderedAt": "2026-10-06T21:55:35Z",
+      "fps": 60,
+      "dir": "01-9fe68d8e",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "13691ea7d3fb93846084d9ca02f66048": {
+      "title": "أخطر 5 أخطاء يقع فيها المبتدئون في البورصة والاستثمار",
+      "tab": "سلسلة الاستثمار بالعربي",
+      "renderedAt": "2026-10-06T22:10:05Z",
+      "fps": 60,
+      "dir": "02-13691ea7",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "af59b6a585510c8599c7656e7e37b884": {
+      "title": "بناء تيار دخل سلبي من توزيعات الأرباح النقدية",
+      "tab": "الاستثمار بالعربي - الدفعة 2",
+      "renderedAt": "2026-10-07T01:49:51Z",
+      "fps": 60,
+      "dir": "01-af59b6a5",
+      "worker": 2,
+      "aiPolish": false
+    },
+    "ba117ffc0d01584ea113861b62d35eba": {
+      "title": "سحر الأرقام",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-08T11:04:00Z",
+      "fps": 60,
+      "dir": "ai01-ba117ffc",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
     }
   },
-  "failed": {}
+  "failed": {},
+  "ai_invented_count": 1,
+  "ai_titles": [
+    {
+      "title": "سحر الأرقام"
+    }
+  ]
 }
