@@ -3,32 +3,37 @@
 **Continuous AI video factory** — turns every story in a Google Sheet (updated hourly by
 the Gemini Spark automation) into **cinematic vertical videos (1080×1920, 60fps
 hyperframes)** and publishes them to YouTube, TikTok and Instagram — **generated
-continuously, back-to-back, with parallel workers**. 100% **keyless / free** stack,
-driven by GitHub Actions + the StoryPilot app's render loop.
+continuously, back-to-back, forever**. 100% **keyless / free** stack on GitHub Actions.
+
+**The loop lives on GitHub itself**: `factory.yml` runs ~5h, renders nonstop, then
+**chains the next run** (dispatch verified with retries) — no external app needed to
+keep it alive. When the sheet queue is empty, the keyless AI **invents new stories**
+(`INFINITE_STORIES`) so production never stops. Finished videos are synced to
+**Google Drive** every hour (deduped).
 
 ```
-Google Sheet (Gemini Spark)  ←──── always in sync (every ~60s)
+Google Sheet (Gemini Spark)  ←──── synced every ~150s inside each run
         │
-        ▼  StoryPilot app: CONTINUOUS RENDER LOOP (polls every 90s)
-│  pending stories? ──► dispatch hourly-video.yml BACK-TO-BACK
-│        (cron :47 + ensure :19 are backup layers)
-        ▼  .github/workflows/hourly-video.yml  ── parallel worker matrix
+        ▼  .github/workflows/factory.yml  ── THE INFINITE LOOP (~5h per run)
 ┌──────────────────────────────────────────────────────────────┐
-│ 1. Fetch stories    every sheet tab (tolerant EN/AR parser)  │
-│      └ shard the pending queue across N workers              │
-│ 2. Keyless AI polish (freellmpool — GLM-Flash first,         │
-│      auto-failover): tighter narration + platform title/     │
-│      description/tags — falls back to original text, never   │
-│      blocks a render                                          │
-│ 3. Render cinematic MP4s (per worker, in parallel)           │
-│      • keyless AI scene imagery (Pollinations flux)          │
-│      • Ken Burns motion (ffmpeg zoompan)                     │
-│      • Edge-TTS voiceover (ar-EG-ShakirNeural)               │
-│      • word-synced Arabic captions (Cairo/Noto/Amiri fonts)  │
-│      • 60fps hyperframes, H.264/AAC, 1080×1920               │
-│ 4. Upload per-worker artifacts + commit render state         │
-│ 5. Publish job: post EVERY video to YouTube/TikTok/Instagram │
+│ 1. Sheet stories pending? ──► AI HYPERFRAME FORGE each one:  │
+│      the keyless AI WRITES the renderer code per story       │
+│      (freellmpool → llm7/Pollinations, self-repair loop,     │
+│      built-in cinematic renderer as guaranteed fallback)     │
+│ 2. Queue empty? ──► keyless AI INVENTS a new 10-scene story  │
+│      and forges it (INFINITE_STORIES=true)                   │
+│ 3. Every finished video:                                     │
+│      • artifact upload (mp4 + meta + thumb + story + code)   │
+│      • render state committed to the repo (survives runs)    │
+│      • Google Drive sync (hourly TTL, hash-deduped)          │
+│      • optional YouTube / TikTok / Instagram publishing      │
+│ 4. Budget spent ──► CHAIN THE NEXT RUN (verified dispatch,   │
+│      5 retries) ──► the loop never silently dies             │
 └──────────────────────────────────────────────────────────────┘
+        ▲ backstop layers: */15 cron · ensure-factory.yml */20 · app heartbeat
+
+hourly-video.yml (parallel worker matrix, on-demand + :47 cron backup) stays
+available for catch-up batches and single library renders.
 ```
 
 The app itself chats and polishes stories with **GLM-5.3-Flash via the z.ai SDK**; the
@@ -39,9 +44,14 @@ pipeline's AI (story fallback + polish) is **keyless via
 
 | Path | What it is |
 |---|---|
-| `.github/workflows/hourly-video.yml` | The render workflow — parallel worker matrix + publish job |
-| `generate_video.py` | Cinematic renderer — `story.json` → `output/output.mp4` |
-| `scripts/render_pending.py` | The queue: shards pending stories across workers, keyless AI polish, renders |
+| `.github/workflows/factory.yml` | **THE continuous loop** — forges videos nonstop, self-chains the next run |
+| `.github/workflows/hourly-video.yml` | Parallel worker matrix — on-demand catch-up batches + single renders |
+| `.github/workflows/ensure-factory.yml` | Watcher — re-dispatches the factory if the chain ever breaks |
+| `scripts/factory.py` | Factory supervisor — sheet sync → forge → invent → repeat, budget-aware |
+| `scripts/ai_forge.py` | Keyless AI code-writer — writes the per-story renderer, self-repairs, validates |
+| `scripts/drive_sync.py` + `scripts/drive_webapp.js` | Hourly Google Drive sync via your own Apps Script web app |
+| `generate_video.py` | Built-in cinematic renderer — `story.json` → `output/output.mp4` |
+| `scripts/render_pending.py` | The catch-up queue: shards pending stories across workers, keyless AI polish |
 | `scripts/generate_story.py` | Story source: Sheet → keyless freellmpool GLM → fallback |
 | `post_video.py` | YouTube / TikTok / Instagram publishers |
 | `fonts/` | Bundled Arabic fonts (Cairo, Noto Sans Arabic, Amiri, Montserrat) |
@@ -63,21 +73,41 @@ pipeline's AI (story fallback + polish) is **keyless via
    bun run dev          # Kimi-style UI: chat + Library + live pipeline
    ```
 
-### Always generating (self-healing, 4 layers)
+### Always generating (self-healing, 5 layers)
 
-Videos are generated CONTINUOUSLY while pending stories exist — not just hourly:
+Videos are generated CONTINUOUSLY — not just hourly — and never silently stop:
 
 | Layer | What | When |
 |---|---|---|
-| 1. **App render loop (primary)** | dispatches the render workflow back-to-back whenever pending stories exist (pending = sheet stories minus repo render state) | polls every **90s** |
-| 2. `hourly-video.yml` render cron | backup | every hour at **:47 UTC** (off-peak minute) |
-| 3. `.github/workflows/ensure-hourly.yml` | watcher that re-dispatches when the last run is stale | every hour at **:19 UTC** |
-| 4. cooldown guard | after 2 consecutive no-progress runs the loop pauses 20 min (no dispatch spam) | automatic |
+| 1. **`factory.yml` self-chain (primary)** | each run renders for ~5h (or until the queue drains), then **dispatches its successor and VERIFIES it exists** (5 retries) | every ~5h, forever |
+| 2. `factory.yml` cron heartbeat | schedule backstop | every **15 min** (best-effort) |
+| 3. `.github/workflows/ensure-factory.yml` | watcher that re-dispatches when the last factory run is >25m stale | every **20 min** (best-effort) |
+| 4. `hourly-video.yml` cron + `ensure-hourly.yml` | catch-up backup: parallel workers drain any pending queue | hourly at **:47** / **:19 UTC** |
+| 5. StoryPilot app heartbeat | dispatches the factory when it looks dead (while the app runs) | every 10 min |
 
-Each dispatched run fans out to **3 parallel workers** by default (override with the
-`workers_json` input or the `WORKERS_JSON` repo variable) — each worker renders its own
-shard of the pending queue, so throughput is ~3× a single run. Every worker commits its
-own `state/videos.shard*.json`, so progress is never lost and workers never collide.
+Stop the factory: create `state/FACTORY_STOP` (the app's chat: *"stop the factory"*)
+or disable the workflow. Resume: delete the file / re-enable.
+
+### Hourly Google Drive sync
+
+Every finished video (`output.mp4`, `meta.json`, `story.json`, `thumb.jpg`,
+`ai_renderer.py`) is uploaded to Google Drive via **your own** Apps Script web app —
+free, no API keys. One-time setup (~3 min):
+
+1. Open [script.google.com](https://script.google.com) → New project
+2. Paste the contents of `scripts/drive_webapp.js`
+3. Deploy → New deployment → **Web app** → execute as **me**, access **anyone**
+4. Copy the `/exec` URL → repo **Secret** `DRIVE_WEBAPP_URL` (optional `DRIVE_WEBAPP_KEY`)
+
+Sync runs hourly (`DRIVE_SYNC_INTERVAL`, hash-deduped in `state/drive_sync.json`),
+plus a final flush when a factory run ends. Until the secret is set, the step
+skips gracefully — rendering never waits on Drive.
+
+Each dispatched hourly-video run fans out to **3 parallel workers** by default (override
+with the `workers_json` input or the `WORKERS_JSON` repo variable) — each worker renders
+its own shard of the pending queue. Every worker commits its own
+`state/videos.shard*.json`, so progress is never lost and workers never collide. The
+factory reads the **union** of all state files, so both engines share one done-set.
 
 ## Story sheet format (tolerant)
 
