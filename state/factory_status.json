@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "فخ الخصومات: كيف تجعلك العروض تشتري ما لا تحتاج",
-    "source": "builtin-bank",
-    "started_at": "2026-10-08T22:49:07Z",
-    "elapsed_sec": 807
+    "title": "الذهب أم الأسهم؟ أين تضع أموالك",
+    "source": "ai-invented",
+    "started_at": "2026-10-08T23:08:21Z",
+    "elapsed_sec": 434
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 4,
-  "videos_total": 68,
-  "ai_invented_total": 5,
+  "videos_this_run": 5,
+  "videos_total": 69,
+  "ai_invented_total": 6,
   "recent": [
     {
       "title": "صندوق الطوارئ: درسك المالي الأول ضد المفاجآت",
@@ -58,6 +58,15 @@
       "code_by": "generate_video.py",
       "seconds": 798,
       "at": "2026-10-08T22:42:51Z"
+    },
+    {
+      "title": "فخ الخصومات: كيف تجعلك العروض تشتري ما لا تحتاج",
+      "source": "builtin-bank",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 817,
+      "at": "2026-10-08T23:02:45Z"
     }
   ],
   "drive": {
@@ -69,5 +78,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-08T23:02:34Z"
+  "updated_at": "2026-10-08T23:15:35Z"
 }
