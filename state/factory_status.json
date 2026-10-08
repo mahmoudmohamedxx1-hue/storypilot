@@ -1,23 +1,22 @@
 {
-  "phase": "inventing",
+  "phase": "waiting_for_chain",
   "should_continue": true,
   "run": {
     "started_at": "2026-10-08T10:34:08Z",
     "deadline_at": "2026-10-08T15:34:08Z",
     "budget_min": 300.0,
-    "infinite_stories": true
+    "infinite_stories": true,
+    "finished_at": "2026-10-08T15:19:18Z",
+    "videos_made": 2,
+    "stop_reason": "deadline"
   },
-  "current": {
-    "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
-    "source": "ai-invented",
-    "started_at": "2026-10-08T11:13:25Z"
-  },
+  "current": null,
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 1,
-  "ai_invented_total": 1,
+  "videos_this_run": 2,
+  "ai_invented_total": 2,
   "recent": [
     {
       "title": "سحر الأرقام",
@@ -27,6 +26,15 @@
       "code_by": "generate_video.py",
       "seconds": 1093,
       "at": "2026-10-08T11:04:00Z"
+    },
+    {
+      "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 878,
+      "at": "2026-10-08T11:28:03Z"
     }
   ],
   "drive": {
@@ -38,5 +46,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-08T11:13:25Z"
+  "updated_at": "2026-10-08T15:19:18Z"
 }
