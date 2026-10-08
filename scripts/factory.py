@@ -365,6 +365,27 @@ def invent_story(state):
     raise RuntimeError(f"invention failed and builtin bank exhausted: {last_err}")
 
 
+def merge_invention_bookkeeping(state, full_state_path):
+    """load_union_state returns ONLY {rendered, failed}; pull the invention
+    bookkeeping (topic rotation + no-repeat titles) back from videos.json, or
+    saving would silently reset it to 0/[] (seen in production Oct 8)."""
+    try:
+        with open(full_state_path, encoding="utf-8") as f:
+            full = json.load(f)
+        state["ai_invented_count"] = max(int(state.get("ai_invented_count", 0)),
+                                         int(full.get("ai_invented_count", 0)))
+        seen = {t.get("title") for t in state.get("ai_titles", [])}
+        merged = list(state.get("ai_titles", []))
+        for t in full.get("ai_titles", []):
+            if t.get("title") not in seen:
+                merged.append(t)
+                seen.add(t.get("title"))
+        state["ai_titles"] = merged[-60:]
+    except Exception:
+        pass
+    return state
+
+
 def forge_one(story, out_dir, deadline, source_label):
     """Forge one video and update the persistent state around it."""
     h = story["_hash"]
@@ -418,6 +439,7 @@ def main():
     # every story that lives in a shard file
     state = (rp.load_union_state() if hasattr(rp, "load_union_state")
              else rp.load_state())
+    merge_invention_bookkeeping(state, rp.STATE_PATH)
     state.setdefault("ai_invented_count", 0)
     state.setdefault("ai_titles", [])
     cache = {"data": None, "at": 0.0}
