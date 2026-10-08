@@ -1,42 +1,41 @@
 // Auto-generated from scripts/factory.py - do not edit by hand;
 // regenerate with scripts/gen-bundle-templates.py
-// Scheduled factory supervisor: one slot renders up to MAX_VIDEOS_PER_SLOT videos (pending sheet stories first, ONE AI-invented story when empty), records the slot in state/schedule_state.json, then STOPS - no chaining, no continuous making; Drive sync + live status
+// Continuous factory supervisor: renders pending sheet stories back-to-back (unlimited per run), invents fresh stories when the queue is empty (retry x3 + builtin bank), syncs Drive hourly, chains the next run via the workflow
 export const FACTORY_PY = `#!/usr/bin/env python3
-"""StoryPilot - Video Factory supervisor (SCHEDULED mode by default).
+"""StoryPilot - Video Factory supervisor (CONTINUOUS mode).
 
-Runs inside a GitHub Actions job (factory.yml) that ticks hourly - the
-schedule gate decides which hours are video slots (SCHEDULE_HOURS,
-Africa/Cairo; default 11,12,13,15,20 = videos at 11:00, 12:00, 13:00,
-15:00, 20:00). ONE slot makes a bounded number of videos and STOPS:
+Runs inside a GitHub Actions job (factory.yml) and NEVER stops making
+videos - the total count just keeps climbing (…11, 12, 13, 14, … 20 …
+and beyond). One job renders back-to-back for ~5h, then CHAINS the next
+run (the workflow's chain step re-dispatches it), so production is
+continuous 24/7:
 
-    SCHEDULED SLOT (SCHEDULED_SLOT=true, the workflow's mode)
-      1. sync the Google Sheet (Spark's live edits first)
-      2. every story without a video -> AI HYPERFRAME FORGE
-         (the keyless AI WRITES the renderer code, we run it,
-          it repairs itself, built-in renderer as last resort)
-      3. stop after MAX_VIDEOS_PER_SLOT videos (default 2)
-      4. queue empty + INVENT_WHEN_EMPTY=true -> invent ONE fresh story
-         (max one per slot) so the slot still produces a video
-      5. record the slot in state/schedule_state.json (the gate's dedup:
-         one video session per scheduled hour, never two) and exit.
-         NO chaining - the next video comes at the next scheduled hour.
+    1. sync the Google Sheet (Spark's live edits first)
+    2. every story without a video -> AI HYPERFRAME FORGE
+       (the keyless AI WRITES the renderer code, we run it,
+        it repairs itself, built-in renderer as last resort)
+    3. queue empty + INFINITE_STORIES=true -> the keyless AI invents a
+       fresh story (retry x3, emergency builtin bank as fallback) so
+       generation never stalls
+    4. every finished video: state saved + pushed, Google Drive synced
+       (DRIVE_SYNC_INTERVAL, default 1h = "sync with Drive every hour")
+    5. time budget spent -> exit; the workflow chains the next run
+       (reason=chain) so the loop never ends
 
-    CONTINUOUS mode (SCHEDULED_SLOT=false, legacy/manual): the old
-    forever-loop - drain the queue, invent forever, respect only the
-    time budget. Kept for manual catch-up runs.
+Progress survives runs: state/videos.json (committed to the repo) records
+every rendered story-hash, so nothing is ever re-processed and new/edited
+Spark rows are picked up automatically. state/factory_status.json is the
+live heartbeat file the StoryPilot app reads (phase, current story, queue
+depth, recent runs) - refreshed continuously while the factory works.
 
-Progress survives runs: state/videos.json (committed to the repo) records every
-rendered story-hash, so nothing is ever re-processed and new/edited Spark rows
-are picked up automatically. state/factory_status.json is the live heartbeat
-file the StoryPilot app reads (phase, current story, queue depth, recent runs).
-
-Stop the factory: create state/FACTORY_STOP in the repo (the app exposes this),
-or disable the "Scheduled Video Factory" workflow.
+Stop the factory: create state/FACTORY_STOP in the repo (the app exposes
+this), or disable the "Continuous Video Factory" workflow.
 """
 import json
 import os
 import subprocess
 import sys
+import threading
 import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -48,27 +47,22 @@ os.chdir(ROOT)
 import ai_forge          # noqa: E402
 import drive_sync        # noqa: E402
 import render_pending as rp  # noqa: E402
-import schedule_gate     # noqa: E402
 
-SCHEDULED_SLOT = os.environ.get("SCHEDULED_SLOT", "true").lower() in ("1", "true", "yes")
-MAX_VIDEOS_PER_SLOT = max(1, int(os.environ.get("MAX_VIDEOS_PER_SLOT", "2")))
-INVENT_WHEN_EMPTY = os.environ.get("INVENT_WHEN_EMPTY", "true").lower() in ("1", "true", "yes")
+INFINITE_STORIES = os.environ.get("INFINITE_STORIES", "true").lower() in ("1", "true", "yes")
 INVENT_ATTEMPTS = max(1, int(os.environ.get("INVENT_ATTEMPTS", "3")))
-SLOT_STATE_PATH = os.environ.get("SLOT_STATE_PATH", "state/schedule_state.json")
-SCHEDULE_HOURS = os.environ.get("SCHEDULE_HOURS", schedule_gate.DEFAULT_HOURS)
-FACTORY_BUDGET_MIN = float(os.environ.get("FACTORY_BUDGET_MIN", "45" if SCHEDULED_SLOT else "300"))
+FACTORY_BUDGET_MIN = float(os.environ.get("FACTORY_BUDGET_MIN", "300"))
 MARGIN_SEC = float(os.environ.get("FACTORY_MARGIN_SEC", "300"))
 MIN_VIDEO_SLOT_SEC = float(os.environ.get("MIN_VIDEO_SLOT_SEC", "900"))
-INFINITE_STORIES = os.environ.get("INFINITE_STORIES", "true").lower() in ("1", "true", "yes")
 IDLE_POLL_SEC = int(os.environ.get("IDLE_POLL_SEC", "90"))
 SHEET_TTL_SEC = float(os.environ.get("SHEET_TTL_SEC", "150"))
 STATUS_PATH = os.environ.get("FACTORY_STATUS_PATH", "state/factory_status.json")
 STOP_FILE = os.environ.get("FACTORY_STOP_FILE", "state/FACTORY_STOP")
+STATUS_TICK_SEC = float(os.environ.get("STATUS_TICK_SEC", "30"))
 
 # Topic rotation for AI-invented stories (Arabic - the channel's main language).
 AI_STORY_TOPICS = [
     "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت",
-    "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
+    "صندوق الطوارئ: درسك المالي الأول ضد المفاجآت",
     "الفرق بين الأصول والالتزامات ولماذا يفرق الأغنياء",
     "كيف تبدأ الاستثمار بمبلغ صغير جدا",
     "التضخم: اللص الصامت الذي يأكل مدخراتك",
@@ -90,7 +84,7 @@ AI_STORY_TOPICS = [
 ]
 
 
-# Emergency story bank - a scheduled slot must NEVER come home empty-handed
+# Emergency story bank - the factory must NEVER come home empty-handed
 # just because the keyless AI had a bad day. Each entry is a complete
 # director-format story (same shape the AI invents). Hash-deduped like any
 # other story: each bank story is rendered at most ONCE, ever.
@@ -176,58 +170,18 @@ def log(msg):
 
 STATUS = {
     "phase": "boot",
-    "mode": "scheduled" if SCHEDULED_SLOT else "continuous",
-    "slot": None,
-    "schedule_hours": SCHEDULE_HOURS,
-    "max_videos_per_slot": MAX_VIDEOS_PER_SLOT,
+    "mode": "continuous",
     "should_continue": True,
     "run": {},
     "current": None,
     "queue": {"pending": 0, "total": 0},
     "videos_this_run": 0,
+    "videos_total": 0,
     "ai_invented_total": 0,
     "recent": [],
     "drive": None,
     "updated_at": now_iso(),
 }
-
-
-def record_slot(videos, stop_reason):
-    """Mark the current Cairo-hour slot as completed (the gate's dedup).
-
-    Even a slot that produced 0 videos is recorded, so an empty queue does
-    not retry all hour long - the next scheduled hour picks new stories up.
-    """
-    try:
-        now = schedule_gate.cairo_now()
-        key = schedule_gate.slot_key(now)
-        data = {"slots": {}}
-        try:
-            with open(SLOT_STATE_PATH, encoding="utf-8") as f:
-                loaded = json.load(f)
-            if isinstance(loaded, dict) and isinstance(loaded.get("slots"), dict):
-                data = loaded
-        except Exception:
-            pass
-        slots = data["slots"]
-        slots[key] = {
-            "videos": videos,
-            "stop_reason": stop_reason,
-            "completed_at": now_iso(),
-            "mode": "scheduled" if SCHEDULED_SLOT else "continuous",
-        }
-        # keep the newest 90 slots (about four days of heavy scheduling)
-        for old in sorted(slots)[:-90]:
-            slots.pop(old, None)
-        os.makedirs(os.path.dirname(SLOT_STATE_PATH) or ".", exist_ok=True)
-        tmp = SLOT_STATE_PATH + ".tmp"
-        with open(tmp, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-        os.replace(tmp, SLOT_STATE_PATH)
-        STATUS["slot"] = {"key": key, "videos": videos, "stop_reason": stop_reason}
-        log(f"slot {key} recorded: {videos} video(s) ({stop_reason})")
-    except Exception as e:
-        log(f"::warning::could not record the slot: {e}")
 
 
 def refresh_drive_status():
@@ -241,6 +195,29 @@ def write_status():
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(STATUS, f, ensure_ascii=False, indent=2)
     os.replace(tmp, STATUS_PATH)
+
+
+def _start_status_ticker():
+    """Keep factory_status.json fresh DURING long renders too (the app reads
+    it live): every STATUS_TICK_SEC the timestamp + elapsed seconds refresh,
+    so 'the factory is working' is always visibly true, never silent."""
+    def tick():
+        while True:
+            time.sleep(STATUS_TICK_SEC)
+            cur = STATUS.get("current")
+            if cur and cur.get("started_at"):
+                try:
+                    t0 = time.mktime(time.strptime(cur["started_at"], "%Y-%m-%dT%H:%M:%SZ"))
+                    cur["elapsed_sec"] = int(time.time() - time.mktime(time.gmtime(t0)))
+                except Exception:
+                    pass
+            try:
+                write_status()
+            except Exception:
+                pass
+    th = threading.Thread(target=tick, daemon=True)
+    th.start()
+    return th
 
 
 def stopped():
@@ -325,7 +302,7 @@ def invent_story(state):
     """Ask the keyless AI for a brand-new story (rotating topics, no repeats).
 
     Retries malformed/failed asks INVENT_ATTEMPTS times, then falls back to
-    the emergency builtin story bank so a scheduled slot still produces.
+    the emergency builtin story bank so the factory still produces.
     """
     n = int(state.get("ai_invented_count", 0))
     recent = [t.get("title", "") for t in state.get("ai_titles", [])[-40:]]
@@ -382,7 +359,7 @@ def merge_invention_bookkeeping(state, full_state_path):
         for t in full.get("ai_titles", []):
             if t.get("title") not in seen:
                 merged.append(t)
-                seen.add(t.get("title"))
+                seen.add(t["title"])
         state["ai_titles"] = merged[-60:]
     except Exception:
         pass
@@ -419,23 +396,18 @@ def forge_one(story, out_dir, deadline, source_label):
 def main():
     t0 = time.time()
     deadline = t0 + FACTORY_BUDGET_MIN * 60
-    STATUS["slot"] = {"key": schedule_gate.slot_key(schedule_gate.cairo_now()),
-                      "videos": 0, "stop_reason": None}
     STATUS["run"] = {
         "started_at": now_iso(),
         "deadline_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(deadline)),
         "budget_min": FACTORY_BUDGET_MIN,
-        "mode": "scheduled" if SCHEDULED_SLOT else "continuous",
+        "mode": "continuous",
         "infinite_stories": INFINITE_STORIES,
     }
     write_status()
-    if SCHEDULED_SLOT:
-        log(f"factory boot [SCHEDULED]: hours {SCHEDULE_HOURS} Africa/Cairo | "
-            f"max {MAX_VIDEOS_PER_SLOT} video(s) this slot | invent-when-empty={INVENT_WHEN_EMPTY} "
-            f"| budget {FACTORY_BUDGET_MIN:.0f}m | hyperframes {rp.FRAME_RATE}fps")
-    else:
-        log(f"factory boot [CONTINUOUS]: budget {FACTORY_BUDGET_MIN:.0f}m | "
-            f"infinite-stories={INFINITE_STORIES} | hyperframes {rp.FRAME_RATE}fps")
+    _start_status_ticker()
+    log(f"factory boot [CONTINUOUS]: budget {FACTORY_BUDGET_MIN:.0f}m | "
+        f"infinite-stories={INFINITE_STORIES} | hyperframes {rp.FRAME_RATE}fps | "
+        f"drive sync every {drive_sync.SYNC_INTERVAL:.0f}s")
 
     # union of state/videos.json + every state/videos.shard*.json written by the
     # parallel hourly-video workers - without this the factory would re-render
@@ -445,10 +417,10 @@ def main():
     merge_invention_bookkeeping(state, rp.STATE_PATH)
     state.setdefault("ai_invented_count", 0)
     state.setdefault("ai_titles", [])
+    STATUS["videos_total"] = len(state.get("rendered", {}))
     cache = {"data": None, "at": 0.0}
     made = 0
     seq = 0
-    invented_this_run = 0
     attempted: set = set()  # story hashes already tried this run (no instant re-loops)
     stop_reason = "budget"
 
@@ -464,11 +436,6 @@ def main():
             STATUS["should_continue"] = False
             log("STOP file found - shutting the factory down gracefully")
             break
-        if SCHEDULED_SLOT and made >= MAX_VIDEOS_PER_SLOT:
-            stop_reason = "slot_complete"
-            log(f"slot budget reached ({made} video(s), max {MAX_VIDEOS_PER_SLOT}) - "
-                f"next videos at the next scheduled hour ({SCHEDULE_HOURS} Cairo)")
-            break
         remaining = deadline - time.time()
         if remaining < MARGIN_SEC:
             stop_reason = "deadline"
@@ -483,8 +450,7 @@ def main():
         stories = _sheet_stories(cache)
         pending = [st for st in stories if rp.is_pending(st, state) and st["_hash"] not in attempted]
         STATUS["queue"]["pending"] = len(pending)
-        want_invent = ((INFINITE_STORIES and not SCHEDULED_SLOT)
-                       or (SCHEDULED_SLOT and INVENT_WHEN_EMPTY and invented_this_run == 0))
+        want_invent = INFINITE_STORIES
         STATUS["phase"] = ("rendering" if pending
                            else ("inventing" if want_invent else "idle"))
         write_status()
@@ -502,13 +468,14 @@ def main():
                 state["failed"].pop(story["_hash"], None)
                 made += 1
                 STATUS["videos_this_run"] = made
+                STATUS["videos_total"] = len(state["rendered"])
                 STATUS["recent"] = (STATUS["recent"] + [{
                     "title": story["title"], "source": "sheet", "ok": ok,
                     "renderer": res.get("mode"), "code_by": res.get("model"),
                     "seconds": round(dt), "at": now_iso(),
                 }])[-10:]
                 log(f"DONE '{story['title']}' in {dt / 60:.1f}m via {res.get('mode')} "
-                    f"(code by {res.get('model')})")
+                    f"(code by {res.get('model')}) - total {len(state['rendered'])}")
             except Exception as e:
                 msg = str(e)[:300]
                 log(f"FAILED '{story['title']}': {msg}")
@@ -533,12 +500,6 @@ def main():
             try:
                 story = invent_story(state)
             except Exception as e:
-                if SCHEDULED_SLOT:
-                    # don't burn the slot retrying invention - record it and
-                    # let the next scheduled hour try again with a fresh queue
-                    log(f"story invention failed: {str(e)[:200]} - ending this slot")
-                    stop_reason = "invent_failed"
-                    break
                 log(f"story invention failed: {str(e)[:200]} - retrying after a pause")
                 STATUS["phase"] = "inventing"
                 write_status()
@@ -560,15 +521,16 @@ def main():
                 state["ai_invented_count"] = int(state.get("ai_invented_count", 0)) + 1
                 state["ai_titles"] = (state.get("ai_titles", []) + [{"title": story["title"]}])[-60:]
                 made += 1
-                invented_this_run += 1
                 STATUS["videos_this_run"] = made
+                STATUS["videos_total"] = len(state["rendered"])
                 STATUS["ai_invented_total"] = state["ai_invented_count"]
                 STATUS["recent"] = (STATUS["recent"] + [{
                     "title": story["title"], "source": source, "ok": ok,
                     "renderer": res.get("mode"), "code_by": res.get("model"),
                     "seconds": round(dt), "at": now_iso(),
                 }])[-10:]
-                log(f"DONE ({source}) '{story['title']}' in {dt / 60:.1f}m")
+                log(f"DONE ({source}) '{story['title']}' in {dt / 60:.1f}m - "
+                    f"total {len(state['rendered'])}")
             except Exception as e:
                 msg = str(e)[:300]
                 log(f"FAILED (AI-invented) '{story['title']}': {msg}")
@@ -584,29 +546,21 @@ def main():
             write_status()
             continue
 
-        # scheduled mode: nothing pending and no invention -> the slot is
-        # done for this hour; do NOT sit and poll (that's continuous
-        # behavior) - the next scheduled hour picks new Spark stories up
-        if SCHEDULED_SLOT:
-            stop_reason = "slot_idle"
-            log("queue empty - slot complete, next videos at the next scheduled hour")
-            break
-
-        # continuous mode: nothing pending -> wait for Spark to add stories
+        # INFINITE_STORIES=false and queue empty: wait for Spark to add stories
         STATUS["phase"] = "idle"
         write_status()
         log(f"queue empty - re-checking the sheet in {IDLE_POLL_SEC}s")
         time.sleep(IDLE_POLL_SEC)
         cache["at"] = 0.0  # force a fresh sync next pass
 
-    STATUS["phase"] = ("stopped" if stop_reason == "stopped"
-                       else ("slot_done" if SCHEDULED_SLOT else "waiting_for_chain"))
+    STATUS["phase"] = ("stopped" if stop_reason == "stopped" else "chaining_next_run")
     STATUS["current"] = None
     STATUS["queue"]["pending"] = len([
         st for st in (cache["data"] or []) if rp.is_pending(st, state)])
     STATUS["run"]["finished_at"] = now_iso()
     STATUS["run"]["videos_made"] = made
     STATUS["run"]["stop_reason"] = stop_reason
+    STATUS["videos_total"] = len(state.get("rendered", {}))
     # graceful shutdown: flush anything the hourly tick hasn't synced yet
     # (dedup still applies - only videos missing from Drive are uploaded)
     if stop_reason != "stopped":
@@ -615,15 +569,11 @@ def main():
         except Exception as e:
             log(f"::warning::final drive sync failed: {str(e)[:200]}")
     refresh_drive_status()
-    if SCHEDULED_SLOT:
-        # record BEFORE pushing so the schedule gate sees this slot as done
-        # (one video session per scheduled hour, never two)
-        record_slot(made, stop_reason)
     write_status()
     rp.save_state(state)
     push_state()
-    log(f"factory run complete: {made} videos | {STATUS['queue']['pending']} still pending | "
-        f"reason={stop_reason}")
+    log(f"factory run complete: {made} videos this run | {STATUS['videos_total']} total | "
+        f"{STATUS['queue']['pending']} still pending | reason={stop_reason}")
 
 
 if __name__ == "__main__":

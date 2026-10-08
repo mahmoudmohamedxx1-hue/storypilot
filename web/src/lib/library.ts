@@ -498,7 +498,7 @@ export async function renderAllPending(): Promise<RenderResult> {
   })
   return {
     ok: true,
-    message: `On-demand batch dispatched — ${pending} pending ${pending === 1 ? 'story' : 'stories'} render now on 3 parallel workers (keyless-AI-written hyperframe code). Scheduled slots keep running at their hours.`,
+    message: `On-demand batch dispatched — ${pending} pending ${pending === 1 ? 'story' : 'stories'} render now on 3 parallel workers (keyless-AI-written hyperframe code). The continuous factory keeps producing regardless.`,
   }
 }
 

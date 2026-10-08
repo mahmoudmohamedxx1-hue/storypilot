@@ -216,6 +216,16 @@ export async function putRepoVariable(repo: string, name: string, value: string)
   return 'failed'
 }
 
+/** Remove a repo Actions variable (true when it existed and was deleted). */
+export async function deleteRepoVariable(repo: string, name: string): Promise<boolean> {
+  try {
+    const del = await gh(`/repos/${repo}/actions/variables/${name}`, { method: 'DELETE' })
+    return del.ok || del.status === 204
+  } catch {
+    return false
+  }
+}
+
 export async function getDefaultBranch(repo: string): Promise<string> {
   const data = await ghJson<{ default_branch: string }>(`/repos/${repo}`)
   return data.default_branch

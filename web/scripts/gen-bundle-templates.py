@@ -16,12 +16,9 @@ JOBS = [
     (os.path.join(LIVE, "scripts", "ai_forge.py"),
      os.path.join(BUNDLE, "ai-forge-py.ts"), "AI_FORGE_PY",
      "Keyless AI hyperframe forge: the AI WRITES the renderer code per story (freellmpool -> Pollinations), self-repairs, falls back to the built-in renderer"),
-    (os.path.join(LIVE, "scripts", "schedule_gate.py"),
-     os.path.join(BUNDLE, "schedule-gate-py.ts"), "SCHEDULE_GATE_PY",
-     "The schedule gate: decides whether the current hour (Africa/Cairo) is a video slot - SCHEDULE_HOURS check + slot dedup + manual/agent bypass; shared by factory.yml and ensure-factory.yml"),
     (os.path.join(LIVE, "scripts", "factory.py"),
      os.path.join(BUNDLE, "factory-py.ts"), "FACTORY_PY",
-     "Scheduled factory supervisor: one slot renders up to MAX_VIDEOS_PER_SLOT videos (pending sheet stories first, ONE AI-invented story when empty), records the slot in state/schedule_state.json, then STOPS - no chaining, no continuous making; Drive sync + live status"),
+     "Continuous factory supervisor: renders pending sheet stories back-to-back (unlimited per run), invents fresh stories when the queue is empty (retry x3 + builtin bank), syncs Drive hourly, chains the next run via the workflow"),
     (os.path.join(LIVE, "scripts", "drive_sync.py"),
      os.path.join(BUNDLE, "drive-sync-py.ts"), "DRIVE_SYNC_PY",
      "Google Drive sync: uploads every finished video bundle to the user's Drive via their Apps Script web app (base64 protocol, deduped in state/drive_sync.json, never blocks rendering)"),
@@ -30,7 +27,7 @@ JOBS = [
      "The Apps Script the user pastes at script.google.com (one-time setup): accepts ping + base64 file uploads into the 'StoryPilot Videos' Drive folder"),
     (os.path.join(LIVE, ".github", "workflows", "factory.yml"),
      os.path.join(BUNDLE, "factory-yaml.ts"), "FACTORY_YAML",
-     "Scheduled Video Factory workflow: hourly :07 tick -> schedule gate (Africa/Cairo, SCHEDULE_HOURS) -> capped slot render -> Drive flush + platform posting; NO self-chaining, NO continuous loop"),
+     "Continuous Video Factory workflow: ~5h self-chaining runs (VERIFIED dispatch, 5 retries) + */15 cron backstop - one video after another 24/7, Drive flush + platform posting"),
     (os.path.join(LIVE, "scripts", "generate_story.py"),
      os.path.join(BUNDLE, "generate-story-py.ts"), "GENERATE_STORY_PY",
      "Story source: Google Sheet (Gemini Spark director storyboard, 10 scenes + hook/lesson) -> keyless freellmpool/llm7 -> fallback",
@@ -47,7 +44,7 @@ JOBS = [
      "Posts the MP4 to YouTube, TikTok and Instagram Reels (each platform activates when its secrets exist)"),
     (os.path.join(LIVE, ".github", "workflows", "ensure-factory.yml"),
      os.path.join(BUNDLE, "ensure-factory-yml.ts"), "ENSURE_FACTORY_YAML",
-     "Ensure Scheduled Slot watcher: at :37 every hour, same gate logic - re-dispatches the factory ONLY when the current scheduled hour produced nothing (heals dropped :07 ticks; no action outside the schedule)"),
+     "Ensure Continuous Factory watcher: */20 cron - re-dispatches the factory when no run is alive for 25+ min and the factory was not stopped (patches holes when the chain + app heartbeat both fail)"),
 ]
 
 

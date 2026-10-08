@@ -1,11 +1,12 @@
 # StoryPilot - On-demand Story -> MP4 -> YouTube/TikTok/Instagram (MANUAL ONLY)
 # Deployed by the StoryPilot agent app.
 #
-# NO SCHEDULE: videos are made on the SCHEDULE (factory.yml + SCHEDULE_HOURS,
-# default 11:00, 12:00, 13:00, 15:00, 20:00 Africa/Cairo). This workflow is
-# the manual catch-up tool: run it from the StoryPilot app (Library "Make
-# video" button) or GitHub's "Run workflow" button when you want a batch
-# RIGHT NOW (e.g. after adding many stories to the Spark sheet).
+# Videos are made CONTINUOUSLY by the Continuous Video Factory (factory.yml:
+# self-chaining ~5h runs, one video after another, count keeps climbing).
+# This workflow is the manual catch-up tool: run it from the StoryPilot app
+# (Library "Make video" button) or GitHub's "Run workflow" button when you
+# want a parallel batch RIGHT NOW (e.g. after adding many stories to the
+# Spark sheet).
 # Every run fans out to N PARALLEL WORKERS (GitHub Actions matrix). Each
 # worker renders ITS OWN shard of the pending sheet stories (tracked in
 # state/videos*.json, committed back to this repo). Edited stories change

@@ -13,7 +13,6 @@ import {
 import { buildWorkflowBundle } from '@/lib/workflow-bundle'
 import { syncSheet } from '@/lib/sync'
 import { buildLibrary, renderStoryById, renderAllPending } from '@/lib/library'
-import { isScheduledHour, formatScheduleHours } from '@/lib/schedule'
 
 export interface ToolResult {
   name: string
@@ -34,18 +33,17 @@ export async function buildSystemPrompt(): Promise<string> {
     s.instagramToken ? 'Instagram: connected' : 'Instagram: not configured (INSTAGRAM_ACCESS_TOKEN/USER_ID secrets needed)',
     s.driveWebappUrl ? 'Google Drive: connected (video sync every slot)' : 'Google Drive: not configured (DRIVE_WEBAPP_URL secret needed - one-time Apps Script setup, see Platforms view)',
   ].join(' | ')
-  const scheduleBits = s.scheduleHours || '11,12,13,15,20'
-  return `You are ${AGENT_NAME}, an AI agent that operates a SCHEDULED video factory.
+  return `You are ${AGENT_NAME}, an AI agent that operates a CONTINUOUS video factory.
 
-MISSION — videos are made BY THE CLOCK, never continuously:
-1. The Scheduled Video Factory (factory.yml on GitHub Actions) ticks hourly; the schedule gate makes videos ONLY at the scheduled hours (${scheduleBits} Africa/Cairo, repo variable SCHEDULE_HOURS). Between scheduled hours NOTHING is rendered.
-2. Each scheduled slot renders up to MAX_VIDEOS_PER_SLOT (default 2) videos: pending Google Sheet stories first (sheet id: ${s.sheetId}, Spark's live edits), and if the queue is empty the keyless AI invents ONE fresh story so the slot still produces.
+MISSION — videos are made CONTINUOUSLY, the total count keeps climbing (…12, 13, 14 … 20 … and beyond):
+1. The Continuous Video Factory (factory.yml on GitHub Actions) runs ~5h jobs that chain themselves run-after-run - one video after another, back to back, 24/7. Nothing is ever "scheduled by the clock".
+2. Each run drains EVERY pending Google Sheet story (sheet id: ${s.sheetId}, Spark's live edits included); when the queue is empty and INFINITE_STORIES=true (default), the keyless AI invents fresh stories so generation NEVER stops.
 3. For EVERY video, the KEYLESS AI WRITES THE HYPERFRAME CODE first (scripts/ai_forge.py: freellmpool → Pollinations, no API keys) - a full Python renderer for that story, sandbox-run and self-repaired on errors; the battle-tested built-in renderer is the guaranteed fallback so a video ALWAYS comes out.
-4. Finished MP4s post to YouTube, TikTok and Instagram Reels, and every video is synced to Google Drive (deduped in state/drive_sync.json) when the DRIVE_WEBAPP_URL secret is set.
-5. Manual/agent requests ("make a video now", catch-up batches) BYPASS the schedule - explicit human intent always works immediately.
+4. Finished MP4s post to YouTube, TikTok and Instagram Reels, and Google Drive is synced HOURLY (deduped in state/drive_sync.json) when the DRIVE_WEBAPP_URL secret is set.
+5. The loop is self-healing: verified self-chaining + */15 cron backstop + ensure-factory watcher (*/20) + this app's heartbeat.
 
 CURRENT STATE
-- Video schedule: ${scheduleBits} (hours, Africa/Cairo) — change it in Settings; it deploys as the SCHEDULE_HOURS repo variable
+- Video production: CONTINUOUS (self-chaining ~5h runs, infinite story invention when the queue is empty)
 - Chat model: ${s.chatModel} via z.ai SDK (GLM-5.3-Flash is the default chat model)
 - Keyless code-writing/story models in the workflow: freellmpool "${s.flpModel}" first, then live keyless routes (ovh/gpt-oss-120b, Qwen3-Coder, kilo/openrouter), then Pollinations text API (gpt-oss) - all keyless with auto-failover
 - GitHub: ${gh.connected === true ? 'connected' : 'NOT connected (add a token in Settings)'} (pipeline repo: ${s.githubRepo})
@@ -62,13 +60,13 @@ Available tools:
 - sync_sheet {} — re-sync the app with the Google Sheet now (all tabs, all stories, change detection)
 - get_library {} — the video library: every story from the sheet + its render status (to make / rendering / done) + stats
 - render_story {"storyId": str} — dispatch a GitHub Actions render for one library story (any tab, any format, immediate)
-- make_all_videos {} — on-demand batch: render EVERY pending sheet story NOW on parallel workers (bypasses the schedule)
+- make_all_videos {} — on-demand batch: render EVERY pending sheet story NOW on parallel workers (the continuous factory does this anyway; use for an instant catch-up burst)
 - get_pipeline {} — GitHub connection, recent workflow runs, local job list
 - create_job {"storyTitle": str} — queue a video job in the app's job board
-- trigger_workflow {} — dispatch the Scheduled Video Factory right now (schedule bypassed for this run)
-- control_factory {"action": "start"|"stop"|"status"} — start/resume the scheduled factory, stop it gracefully (state/FACTORY_STOP), or check if it's alive
+- trigger_workflow {} — dispatch the Continuous Video Factory right now
+- control_factory {"action": "start"|"stop"|"status"} — start/resume the continuous factory, stop it gracefully (state/FACTORY_STOP), or check if it's alive
 - drive_status {} — live health check of the Google Drive sync (pings the user's Apps Script web app; explains setup if not configured)
-- deploy_workflow {} — push the full bundle (factory.yml + hourly-video.yml + python scripts + SCHEDULE_HOURS variable) to the repo
+- deploy_workflow {} — push the full bundle (factory.yml + ensure-factory.yml + hourly-video.yml + python scripts) to the repo
 - list_repos {} — list the GitHub repos available to pick as pipeline repo
 - generate_story {"topic": str} — write a brand-new 4-6 scene story JSON (same schema as the sheet) for the next video
 - setup_guide {} — the step-by-step guide for wiring YouTube/TikTok/Instagram secrets
@@ -80,7 +78,7 @@ RULES
 - Never invent workflow run statuses or story content — always read them via tools.
 - If GitHub is not connected, guide the user to Settings to add a token.
 - For anything about rendering tech: 1080x1920 9:16, 60fps hyperframes (FRAME_RATE var), H.264+AAC, Edge-TTS voices (ar-EG-ShakirNeural default), arabic-reshaper + python-bidi for Arabic text.
-- The schedule is THE engine: each scheduled slot renders up to MAX_VIDEOS_PER_SLOT stories (keyless-AI-written renderer per story, tracked in state/videos.json committed to the repo), records itself in state/schedule_state.json (one session per slot, never two) and STOPS - no chaining, no continuous making. The next videos come at the next scheduled hour. Edited sheet stories re-queue automatically. The hourly-video workflow is the manual catch-up tool (Library "Render all" button / on-demand batches).`
+- The continuous loop is THE engine: each run renders pending stories back-to-back (keyless-AI-written renderer per story, tracked in state/videos.json committed to the repo); empty queue → the keyless AI invents a fresh story (retry x3, emergency builtin bank fallback) so the count keeps climbing; when the ~5h budget ends the run CHAINS the next one (verified dispatch). Edited sheet stories re-queue automatically. The hourly-video workflow is the manual catch-up tool (Library "Render all" button / on-demand batches).`
 }
 
 export async function executeTool(name: string, args: Record<string, unknown>): Promise<ToolResult> {
@@ -163,7 +161,7 @@ export async function executeTool(name: string, args: Record<string, unknown>): 
         await dispatchWorkflow(s.githubRepo, 'factory.yml', 'main', { reason: 'chat' })
         return {
           name, args, ok: true,
-          summary: `Dispatched the Scheduled Video Factory on ${s.githubRepo} (schedule bypassed for this manual run). It renders up to the per-slot cap of pending stories (keyless AI writes the renderer code per video), syncs them to Drive and posts to the connected platforms, then stops - the regular schedule (${s.scheduleHours || '11,12,13,15,20'} Africa/Cairo) continues at the next slot. Watch it in the Pipeline view.`,
+          summary: `Dispatched the Continuous Video Factory on ${s.githubRepo}. It renders pending stories back-to-back (keyless AI writes the renderer code per video), invents new stories when the queue is empty, syncs to Drive hourly and posts to the connected platforms - and chains the next run so production never stops. Watch it in the Pipeline view.`,
         }
       }
       case 'control_factory': {
@@ -189,21 +187,21 @@ export async function executeTool(name: string, args: Record<string, unknown>): 
           await dispatchWorkflow(s.githubRepo, 'factory.yml', 'main', { reason: 'chat-start' })
           return {
             name, args, ok: true,
-            summary: `Factory RESUMED: stop flag removed${sha ? '' : ' (was not set)'} and a fresh run dispatched on ${s.githubRepo}. The regular schedule (${s.scheduleHours || '11,12,13,15,20'} Africa/Cairo) takes over from the next slot.`,
+            summary: `Factory RESUMED: stop flag removed${sha ? '' : ' (was not set)'} and a fresh run dispatched on ${s.githubRepo}. The continuous loop is live again - it chains itself run-after-run from here.`,
           }
         }
         const runs = await listWorkflowRuns(s.githubRepo, 10).catch(() => [])
-        const factoryRuns = runs.filter((r) => r.name === 'Scheduled Video Factory' || r.name === 'Continuous Video Factory')
+        const factoryRuns = runs.filter((r) => r.name === 'Continuous Video Factory')
         const live = factoryRuns.find((r) => r.status === 'in_progress' || r.status === 'queued')
-        const sched = isScheduledHour(s.scheduleHours)
+        const stopped = !!(await getFileSha(s.githubRepo, 'state/FACTORY_STOP').catch(() => undefined))
         return {
           name, args, ok: true,
           summary: live
-            ? `Factory is WORKING: run #${live.id} ${live.status} (started ${new Date(live.created_at).toLocaleString()}). It stops when the slot is done - the next videos come at the next scheduled hour.`
-            : (sched
-                ? `No active factory run, but we are INSIDE a scheduled hour (${formatScheduleHours(s.scheduleHours)} Africa/Cairo) - the ensure-slot watcher or app heartbeat should revive it within minutes, or use control_factory {"action":"start"}.`
-                : `Factory is idle - OUTSIDE the scheduled hours (${formatScheduleHours(s.scheduleHours)} Africa/Cairo). Next videos at the next scheduled slot. Use control_factory {"action":"start"} to bypass the schedule now.`),
-          data: { live: live?.id ?? null, inScheduledHour: sched },
+            ? `Factory is WORKING: run #${live.id} ${live.status} (started ${new Date(live.created_at).toLocaleString()}) - rendering videos continuously and chaining the next run when its budget ends.`
+            : (stopped
+                ? `Factory is STOPPED (state/FACTORY_STOP in the repo). Use control_factory {"action":"start"} to resume continuous production.`
+                : `No factory run active right now - the self-chaining loop looks idle. The */15 cron, ensure-factory watcher and app heartbeat revive it automatically, or use control_factory {"action":"start"} for an instant restart.`),
+          data: { live: live?.id ?? null, stopped },
         }
       }
       case 'drive_status': {
@@ -223,7 +221,7 @@ export async function executeTool(name: string, args: Record<string, unknown>): 
           if (j.ok) {
             return {
               name, args, ok: true,
-              summary: `Google Drive sync is LIVE: web app reachable, uploading into the "${j.root || 'StoryPilot Videos'}" folder. Every finished video is synced right after it renders (deduped), plus a flush at the end of each scheduled slot.`,
+              summary: `Google Drive sync is LIVE: web app reachable, uploading into the "${j.root || 'StoryPilot Videos'}" folder. Every finished video is synced right after it renders (deduped), plus an hourly sync pass while the factory runs and a flush at the end of each run.`,
               data: j,
             }
           }

@@ -3,7 +3,6 @@ import { GENERATE_STORY_PY } from '@/lib/bundle/generate-story-py'
 import { POST_VIDEO_PY } from '@/lib/bundle/post-video-py'
 import { RENDER_PENDING_PY } from '@/lib/bundle/render-pending-py'
 import { AI_FORGE_PY } from '@/lib/bundle/ai-forge-py'
-import { SCHEDULE_GATE_PY } from '@/lib/bundle/schedule-gate-py'
 import { FACTORY_PY } from '@/lib/bundle/factory-py'
 import { FACTORY_YAML } from '@/lib/bundle/factory-yaml'
 import { ENSURE_FACTORY_YAML } from '@/lib/bundle/ensure-factory-yml'
@@ -26,32 +25,26 @@ export async function buildWorkflowBundle(): Promise<BundleFile[]> {
     {
       path: '.github/workflows/factory.yml',
       language: 'yaml',
-      description: 'SCHEDULED Video Factory: hourly :07 tick + schedule gate (SCHEDULE_HOURS, Africa/Cairo) + capped slot - NO chaining, NO continuous loop',
+      description: 'Continuous Video Factory: ~5h self-chaining runs (VERIFIED dispatch) + */15 cron backstop - one video after another, 24/7',
       content: FACTORY_YAML,
     },
     {
       path: '.github/workflows/hourly-video.yml',
       language: 'yaml',
-      description: 'Manual/on-demand workflow: single story / batch catch-up on 3 parallel workers (no cron - the schedule owns automatic generation)',
+      description: 'Manual/on-demand workflow: single story / batch catch-up on 3 parallel workers (no cron - the continuous factory owns automatic generation)',
       content: buildWorkflowYaml({ sheetId: s.sheetId, flpModel: s.flpModel, voice: s.voice }),
     },
     {
       path: '.github/workflows/ensure-factory.yml',
       language: 'yaml',
-      description: 'Ensure Scheduled Slot: at :37 every hour re-dispatches the factory ONLY when the current scheduled hour produced nothing (heals dropped ticks)',
+      description: 'Ensure Continuous Factory: */20 watcher re-dispatches the factory when no run is alive for 25+ min (patches holes when the chain + heartbeat both fail)',
       content: ENSURE_FACTORY_YAML,
     },
     {
       path: 'scripts/factory.py',
       language: 'python',
-      description: 'Scheduled factory supervisor: one slot renders up to MAX_VIDEOS_PER_SLOT videos (pending stories first, ONE AI-invented story when empty), records the slot, then STOPS',
+      description: 'Continuous factory supervisor: renders pending stories back-to-back (no cap), invents fresh stories when the queue is empty, syncs Drive hourly, chains the next run',
       content: FACTORY_PY,
-    },
-    {
-      path: 'scripts/schedule_gate.py',
-      language: 'python',
-      description: 'The schedule gate: hour check (Africa/Cairo) + slot dedup + manual/agent bypass - what turns hourly ticks into videos at 11:00, 12:00, 13:00, 15:00, 20:00',
-      content: SCHEDULE_GATE_PY,
     },
     {
       path: 'scripts/drive_sync.py',

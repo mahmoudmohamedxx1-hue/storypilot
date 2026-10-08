@@ -1,7 +1,5 @@
 import { buildWorkflowBundle } from '@/lib/workflow-bundle'
-import { getDefaultBranch, getFileSha, putFile, putRepoVariable, deleteFile } from '@/lib/github'
-import { getSettings } from '@/lib/settings'
-import { parseScheduleHours } from '@/lib/schedule'
+import { getDefaultBranch, getFileSha, putFile, deleteRepoVariable, deleteFile } from '@/lib/github'
 
 export interface DeployResult {
   repo: string
@@ -9,15 +7,18 @@ export interface DeployResult {
   pushed: string[]
   skipped: string[]
   failed: Array<{ path: string; error: string }>
-  variables: Record<string, 'created' | 'updated' | 'failed'>
+  variables: Record<string, 'deleted' | 'failed'>
   retired: string[] // old files removed from the repo
 }
 
-/** Workflow files from past architectures that must NOT stay in the repo. */
-const RETIRED_PATHS = ['.github/workflows/ensure-hourly.yml']
+/** Files from past architectures that must NOT stay in the repo. */
+const RETIRED_PATHS = [
+  '.github/workflows/ensure-hourly.yml', // pre-factory watcher
+  'scripts/schedule_gate.py',            // scheduled-mode hour gate (factory is continuous now)
+  'state/schedule_state.json',           // scheduled-mode slot ledger
+]
 
 export async function deployBundle(repo: string): Promise<DeployResult> {
-  const s = await getSettings()
   const bundle = await buildWorkflowBundle()
   const branch = await getDefaultBranch(repo).catch(() => 'main')
   const result: DeployResult = { repo, branch, pushed: [], skipped: [], failed: [], variables: {}, retired: [] }
@@ -32,14 +33,15 @@ export async function deployBundle(repo: string): Promise<DeployResult> {
       result.failed.push({ path: file.path, error: (e as Error).message })
     }
   }
-  // the video schedule (hours, Africa/Cairo) as a repo variable so the
-  // pipeline's schedule gate and the app heartbeat always agree
-  const hours = parseScheduleHours(s.scheduleHours).join(',')
-  result.variables.SCHEDULE_HOURS = await putRepoVariable(repo, 'SCHEDULE_HOURS', hours)
-  // retire obsolete workflow files (e.g. the old hourly ensure watcher)
+  // the factory runs CONTINUOUSLY - the SCHEDULE_HOURS variable from the old
+  // scheduled mode must go, otherwise it lingers as a confusing no-op
+  if (await deleteRepoVariable(repo, 'SCHEDULE_HOURS')) {
+    result.variables.SCHEDULE_HOURS = 'deleted'
+  }
+  // retire obsolete files (old watchers + the scheduled-mode gate)
   for (const path of RETIRED_PATHS) {
     try {
-      if (await deleteFile(repo, path, 'storypilot: retire obsolete workflow (scheduled mode)', branch)) {
+      if (await deleteFile(repo, path, 'storypilot: retire obsolete scheduled-mode file (continuous factory)', branch)) {
         result.retired.push(path)
       }
     } catch { /* already gone */ }

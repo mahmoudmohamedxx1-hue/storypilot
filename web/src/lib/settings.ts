@@ -14,7 +14,6 @@ export interface AppSettings {
   driveWebappKey: string
   autoPost: boolean
   voice: string
-  scheduleHours: string
 }
 
 export const DEFAULT_SETTINGS: AppSettings = {
@@ -31,7 +30,6 @@ export const DEFAULT_SETTINGS: AppSettings = {
   driveWebappKey: '',
   autoPost: true,
   voice: 'ar-EG-ShakirNeural',
-  scheduleHours: '11,12,13,15,20',
 }
 
 const KEYS: (keyof AppSettings)[] = [
@@ -48,7 +46,6 @@ const KEYS: (keyof AppSettings)[] = [
   'driveWebappKey',
   'autoPost',
   'voice',
-  'scheduleHours',
 ]
 
 export async function getSettings(): Promise<AppSettings> {

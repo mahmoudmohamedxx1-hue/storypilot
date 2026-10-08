@@ -1,25 +1,24 @@
-# StoryPilot - Ensure Scheduled Slot (self-healing for the schedule)
-# GitHub cron is best-effort and ticks get silently dropped on some
-# accounts. The Scheduled Video Factory (factory.yml) ticks hourly at :07
-# and its schedule gate decides whether the current hour (Africa/Cairo) is
-# a video slot (SCHEDULE_HOURS, default 11,12,13,15,20). If that :07 tick
-# was dropped, this watcher re-checks at :37 - SAME gate logic - and
-# re-dispatches the factory so a scheduled hour is never silently skipped.
-# Outside the scheduled hours (and for slots that already ran) it exits
-# immediately: no videos are ever made outside the schedule.
-name: Ensure Scheduled Slot
+# StoryPilot - Self-healing watcher for the Continuous Video Factory
+# GitHub cron is best-effort and heavily throttled on some accounts (ticks get
+# silently dropped). This watcher checks the FACTORY (factory.yml): if no
+# factory run is queued/in_progress, the last one finished more than 25
+# minutes ago AND the factory was not stopped, it re-dispatches the factory
+# so video generation never silently stops. The factory chains itself
+# run-after-run; this file only patches holes (chain failure + app heartbeat
+# both being down).
+name: Ensure Continuous Factory
 
 on:
   schedule:
-    - cron: "37 * * * *" # re-check 30 min after the :07 factory tick
+    - cron: "*/20 * * * *" # opportunistic heartbeat (best-effort on this account)
   workflow_dispatch: {}
 
 permissions:
-  actions: write # dispatch the factory + list runs
-  contents: read # checkout the gate script + slot state
+  actions: write
+  contents: read # checkout: read state/FACTORY_STOP
 
 concurrency:
-  group: ensure-scheduled-slot
+  group: ensure-factory
   cancel-in-progress: false
 
 jobs:
@@ -27,37 +26,45 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Checkout (schedule gate + slot state)
+      - name: Checkout (STOP flag check)
         uses: actions/checkout@v4
 
-      - name: Re-dispatch the factory if this scheduled hour produced nothing
+      - name: Re-dispatch the factory if it looks dead
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
-          SCHEDULE_HOURS: ${{ vars.SCHEDULE_HOURS || '11,12,13,15,20' }}
         run: |
           set -euo pipefail
 
-          OUT=$(python3 scripts/schedule_gate.py \
-            --hours "$SCHEDULE_HOURS" \
-            --state state/schedule_state.json \
-            --reason ensure-slot)
-          echo "$OUT"
-          GO=$(echo "$OUT" | sed -n 's/^GATE=//p')
-          WHY=$(echo "$OUT" | sed -n 's/^REASON=//p')
-
-          if [ "$GO" != "run" ]; then
-            echo "::notice::$WHY"
+          # honor the STOP request - never revive a stopped factory
+          if [ -f state/FACTORY_STOP ]; then
+            echo "::notice::state/FACTORY_STOP present - the factory is stopped, not reviving."
             exit 0
           fi
 
-          # a factory run already queued/working right now -> nothing to heal
-          ACTIVE=$(gh run list --workflow factory.yml --limit 20 --json status \
-            --jq "[.[] | select(.status == \"queued\" or .status == \"in_progress\")] | length")
-          if [ "$ACTIVE" -gt 0 ]; then
-            echo "a Scheduled Video Factory run is already active - nothing to heal"
+          LATEST=$(gh run list --workflow factory.yml --limit 1 --json status,createdAt --jq '.[0] // empty')
+          echo "Latest factory run: ${LATEST:-none}"
+
+          if [ -z "$LATEST" ]; then
+            echo "::notice::No factory run found - dispatching the factory now."
+            gh workflow run factory.yml -f reason=ensure-first
             exit 0
           fi
 
-          echo "::notice::scheduled slot looks skipped ($WHY) - dispatching the factory now"
-          gh workflow run factory.yml -f reason=ensure-slot
+          STATUS=$(echo "$LATEST" | jq -r .status)
+          CREATED=$(echo "$LATEST" | jq -r .createdAt)
+          AGE_MIN=$(( ($(date +%s) - $(date -d "$CREATED" +%s)) / 60 ))
+          echo "status=${STATUS} created=${CREATED} age=${AGE_MIN}m"
+
+          # Never interrupt a run that is queued or in progress
+          if [ "$STATUS" = "queued" ] || [ "$STATUS" = "in_progress" ]; then
+            echo "The factory is alive - nothing to do."
+            exit 0
+          fi
+
+          if [ "$AGE_MIN" -gt 25 ]; then
+            echo "::notice::Last factory run is ${AGE_MIN}m old (> 25m) - the chain broke, re-dispatching."
+            gh workflow run factory.yml -f reason=ensure-revive
+          else
+            echo "Last factory run is fresh (${AGE_MIN}m old) - nothing to do."
+          fi

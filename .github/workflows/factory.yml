@@ -1,62 +1,59 @@
-# StoryPilot - SCHEDULED VIDEO FACTORY (videos by the clock, not continuous)
+# StoryPilot - CONTINUOUS VIDEO FACTORY (the infinite loop)
 # Deployed by the StoryPilot agent app.
 #
-# Videos are made at SCHEDULED TIMES ONLY - default 11:00, 12:00, 13:00,
-# 15:00, 20:00 Africa/Cairo - configured by the SCHEDULE_HOURS repo
-# variable (e.g. "9,11,12,13,15,17,20,22"). Change it any time in GitHub
-# Settings -> Secrets and variables -> Actions -> Variables; no code edit
-# needed. Between scheduled hours NOTHING is made.
+# One job runs up to ~5.8h and NEVER stops making videos - the total
+# count keeps climbing (…12, 13, 14 … 20 … and beyond, continuously):
+#   - drains EVERY pending story from the Google Sheet (Spark's live
+#     edits included), one video after another, back to back
+#   - each video is rendered by code the KEYLESS AI writes per story
+#     (scripts/ai_forge.py: freellmpool -> Pollinations, self-repair,
+#     built-in fallback - a video ALWAYS comes out)
+#   - when the sheet queue is empty, the keyless AI invents new stories
+#     so generation never stops (INFINITE_STORIES)
+#   - near the end of its time budget the job CHAINS THE NEXT RUN
+#     (gh workflow run with the built-in GITHUB_TOKEN) - dispatch is
+#     VERIFIED: we retry up to 5x and only stop when a successor run is
+#     actually queued/in_progress
 #
-# How it works:
-#   - this workflow TICKS every hour at :07 (GitHub drops start-of-hour crons)
-#   - the first step is the SCHEDULE GATE (scripts/schedule_gate.py):
-#       * current hour (Africa/Cairo) not in SCHEDULE_HOURS -> exit in ~20s
-#       * the slot already produced its videos this hour (state/
-#         schedule_state.json) -> exit (one session per scheduled hour)
-#   - when the gate says RUN: render up to MAX_VIDEOS_PER_SLOT videos
-#     (default 2) - pending Google Sheet stories first (Spark's live
-#     edits), and if the queue is empty + INVENT_WHEN_EMPTY=true the
-#     keyless AI invents ONE fresh story so the slot still produces
-#   - every finished video is synced to Google Drive (deduped) and posted
-#     to the connected platforms
-#   - the slot records itself and STOPS. No chaining, no infinite loop,
-#     no videos outside the schedule.
+# Every finished video is ALSO synced to Google Drive (hourly, deduped in
+# state/drive_sync.json) via your own Apps Script web app - see
+# STORYPILOT.md for the 3-minute one-time setup (secret:
+# DRIVE_WEBAPP_URL).
 #
-# Manual/agent runs (reason manual|chat|catchup|force) BYPASS the schedule:
-# clicking "Run workflow" in GitHub or asking the app agent always works.
+# Reliability layers (the loop must NEVER silently die):
+#   1. self-chaining at the end of every run (verified dispatch)
+#   2. schedule */15 heartbeat (GitHub cron is best-effort)
+#   3. the "Ensure Continuous Factory" watcher workflow (*/20)
+#   4. the StoryPilot app heartbeat (dispatches when the factory looks dead)
+# The concurrency group keeps exactly ONE pending run, so cron noise never
+# piles up and the chained run always wins the pending slot.
 #
-# Reliability (a scheduled hour must never be silently skipped):
-#   1. the :07 hourly tick + gate dedup (a re-tick can't double-make)
-#   2. "Ensure Scheduled Slot" (ensure-factory.yml) re-checks at :37 and
-#      dispatches this workflow if a scheduled slot produced nothing
-#   3. the StoryPilot app heartbeat does the same check from the app side
-#
-# STOP everything: create state/FACTORY_STOP in the repo (app: "stop the
+# STOP the factory: create state/FACTORY_STOP in the repo (app: "stop the
 # factory") or disable this workflow.
-name: Scheduled Video Factory
+name: Continuous Video Factory
 
 on:
   workflow_dispatch:
     inputs:
       reason:
-        description: "Why this run started (schedule / ensure-slot / app-heartbeat / manual)"
+        description: "Why this run started (chain / heartbeat / catchup / manual)"
         required: false
         default: "manual"
   schedule:
-    - cron: "7 * * * *" # hourly tick - the schedule gate decides (Africa/Cairo)
+    - cron: "*/15 * * * *" # heartbeat backstop (best-effort)
 
 permissions:
-  contents: write # commit render + slot state
-  actions: write  # list runs (singleton guard)
+  contents: write # commit render state + chain dispatch
+  actions: write  # chain the next run + list runs
 
 concurrency:
-  group: scheduled-factory
+  group: continuous-factory
   cancel-in-progress: false
 
 jobs:
   factory:
     runs-on: ubuntu-latest
-    timeout-minutes: 58 # one slot must finish before the next hour's tick
+    timeout-minutes: 350
     env:
       # secrets/vars mapped at job level - step-level if: may only read the env context
       YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
@@ -68,12 +65,10 @@ jobs:
       YOUTUBE_PRIVACY: ${{ vars.YOUTUBE_PRIVACY || 'public' }}
       TIKTOK_PRIVACY: ${{ vars.TIKTOK_PRIVACY || 'SELF_ONLY' }}
       FRAME_RATE: ${{ vars.FRAME_RATE || '60' }} # hyperframes
-      # Google Drive sync (step if: reads these from the job env context)
+      # hourly Google Drive sync (step if: reads these from the job env context)
       DRIVE_WEBAPP_URL: ${{ secrets.DRIVE_WEBAPP_URL }}
       DRIVE_WEBAPP_KEY: ${{ secrets.DRIVE_WEBAPP_KEY }}
       DRIVE_ROOT_FOLDER: ${{ vars.DRIVE_ROOT_FOLDER || 'StoryPilot Videos' }}
-      # the video schedule (hours in Africa/Cairo time)
-      SCHEDULE_HOURS: ${{ vars.SCHEDULE_HOURS || '11,12,13,15,20' }}
     steps:
       - name: Singleton guard (skip if another factory run is already working)
         id: guard
@@ -84,7 +79,7 @@ jobs:
           OTHER=$(gh run list --workflow factory.yml --limit 50 --json status,databaseId \
             --jq "[.[] | select((.status == \"queued\" or .status == \"in_progress\") and .databaseId != ${{ github.run_id }})] | length")
           if [ "$OTHER" -gt 0 ]; then
-            echo "::notice::another Scheduled Video Factory run is active - this trigger is a no-op"
+            echo "::notice::another Continuous Video Factory run is active - this trigger is a no-op"
             echo "go=skip" >> "$GITHUB_OUTPUT"
           else
             echo "go=run" >> "$GITHUB_OUTPUT"
@@ -94,64 +89,43 @@ jobs:
         if: steps.guard.outputs.go == 'run'
         uses: actions/checkout@v4
 
-      - name: Schedule gate (is this hour a video slot? - Africa/Cairo)
-        id: gate
-        if: steps.guard.outputs.go == 'run'
-        run: |
-          set -euo pipefail
-          REASON="${{ github.event_name == 'workflow_dispatch' && inputs.reason || 'schedule' }}"
-          OUT=$(python3 scripts/schedule_gate.py \
-            --hours "$SCHEDULE_HOURS" \
-            --state state/schedule_state.json \
-            --reason "$REASON")
-          echo "$OUT"
-          GO=$(echo "$OUT" | sed -n 's/^GATE=//p')
-          WHY=$(echo "$OUT" | sed -n 's/^REASON=//p')
-          echo "go=$GO" >> "$GITHUB_OUTPUT"
-          if [ "$GO" != "run" ]; then
-            echo "::notice::$WHY"
-          fi
-
       - name: Set up Python
-        if: steps.guard.outputs.go == 'run' && steps.gate.outputs.go == 'run'
+        if: steps.guard.outputs.go == 'run'
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: pip
 
       - name: Install system deps (ffmpeg + fonts incl. Arabic)
-        if: steps.guard.outputs.go == 'run' && steps.gate.outputs.go == 'run'
+        if: steps.guard.outputs.go == 'run'
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends ffmpeg fonts-dejavu-core fonts-noto-core fonts-noto-ui-core || true
 
       - name: Install Python deps
-        if: steps.guard.outputs.go == 'run' && steps.gate.outputs.go == 'run'
+        if: steps.guard.outputs.go == 'run'
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run the scheduled factory (slot supervisor)
-        if: steps.guard.outputs.go == 'run' && steps.gate.outputs.go == 'run'
+      - name: Run the continuous factory (infinite loop supervisor)
+        if: steps.guard.outputs.go == 'run'
         env:
-          GH_TOKEN: ${{ github.token }} # state git-push
+          GH_TOKEN: ${{ github.token }} # state git-push + chain dispatch
           SHEET_ID: ${{ vars.SHEET_ID || '1nNsUcwR9foKN_MTPm5bwMR5jz2HUE68UeRqJ0OFp-d4' }}
           FLP_MODEL: ${{ vars.FLP_MODEL || 'auto' }}
           TTS_VOICE_AR: ${{ vars.TTS_VOICE_AR || 'ar-EG-ShakirNeural' }}
           ENABLE_AI_IMAGES: ${{ vars.ENABLE_AI_IMAGES || 'true' }}
           IMAGE_MODEL: ${{ vars.IMAGE_MODEL || 'flux' }}
-          # scheduled-slot mode: capped videos per slot, one invented story max,
-          # no chaining - the run ends when the slot is done
-          SCHEDULED_SLOT: "true"
-          MAX_VIDEOS_PER_SLOT: ${{ vars.MAX_VIDEOS_PER_SLOT || '2' }}
-          INVENT_WHEN_EMPTY: ${{ vars.INVENT_WHEN_EMPTY || 'true' }}
-          FACTORY_BUDGET_MIN: ${{ vars.FACTORY_BUDGET_MIN || '45' }}
+          FACTORY_BUDGET_MIN: ${{ vars.FACTORY_BUDGET_MIN || '300' }}
+          INFINITE_STORIES: ${{ vars.INFINITE_STORIES || 'true' }}
           AI_ATTEMPTS: ${{ vars.AI_ATTEMPTS || '3' }}
+          INVENT_ATTEMPTS: ${{ vars.INVENT_ATTEMPTS || '3' }}
           DRIVE_SYNC_INTERVAL: ${{ vars.DRIVE_SYNC_INTERVAL || '3600' }}
         run: python scripts/factory.py
 
       - name: Upload factory videos
-        if: always() && steps.guard.outputs.go == 'run' && steps.gate.outputs.go == 'run'
+        if: always() && steps.guard.outputs.go == 'run'
         uses: actions/upload-artifact@v4
         with:
           name: factory-videos
@@ -162,20 +136,19 @@ jobs:
             videos/*/story.json
             videos/*/ai_renderer.py
             state/factory_status.json
-            state/schedule_state.json
             batch_summary.json
           retention-days: 14
           if-no-files-found: warn
 
-      - name: Sync new videos to Google Drive (slot flush)
-        if: always() && steps.guard.outputs.go == 'run' && steps.gate.outputs.go == 'run' && env.DRIVE_WEBAPP_URL != ''
+      - name: Sync new videos to Google Drive (flush - in-loop sync runs hourly)
+        if: always() && steps.guard.outputs.go == 'run' && env.DRIVE_WEBAPP_URL != ''
         run: |
-          # factory.py syncs after every video; this final pass is a
+          # factory.py already syncs hourly + on shutdown; this final pass is a
           # belt-and-suspenders flush in case the supervisor exited early
-          python scripts/drive_sync.py || echo "::warning::drive sync flush failed (will retry next slot)"
+          python scripts/drive_sync.py || echo "::warning::drive sync flush failed (will retry next run)"
 
       - name: Post to YouTube
-        if: always() && steps.guard.outputs.go == 'run' && steps.gate.outputs.go == 'run' && env.YOUTUBE_REFRESH_TOKEN != ''
+        if: always() && steps.guard.outputs.go == 'run' && env.YOUTUBE_REFRESH_TOKEN != ''
         run: |
           set -uo pipefail
           shopt -s nullglob
@@ -186,7 +159,7 @@ jobs:
           done
 
       - name: Post to TikTok
-        if: always() && steps.guard.outputs.go == 'run' && steps.gate.outputs.go == 'run' && env.TIKTOK_ACCESS_TOKEN != ''
+        if: always() && steps.guard.outputs.go == 'run' && env.TIKTOK_ACCESS_TOKEN != ''
         run: |
           set -uo pipefail
           shopt -s nullglob
@@ -197,7 +170,7 @@ jobs:
           done
 
       - name: Post to Instagram Reels
-        if: always() && steps.guard.outputs.go == 'run' && steps.gate.outputs.go == 'run' && env.INSTAGRAM_ACCESS_TOKEN != ''
+        if: always() && steps.guard.outputs.go == 'run' && env.INSTAGRAM_ACCESS_TOKEN != ''
         run: |
           set -uo pipefail
           shopt -s nullglob
@@ -206,3 +179,53 @@ jobs:
             VIDEO_PATH="$d/output.mp4" META_PATH="$d/meta.json" python post_video.py --instagram \
               || echo "::warning::failed to post $d to Instagram"
           done
+
+      - name: Chain the next factory run (THE INFINITE LOOP)
+        if: always() && steps.guard.outputs.go == 'run'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -uo pipefail
+          # honor the STOP request
+          if [ -f state/FACTORY_STOP ]; then
+            echo "FACTORY_STOP present - not chaining. Remove the file to resume."
+            exit 0
+          fi
+          if [ -f state/factory_status.json ] && \
+             grep -q '"should_continue": false' state/factory_status.json; then
+            echo "factory_status says should_continue=false - not chaining"
+            exit 0
+          fi
+          # if a run is already queued/in_progress (heartbeat raced us), it carries the torch
+          QUEUED=$(gh run list --workflow factory.yml --limit 50 --json status,databaseId \
+            --jq "[.[] | select((.status == \"queued\" or .status == \"in_progress\") and .databaseId != ${{ github.run_id }})] | length")
+          if [ "$QUEUED" -gt 0 ]; then
+            echo "another factory run is already queued - it will carry on"
+            exit 0
+          fi
+          # dispatch + VERIFY the successor actually exists - a silently dropped
+          # dispatch would kill the infinite loop, so we retry up to 5 times
+          for attempt in 1 2 3 4 5; do
+            if gh workflow run factory.yml -f reason=chain; then
+              echo "dispatch sent (attempt $attempt)"
+            else
+              echo "gh workflow run failed - trying the REST API"
+              curl -s -f -X POST \
+                -H "Authorization: Bearer $GH_TOKEN" \
+                -H "Accept: application/vnd.github+json" \
+                "https://api.github.com/repos/${{ github.repository }}/actions/workflows/factory.yml/dispatches" \
+                -d '{"ref":"main","inputs":{"reason":"chain-api"}}' \
+                && echo "dispatch sent via REST API (attempt $attempt)" \
+                || echo "::warning::REST dispatch also failed (attempt $attempt)"
+            fi
+            sleep 20  # give GitHub a moment to register the queued run
+            QUEUED=$(gh run list --workflow factory.yml --limit 50 --json status,databaseId \
+              --jq "[.[] | select((.status == \"queued\" or .status == \"in_progress\") and .databaseId != ${{ github.run_id }})] | length")
+            if [ "$QUEUED" -gt 0 ]; then
+              echo "VERIFIED: successor factory run is queued/in_progress - the loop continues"
+              exit 0
+            fi
+            echo "attempt $attempt: no successor found yet - retrying dispatch"
+            sleep 10
+          done
+          echo "::warning::could not verify a successor after 5 attempts - the */15 cron, ensure-factory watcher and app heartbeat will revive the loop"
