@@ -190,12 +190,88 @@ def extract_code_block(text):
     return max(blocks, key=len).strip()
 
 
+# Progressive repairs for the usual LLM JSON sins. Each repair is only tried
+# when the previous parse failed, so well-formed replies take the fast path.
+_RE_TRAILING_COMMA = re.compile(r",\s*([}\]])")
+_RE_MISSING_COMMA = re.compile(r'(["\]\}\w])\s*\n(\s*["{\[])')  # "v"\n"k" / }\n{ / 100\n"
+_SMART_QUOTES = {"\u201c": '"', "\u201d": '"', "\u201e": '"', "\u00ab": '"', "\u00bb": '"'}
+
+
+def _json_repair_chain(s):
+    """Yield progressively-repaired copies of a possibly-broken JSON document."""
+    yield s
+    no_tc = _RE_TRAILING_COMMA.sub(r"\1", s)          # trailing commas
+    yield no_tc
+    norm = s
+    for bad, good in _SMART_QUOTES.items():            # smart quotes -> ascii
+        norm = norm.replace(bad, good)
+    yield norm
+    norm_ntc = _RE_TRAILING_COMMA.sub(r"\1", norm)
+    yield norm_ntc
+    yield _RE_MISSING_COMMA.sub(r'\1,\n\2', norm_ntc)  # missing commas between lines
+    yield _RE_MISSING_COMMA.sub(r'\1,\n\2', no_tc)
+    for base in (norm_ntc, s):                         # truncated tail -> close brackets
+        fixed = _balance_truncated(base)
+        if fixed:
+            yield fixed
+
+
+def _balance_truncated(s):
+    """Append the missing }/] closers when the JSON was cut mid-document."""
+    if s.count('"') % 2:                               # cut mid-string - close it
+        s = s + '"'
+    blanked = re.sub(r'"(?:[^"\\]|\\.)*"', '""', s)    # brackets in strings don't count
+    stack = []
+    for ch in blanked:
+        if ch in "{[":
+            stack.append(ch)
+        elif ch == "}" and stack and stack[-1] == "{":
+            stack.pop()
+        elif ch == "]" and stack and stack[-1] == "[":
+            stack.pop()
+    if not stack:
+        return None
+    return s + "".join("}" if c == "{" else "]" for c in reversed(stack))
+
+
 def extract_json(text):
-    """Pull the first JSON object out of an AI reply (tolerant)."""
-    m = re.search(r"\{[\s\S]*\}", text or "")
-    if not m:
+    """Pull the first JSON object out of an AI reply (tolerant).
+
+    Handles code fences, prose around the JSON, trailing commas, smart
+    quotes, missing commas between lines and truncated tails - each fix is
+    attempted only after the plain parse fails.
+    """
+    if not text or not text.strip():
+        raise ValueError("empty reply")
+    body = text.strip()
+    fence = re.search(r"```(?:json)?\s*(\{[\s\S]*?\})\s*```", body)
+    if fence:                                           # prefer a fenced block
+        body = fence.group(1)
+    start, end = body.find("{"), body.rfind("}")
+    if start < 0:
         raise ValueError("no JSON object in reply")
-    return json.loads(m.group(0))
+    # try the FULL tail first (lossless for truncated replies - the
+    # raw_decode salvage strips trailing prose), then the {}-sliced view
+    # (prose after the JSON can never amputate a truncated tail then)
+    snippets = [body[start:]]
+    if end > start:
+        snippets.append(body[start:end + 1])
+    first_err = None
+    for snippet in snippets:
+        for cand in _json_repair_chain(snippet):
+            try:
+                data = json.loads(cand)
+                if isinstance(data, dict):
+                    return data
+            except Exception as e:
+                first_err = first_err or e
+                try:                                        # salvage: first complete
+                    data, _ = json.JSONDecoder().raw_decode(cand)  # object, ignore
+                    if isinstance(data, dict):                    # trailing junk
+                        return data
+                except Exception:
+                    pass
+    raise ValueError("unparseable JSON reply: " + str(first_err)[:160])
 
 
 # --------------------------------------------------------------------------

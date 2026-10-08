@@ -50,6 +50,7 @@ import schedule_gate     # noqa: E402
 SCHEDULED_SLOT = os.environ.get("SCHEDULED_SLOT", "true").lower() in ("1", "true", "yes")
 MAX_VIDEOS_PER_SLOT = max(1, int(os.environ.get("MAX_VIDEOS_PER_SLOT", "2")))
 INVENT_WHEN_EMPTY = os.environ.get("INVENT_WHEN_EMPTY", "true").lower() in ("1", "true", "yes")
+INVENT_ATTEMPTS = max(1, int(os.environ.get("INVENT_ATTEMPTS", "3")))
 SLOT_STATE_PATH = os.environ.get("SLOT_STATE_PATH", "state/schedule_state.json")
 SCHEDULE_HOURS = os.environ.get("SCHEDULE_HOURS", schedule_gate.DEFAULT_HOURS)
 FACTORY_BUDGET_MIN = float(os.environ.get("FACTORY_BUDGET_MIN", "45" if SCHEDULED_SLOT else "300"))
@@ -83,6 +84,82 @@ AI_STORY_TOPICS = [
     "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
     "أخطاء نفسية يقع فيها كل مستثمر مبتدئ",
     "الدخل السلبي: الحقيقة بدون مبالغة",
+]
+
+
+# Emergency story bank - a scheduled slot must NEVER come home empty-handed
+# just because the keyless AI had a bad day. Each entry is a complete
+# director-format story (same shape the AI invents). Hash-deduped like any
+# other story: each bank story is rendered at most ONCE, ever.
+def _bscene(i, tr, visual, prompt, vo, sfx):
+    return {"index": i, "timeRange": tr, "visual": visual,
+            "aiPrompt": prompt, "voiceover": vo, "sfx": sfx}
+
+
+BUILTIN_STORIES = [
+    {
+        "title": "قاعدة الـ 72: احسب وقت مضاعفة أموالك بخطوة واحدة",
+        "logline": "قاعدة حسابية بسيطة تكشف لك في ثوان كم سنة يحتاج استثمارك ليتضاعف، ولماذا الفرق الصغير في العائد يصنع سنوات كاملة.",
+        "hook": "كم سنة تحتاج أموالك حتى تتضاعف؟",
+        "lesson": "اقسم 72 على العائد السنوي لتعرف سنوات المضاعفة، وقارن الفرص قبل أن تستثمر.",
+        "genre": "مالي",
+        "duration": "75 Seconds",
+        "language": "ar",
+        "scenes": [
+            _bscene(1, "0:00-0:07", "لقطة قريبة جدا لعينين تتأملان في غرفة معتمة، مع دفع كاميرا بطيء نحو الوجه، وشعاع ضوء بارد مائل يخترق العتمة تحوم فيه ذرات غبار ناعمة، وتدرج لوني أزرق فولاذي بارد يمنح المشهد حسا من الترقب الصامت.", "extreme close-up thoughtful eyes, cold blue rim light, floating dust, cinematic vertical", "كم سنة تحتاج أموالك حتى تتضاعف؟", "quiet room tone + deep sub drone + soft heartbeat thump"),
+            _bscene(2, "0:07-0:15", "لقطة واسعة لمكتب خشبي عليه ورقة وقلم وآلة حاسبة قديمة، مع انسحاب كاميرا بطيء يكشف تفاصيل المكتب، وإضاءة مصباح دافئة تخترق عتمة الغرفة، وذرات غبار تتحرك داخل شعاع الضوء، وألوان باردة تتدرج بلطف نحو الدفء.", "wide shot vintage desk with calculator, warm lamp glow, dust motes, moody vertical", "قاعدة بسيطة تجيبك في أقل من عشر ثوان.", "vintage clock ticking + soft piano note + paper rustle"),
+            _bscene(3, "0:15-0:22", "لقطة متوسطة لكف يكتب معادلة على لوح زجاجي شفاف، مع تتبع كاميرا بطيء من اليسار إلى اليمين، وأرقام متوهجة بالأزرق تطفو على الزجاج، وضباب خفيف يملأ الخلفية، وإضاءة نيون باردة تمنح الأرقام هالة سماوية.", "medium shot hand writing formula on glass, glowing blue numbers, neon rim, vertical", "اقسم اثنين وسبعين على عائد استثمارك السنوي.", "glass marker squeak + airy synth pad + number tick"),
+            _bscene(4, "0:22-0:30", "لقطة قريبة لشاشة داكنة يصعد فيها منحنى نمو بثبات، مع دفع كاميرا تدريجي نحو قمة المنحنى، وجزيئات ضوء زرقاء تتطاير حول الأرقام الصاعدة، وخلفية باردة عميقة يلمع فيها الخط كطريق نجمي.", "close-up growth curve climbing dark screen, blue particles, futuristic glow, vertical", "عائد ثمانية بالمئة يضاعف مالك في تسع سنوات.", "data hum + rising electronic arpeggio + soft chime"),
+            _bscene(5, "0:30-0:37", "لقطة علوية لطاولة عليها مساران متفرعان، خط أخضر يتقدم بوتيرة أسرع من خط أزرق، مع دوران كاميرا خفيف فوق الطاولة، وانعكاس إضاءة خضراء مزرقة على سطح لامع، وضباب رقيق يمنح العمق إحساس السباق.", "overhead shot two racing growth paths on table, teal green glow, misty depth, vertical", "وعائد اثنا عشر بالمئة يختصرها إلى ست سنوات.", "shimmering pad + fast ticking clock + whoosh accent"),
+            _bscene(6, "0:37-0:45", "لقطة متوسطة لشخصين يقطعان ممرا طويلا بإيقاعين مختلفين والأسرع يسبق بمراحل، مع كاميرا محمولة تهتز قليلا وتتبع حركتهما، وأعمدة ضوء باردة تتناوب على الجدران، وبرودة زرقاء تكسو المشهد بأكمله.", "medium tracking shot two people walking corridor at different pace, cold pillars, handheld", "فرق بسيط في العائد يصنع سنوات كاملة من الانتظار.", "footsteps echo + tense low strings + clock tick"),
+            _bscene(7, "0:45-0:52", "لقطة قريبة لميزان نحاسي قديم يتأرجح بين كومة ذهب وسؤال مشع، مع إمالة كاميرا هابطة نحو كفته، وإضاءة كهرمانية قوية من جانب واحد ترسم ظلالا حادة، وذرات غبار ذهبية تسبح في الضوء.", "close-up old balance scale gold vs glowing question, amber side light, dust, vertical", "لكن العائد المرتفع يجيء دائما مع مخاطر أكبر.", "metal creak + deep warning drone + coin drop"),
+            _bscene(8, "0:52-1:00", "لقطة واسعة لشارع مدينة تعلوه لوحات أسعار تتغير أرقامها باستمرار، مع سحب كاميرا بطيء يبتعد عن الحشد المسرع، وضباب رمادي بارد يلف الشوارع، وألوان باهتة توحي بقوة خفية تعمل في صمت.", "wide shot busy city with changing price signs, gray fog, desaturated cold palette", "والتضخم الصامت يقتطع نصف قوتك الشرائية خلالها.", "city ambience + inflation riser + subtle alarm"),
+            _bscene(9, "1:00-1:08", "لقطة متوسطة لكفين تضعان حجرين على طرفي ميزان زجاجي متوهج، مع دوران كاميرا كامل حول الميزان، وأضواء زرقاء تتحول تدريجيا إلى ذهبية دافئة، وانعكاسات ناعمة ترتجف على السطح الزجاجي.", "orbit shot hands placing stones on glowing glass balance, blue to gold light shift", "القاعدة الحقيقية أداة مقارنة لا وعد بالربح.", "glass chime + warm strings swell + soft impact"),
+            _bscene(10, "1:08-1:15", "لقطة قريبة لعينين مبتسمتين تفيضان ثقة وسط هالة ضوء ذهبية دافئة، مع دفع كاميرا بطيء نحو الوجه، وخيوط ضوء ناعمة تسبح في الخلفية، وتدرج لوني دافئ يختم رحلة اللون من البرودة إلى الدفء.", "close-up confident smiling eyes, warm golden halo, soft bokeh lights, cinematic vertical", "فكم سنة تحتاج أموالك؟ شاركنا رقمك في التعليقات.", "warm outro pad + gentle piano + soft whoosh out"),
+        ],
+    },
+    {
+        "title": "فخ الخصومات: كيف تجعلك العروض تشتري ما لا تحتاج",
+        "logline": "الخصم لا يوفر مالك بل يخلق إنفاقا جديدا، ودماغك تحسب ما وفزت به لا ما دفعته فعلا، والقاعدة الذهبية: ما ليس في قائمتك ليس صفقة.",
+        "hook": "هل حققت وفرة حين اشتريت بنصف السعر؟",
+        "lesson": "ما لم تكن مخططا لشرائه قبل رؤية العرض ليس صفقة مهما بلغ الخصم.",
+        "genre": "مالي",
+        "duration": "75 Seconds",
+        "language": "ar",
+        "scenes": [
+            _bscene(1, "0:00-0:07", "لقطة قريبة جدا لعينين تتسعان أمام لافتة خصم حمراء ضخمة، مع دفع كاميرا بطيء نحو اللافتة، وأضواء نيون حمراء تومض في خلفية معتمة، وانعكاسات قرمزية ترتجف على وجه المشاهد، وتدرج لوني بارد يخفي وراءه مصيدة.", "extreme close-up wide eyes before giant red sale sign, crimson neon, dark", "هل حققت وفرة حين اشتريت بنصف السعر؟", "mall ambience + heartbeat bass + neon buzz"),
+            _bscene(2, "0:07-0:15", "لقطة واسعة لمركز تجاري مزدحم تتدفق فيه الأكياس كقطيع، مع كاميرا محمولة تنساب بين المتسوقين، وأضواء سقف بيضاء باردة تسلط سطوعا مقصودا، وظلال متلاحقة تمنح الإيقاع إحساس الاندفاع الجماعي.", "wide handheld shot crowded mall shoppers with bags, cold white ceiling light", "الحقيقة أن الخصم لا يوفر مالا بل يخلق إنفاقا جديدا.", "crowd murmur + rhythmic footsteps + cart rattle"),
+            _bscene(3, "0:15-0:22", "لقطة متوسطة لملصق سعر قديم مشطوب بخط أحمر بجانب سعر جديد لامع، مع إمالة كاميرا صاعدة من الملصق إلى رف البضائع، وإضاءة رفوف باردة تبرز التباين، وهالة حمراء تحيط بالسعر الجديد كوعد مغري.", "medium shot crossed-out price sticker next to new price, red halo", "المتجر يضع السعر الأصلي ليجعل الفرق يبدو مكسبا.", "sticker peel + curious pizzicato + subtle riser"),
+            _bscene(4, "0:22-0:30", "لقطة قريبة لرأس يتأرجح بين نعم ولا فوق طاولة قرارات شفافة، مع دوران كاميرا خفيف حول الرأس، وأضواء متعاكسة زرقاء وحمراء تتزاحم على الوجه، وضباب رقيق يضاعف إحساس الحيرة الداخلية.", "close-up head hesitating between yes and no, blue red split light", "دماغك تحسب ما وفزت به لا ما دفعته فعلا.", "ticking clock + reversed voices whisper + low pulse"),
+            _bscene(5, "0:30-0:37", "لقطة قريبة لمحفظة مفتوحة تخرج منها أوراق نقدية ببطء، مع سحب كاميرا هادئ يبتعد نحو كومة مشتريات متناثرة على الأرض، وإضاءة منزلية دافئة خافتة، وظلال ناعمة توحي بخسارة صامتة لا صوت لها.", "close-up open wallet bills leaving slowly, warm dim home light", "ثمانون دولارا بنصف السعر تبقى أربعين خرجت من جيبك.", "paper bills flip + melancholy piano + soft sigh"),
+            _bscene(6, "0:37-0:45", "لقطة متوسطة لقائمة مشتريات مكتوبة بخط اليد تلوح بين الرفوف، مع تتبع كاميرا بطيء خلف القائمة الممسورة بكف ثابتة، وضوء نهاري بارد من نوافذ المتجر، وعمق ميدان ضحل يعزل القائمة عن فوضى الرغبات.", "medium handheld shot handwritten shopping list walking aisles, shallow depth", "السلعة التي لم تخطط لشرائها ليست صفقة أبدا.", "paper rustle + gentle strings + store hum"),
+            _bscene(7, "0:45-0:52", "لقطة واسعة لساعة جدارية عملاقة تدور عقاربها بسرعة غير طبيعية فوق لافتة عروض ضخمة، مع إمالة كاميرا هابطة من الساعة إلى الحشد المتدافع، وإضاءة قرمزية متوترة، وومضات ضوء تمنح إحساس العد التنازلي.", "wide shot giant clock spinning fast above sale banner, crimson tension", "قوة الخصم الحقيقية تكمن في استعجالك قبل التفكير.", "fast clock ticking + tension riser + alarm blip"),
+            _bscene(8, "0:52-1:00", "لقطة قريبة لدماغ متوهج بأسلوب الأشعة يضيء عند رؤية كلمة خصم، مع دفع كاميرا نحو البقعة الأكثر توهجا، وإضاءة مختبرية زرقاء باردة، وجزيئات ضوئية تتنفس ببطء وتكشف أثر المتعة الكيميائي.", "x-ray style glowing brain lighting up at discount word, lab blue", "المتاجر تعرف أن العرض يطلق هرمون المتعة في دماغك.", "neural hum + dopamine ping + deep sub drop"),
+            _bscene(9, "1:00-1:08", "لقطة متوسطة لكف ترسم خطا أحمر حاسما على كلمة صفقة في قائمة، مع تتبع كاميرا بطيء خلف الكف، وإضاءة صباحية ذهبية تبدأ في كسر برودة المشهد، وذرات غبار دافئة تسبح في شعاع النافذة.", "medium shot hand crossing out word deal on list, morning gold", "قاعدة واحدة: ما ليس في قائمتك ليس صفقة.", "pen scratch + hopeful piano motif + warm pad"),
+            _bscene(10, "1:08-1:15", "لقطة قريبة لوجه مبتسم هادئ يهز رأسه بثقة أمام مرآة منزلية، مع سحب كاميرا بطيء يكشف الغرفة الدافئة المحيطة، وأضواء مسائية ذهبية ناعمة، وتدرج لوني دافئ يختم رحلة اللون بانتصار الوعي.", "close-up confident calm face in mirror, warm evening glow", "ما آخر مرة اشتريت شيئا لم تكن تخطط له؟", "evening room tone + soft vinyl music + gentle exhale"),
+        ],
+    },
+    {
+        "title": "الرصيد النائم: ماذا تخسر أموالك المعطلة كل يوم؟",
+        "logline": "الأموال الراقدة بلا عائد تخسر قيمتها بصمت كل يوم، والحل في التوازن بين وسادة طوارئ سائلة وباقٍ يعمل بعائد.",
+        "hook": "أين تنام أموالك الليلة؟",
+        "lesson": "اجعل نقودك تعمل: سيولة للمصائب وباقٍ يستثمر بعائد يحارب التضخم.",
+        "genre": "مالي",
+        "duration": "75 Seconds",
+        "language": "ar",
+        "scenes": [
+            _bscene(1, "0:00-0:07", "لقطة قريبة جدا لعينين مغمضتين تفتحان ببطء في غرفة نوم معتمة، مع سحب كاميرا هادئ يبتعد نحو خزنة حديدية في الزاوية، وضوء قمر أزرق بارد يتسلل من النافذة، وظلال طويلة ساكنة توحي برقاد طويل.", "extreme close-up eyes opening in dark bedroom, cold moonlight", "أين تنام أموالك الليلة؟", "night crickets + soft breath + metal safe hum"),
+            _bscene(2, "0:07-0:15", "لقطة علوية لأريكة تنام فوقها أوراق نقدية مغطاة بغطاء منمق، مع دوران كاميرا بطيء فوق المشهد، وإضاءة ليلية زرقاء، وضباب خفيف يمنح الأموال النائمة مظهر كائن حي في سبات عميق.", "overhead shot banknotes sleeping under blanket on couch, night blue", "النقود الراقدة في حساب لا عائد له تخسر يوميا.", "lullaby music box + blanket rustle + distant owl"),
+            _bscene(3, "0:15-0:22", "لقطة متوسطة لكائن ضوئي صغير يقتطع قطعا من ورقة نقدية على طاولة، مع تتبع كاميرا لحركته المراوغة، وخلفية داكنة باردة، وومضات خفيفة عند كل قضمة تبتلع بها قيمة الورقة.", "medium shot light creature nibbling banknote, dark cold background", "التضخم يلتهم قيمتها بصمت وأنت تنتظر الفرصة المثالية.", "paper nibble + sneaky pizzicato + subtle alarm"),
+            _bscene(4, "0:22-0:30", "لقطة قريبة لورقة نقدية تتبخر منها طبقات شفافة في تيار هواء بطيء، مع دفع كاميرا نحو الفتات المتطاير، وإضاءة خضراء مزرقة غريبة، وجزيئات تتبدد في الفراغ كأنها تذوب بلا أثر.", "close-up banknote layers evaporating in air stream, teal glow", "عشرة آلاف دولار تخسر مئات من قوتها الشرائية سنويا.", "air whoosh + fading shimmer + low mystery drone"),
+            _bscene(5, "0:30-0:37", "لقطة واسعة لهاتف في اليد ينبض على شاشته حساب توفير متوهج كقلب نابض، مع إمالة كاميرا صاعدة من الشاشة إلى وجه صاحبه المبتسم، وضوء ذهبي دافئ يتسلل للمشهد، وانعكاسات ناعمة على الوجه.", "wide shot glowing savings app pulsing on phone, warm gold", "حساب التوفير ذو العائد يوقظ الرصيد النائم بلطف.", "app pulse chime + hopeful strings + warm pad"),
+            _bscene(6, "0:37-0:45", "لقطة متوسطة لمنحنيين مرسومين على جدار زجاجي أحدهما ينطلق كالسهم والآخر شبه مستوٍ، مع حركة بانورامية أفقية من الضعيف إلى القوي، وأضواء زرقاء تتحول تدريجيا إلى ذهبية، وضباب يمنح العمق إحساس المسافة.", "medium shot two growth curves on glass wall, blue to gold", "الفارق بين عائد صفري وآخر معقول يتضاعف مع الوقت.", "graph hum + rising arpeggio + speed whoosh"),
+            _bscene(7, "0:45-0:52", "لقطة قريبة لعجلة مائية خشبية قديمة تدور بماء ذهبي متلألئ تحت ضوء الشمس، مع دوران كاميرا كامل حول العجلة، وانعكاسات ذهبية راقصة على سطح الماء، وتنفس ضوئي دافئ يملأ الكادر بالحياة.", "close-up water wheel turning with golden water, sun sparkles", "السيولة الذكية مال يعمل حتى وهو في الانتظار.", "water wheel creak + flowing water + bright bells"),
+            _bscene(8, "0:52-1:00", "لقطة واسعة لعاصفة رعدية تقترب من منزل صغير تلمع نوافذه بأمان داخلي، مع سحب كاميرا هادئ يكشف سياجا واقيا حول المنزل، وبرق بارد يضيء المشهد للحظات، ودفء داخلي يزداد وضوحا كلما اشتدت العاصفة.", "wide shot storm approaching safe glowing house, lightning flashes", "لكن الاحتياطي النقدي يبقى درعك الوحيد عند المفاجآت.", "thunder rumble + rain on glass + cozy interior"),
+            _bscene(9, "1:00-1:08", "لقطة علوية لطاولة مقسمة إلى نصفين، نصف عملات ذهبية متلألئة ونصف خزنة صغيرة مغلقة، مع هبوط كاميرا عمودي بطيء نحو الطاولة، وإضاءة متوازنة بين الذهبي والأزرق، وظلال متساوية توحي بانسجام مقصود.", "overhead shot table split gold coins and small vault, balanced", "التوازن: وسادة طوارئ سائلة والباقي يستثمر بعائد.", "coins settle + balanced chime + gentle harmony"),
+            _bscene(10, "1:08-1:15", "لقطة قريبة لعينين يقظتين تنظران إلى الأفق عند الفجر بثقة هادئة، مع دفع كاميرا بطيء نحو النافذة المضيئة، وضوء شروق ذهبي يغمر الكادر تدريجيا، ورحلة اللون تكتمل من البرودة إلى الدفء الكامل.", "close-up awake eyes at dawn horizon, golden sunrise flood", "فأين ينام رصيدك؟ في الخزنة أم في العمل؟", "morning birds + warm orchestral swell + soft breeze"),
+        ],
+    },
 ]
 
 
@@ -210,10 +287,44 @@ def _sheet_stories(cache):
     return cache["data"]
 
 
+def _normalize_story(data, route):
+    """Fill defaults so any source (AI / bank) yields a complete story."""
+    if not data.get("scenes") or not data.get("title"):
+        raise ValueError("story missing title/scenes")
+    data["scenes"] = data["scenes"][:12]
+    for i, s in enumerate(data["scenes"], 1):
+        s.setdefault("index", i)
+        s.setdefault("timeRange", f"scene {i}")
+        s.setdefault("visual", "")
+        s.setdefault("aiPrompt", "")
+        s.setdefault("voiceover", "")
+        s.setdefault("sfx", "")
+    data.setdefault("language", "ar")
+    data.setdefault("duration", "60 Seconds")
+    data["narration"] = data.get("narration") or " ".join(s["voiceover"] for s in data["scenes"])
+    data["logline"] = data.get("logline") or data["title"]
+    data["genre"] = data.get("genre") or "مالي"
+    data["_route"] = route
+    return data
+
+
+def _builtin_story(state):
+    """First bank story never rendered yet (hash-deduped like AI stories)."""
+    for story in BUILTIN_STORIES:
+        candidate = _normalize_story(json.loads(json.dumps(story)), "builtin-bank")
+        candidate["_hash"] = rp.story_hash(candidate)
+        if candidate["_hash"] not in state.get("rendered", {}):
+            return candidate
+    return None
+
+
 def invent_story(state):
-    """Ask the keyless AI for a brand-new story (rotating topics, no repeats)."""
+    """Ask the keyless AI for a brand-new story (rotating topics, no repeats).
+
+    Retries malformed/failed asks INVENT_ATTEMPTS times, then falls back to
+    the emergency builtin story bank so a scheduled slot still produces.
+    """
     n = int(state.get("ai_invented_count", 0))
-    topic = AI_STORY_TOPICS[n % len(AI_STORY_TOPICS)]
     recent = [t.get("title", "") for t in state.get("ai_titles", [])[-40:]]
     system = (
         'You are the showrunner of an Arabic cinematic vertical-video channel. Reply with ONLY '
@@ -230,29 +341,28 @@ def invent_story(state):
         '(different shot size every scene). "sfx" is 3 English layers: ambience + music + hit. '
         'Never repeat a previous title.'
     )
-    prompt = f"Write a fresh 75-second director's storyboard story about: {topic}"
-    if recent:
-        prompt += "\n\nThese were used recently (do NOT repeat them): " + "; ".join(recent[:12])
-    text, route = ai_forge.keyless_chat(prompt, system)
-    data = ai_forge.extract_json(text)
-    if not data.get("scenes") or not data.get("title"):
-        raise ValueError("AI story missing title/scenes")
-    data["scenes"] = data["scenes"][:12]
-    for i, s in enumerate(data["scenes"], 1):
-        s.setdefault("index", i)
-        s.setdefault("timeRange", f"scene {i}")
-        s.setdefault("visual", "")
-        s.setdefault("aiPrompt", "")
-        s.setdefault("voiceover", "")
-        s.setdefault("sfx", "")
-    data.setdefault("language", "ar")
-    data.setdefault("duration", "60 Seconds")
-    data["narration"] = data.get("narration") or " ".join(s["voiceover"] for s in data["scenes"])
-    data["logline"] = data.get("logline") or data["title"]
-    data["genre"] = data.get("genre") or "مالي"
-    data["_route"] = route
-    log(f"invented '{data['title']}' via {route}")
-    return data
+    last_err = None
+    for attempt in range(1, INVENT_ATTEMPTS + 1):
+        topic = AI_STORY_TOPICS[(n + attempt - 1) % len(AI_STORY_TOPICS)]
+        prompt = f"Write a fresh 75-second director's storyboard story about: {topic}"
+        if recent:
+            prompt += "\n\nThese were used recently (do NOT repeat them): " + "; ".join(recent[:12])
+        try:
+            text, route = ai_forge.keyless_chat(prompt, system)
+            data = _normalize_story(ai_forge.extract_json(text), route)
+            log(f"invented '{data['title']}' via {route} (attempt {attempt})")
+            return data
+        except Exception as e:
+            last_err = e
+            log(f"invention attempt {attempt}/{INVENT_ATTEMPTS} failed: {str(e)[:160]}")
+            if attempt < INVENT_ATTEMPTS:
+                time.sleep(4)
+    story = _builtin_story(state)
+    if story:
+        log(f"keyless invention failed {INVENT_ATTEMPTS}x - builtin story bank provides "
+            f"'{story['title']}'")
+        return story
+    raise RuntimeError(f"invention failed and builtin bank exhausted: {last_err}")
 
 
 def forge_one(story, out_dir, deadline, source_label):
@@ -416,9 +526,10 @@ def main():
             seq += 1
             slug = f"ai{seq:02d}-{story['_hash'][:8]}"
             out_dir = os.path.join(rp.VIDEOS_DIR, slug)
-            log(f"sheet queue empty - forging AI-invented story '{story['title']}'")
+            source = "builtin-bank" if story.get("_route") == "builtin-bank" else "ai-invented"
+            log(f"sheet queue empty - forging {source} story '{story['title']}'")
             try:
-                ok, entry, dt, res = forge_one(story, out_dir, deadline, "ai-invented")
+                ok, entry, dt, res = forge_one(story, out_dir, deadline, source)
                 entry["topic"] = AI_STORY_TOPICS[int(state.get("ai_invented_count", 0)) % len(AI_STORY_TOPICS)]
                 state["rendered"][story["_hash"]] = entry
                 state["ai_invented_count"] = int(state.get("ai_invented_count", 0)) + 1
@@ -428,16 +539,16 @@ def main():
                 STATUS["videos_this_run"] = made
                 STATUS["ai_invented_total"] = state["ai_invented_count"]
                 STATUS["recent"] = (STATUS["recent"] + [{
-                    "title": story["title"], "source": "ai-invented", "ok": ok,
+                    "title": story["title"], "source": source, "ok": ok,
                     "renderer": res.get("mode"), "code_by": res.get("model"),
                     "seconds": round(dt), "at": now_iso(),
                 }])[-10:]
-                log(f"DONE (AI-invented) '{story['title']}' in {dt / 60:.1f}m")
+                log(f"DONE ({source}) '{story['title']}' in {dt / 60:.1f}m")
             except Exception as e:
                 msg = str(e)[:300]
                 log(f"FAILED (AI-invented) '{story['title']}': {msg}")
                 STATUS["recent"] = (STATUS["recent"] + [{
-                    "title": story.get("title", "?"), "source": "ai-invented", "ok": False,
+                    "title": story.get("title", "?"), "source": source, "ok": False,
                     "error": msg[:160], "at": now_iso(),
                 }])[-10:]
             STATUS["current"] = None

@@ -114,7 +114,8 @@ def story_from_sheet():
     base = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}"
     csv_text = fetch_url(f"{base}/export?format=csv")
     rows = parse_csv(csv_text)
-    story = {"title": "Untitled Story", "logline": "", "genre": "", "duration": "60 Seconds", "scenes": [], "narration": ""}
+    story = {"title": "Untitled Story", "logline": "", "genre": "", "duration": "60 Seconds",
+             "hook": "", "lesson": "", "scenes": [], "narration": ""}
     header_idx, narration_idx, colmap = None, None, {}
     for i, r in enumerate(rows):
         cells = [c.strip() for c in r]
@@ -130,6 +131,10 @@ def story_from_sheet():
                 story["genre"] = cells[1]
             elif "duration" in first or "المدة" in first_raw:
                 story["duration"] = cells[1]
+            elif "hook" in first or "الخطاف" in first_raw:
+                story["hook"] = cells[1]
+            elif "lesson" in first or "الدرس" in first_raw or "العبرة" in first_raw:
+                story["lesson"] = cells[1]
         if cells and looks_like_header(cells) and len(" ".join(cells)) < 220:
             header_idx = i
             colmap = map_columns(cells)
@@ -164,6 +169,8 @@ def story_from_sheet():
         story["narration"] = " ".join(parts)
     if not story["narration"] and story["scenes"]:
         story["narration"] = " ".join(s["voiceover"] for s in story["scenes"] if s["voiceover"])
+    if not story["logline"] and story["hook"]:
+        story["logline"] = story["hook"]
     story["language"] = detect_language(story["title"] + " " + story["narration"])
     if not story["scenes"]:
         raise ValueError("sheet has no scene rows")
