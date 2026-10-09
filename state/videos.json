@@ -804,10 +804,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
+    },
+    "d4f256785351051939e190a30d04a129": {
+      "title": "الأصول مقابل الالتزامات: سر الثراء",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T04:48:01Z",
+      "fps": 60,
+      "dir": "ai07-d4f25678",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
     }
   },
   "failed": {},
-  "ai_invented_count": 21,
+  "ai_invented_count": 22,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -871,6 +883,9 @@
     },
     {
       "title": "قوة الفائدة المركبة"
+    },
+    {
+      "title": "الأصول مقابل الالتزامات: سر الثراء"
     }
   ]
 }
