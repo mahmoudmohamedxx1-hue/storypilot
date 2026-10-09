@@ -1728,14 +1728,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
+    },
+    "f3add439c3011e92cd740a6191e3895c": {
+      "title": "الخطأ المدمر",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T19:32:41Z",
+      "fps": 60,
+      "dir": "ai14-f3add439",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
     }
   },
   "failed": {},
-  "ai_invented_count": 98,
+  "ai_invented_count": 99,
   "ai_titles": [
-    {
-      "title": "خطأ توقيت القفز"
-    },
     {
       "title": "ادفع لنفسك أولاً: رحلة الادخار التلقائي"
     },
@@ -1912,6 +1921,9 @@
     },
     {
       "title": "حلم التقاعد المبكر: رحلة الأرقام الحقيقية"
+    },
+    {
+      "title": "الخطأ المدمر"
     }
   ]
 }
