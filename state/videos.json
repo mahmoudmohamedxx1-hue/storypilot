@@ -1440,14 +1440,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
+    },
+    "64cf44249febeef28d393fdae9f77d62": {
+      "title": "الاستثمار في المهارات: عائيدك الذهبي",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T15:14:18Z",
+      "fps": 60,
+      "dir": "ai15-64cf4424",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
     }
   },
   "failed": {},
-  "ai_invented_count": 74,
+  "ai_invented_count": 75,
   "ai_titles": [
-    {
-      "title": "التنويع الاستثماري: لعبة السلال المتعددة"
-    },
     {
       "title": "السوق المخطط: لماذا تفقد الكثير منا الفرصة"
     },
@@ -1624,6 +1633,9 @@
     },
     {
       "title": "العقلية طويلة الأجل: سر كبار المستثمرين"
+    },
+    {
+      "title": "الاستثمار في المهارات: عائيدك الذهبي"
     }
   ]
 }
