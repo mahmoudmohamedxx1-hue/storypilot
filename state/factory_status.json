@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
+    "title": "صوت الدخل: حقيقة الدخل السلبي",
     "source": "ai-invented",
-    "started_at": "2026-10-09T15:40:50Z",
-    "elapsed_sec": 293
+    "started_at": "2026-10-09T15:50:58Z",
+    "elapsed_sec": 795
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 17,
-  "videos_total": 140,
-  "ai_invented_total": 77,
+  "videos_this_run": 18,
+  "videos_total": 141,
+  "ai_invented_total": 78,
   "recent": [
-    {
-      "title": "الدين المزدوج: سر الاقتراض الذكي",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 613,
-      "at": "2026-10-09T14:00:16Z"
-    },
     {
       "title": "الديون المتوازنة",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 532,
       "at": "2026-10-09T15:39:58Z"
+    },
+    {
+      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 299,
+      "at": "2026-10-09T15:45:49Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T15:45:43Z"
+  "updated_at": "2026-10-09T16:04:13Z"
 }

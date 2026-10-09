@@ -1488,14 +1488,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
+    },
+    "e7080ae27908a685d3604d706b91baef": {
+      "title": "صوت الدخل: حقيقة الدخل السلبي",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T16:04:23Z",
+      "fps": 60,
+      "dir": "ai19-e7080ae2",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
     }
   },
   "failed": {},
-  "ai_invented_count": 78,
+  "ai_invented_count": 79,
   "ai_titles": [
-    {
-      "title": "الرحلة الاستثمارية: كيف يبني الكبار ثروتهم خطوة بخطوة"
-    },
     {
       "title": "الرصيد النائم: ماذا تخسر أموالك المعطلة كل يوم؟"
     },
@@ -1672,6 +1681,9 @@
     },
     {
       "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
+    },
+    {
+      "title": "صوت الدخل: حقيقة الدخل السلبي"
     }
   ]
 }
