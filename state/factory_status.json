@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "صوت الدخل: حقيقة الدخل السلبي",
+    "title": "الدخل السلبي: الحقيقة بدون مبالغة",
     "source": "ai-invented",
-    "started_at": "2026-10-09T15:50:58Z",
-    "elapsed_sec": 795
+    "started_at": "2026-10-09T16:05:52Z",
+    "elapsed_sec": 561
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 18,
-  "videos_total": 141,
-  "ai_invented_total": 78,
+  "videos_this_run": 19,
+  "videos_total": 142,
+  "ai_invented_total": 79,
   "recent": [
-    {
-      "title": "الديون المتوازنة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 784,
-      "at": "2026-10-09T14:17:02Z"
-    },
     {
       "title": "سلة البيض",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 299,
       "at": "2026-10-09T15:45:49Z"
+    },
+    {
+      "title": "صوت الدخل: حقيقة الدخل السلبي",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 804,
+      "at": "2026-10-09T16:04:23Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T16:04:13Z"
+  "updated_at": "2026-10-09T16:15:13Z"
 }
