@@ -1,117 +1,28 @@
 {
-  "phase": "chaining_next_run",
+  "phase": "inventing",
   "mode": "continuous",
   "should_continue": true,
   "run": {
-    "started_at": "2026-10-09T02:45:09Z",
-    "deadline_at": "2026-10-09T07:45:09Z",
+    "started_at": "2026-10-09T07:33:42Z",
+    "deadline_at": "2026-10-09T12:33:42Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true,
-    "finished_at": "2026-10-09T07:30:09Z",
-    "videos_made": 22,
-    "stop_reason": "deadline"
+    "infinite_stories": true
   },
-  "current": null,
+  "current": {
+    "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
+    "source": "ai-invented",
+    "started_at": "2026-10-09T07:34:02Z",
+    "elapsed_sec": 70
+  },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 22,
+  "videos_this_run": 0,
   "videos_total": 100,
-  "ai_invented_total": 37,
-  "recent": [
-    {
-      "title": "المصفوفة الذهبية: لعبة التوزيع الذكي",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 347,
-      "at": "2026-10-09T06:05:18Z"
-    },
-    {
-      "title": "الاقتراض الذكي: متى يصبح الدين حليماً مصراً؟",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 320,
-      "at": "2026-10-09T06:11:08Z"
-    },
-    {
-      "title": "التنويع الاستثماري: لعبة السلال المتعددة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 546,
-      "at": "2026-10-09T06:20:52Z"
-    },
-    {
-      "title": "خطأ توقيت القفز",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 543,
-      "at": "2026-10-09T06:30:21Z"
-    },
-    {
-      "title": "ادفع لنفسك أولاً: رحلة الادخار التلقائي",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 555,
-      "at": "2026-10-09T06:40:10Z"
-    },
-    {
-      "title": "سر التضاعف السريع",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 521,
-      "at": "2026-10-09T06:49:18Z"
-    },
-    {
-      "title": "الاستثمار في نفسك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 523,
-      "at": "2026-10-09T06:58:43Z"
-    },
-    {
-      "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 536,
-      "at": "2026-10-09T07:08:03Z"
-    },
-    {
-      "title": "قراءة القوائم: مفتاح السهم الذهبي",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 468,
-      "at": "2026-10-09T07:17:58Z"
-    },
-    {
-      "title": "كشف الأرقام: فهم القوائم قبل الشراء",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 522,
-      "at": "2026-10-09T07:27:03Z"
-    }
-  ],
+  "ai_invented_total": 0,
+  "recent": [],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -121,5 +32,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T07:30:09Z"
+  "updated_at": "2026-10-09T07:35:12Z"
 }
