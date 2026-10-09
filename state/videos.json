@@ -1404,14 +1404,23 @@
       "code_by": "pollinations:openai",
       "ai_attempts": 1,
       "topic": "مخاطر محاولة توقيت السوق ولماذا يخسر معظم الناس"
+    },
+    "09cf196d7abddd5702f7b34797057154": {
+      "title": "الخطوة الأولى: ادفع لنفسك قبل العالم",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T14:44:41Z",
+      "fps": 60,
+      "dir": "ai12-09cf196d",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الادخار التلقائي: ادفع لنفسك أولا"
     }
   },
   "failed": {},
-  "ai_invented_count": 71,
+  "ai_invented_count": 72,
   "ai_titles": [
-    {
-      "title": "الذهب أم الأسهم؟ أين تضع أموالك"
-    },
     {
       "title": "المخاطرة بين الفرص: كيف تختار مشروعك الأول"
     },
@@ -1588,6 +1597,9 @@
     },
     {
       "title": "الرقصة مع الشيطان: سر خسارة المستثمرين في توقيت السوق"
+    },
+    {
+      "title": "الخطوة الأولى: ادفع لنفسك قبل العالم"
     }
   ]
 }

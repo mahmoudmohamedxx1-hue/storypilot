@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الرقصة مع الشيطان: سر خسارة المستثمرين في توقيت السوق",
+    "title": "الخطوة الأولى: ادفع لنفسك قبل العالم",
     "source": "ai-invented",
-    "started_at": "2026-10-09T14:29:51Z",
-    "elapsed_sec": 412
+    "started_at": "2026-10-09T14:38:03Z",
+    "elapsed_sec": 370
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 10,
-  "videos_total": 133,
-  "ai_invented_total": 70,
+  "videos_this_run": 11,
+  "videos_total": 134,
+  "ai_invented_total": 71,
   "recent": [
-    {
-      "title": "قوة الفائدة المركبة: كيف تضاعف أموالك مع الوقت",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 463,
-      "at": "2026-10-09T12:31:10Z"
-    },
     {
       "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 645,
       "at": "2026-10-09T14:28:54Z"
+    },
+    {
+      "title": "الرقصة مع الشيطان: سر خسارة المستثمرين في توقيت السوق",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "ai",
+      "code_by": "pollinations:openai",
+      "seconds": 439,
+      "at": "2026-10-09T14:37:11Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T14:36:43Z"
+  "updated_at": "2026-10-09T14:44:13Z"
 }
