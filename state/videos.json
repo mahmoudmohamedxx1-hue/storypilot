@@ -1944,14 +1944,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الاستثمار في نفسك: أفضل عائد على الإطلاق"
+    },
+    "f1148e8a3a0bdad41fd42f652e857ca4": {
+      "title": "الصراع الداخلي للمستثمر: حرب العقل والشهوة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T23:14:31Z",
+      "fps": 60,
+      "dir": "ai06-f1148e8a",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "كيف تقرأ القوائم المالية لشركة قبل شراء سهمها"
     }
   },
   "failed": {},
-  "ai_invented_count": 116,
+  "ai_invented_count": 117,
   "ai_titles": [
-    {
-      "title": "صناديق المؤشرات: بداية ثوابك"
-    },
     {
       "title": "دين الجيد والديون السيئة"
     },
@@ -2128,6 +2137,9 @@
     },
     {
       "title": "قوة الاستثمار في نفسك: أعلى عائد"
+    },
+    {
+      "title": "الصراع الداخلي للمستثمر: حرب العقل والشهوة"
     }
   ]
 }

@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "قوة الاستثمار في نفسك: أعلى عائد",
+    "title": "الصراع الداخلي للمستثمر: حرب العقل والشهوة",
     "source": "ai-invented",
-    "started_at": "2026-10-09T22:59:52Z",
-    "elapsed_sec": 302
+    "started_at": "2026-10-09T23:06:24Z",
+    "elapsed_sec": 480
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 4,
-  "videos_total": 178,
-  "ai_invented_total": 115,
+  "videos_this_run": 5,
+  "videos_total": 179,
+  "ai_invented_total": 116,
   "recent": [
     {
       "title": "الادخار التلقائي: ادفع لنفسك أولا",
@@ -58,6 +58,15 @@
       "code_by": "generate_video.py",
       "seconds": 426,
       "at": "2026-10-09T22:57:12Z"
+    },
+    {
+      "title": "قوة الاستثمار في نفسك: أعلى عائد",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 316,
+      "at": "2026-10-09T23:05:08Z"
     }
   ],
   "drive": {
@@ -69,5 +78,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T23:04:54Z"
+  "updated_at": "2026-10-09T23:14:24Z"
 }
