@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الرقصة مع الشيطان: سر خسارة المستثمرين في توقيت السوق",
+    "title": "الادخار التلقائي: كيف تحقق من الثروة المركبة",
     "source": "ai-invented",
-    "started_at": "2026-10-09T10:29:23Z",
-    "elapsed_sec": 499
+    "started_at": "2026-10-09T10:39:02Z",
+    "elapsed_sec": 490
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 13,
-  "videos_total": 113,
-  "ai_invented_total": 50,
+  "videos_this_run": 14,
+  "videos_total": 114,
+  "ai_invented_total": 51,
   "recent": [
-    {
-      "title": "التوافق المالي: كيف تتحول الدرهمات الصغيرى لكنوز لا تُحصى",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "ai",
-      "code_by": "freellmpool:ovh/gpt-oss-120b",
-      "seconds": 495,
-      "at": "2026-10-09T08:13:23Z"
-    },
     {
       "title": "صندوق الطوارئ: درعك المالي في اللحظات الحاسمة",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 757,
       "at": "2026-10-09T10:28:26Z"
+    },
+    {
+      "title": "الرقصة مع الشيطان: سر خسارة المستثمرين في توقيت السوق",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 507,
+      "at": "2026-10-09T10:37:50Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T10:37:42Z"
+  "updated_at": "2026-10-09T10:47:12Z"
 }
