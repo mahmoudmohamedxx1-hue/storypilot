@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الأصول مقابل الالتزامات: سر الثراء",
+    "title": "خطوة صغيرة، طموح كبير",
     "source": "ai-invented",
-    "started_at": "2026-10-09T04:39:41Z",
-    "elapsed_sec": 478
+    "started_at": "2026-10-09T05:13:36Z",
+    "elapsed_sec": 603
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 6,
-  "videos_total": 84,
-  "ai_invented_total": 21,
+  "videos_this_run": 7,
+  "videos_total": 85,
+  "ai_invented_total": 22,
   "recent": [
     {
       "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
@@ -76,6 +76,15 @@
       "code_by": "generate_video.py",
       "seconds": 516,
       "at": "2026-10-09T04:38:37Z"
+    },
+    {
+      "title": "الأصول مقابل الالتزامات: سر الثراء",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 501,
+      "at": "2026-10-09T04:48:01Z"
     }
   ],
   "drive": {
@@ -87,5 +96,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T04:47:39Z"
+  "updated_at": "2026-10-09T05:23:39Z"
 }

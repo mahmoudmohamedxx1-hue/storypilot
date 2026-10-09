@@ -816,10 +816,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
+    },
+    "eb8299616fe88cc911c5037a84f08e0a": {
+      "title": "خطوة صغيرة، طموح كبير",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T05:24:08Z",
+      "fps": 60,
+      "dir": "ai08-eb829961",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الفرق بين الأصول والالتزامات ولماذا يفرق الأغنياء"
     }
   },
   "failed": {},
-  "ai_invented_count": 22,
+  "ai_invented_count": 23,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -886,6 +898,9 @@
     },
     {
       "title": "الأصول مقابل الالتزامات: سر الثراء"
+    },
+    {
+      "title": "خطوة صغيرة، طموح كبير"
     }
   ]
 }
