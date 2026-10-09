@@ -1968,14 +1968,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
+    },
+    "32d9a39fa5b492a37f58321b9e66d8d4": {
+      "title": "قوة الفائدة المركبة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T23:47:06Z",
+      "fps": 60,
+      "dir": "ai08-32d9a39f",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
     }
   },
   "failed": {},
-  "ai_invented_count": 118,
+  "ai_invented_count": 119,
   "ai_titles": [
-    {
-      "title": "البيض المتنقل"
-    },
     {
       "title": "الرقصة مع الشيطان: سر خسارة المستثمرين في توقيت السوق"
     },
@@ -2152,6 +2161,9 @@
     },
     {
       "title": "الخطأ النفسي القاتل في استثمارك"
+    },
+    {
+      "title": "قوة الفائدة المركبة"
     }
   ]
 }

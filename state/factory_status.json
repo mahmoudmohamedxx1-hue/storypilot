@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الخطأ النفسي القاتل في استثمارك",
+    "title": "قوة الفائدة المركبة",
     "source": "ai-invented",
-    "started_at": "2026-10-09T23:18:52Z",
-    "elapsed_sec": 512
+    "started_at": "2026-10-09T23:34:39Z",
+    "elapsed_sec": 735
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 6,
-  "videos_total": 180,
-  "ai_invented_total": 117,
+  "videos_this_run": 7,
+  "videos_total": 181,
+  "ai_invented_total": 118,
   "recent": [
     {
       "title": "الادخار التلقائي: ادفع لنفسك أولا",
@@ -76,6 +76,15 @@
       "code_by": "generate_video.py",
       "seconds": 488,
       "at": "2026-10-09T23:14:31Z"
+    },
+    {
+      "title": "الخطأ النفسي القاتل في استثمارك",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 516,
+      "at": "2026-10-09T23:27:28Z"
     }
   ],
   "drive": {
@@ -87,5 +96,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T23:27:24Z"
+  "updated_at": "2026-10-09T23:46:54Z"
 }
