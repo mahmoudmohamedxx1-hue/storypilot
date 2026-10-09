@@ -1104,10 +1104,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الانضباط المالي: عادة صغيرة تغير حياتك"
+    },
+    "0aa505a41b0c32a6b55f2aacd444cb36": {
+      "title": "صناديق المؤشرات: بداية ثوابك",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T09:46:19Z",
+      "fps": 60,
+      "dir": "ai10-0aa505a4",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
     }
   },
   "failed": {},
-  "ai_invented_count": 46,
+  "ai_invented_count": 47,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -1243,6 +1255,9 @@
     },
     {
       "title": "الانضباط المالي: عادة صغيرة تغير حياتك"
+    },
+    {
+      "title": "صناديق المؤشرات: بداية ثوابك"
     }
   ]
 }

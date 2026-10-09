@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
+    "title": "صناديق المؤشرات: بداية ثوابك",
     "source": "ai-invented",
-    "started_at": "2026-10-09T09:18:07Z",
-    "elapsed_sec": 815
+    "started_at": "2026-10-09T09:35:43Z",
+    "elapsed_sec": 629
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 8,
-  "videos_total": 108,
-  "ai_invented_total": 45,
+  "videos_this_run": 9,
+  "videos_total": 109,
+  "ai_invented_total": 46,
   "recent": [
     {
       "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
@@ -94,6 +94,15 @@
       "code_by": "generate_video.py",
       "seconds": 640,
       "at": "2026-10-09T09:16:59Z"
+    },
+    {
+      "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 842,
+      "at": "2026-10-09T09:32:09Z"
     }
   ],
   "drive": {
@@ -105,5 +114,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T09:31:42Z"
+  "updated_at": "2026-10-09T09:46:12Z"
 }
