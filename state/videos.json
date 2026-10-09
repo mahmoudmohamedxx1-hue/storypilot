@@ -912,10 +912,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
+    },
+    "b0dc4d9075c083939bf8dd4c3bea1a5c": {
+      "title": "خطأ توقيت القفز",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T06:30:21Z",
+      "fps": 60,
+      "dir": "ai16-b0dc4d90",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "مخاطر محاولة توقيت السوق ولماذا يخسر معظم الناس"
     }
   },
   "failed": {},
-  "ai_invented_count": 30,
+  "ai_invented_count": 31,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -1006,6 +1018,9 @@
     },
     {
       "title": "التنويع الاستثماري: لعبة السلال المتعددة"
+    },
+    {
+      "title": "خطأ توقيت القفز"
     }
   ]
 }

@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "التنويع الاستثماري: لعبة السلال المتعددة",
+    "title": "خطأ توقيت القفز",
     "source": "ai-invented",
-    "started_at": "2026-10-09T06:11:45Z",
-    "elapsed_sec": 535
+    "started_at": "2026-10-09T06:21:17Z",
+    "elapsed_sec": 533
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 14,
-  "videos_total": 92,
-  "ai_invented_total": 29,
+  "videos_this_run": 15,
+  "videos_total": 93,
+  "ai_invented_total": 30,
   "recent": [
-    {
-      "title": "الدخل السلبي: الحقيقة بدون مبالغة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 533,
-      "at": "2026-10-09T04:29:28Z"
-    },
     {
       "title": "قوة الفائدة المركبة",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 320,
       "at": "2026-10-09T06:11:08Z"
+    },
+    {
+      "title": "التنويع الاستثماري: لعبة السلال المتعددة",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 546,
+      "at": "2026-10-09T06:20:52Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T06:20:40Z"
+  "updated_at": "2026-10-09T06:30:10Z"
 }
