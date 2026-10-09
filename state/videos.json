@@ -852,10 +852,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التضخم: اللص الصامت الذي يأكل مدخراتك"
+    },
+    "b149024aaaa24758c030efd566f0768e": {
+      "title": "الصفقة البسيطة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T05:52:50Z",
+      "fps": 60,
+      "dir": "ai11-b149024a",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الانضباط المالي: عادة صغيرة تغير حياتك"
     }
   },
   "failed": {},
-  "ai_invented_count": 25,
+  "ai_invented_count": 26,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -931,6 +943,9 @@
     },
     {
       "title": "التضخم: اللص الصامت الذي يأكل مدخراتك"
+    },
+    {
+      "title": "الصفقة البسيطة"
     }
   ]
 }

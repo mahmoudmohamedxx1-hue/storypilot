@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "التضخم: اللص الصامت الذي يأكل مدخراتك",
+    "title": "الصفقة البسيطة",
     "source": "ai-invented",
-    "started_at": "2026-10-09T05:35:11Z",
-    "elapsed_sec": 329
+    "started_at": "2026-10-09T05:42:52Z",
+    "elapsed_sec": 588
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 9,
-  "videos_total": 87,
-  "ai_invented_total": 24,
+  "videos_this_run": 10,
+  "videos_total": 88,
+  "ai_invented_total": 25,
   "recent": [
     {
       "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
@@ -103,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 602,
       "at": "2026-10-09T05:34:42Z"
+    },
+    {
+      "title": "التضخم: اللص الصامت الذي يأكل مدخراتك",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 342,
+      "at": "2026-10-09T05:40:53Z"
     }
   ],
   "drive": {
@@ -114,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T05:40:40Z"
+  "updated_at": "2026-10-09T05:52:40Z"
 }
