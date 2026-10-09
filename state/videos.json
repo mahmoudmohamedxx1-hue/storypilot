@@ -1680,14 +1680,23 @@
       "code_by": "freellmpool:ovh/gpt-oss-120b",
       "ai_attempts": 3,
       "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
+    },
+    "e110f0c933de8b0aab2749bf9cb2167e": {
+      "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T18:49:55Z",
+      "fps": 60,
+      "dir": "ai10-e110f0c9",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
     }
   },
   "failed": {},
-  "ai_invented_count": 94,
+  "ai_invented_count": 95,
   "ai_titles": [
-    {
-      "title": "الصفقة البسيطة"
-    },
     {
       "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
     },
@@ -1864,6 +1873,9 @@
     },
     {
       "title": "العقلية طويلة الأجل: سر كبار المستثمرين"
+    },
+    {
+      "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
     }
   ]
 }
