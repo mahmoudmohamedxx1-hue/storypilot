@@ -792,10 +792,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    "86df9ac0ee365afbe2611e2f2f2277ec": {
+      "title": "قوة الفائدة المركبة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T04:38:37Z",
+      "fps": 60,
+      "dir": "ai06-86df9ac0",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
     }
   },
   "failed": {},
-  "ai_invented_count": 20,
+  "ai_invented_count": 21,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -856,6 +868,9 @@
     },
     {
       "title": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    {
+      "title": "قوة الفائدة المركبة"
     }
   ]
 }

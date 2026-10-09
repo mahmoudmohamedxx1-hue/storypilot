@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الدخل السلبي: الحقيقة بدون مبالغة",
+    "title": "قوة الفائدة المركبة",
     "source": "ai-invented",
-    "started_at": "2026-10-09T04:20:35Z",
-    "elapsed_sec": 514
+    "started_at": "2026-10-09T04:30:01Z",
+    "elapsed_sec": 488
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 4,
-  "videos_total": 82,
-  "ai_invented_total": 19,
+  "videos_this_run": 5,
+  "videos_total": 83,
+  "ai_invented_total": 20,
   "recent": [
     {
       "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
@@ -58,6 +58,15 @@
       "code_by": "generate_video.py",
       "seconds": 522,
       "at": "2026-10-09T04:20:26Z"
+    },
+    {
+      "title": "الدخل السلبي: الحقيقة بدون مبالغة",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 533,
+      "at": "2026-10-09T04:29:28Z"
     }
   ],
   "drive": {
@@ -69,5 +78,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T04:29:09Z"
+  "updated_at": "2026-10-09T04:38:09Z"
 }
