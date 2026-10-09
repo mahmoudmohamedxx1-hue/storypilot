@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "مفاتيح الثروة: الأصول مقابل الالتزامات",
+    "title": "البداية الصغيرة: استثمار بسيط يفتح آفاقاً",
     "source": "ai-invented",
-    "started_at": "2026-10-09T20:09:13Z",
-    "elapsed_sec": 462
+    "started_at": "2026-10-09T20:20:19Z",
+    "elapsed_sec": 846
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 17,
-  "videos_total": 165,
-  "ai_invented_total": 102,
+  "videos_this_run": 18,
+  "videos_total": 166,
+  "ai_invented_total": 103,
   "recent": [
-    {
-      "title": "قاعدة 72: كيف تتضاعف أموالك في 8 سنوات؟",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 645,
-      "at": "2026-10-09T18:34:06Z"
-    },
     {
       "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 530,
       "at": "2026-10-09T20:06:09Z"
+    },
+    {
+      "title": "مفاتيح الثروة: الأصول مقابل الالتزامات",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 467,
+      "at": "2026-10-09T20:17:00Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T20:16:55Z"
+  "updated_at": "2026-10-09T20:34:25Z"
 }
