@@ -1908,10 +1908,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
+    },
+    "20067513dfb94dfed13c3e78b380192d": {
+      "title": "الاستثمار في الذات: عائد لا يُقارن",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T22:48:13Z",
+      "fps": 60,
+      "dir": "ai03-20067513",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
     }
   },
   "failed": {},
-  "ai_invented_count": 113,
+  "ai_invented_count": 114,
   "ai_titles": [
     {
       "title": "الانضباط المالي: عادة صغيرة تغير حياتك"
@@ -2086,6 +2098,9 @@
     },
     {
       "title": "الاستثمار في الوقت: سر بناء الثروة الحقيقية"
+    },
+    {
+      "title": "الاستثمار في الذات: عائد لا يُقارن"
     }
   ]
 }

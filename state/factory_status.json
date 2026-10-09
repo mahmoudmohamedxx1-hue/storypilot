@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الاستثمار في الوقت: سر بناء الثروة الحقيقية",
+    "title": "الاستثمار في الذات: عائد لا يُقارن",
     "source": "ai-invented",
-    "started_at": "2026-10-09T22:22:55Z",
-    "elapsed_sec": 689
+    "started_at": "2026-10-09T22:41:15Z",
+    "elapsed_sec": 399
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 1,
-  "videos_total": 175,
-  "ai_invented_total": 112,
+  "videos_this_run": 2,
+  "videos_total": 176,
+  "ai_invented_total": 113,
   "recent": [
     {
       "title": "الادخار التلقائي: ادفع لنفسك أولا",
@@ -31,6 +31,15 @@
       "code_by": "generate_video.py",
       "seconds": 772,
       "at": "2026-10-09T22:21:48Z"
+    },
+    {
+      "title": "الاستثمار في الوقت: سر بناء الثروة الحقيقية",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 692,
+      "at": "2026-10-09T22:34:27Z"
     }
   ],
   "drive": {
@@ -42,5 +51,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T22:34:24Z"
+  "updated_at": "2026-10-09T22:47:54Z"
 }
