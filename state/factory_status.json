@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "بذرة الثروة: من فلس واحد إلى محفة لا تُقاس",
+    "title": "التضخم: اللص الصامت الذي يأكل مدخراتك",
     "source": "ai-invented",
-    "started_at": "2026-10-09T16:57:54Z",
-    "elapsed_sec": 379
+    "started_at": "2026-10-09T17:07:59Z",
+    "elapsed_sec": 134
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 23,
-  "videos_total": 146,
-  "ai_invented_total": 83,
+  "videos_this_run": 24,
+  "videos_total": 147,
+  "ai_invented_total": 84,
   "recent": [
-    {
-      "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 362,
-      "at": "2026-10-09T15:00:38Z"
-    },
     {
       "title": "الاستثمار في المهارات: عائيدك الذهبي",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 832,
       "at": "2026-10-09T16:54:26Z"
+    },
+    {
+      "title": "بذرة الثروة: من فلس واحد إلى محفة لا تُقاس",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 396,
+      "at": "2026-10-09T17:04:30Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T17:04:13Z"
+  "updated_at": "2026-10-09T17:10:13Z"
 }

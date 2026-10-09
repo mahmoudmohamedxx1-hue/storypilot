@@ -1560,14 +1560,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "كيف تبدأ الاستثمار بمبلغ صغير جدا"
+    },
+    "55446d03fc1e5e5882d588ee116f5fc3": {
+      "title": "التضخم: اللص الصامت الذي يأكل مدخراتك",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T17:10:37Z",
+      "fps": 60,
+      "dir": "ai25-55446d03",
+      "source": "ai-invented",
+      "renderer": "ai",
+      "code_by": "freellmpool:auto",
+      "ai_attempts": 2,
+      "topic": "التضخم: اللص الصامت الذي يأكل مدخراتك"
     }
   },
   "failed": {},
-  "ai_invented_count": 84,
+  "ai_invented_count": 85,
   "ai_titles": [
-    {
-      "title": "الدخل السلبي: الحقيقة بدون مبالغة"
-    },
     {
       "title": "قوة الفائدة المركبة"
     },
@@ -1744,6 +1753,9 @@
     },
     {
       "title": "بذرة الثروة: من فلس واحد إلى محفة لا تُقاس"
+    },
+    {
+      "title": "التضخم: اللص الصامت الذي يأكل مدخراتك"
     }
   ]
 }
