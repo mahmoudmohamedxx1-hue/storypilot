@@ -1980,14 +1980,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
+    },
+    "2cc75a0760daaa51888f7ebcc5f773d8": {
+      "title": "دخلك السلبي: الحقيقة بدون مبالغة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T23:58:15Z",
+      "fps": 60,
+      "dir": "ai09-2cc75a07",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
     }
   },
   "failed": {},
-  "ai_invented_count": 119,
+  "ai_invented_count": 120,
   "ai_titles": [
-    {
-      "title": "الرقصة مع الشيطان: سر خسارة المستثمرين في توقيت السوق"
-    },
     {
       "title": "الادخار التلقائي: كيف تحقق من الثروة المركبة"
     },
@@ -2164,6 +2173,9 @@
     },
     {
       "title": "قوة الفائدة المركبة"
+    },
+    {
+      "title": "دخلك السلبي: الحقيقة بدون مبالغة"
     }
   ]
 }
