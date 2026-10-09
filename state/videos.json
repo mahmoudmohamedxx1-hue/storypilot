@@ -876,10 +876,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
+    },
+    "c3e4219869e63728147bba8205baa5ad": {
+      "title": "المصفوفة الذهبية: لعبة التوزيع الذكي",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T06:05:18Z",
+      "fps": 60,
+      "dir": "ai13-c3e42198",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الذهب أم الأسهم؟ أين تضع أموالك"
     }
   },
   "failed": {},
-  "ai_invented_count": 27,
+  "ai_invented_count": 28,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -961,6 +973,9 @@
     },
     {
       "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
+    },
+    {
+      "title": "المصفوفة الذهبية: لعبة التوزيع الذكي"
     }
   ]
 }
