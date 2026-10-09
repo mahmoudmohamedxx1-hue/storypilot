@@ -984,10 +984,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الاستثمار في نفسك: أفضل عائد على الإطلاق"
+    },
+    "af50d22d1c6db5ae26d5040d9396a9eb": {
+      "title": "كشف الأرقام: فهم القوائم قبل الشراء",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T07:27:03Z",
+      "fps": 60,
+      "dir": "ai22-af50d22d",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "كيف تقرأ القوائم المالية لشركة قبل شراء سهمها"
     }
   },
   "failed": {},
-  "ai_invented_count": 36,
+  "ai_invented_count": 37,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -1096,6 +1108,9 @@
     },
     {
       "title": "قراءة القوائم: مفتاح السهم الذهبي"
+    },
+    {
+      "title": "كشف الأرقام: فهم القوائم قبل الشراء"
     }
   ]
 }
