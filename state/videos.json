@@ -1872,14 +1872,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
+    },
+    "5aa1a86ff91366aa585c405347d0942e": {
+      "title": "فخ الترتيب اليدوي",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T22:04:26Z",
+      "fps": 60,
+      "dir": "ai26-5aa1a86f",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "مخاطر محاولة توقيت السوق ولماذا يخسر معظم الناس"
     }
   },
   "failed": {},
-  "ai_invented_count": 110,
+  "ai_invented_count": 111,
   "ai_titles": [
-    {
-      "title": "كيف تبدأ الاستثمار بمبلغ صغير جدا"
-    },
     {
       "title": "الانضباط المالي: عادة صغيرة تغير حياتك"
     },
@@ -2056,6 +2065,9 @@
     },
     {
       "title": "التنويع الذكي: لعبة الفوز بلا نهاية"
+    },
+    {
+      "title": "فخ الترتيب اليدوي"
     }
   ]
 }
