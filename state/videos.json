@@ -948,10 +948,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
+    },
+    "8c2f8c7747efb91b574ea4db50bce838": {
+      "title": "الاستثمار في نفسك",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T06:58:43Z",
+      "fps": 60,
+      "dir": "ai19-8c2f8c77",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
     }
   },
   "failed": {},
-  "ai_invented_count": 33,
+  "ai_invented_count": 34,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -1051,6 +1063,9 @@
     },
     {
       "title": "سر التضاعف السريع"
+    },
+    {
+      "title": "الاستثمار في نفسك"
     }
   ]
 }
