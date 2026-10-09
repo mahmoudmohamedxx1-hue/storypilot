@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "البيض المتنقل",
+    "title": "الرقصة مع الشيطان: سر خسارة المستثمرين في توقيت السوق",
     "source": "ai-invented",
-    "started_at": "2026-10-09T10:15:48Z",
-    "elapsed_sec": 744
+    "started_at": "2026-10-09T10:29:23Z",
+    "elapsed_sec": 499
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 12,
-  "videos_total": 112,
-  "ai_invented_total": 49,
+  "videos_this_run": 13,
+  "videos_total": 113,
+  "ai_invented_total": 50,
   "recent": [
-    {
-      "title": "الدخل السلبي: الطريق إلى الحرية المالية",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 623,
-      "at": "2026-10-09T07:53:45Z"
-    },
     {
       "title": "التوافق المالي: كيف تتحول الدرهمات الصغيرى لكنوز لا تُحصى",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 681,
       "at": "2026-10-09T10:12:14Z"
+    },
+    {
+      "title": "البيض المتنقل",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 757,
+      "at": "2026-10-09T10:28:26Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T10:28:12Z"
+  "updated_at": "2026-10-09T10:37:42Z"
 }
