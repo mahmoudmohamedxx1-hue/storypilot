@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "المصفوفة الذهبية: لعبة التوزيع الذكي",
+    "title": "الاقتراض الذكي: متى يصبح الدين حليماً مصراً؟",
     "source": "ai-invented",
-    "started_at": "2026-10-09T05:59:31Z",
-    "elapsed_sec": 339
+    "started_at": "2026-10-09T06:05:49Z",
+    "elapsed_sec": 291
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 12,
-  "videos_total": 90,
-  "ai_invented_total": 27,
+  "videos_this_run": 13,
+  "videos_total": 91,
+  "ai_invented_total": 28,
   "recent": [
-    {
-      "title": "تقاعد مبكر بخطة FIRE: الأرقام لا تكذب",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 626,
-      "at": "2026-10-09T04:11:34Z"
-    },
     {
       "title": "خطوات الخطأ: رحلة المبتدئ في سوق المال",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 333,
       "at": "2026-10-09T05:58:58Z"
+    },
+    {
+      "title": "المصفوفة الذهبية: لعبة التوزيع الذكي",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 347,
+      "at": "2026-10-09T06:05:18Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T06:05:10Z"
+  "updated_at": "2026-10-09T06:10:40Z"
 }
