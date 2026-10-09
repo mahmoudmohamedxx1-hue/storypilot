@@ -1188,10 +1188,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
+    },
+    "39f24873fdfe40b10ae9e47d3e4d8406": {
+      "title": "الاستثمار الذكي: كيف تبني ثروتك على المدى الطويل؟",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T11:10:31Z",
+      "fps": 60,
+      "dir": "ai17-39f24873",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
     }
   },
   "failed": {},
-  "ai_invented_count": 53,
+  "ai_invented_count": 54,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -1348,6 +1360,9 @@
     },
     {
       "title": "ثانيتان تغيران حياتك المالية: قاعدة 72 في العمل"
+    },
+    {
+      "title": "الاستثمار الذكي: كيف تبني ثروتك على المدى الطويل؟"
     }
   ]
 }
