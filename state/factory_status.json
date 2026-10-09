@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "السر المذهل: كيف تضاعف أموالك مع الوقت",
+    "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
     "source": "ai-invented",
-    "started_at": "2026-10-09T16:16:24Z",
-    "elapsed_sec": 739
+    "started_at": "2026-10-09T16:30:17Z",
+    "elapsed_sec": 536
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 20,
-  "videos_total": 143,
-  "ai_invented_total": 80,
+  "videos_this_run": 21,
+  "videos_total": 144,
+  "ai_invented_total": 81,
   "recent": [
-    {
-      "title": "الرقصة مع الشيطان: سر خسارة المستثمرين في توقيت السوق",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "ai",
-      "code_by": "pollinations:openai",
-      "seconds": 439,
-      "at": "2026-10-09T14:37:11Z"
-    },
     {
       "title": "الخطوة الأولى: ادفع لنفسك قبل العالم",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 571,
       "at": "2026-10-09T16:15:23Z"
+    },
+    {
+      "title": "السر المذهل: كيف تضاعف أموالك مع الوقت",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 768,
+      "at": "2026-10-09T16:29:12Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T16:28:43Z"
+  "updated_at": "2026-10-09T16:39:13Z"
 }

@@ -1524,14 +1524,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
+    },
+    "ca283dd71d91337c6abe251b5598f262": {
+      "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T16:39:28Z",
+      "fps": 60,
+      "dir": "ai22-ca283dd7",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
     }
   },
   "failed": {},
-  "ai_invented_count": 81,
+  "ai_invented_count": 82,
   "ai_titles": [
-    {
-      "title": "كيف تقرأ القوائم المالية لشركة قبل شراء سهمها"
-    },
     {
       "title": "تقاعد مبكر بخطة FIRE: الأرقام لا تكذب"
     },
@@ -1708,6 +1717,9 @@
     },
     {
       "title": "السر المذهل: كيف تضاعف أموالك مع الوقت"
+    },
+    {
+      "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
     }
   ]
 }
