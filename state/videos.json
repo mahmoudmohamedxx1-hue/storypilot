@@ -1464,14 +1464,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الاستثمار في نفسك: أفضل عائد على الإطلاق"
+    },
+    "c46f06b6060175c85ada51c61b31b932": {
+      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T15:39:58Z",
+      "fps": 60,
+      "dir": "ai17-c46f06b6",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "كيف تقرأ القوائم المالية لشركة قبل شراء سهمها"
     }
   },
   "failed": {},
-  "ai_invented_count": 76,
+  "ai_invented_count": 77,
   "ai_titles": [
-    {
-      "title": "العقلية طويلة الأجل: سر كبار المستثمرين"
-    },
     {
       "title": "قاعدة 72: سرعة مضاعفة الثروة"
     },
@@ -1648,6 +1657,9 @@
     },
     {
       "title": "إثمار الذات: عائد لا يُقاس"
+    },
+    {
+      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
     }
   ]
 }
