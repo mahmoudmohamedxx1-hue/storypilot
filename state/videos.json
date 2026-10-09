@@ -720,10 +720,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
+    },
+    "3fdd054b82f2beff650dac663f9a567c": {
+      "title": "الرصيد النائم: ماذا تخسر أموالك المعطلة كل يوم؟",
+      "tab": "builtin-bank",
+      "renderedAt": "2026-10-09T00:44:39Z",
+      "fps": 60,
+      "dir": "ai14-3fdd054b",
+      "source": "builtin-bank",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
     }
   },
   "failed": {},
-  "ai_invented_count": 14,
+  "ai_invented_count": 15,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -766,6 +778,9 @@
     },
     {
       "title": "الرحلة الاستثمارية: كيف يبني الكبار ثروتهم خطوة بخطوة"
+    },
+    {
+      "title": "الرصيد النائم: ماذا تخسر أموالك المعطلة كل يوم؟"
     }
   ]
 }

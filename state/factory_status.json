@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الرحلة الاستثمارية: كيف يبني الكبار ثروتهم خطوة بخطوة",
-    "source": "ai-invented",
-    "started_at": "2026-10-09T00:15:06Z",
-    "elapsed_sec": 451
+    "title": "الرصيد النائم: ماذا تخسر أموالك المعطلة كل يوم؟",
+    "source": "builtin-bank",
+    "started_at": "2026-10-09T00:32:27Z",
+    "elapsed_sec": 731
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 12,
-  "videos_total": 76,
-  "ai_invented_total": 13,
+  "videos_this_run": 13,
+  "videos_total": 77,
+  "ai_invented_total": 14,
   "recent": [
-    {
-      "title": "أول رأس مال: سر الاستثمار بخمسة دولارات",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 514,
-      "at": "2026-10-08T22:20:44Z"
-    },
     {
       "title": "قاعدة الـ 72: احسب وقت مضاعفة أموالك بخطوة واحدة",
       "source": "builtin-bank",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 830,
       "at": "2026-10-09T00:14:38Z"
+    },
+    {
+      "title": "الرحلة الاستثمارية: كيف يبني الكبار ثروتهم خطوة بخطوة",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 478,
+      "at": "2026-10-09T00:23:05Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T00:22:37Z"
+  "updated_at": "2026-10-09T00:44:38Z"
 }
