@@ -1644,14 +1644,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "مخاطر محاولة توقيت السوق ولماذا يخسر معظم الناس"
+    },
+    "9f276238de48349d8ad41de5c35816e9": {
+      "title": "الادخار التلقائي: على سبيل المثال",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T18:22:42Z",
+      "fps": 60,
+      "dir": "ai07-9f276238",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الادخار التلقائي: ادفع لنفسك أولا"
     }
   },
   "failed": {},
-  "ai_invented_count": 91,
+  "ai_invented_count": 92,
   "ai_titles": [
-    {
-      "title": "خطوة صغيرة، طموح كبير"
-    },
     {
       "title": "البداية الصغيرة: سر الاستثمار بقرشة واحدة"
     },
@@ -1828,6 +1837,9 @@
     },
     {
       "title": "الرقصة مع الشيطان: سر خسارة المستثمرين في توقيت السوق"
+    },
+    {
+      "title": "الادخار التلقائي: على سبيل المثال"
     }
   ]
 }

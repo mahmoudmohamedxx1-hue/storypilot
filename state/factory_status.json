@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الرقصة مع الشيطان: سر خسارة المستثمرين في توقيت السوق",
+    "title": "الادخار التلقائي: على سبيل المثال",
     "source": "ai-invented",
-    "started_at": "2026-10-09T18:02:57Z",
-    "elapsed_sec": 568
+    "started_at": "2026-10-09T18:13:58Z",
+    "elapsed_sec": 507
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 5,
-  "videos_total": 153,
-  "ai_invented_total": 90,
+  "videos_this_run": 6,
+  "videos_total": 154,
+  "ai_invented_total": 91,
   "recent": [
     {
       "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
@@ -67,6 +67,15 @@
       "code_by": "freellmpool:auto",
       "seconds": 314,
       "at": "2026-10-09T18:02:16Z"
+    },
+    {
+      "title": "الرقصة مع الشيطان: سر خسارة المستثمرين في توقيت السوق",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 596,
+      "at": "2026-10-09T18:12:53Z"
     }
   ],
   "drive": {
@@ -78,5 +87,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T18:12:25Z"
+  "updated_at": "2026-10-09T18:22:25Z"
 }
