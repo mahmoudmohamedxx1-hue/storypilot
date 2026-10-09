@@ -1,5 +1,5 @@
 {
-  "phase": "inventing",
+  "phase": "chaining_next_run",
   "mode": "continuous",
   "should_continue": true,
   "run": {
@@ -7,31 +7,20 @@
     "deadline_at": "2026-10-09T22:14:25Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true
+    "infinite_stories": true,
+    "finished_at": "2026-10-09T22:04:28Z",
+    "videos_made": 26,
+    "stop_reason": "deadline"
   },
-  "current": {
-    "title": "فخ الترتيب اليدوي",
-    "source": "ai-invented",
-    "started_at": "2026-10-09T21:55:47Z",
-    "elapsed_sec": 519
-  },
+  "current": null,
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 25,
-  "videos_total": 173,
-  "ai_invented_total": 110,
+  "videos_this_run": 26,
+  "videos_total": 174,
+  "ai_invented_total": 111,
   "recent": [
-    {
-      "title": "الذهب الخفي: كيف تزرع ثروتك مع الوقت",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 667,
-      "at": "2026-10-09T19:54:17Z"
-    },
     {
       "title": "الصندوق السري: سر الاحتفاظ بمستقبلك",
       "source": "ai-invented",
@@ -112,6 +101,15 @@
       "code_by": "generate_video.py",
       "seconds": 445,
       "at": "2026-10-09T21:54:50Z"
+    },
+    {
+      "title": "فخ الترتيب اليدوي",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 519,
+      "at": "2026-10-09T22:04:26Z"
     }
   ],
   "drive": {
@@ -123,5 +121,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T22:04:26Z"
+  "updated_at": "2026-10-09T22:04:28Z"
 }
