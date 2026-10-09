@@ -1896,10 +1896,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الادخار التلقائي: ادفع لنفسك أولا"
+    },
+    "90c2d91e723da253757a29f77dc1be35": {
+      "title": "الاستثمار في الوقت: سر بناء الثروة الحقيقية",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T22:34:27Z",
+      "fps": 60,
+      "dir": "ai02-90c2d91e",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
     }
   },
   "failed": {},
-  "ai_invented_count": 112,
+  "ai_invented_count": 113,
   "ai_titles": [
     {
       "title": "الانضباط المالي: عادة صغيرة تغير حياتك"
@@ -2071,6 +2083,9 @@
     },
     {
       "title": "الادخار التلقائي: ادفع لنفسك أولا"
+    },
+    {
+      "title": "الاستثمار في الوقت: سر بناء الثروة الحقيقية"
     }
   ]
 }

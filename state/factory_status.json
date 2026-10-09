@@ -10,19 +10,29 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الادخار التلقائي: ادفع لنفسك أولا",
+    "title": "الاستثمار في الوقت: سر بناء الثروة الحقيقية",
     "source": "ai-invented",
-    "started_at": "2026-10-09T22:08:56Z",
-    "elapsed_sec": 748
+    "started_at": "2026-10-09T22:22:55Z",
+    "elapsed_sec": 689
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 0,
-  "videos_total": 174,
-  "ai_invented_total": 0,
-  "recent": [],
+  "videos_this_run": 1,
+  "videos_total": 175,
+  "ai_invented_total": 112,
+  "recent": [
+    {
+      "title": "الادخار التلقائي: ادفع لنفسك أولا",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 772,
+      "at": "2026-10-09T22:21:48Z"
+    }
+  ],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -32,5 +42,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T22:21:24Z"
+  "updated_at": "2026-10-09T22:34:24Z"
 }
