@@ -1428,14 +1428,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
+    },
+    "ca4c353f3ae9f7e71d92de12867d003d": {
+      "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T15:00:38Z",
+      "fps": 60,
+      "dir": "ai14-ca4c353f",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
     }
   },
   "failed": {},
-  "ai_invented_count": 73,
+  "ai_invented_count": 74,
   "ai_titles": [
-    {
-      "title": "توزيع المخاطر: لعبة البيض والسلال"
-    },
     {
       "title": "التنويع الاستثماري: لعبة السلال المتعددة"
     },
@@ -1612,6 +1621,9 @@
     },
     {
       "title": "قاعدة 72: سر النجاح المالي في ثوانٍ"
+    },
+    {
+      "title": "العقلية طويلة الأجل: سر كبار المستثمرين"
     }
   ]
 }
