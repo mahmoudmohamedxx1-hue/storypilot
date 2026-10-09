@@ -1548,14 +1548,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الفرق بين الأصول والالتزامات ولماذا يفرق الأغنياء"
+    },
+    "1cd5955d72ecd4087c1a8dcb5e204bb6": {
+      "title": "بذرة الثروة: من فلس واحد إلى محفة لا تُقاس",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T17:04:30Z",
+      "fps": 60,
+      "dir": "ai24-1cd5955d",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "كيف تبدأ الاستثمار بمبلغ صغير جدا"
     }
   },
   "failed": {},
-  "ai_invented_count": 83,
+  "ai_invented_count": 84,
   "ai_titles": [
-    {
-      "title": "خطوات الخطأ: رحلة المبتدئ في سوق المال"
-    },
     {
       "title": "الدخل السلبي: الحقيقة بدون مبالغة"
     },
@@ -1732,6 +1741,9 @@
     },
     {
       "title": "الغني لا يعمل للمال، المال يعمل له: سر الأصول والالتزامات"
+    },
+    {
+      "title": "بذرة الثروة: من فلس واحد إلى محفة لا تُقاس"
     }
   ]
 }

@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الغني لا يعمل للمال، المال يعمل له: سر الأصول والالتزامات",
+    "title": "بذرة الثروة: من فلس واحد إلى محفة لا تُقاس",
     "source": "ai-invented",
-    "started_at": "2026-10-09T16:40:34Z",
-    "elapsed_sec": 819
+    "started_at": "2026-10-09T16:57:54Z",
+    "elapsed_sec": 379
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 22,
-  "videos_total": 145,
-  "ai_invented_total": 82,
+  "videos_this_run": 23,
+  "videos_total": 146,
+  "ai_invented_total": 83,
   "recent": [
-    {
-      "title": "قاعدة 72: سر النجاح المالي في ثوانٍ",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 414,
-      "at": "2026-10-09T14:53:03Z"
-    },
     {
       "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 551,
       "at": "2026-10-09T16:39:28Z"
+    },
+    {
+      "title": "الغني لا يعمل للمال، المال يعمل له: سر الأصول والالتزامات",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 832,
+      "at": "2026-10-09T16:54:26Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T16:54:13Z"
+  "updated_at": "2026-10-09T17:04:13Z"
 }
