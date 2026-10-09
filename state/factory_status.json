@@ -1,5 +1,5 @@
 {
-  "phase": "inventing",
+  "phase": "chaining_next_run",
   "mode": "continuous",
   "should_continue": true,
   "run": {
@@ -7,31 +7,20 @@
     "deadline_at": "2026-10-09T12:33:42Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true
+    "infinite_stories": true,
+    "finished_at": "2026-10-09T12:19:03Z",
+    "videos_made": 23,
+    "stop_reason": "deadline"
   },
-  "current": {
-    "title": "السر الخفي للثراء المتزايد",
-    "source": "ai-invented",
-    "started_at": "2026-10-09T12:06:01Z",
-    "elapsed_sec": 761
-  },
+  "current": null,
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 22,
-  "videos_total": 122,
-  "ai_invented_total": 59,
+  "videos_this_run": 23,
+  "videos_total": 123,
+  "ai_invented_total": 60,
   "recent": [
-    {
-      "title": "البيض المتنقل",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 757,
-      "at": "2026-10-09T10:28:26Z"
-    },
     {
       "title": "الرقصة مع الشيطان: سر خسارة المستثمرين في توقيت السوق",
       "source": "ai-invented",
@@ -112,6 +101,15 @@
       "code_by": "generate_video.py",
       "seconds": 467,
       "at": "2026-10-09T12:00:40Z"
+    },
+    {
+      "title": "السر الخفي للثراء المتزايد",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 781,
+      "at": "2026-10-09T12:19:02Z"
     }
   ],
   "drive": {
@@ -123,5 +121,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T12:18:42Z"
+  "updated_at": "2026-10-09T12:19:03Z"
 }
