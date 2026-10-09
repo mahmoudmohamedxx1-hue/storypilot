@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الذهب الخفي: كيف تزرع ثروتك مع الوقت",
+    "title": "الصندوق السري: سر الاحتفاظ بمستقبلك",
     "source": "ai-invented",
-    "started_at": "2026-10-09T19:43:10Z",
-    "elapsed_sec": 645
+    "started_at": "2026-10-09T19:57:19Z",
+    "elapsed_sec": 516
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 15,
-  "videos_total": 163,
-  "ai_invented_total": 100,
+  "videos_this_run": 16,
+  "videos_total": 164,
+  "ai_invented_total": 101,
   "recent": [
-    {
-      "title": "الرقصة مع الشيطان: سر خسارة المستثمرين في توقيت السوق",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 596,
-      "at": "2026-10-09T18:12:53Z"
-    },
     {
       "title": "الادخار التلقائي: على سبيل المثال",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 557,
       "at": "2026-10-09T19:42:33Z"
+    },
+    {
+      "title": "الذهب الخفي: كيف تزرع ثروتك مع الوقت",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 667,
+      "at": "2026-10-09T19:54:17Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T19:53:55Z"
+  "updated_at": "2026-10-09T20:05:55Z"
 }

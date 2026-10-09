@@ -1764,14 +1764,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
+    },
+    "b4e097e11c599dfeb38864e3533219e1": {
+      "title": "الصندوق السري: سر الاحتفاظ بمستقبلك",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T20:06:09Z",
+      "fps": 60,
+      "dir": "ai17-b4e097e1",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
     }
   },
   "failed": {},
-  "ai_invented_count": 101,
+  "ai_invented_count": 102,
   "ai_titles": [
-    {
-      "title": "الاستثمار في نفسك"
-    },
     {
       "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
     },
@@ -1948,6 +1957,9 @@
     },
     {
       "title": "الذهب الخفي: كيف تزرع ثروتك مع الوقت"
+    },
+    {
+      "title": "الصندوق السري: سر الاحتفاظ بمستقبلك"
     }
   ]
 }
