@@ -1260,10 +1260,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
+    },
+    "9b35e3d3db9746c7cb6007c231d7a2c3": {
+      "title": "السر الخفي للثراء المتزايد",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T12:19:02Z",
+      "fps": 60,
+      "dir": "ai23-9b35e3d3",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
     }
   },
   "failed": {},
-  "ai_invented_count": 59,
+  "ai_invented_count": 60,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -1438,6 +1450,9 @@
     },
     {
       "title": "الخطأ الذي يحدث في كل استثمار جديد"
+    },
+    {
+      "title": "السر الخفي للثراء المتزايد"
     }
   ]
 }
