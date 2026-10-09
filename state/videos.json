@@ -960,10 +960,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
+    },
+    "8c9ef9114dc447c5bb2739f948e060d2": {
+      "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T07:08:03Z",
+      "fps": 60,
+      "dir": "ai20-8c9ef911",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
     }
   },
   "failed": {},
-  "ai_invented_count": 34,
+  "ai_invented_count": 35,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -1066,6 +1078,9 @@
     },
     {
       "title": "الاستثمار في نفسك"
+    },
+    {
+      "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
     }
   ]
 }
