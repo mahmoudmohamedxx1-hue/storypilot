@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الديون والحكمة: أذكى وقت للتمويل",
+    "title": "سلة البيض المتنوعة",
     "source": "ai-invented",
-    "started_at": "2026-10-09T17:41:09Z",
-    "elapsed_sec": 886
+    "started_at": "2026-10-09T17:57:02Z",
+    "elapsed_sec": 293
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 3,
-  "videos_total": 151,
-  "ai_invented_total": 88,
+  "videos_this_run": 4,
+  "videos_total": 152,
+  "ai_invented_total": 89,
   "recent": [
     {
       "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
@@ -49,6 +49,15 @@
       "code_by": "freellmpool:auto",
       "seconds": 104,
       "at": "2026-10-09T17:37:18Z"
+    },
+    {
+      "title": "الديون والحكمة: أذكى وقت للتمويل",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 896,
+      "at": "2026-10-09T17:56:04Z"
     }
   ],
   "drive": {
@@ -60,5 +69,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T17:55:55Z"
+  "updated_at": "2026-10-09T18:01:55Z"
 }
