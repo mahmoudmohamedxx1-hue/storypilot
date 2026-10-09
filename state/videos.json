@@ -1512,14 +1512,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    "ea6f3492c80b223f88b5cf618ecde7b7": {
+      "title": "السر المذهل: كيف تضاعف أموالك مع الوقت",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T16:29:12Z",
+      "fps": 60,
+      "dir": "ai21-ea6f3492",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
     }
   },
   "failed": {},
-  "ai_invented_count": 80,
+  "ai_invented_count": 81,
   "ai_titles": [
-    {
-      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
-    },
     {
       "title": "كيف تقرأ القوائم المالية لشركة قبل شراء سهمها"
     },
@@ -1696,6 +1705,9 @@
     },
     {
       "title": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    {
+      "title": "السر المذهل: كيف تضاعف أموالك مع الوقت"
     }
   ]
 }
