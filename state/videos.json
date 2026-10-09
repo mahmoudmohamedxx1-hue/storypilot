@@ -1176,10 +1176,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الادخار التلقائي: ادفع لنفسك أولا"
+    },
+    "0184172354c08822572e28f6f2d09841": {
+      "title": "ثانيتان تغيران حياتك المالية: قاعدة 72 في العمل",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T10:57:45Z",
+      "fps": 60,
+      "dir": "ai16-01841723",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
     }
   },
   "failed": {},
-  "ai_invented_count": 52,
+  "ai_invented_count": 53,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -1333,6 +1345,9 @@
     },
     {
       "title": "الادخار التلقائي: كيف تحقق من الثروة المركبة"
+    },
+    {
+      "title": "ثانيتان تغيران حياتك المالية: قاعدة 72 في العمل"
     }
   ]
 }
