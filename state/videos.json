@@ -732,10 +732,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
+    },
+    "d4cf87b25b4b44a1d8ca0f5635c219de": {
+      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T02:54:22Z",
+      "fps": 60,
+      "dir": "ai01-d4cf87b2",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الاستثمار في نفسك: أفضل عائد على الإطلاق"
     }
   },
   "failed": {},
-  "ai_invented_count": 15,
+  "ai_invented_count": 16,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -781,6 +793,9 @@
     },
     {
       "title": "الرصيد النائم: ماذا تخسر أموالك المعطلة كل يوم؟"
+    },
+    {
+      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
     }
   ]
 }

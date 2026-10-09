@@ -1,117 +1,28 @@
 {
-  "phase": "chaining_next_run",
+  "phase": "inventing",
   "mode": "continuous",
   "should_continue": true,
   "run": {
-    "started_at": "2026-10-08T21:56:02Z",
-    "deadline_at": "2026-10-09T02:56:02Z",
+    "started_at": "2026-10-09T02:45:09Z",
+    "deadline_at": "2026-10-09T07:45:09Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true,
-    "finished_at": "2026-10-09T02:41:34Z",
-    "videos_made": 14,
-    "stop_reason": "deadline"
+    "infinite_stories": true
   },
-  "current": null,
+  "current": {
+    "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
+    "source": "ai-invented",
+    "started_at": "2026-10-09T02:47:50Z",
+    "elapsed_sec": 379
+  },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 14,
+  "videos_this_run": 0,
   "videos_total": 78,
-  "ai_invented_total": 15,
-  "recent": [
-    {
-      "title": "فخ الخصومات: كيف تجعلك العروض تشتري ما لا تحتاج",
-      "source": "builtin-bank",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 817,
-      "at": "2026-10-08T23:02:45Z"
-    },
-    {
-      "title": "الذهب أم الأسهم؟ أين تضع أموالك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 458,
-      "at": "2026-10-08T23:15:59Z"
-    },
-    {
-      "title": "المخاطرة بين الفرص: كيف تختار مشروعك الأول",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 469,
-      "at": "2026-10-08T23:24:14Z"
-    },
-    {
-      "title": "توزيع المخاطر: لعبة البيض والسلال",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 535,
-      "at": "2026-10-08T23:34:09Z"
-    },
-    {
-      "title": "التنويع الاستثماري: لعبة السلال المتعددة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "ai",
-      "code_by": "freellmpool:ovh/gpt-oss-120b",
-      "seconds": 231,
-      "at": "2026-10-08T23:38:34Z"
-    },
-    {
-      "title": "السوق المخطط: لماذا تفقد الكثير منا الفرصة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 503,
-      "at": "2026-10-08T23:47:57Z"
-    },
-    {
-      "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 476,
-      "at": "2026-10-08T23:59:52Z"
-    },
-    {
-      "title": "قاعدة 72: سرعة مضاعفة الثروة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 830,
-      "at": "2026-10-09T00:14:38Z"
-    },
-    {
-      "title": "الرحلة الاستثمارية: كيف يبني الكبار ثروتهم خطوة بخطوة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 478,
-      "at": "2026-10-09T00:23:05Z"
-    },
-    {
-      "title": "الرصيد النائم: ماذا تخسر أموالك المعطلة كل يوم؟",
-      "source": "builtin-bank",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 732,
-      "at": "2026-10-09T00:44:39Z"
-    }
-  ],
+  "ai_invented_total": 0,
+  "recent": [],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -121,5 +32,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T02:41:34Z"
+  "updated_at": "2026-10-09T02:54:09Z"
 }
