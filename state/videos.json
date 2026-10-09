@@ -1416,14 +1416,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الادخار التلقائي: ادفع لنفسك أولا"
+    },
+    "daa0ffd52baa1365ac5908dc7aa3f47b": {
+      "title": "قاعدة 72: سر النجاح المالي في ثوانٍ",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T14:53:03Z",
+      "fps": 60,
+      "dir": "ai13-daa0ffd5",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
     }
   },
   "failed": {},
-  "ai_invented_count": 72,
+  "ai_invented_count": 73,
   "ai_titles": [
-    {
-      "title": "المخاطرة بين الفرص: كيف تختار مشروعك الأول"
-    },
     {
       "title": "توزيع المخاطر: لعبة البيض والسلال"
     },
@@ -1600,6 +1609,9 @@
     },
     {
       "title": "الخطوة الأولى: ادفع لنفسك قبل العالم"
+    },
+    {
+      "title": "قاعدة 72: سر النجاح المالي في ثوانٍ"
     }
   ]
 }
