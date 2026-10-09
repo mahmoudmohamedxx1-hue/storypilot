@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
+    "title": "الطريق المتقاطع: الأصول والالتزامات",
     "source": "ai-invented",
-    "started_at": "2026-10-09T12:32:14Z",
-    "elapsed_sec": 629
+    "started_at": "2026-10-09T12:46:27Z",
+    "elapsed_sec": 766
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 1,
-  "videos_total": 124,
-  "ai_invented_total": 61,
+  "videos_this_run": 2,
+  "videos_total": 125,
+  "ai_invented_total": 62,
   "recent": [
     {
       "title": "قوة الفائدة المركبة: كيف تضاعف أموالك مع الوقت",
@@ -31,6 +31,15 @@
       "code_by": "generate_video.py",
       "seconds": 463,
       "at": "2026-10-09T12:31:10Z"
+    },
+    {
+      "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 640,
+      "at": "2026-10-09T12:42:55Z"
     }
   ],
   "drive": {
@@ -42,5 +51,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T12:42:43Z"
+  "updated_at": "2026-10-09T12:59:13Z"
 }

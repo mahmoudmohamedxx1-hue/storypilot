@@ -1296,10 +1296,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
+    },
+    "05d1ad7eac530e2ab0bbe348e5e79871": {
+      "title": "الطريق المتقاطع: الأصول والالتزامات",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T12:59:25Z",
+      "fps": 60,
+      "dir": "ai03-05d1ad7e",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الفرق بين الأصول والالتزامات ولماذا يفرق الأغنياء"
     }
   },
   "failed": {},
-  "ai_invented_count": 62,
+  "ai_invented_count": 63,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -1471,6 +1483,9 @@
     },
     {
       "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
+    },
+    {
+      "title": "الطريق المتقاطع: الأصول والالتزامات"
     }
   ]
 }
