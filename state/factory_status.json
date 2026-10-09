@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "القرش الأول: كيف تبدأ الاستثمار بمبلغ صغير جدا",
+    "title": "الثروة المفقودة: كيف يسرق التضخم مستقبلك المالي",
     "source": "ai-invented",
-    "started_at": "2026-10-09T13:00:35Z",
-    "elapsed_sec": 698
+    "started_at": "2026-10-09T13:13:26Z",
+    "elapsed_sec": 587
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 3,
-  "videos_total": 126,
-  "ai_invented_total": 63,
+  "videos_this_run": 4,
+  "videos_total": 127,
+  "ai_invented_total": 64,
   "recent": [
     {
       "title": "قوة الفائدة المركبة: كيف تضاعف أموالك مع الوقت",
@@ -49,6 +49,15 @@
       "code_by": "generate_video.py",
       "seconds": 778,
       "at": "2026-10-09T12:59:25Z"
+    },
+    {
+      "title": "القرش الأول: كيف تبدأ الاستثمار بمبلغ صغير جدا",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 699,
+      "at": "2026-10-09T13:12:14Z"
     }
   ],
   "drive": {
@@ -60,5 +69,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T13:12:13Z"
+  "updated_at": "2026-10-09T13:23:13Z"
 }

@@ -1320,10 +1320,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "كيف تبدأ الاستثمار بمبلغ صغير جدا"
+    },
+    "8de606a4d99de419e9bec8444ed7bb67": {
+      "title": "الثروة المفقودة: كيف يسرق التضخم مستقبلك المالي",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T13:23:41Z",
+      "fps": 60,
+      "dir": "ai05-8de606a4",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "التضخم: اللص الصامت الذي يأكل مدخراتك"
     }
   },
   "failed": {},
-  "ai_invented_count": 64,
+  "ai_invented_count": 65,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -1501,6 +1513,9 @@
     },
     {
       "title": "القرش الأول: كيف تبدأ الاستثمار بمبلغ صغير جدا"
+    },
+    {
+      "title": "الثروة المفقودة: كيف يسرق التضخم مستقبلك المالي"
     }
   ]
 }
