@@ -1,117 +1,28 @@
 {
-  "phase": "chaining_next_run",
+  "phase": "inventing",
   "mode": "continuous",
   "should_continue": true,
   "run": {
-    "started_at": "2026-10-09T07:33:42Z",
-    "deadline_at": "2026-10-09T12:33:42Z",
+    "started_at": "2026-10-09T12:22:43Z",
+    "deadline_at": "2026-10-09T17:22:43Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true,
-    "finished_at": "2026-10-09T12:19:03Z",
-    "videos_made": 23,
-    "stop_reason": "deadline"
+    "infinite_stories": true
   },
-  "current": null,
+  "current": {
+    "title": "قوة الفائدة المركبة: كيف تضاعف أموالك مع الوقت",
+    "source": "ai-invented",
+    "started_at": "2026-10-09T12:23:27Z",
+    "elapsed_sec": 436
+  },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 23,
+  "videos_this_run": 0,
   "videos_total": 123,
-  "ai_invented_total": 60,
-  "recent": [
-    {
-      "title": "الرقصة مع الشيطان: سر خسارة المستثمرين في توقيت السوق",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 507,
-      "at": "2026-10-09T10:37:50Z"
-    },
-    {
-      "title": "الادخار التلقائي: كيف تحقق من الثروة المركبة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 504,
-      "at": "2026-10-09T10:47:26Z"
-    },
-    {
-      "title": "ثانيتان تغيران حياتك المالية: قاعدة 72 في العمل",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 564,
-      "at": "2026-10-09T10:57:45Z"
-    },
-    {
-      "title": "الاستثمار الذكي: كيف تبني ثروتك على المدى الطويل؟",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 707,
-      "at": "2026-10-09T11:10:31Z"
-    },
-    {
-      "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 548,
-      "at": "2026-10-09T11:20:34Z"
-    },
-    {
-      "title": "المعادن المتجمدة: كيف تتحول 1000 دولار إلى 100 ألف قبل العمر 50",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 399,
-      "at": "2026-10-09T11:33:14Z"
-    },
-    {
-      "title": "قراءة القوائم المالية",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 687,
-      "at": "2026-10-09T11:45:22Z"
-    },
-    {
-      "title": "حسابات FIRE: الأرقام التي تغير حياتك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 346,
-      "at": "2026-10-09T11:52:05Z"
-    },
-    {
-      "title": "الخطأ الذي يحدث في كل استثمار جديد",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 467,
-      "at": "2026-10-09T12:00:40Z"
-    },
-    {
-      "title": "السر الخفي للثراء المتزايد",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 781,
-      "at": "2026-10-09T12:19:02Z"
-    }
-  ],
+  "ai_invented_total": 0,
+  "recent": [],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -121,5 +32,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T12:19:03Z"
+  "updated_at": "2026-10-09T12:30:43Z"
 }
