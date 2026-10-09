@@ -12,16 +12,16 @@
   "current": {
     "title": "الاستثمار في الذات: عائد لا يُقارن",
     "source": "ai-invented",
-    "started_at": "2026-10-09T22:41:15Z",
-    "elapsed_sec": 399
+    "started_at": "2026-10-09T22:50:06Z",
+    "elapsed_sec": 408
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 2,
-  "videos_total": 176,
-  "ai_invented_total": 113,
+  "videos_this_run": 3,
+  "videos_total": 177,
+  "ai_invented_total": 114,
   "recent": [
     {
       "title": "الادخار التلقائي: ادفع لنفسك أولا",
@@ -40,6 +40,15 @@
       "code_by": "generate_video.py",
       "seconds": 692,
       "at": "2026-10-09T22:34:27Z"
+    },
+    {
+      "title": "الاستثمار في الذات: عائد لا يُقارن",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 418,
+      "at": "2026-10-09T22:48:13Z"
     }
   ],
   "drive": {
@@ -51,5 +60,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T22:47:54Z"
+  "updated_at": "2026-10-09T22:56:54Z"
 }

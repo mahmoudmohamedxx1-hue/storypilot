@@ -1920,10 +1920,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
+    },
+    "e016e30fa688bfcbedcff30391244363": {
+      "title": "الاستثمار في الذات: عائد لا يُقارن",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T22:57:12Z",
+      "fps": 60,
+      "dir": "ai04-e016e30f",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
     }
   },
   "failed": {},
-  "ai_invented_count": 114,
+  "ai_invented_count": 115,
   "ai_titles": [
     {
       "title": "الانضباط المالي: عادة صغيرة تغير حياتك"
@@ -2098,6 +2110,9 @@
     },
     {
       "title": "الاستثمار في الوقت: سر بناء الثروة الحقيقية"
+    },
+    {
+      "title": "الاستثمار في الذات: عائد لا يُقارن"
     },
     {
       "title": "الاستثمار في الذات: عائد لا يُقارن"
