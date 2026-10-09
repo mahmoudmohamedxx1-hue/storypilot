@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق",
+    "title": "كشف الأرقام: رحلة قراءة القوائم المالية",
     "source": "ai-invented",
-    "started_at": "2026-10-09T18:51:07Z",
-    "elapsed_sec": 138
+    "started_at": "2026-10-09T18:57:32Z",
+    "elapsed_sec": 773
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 10,
-  "videos_total": 158,
-  "ai_invented_total": 95,
+  "videos_this_run": 11,
+  "videos_total": 159,
+  "ai_invented_total": 96,
   "recent": [
-    {
-      "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "ai",
-      "code_by": "freellmpool:ovh/gpt-oss-120b",
-      "seconds": 398,
-      "at": "2026-10-09T17:22:14Z"
-    },
     {
       "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 601,
       "at": "2026-10-09T18:49:55Z"
+    },
+    {
+      "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "ai",
+      "code_by": "freellmpool:auto",
+      "seconds": 163,
+      "at": "2026-10-09T18:53:50Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T18:53:25Z"
+  "updated_at": "2026-10-09T19:10:25Z"
 }
