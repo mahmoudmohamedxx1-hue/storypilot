@@ -1,117 +1,28 @@
 {
-  "phase": "chaining_next_run",
+  "phase": "inventing",
   "mode": "continuous",
   "should_continue": true,
   "run": {
-    "started_at": "2026-10-09T17:14:25Z",
-    "deadline_at": "2026-10-09T22:14:25Z",
+    "started_at": "2026-10-09T22:08:24Z",
+    "deadline_at": "2026-10-10T03:08:24Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true,
-    "finished_at": "2026-10-09T22:04:28Z",
-    "videos_made": 26,
-    "stop_reason": "deadline"
+    "infinite_stories": true
   },
-  "current": null,
+  "current": {
+    "title": "الادخار التلقائي: ادفع لنفسك أولا",
+    "source": "ai-invented",
+    "started_at": "2026-10-09T22:08:56Z",
+    "elapsed_sec": 748
+  },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 26,
+  "videos_this_run": 0,
   "videos_total": 174,
-  "ai_invented_total": 111,
-  "recent": [
-    {
-      "title": "الصندوق السري: سر الاحتفاظ بمستقبلك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 530,
-      "at": "2026-10-09T20:06:09Z"
-    },
-    {
-      "title": "مفاتيح الثروة: الأصول مقابل الالتزامات",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 467,
-      "at": "2026-10-09T20:17:00Z"
-    },
-    {
-      "title": "البداية الصغيرة: استثمار بسيط يفتح آفاقاً",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 852,
-      "at": "2026-10-09T20:34:30Z"
-    },
-    {
-      "title": "التضخم: اللص الصامت الذي يأكل مدخراتك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 803,
-      "at": "2026-10-09T21:02:18Z"
-    },
-    {
-      "title": "العادة الذهبية: كيف تتحول إيقاف قهوة يومية إلى ثروة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 482,
-      "at": "2026-10-09T21:11:21Z"
-    },
-    {
-      "title": "الميزان الذهبي: أين يُصنع الثراء؟",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 453,
-      "at": "2026-10-09T21:23:16Z"
-    },
-    {
-      "title": "الاقتراض الذكي: متى يصبح الدين صديقك المالي",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 361,
-      "at": "2026-10-09T21:39:38Z"
-    },
-    {
-      "title": "الفائدة اللطيفة: متى يصبح الاقتراض حليماً؟",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 338,
-      "at": "2026-10-09T21:46:17Z"
-    },
-    {
-      "title": "التنويع الذكي: لعبة الفوز بلا نهاية",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 445,
-      "at": "2026-10-09T21:54:50Z"
-    },
-    {
-      "title": "فخ الترتيب اليدوي",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 519,
-      "at": "2026-10-09T22:04:26Z"
-    }
-  ],
+  "ai_invented_total": 0,
+  "recent": [],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -121,5 +32,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T22:04:28Z"
+  "updated_at": "2026-10-09T22:21:24Z"
 }
