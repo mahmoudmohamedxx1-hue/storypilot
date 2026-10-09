@@ -1380,14 +1380,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟"
+    },
+    "fd43610c1647ddcb45c96354b083ea61": {
+      "title": "سلة البيض",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T14:28:54Z",
+      "fps": 60,
+      "dir": "ai10-fd43610c",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
     }
   },
   "failed": {},
-  "ai_invented_count": 69,
+  "ai_invented_count": 70,
   "ai_titles": [
-    {
-      "title": "قاعدة الـ 72: احسب وقت مضاعفة أموالك بخطوة واحدة"
-    },
     {
       "title": "فخ الخصومات: كيف تجعلك العروض تشتري ما لا تحتاج"
     },
@@ -1564,6 +1573,9 @@
     },
     {
       "title": "الديون المتوازنة"
+    },
+    {
+      "title": "سلة البيض"
     }
   ]
 }
