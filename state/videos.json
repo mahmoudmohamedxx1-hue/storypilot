@@ -1476,14 +1476,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "كيف تقرأ القوائم المالية لشركة قبل شراء سهمها"
+    },
+    "2ed6e781821cb77bebca848eb2422b3f": {
+      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T15:45:49Z",
+      "fps": 60,
+      "dir": "ai18-2ed6e781",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
     }
   },
   "failed": {},
-  "ai_invented_count": 77,
+  "ai_invented_count": 78,
   "ai_titles": [
-    {
-      "title": "قاعدة 72: سرعة مضاعفة الثروة"
-    },
     {
       "title": "الرحلة الاستثمارية: كيف يبني الكبار ثروتهم خطوة بخطوة"
     },
@@ -1657,6 +1666,9 @@
     },
     {
       "title": "إثمار الذات: عائد لا يُقاس"
+    },
+    {
+      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
     },
     {
       "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"

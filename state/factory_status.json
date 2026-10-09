@@ -12,26 +12,17 @@
   "current": {
     "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
     "source": "ai-invented",
-    "started_at": "2026-10-09T15:31:07Z",
-    "elapsed_sec": 516
+    "started_at": "2026-10-09T15:40:50Z",
+    "elapsed_sec": 293
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 16,
-  "videos_total": 139,
-  "ai_invented_total": 76,
+  "videos_this_run": 17,
+  "videos_total": 140,
+  "ai_invented_total": 77,
   "recent": [
-    {
-      "title": "الخطوة الصغيرة في عالم الأسهم",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "ai",
-      "code_by": "pollinations:openai",
-      "seconds": 347,
-      "at": "2026-10-09T13:45:54Z"
-    },
     {
       "title": "الدين المزدوج: سر الاقتراض الذكي",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 763,
       "at": "2026-10-09T15:29:32Z"
+    },
+    {
+      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 532,
+      "at": "2026-10-09T15:39:58Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T15:39:43Z"
+  "updated_at": "2026-10-09T15:45:43Z"
 }
