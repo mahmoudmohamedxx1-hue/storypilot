@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "صراع الذهب والأسهم",
+    "title": "الديون والحكمة: أذكى وقت للتمويل",
     "source": "ai-invented",
-    "started_at": "2026-10-09T17:35:34Z",
-    "elapsed_sec": 81
+    "started_at": "2026-10-09T17:41:09Z",
+    "elapsed_sec": 886
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 2,
-  "videos_total": 150,
-  "ai_invented_total": 87,
+  "videos_this_run": 3,
+  "videos_total": 151,
+  "ai_invented_total": 88,
   "recent": [
     {
       "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
@@ -40,6 +40,15 @@
       "code_by": "generate_video.py",
       "seconds": 562,
       "at": "2026-10-09T17:31:54Z"
+    },
+    {
+      "title": "صراع الذهب والأسهم",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "ai",
+      "code_by": "freellmpool:auto",
+      "seconds": 104,
+      "at": "2026-10-09T17:37:18Z"
     }
   ],
   "drive": {
@@ -51,5 +60,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T17:36:55Z"
+  "updated_at": "2026-10-09T17:55:55Z"
 }

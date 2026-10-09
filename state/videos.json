@@ -1608,10 +1608,22 @@
       "code_by": "freellmpool:auto",
       "ai_attempts": 1,
       "topic": "الذهب أم الأسهم؟ أين تضع أموالك"
+    },
+    "0d555112990d92d9e49438dd3488a513": {
+      "title": "الديون والحكمة: أذكى وقت للتمويل",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T17:56:04Z",
+      "fps": 60,
+      "dir": "ai04-0d555112",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟"
     }
   },
   "failed": {},
-  "ai_invented_count": 88,
+  "ai_invented_count": 89,
   "ai_titles": [
     {
       "title": "قوة الفائدة المركبة"
@@ -1789,6 +1801,9 @@
     },
     {
       "title": "صراع الذهب والأسهم"
+    },
+    {
+      "title": "الديون والحكمة: أذكى وقت للتمويل"
     }
   ]
 }
