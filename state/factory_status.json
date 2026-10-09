@@ -10,19 +10,29 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
+    "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
     "source": "ai-invented",
-    "started_at": "2026-10-09T17:15:36Z",
-    "elapsed_sec": 379
+    "started_at": "2026-10-09T17:22:32Z",
+    "elapsed_sec": 533
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 0,
-  "videos_total": 148,
-  "ai_invented_total": 0,
-  "recent": [],
+  "videos_this_run": 1,
+  "videos_total": 149,
+  "ai_invented_total": 86,
+  "recent": [
+    {
+      "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "ai",
+      "code_by": "freellmpool:ovh/gpt-oss-120b",
+      "seconds": 398,
+      "at": "2026-10-09T17:22:14Z"
+    }
+  ],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -32,5 +42,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T17:21:55Z"
+  "updated_at": "2026-10-09T17:31:25Z"
 }
