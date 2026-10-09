@@ -1740,14 +1740,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
+    },
+    "bb0a4040d8aeff6941d49eb9f8cd3659": {
+      "title": "الدخل السلبي: الحقيقة بدون مبالغة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T19:42:33Z",
+      "fps": 60,
+      "dir": "ai15-bb0a4040",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
     }
   },
   "failed": {},
-  "ai_invented_count": 99,
+  "ai_invented_count": 100,
   "ai_titles": [
-    {
-      "title": "ادفع لنفسك أولاً: رحلة الادخار التلقائي"
-    },
     {
       "title": "سر التضاعف السريع"
     },
@@ -1924,6 +1933,9 @@
     },
     {
       "title": "الخطأ المدمر"
+    },
+    {
+      "title": "الدخل السلبي: الحقيقة بدون مبالغة"
     }
   ]
 }
