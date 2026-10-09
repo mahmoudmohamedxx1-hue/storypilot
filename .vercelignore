@@ -1,0 +1,21 @@
+# Vercel deploy - only the `web` service (root: web/) + vercel.json matter.
+# Keep the upload lean: exclude GitHub Actions pipeline assets.
+.git
+.github
+.vercel
+
+# heavy / irrelevant to the web build
+node_modules
+web/node_modules
+.next
+web/.next
+videos
+state
+fonts
+scripts
+*.mp4
+
+# python pipeline payloads (run on GitHub Actions, not Vercel)
+generate_video.py
+post_video.py
+requirements.txt
