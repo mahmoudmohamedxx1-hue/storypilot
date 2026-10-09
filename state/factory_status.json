@@ -1,5 +1,5 @@
 {
-  "phase": "inventing",
+  "phase": "chaining_next_run",
   "mode": "continuous",
   "should_continue": true,
   "run": {
@@ -7,31 +7,20 @@
     "deadline_at": "2026-10-09T02:56:02Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true
+    "infinite_stories": true,
+    "finished_at": "2026-10-09T02:41:34Z",
+    "videos_made": 14,
+    "stop_reason": "deadline"
   },
-  "current": {
-    "title": "الرصيد النائم: ماذا تخسر أموالك المعطلة كل يوم؟",
-    "source": "builtin-bank",
-    "started_at": "2026-10-09T00:32:27Z",
-    "elapsed_sec": 731
-  },
+  "current": null,
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 13,
-  "videos_total": 77,
-  "ai_invented_total": 14,
+  "videos_this_run": 14,
+  "videos_total": 78,
+  "ai_invented_total": 15,
   "recent": [
-    {
-      "title": "قاعدة الـ 72: احسب وقت مضاعفة أموالك بخطوة واحدة",
-      "source": "builtin-bank",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 798,
-      "at": "2026-10-08T22:42:51Z"
-    },
     {
       "title": "فخ الخصومات: كيف تجعلك العروض تشتري ما لا تحتاج",
       "source": "builtin-bank",
@@ -112,6 +101,15 @@
       "code_by": "generate_video.py",
       "seconds": 478,
       "at": "2026-10-09T00:23:05Z"
+    },
+    {
+      "title": "الرصيد النائم: ماذا تخسر أموالك المعطلة كل يوم؟",
+      "source": "builtin-bank",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 732,
+      "at": "2026-10-09T00:44:39Z"
     }
   ],
   "drive": {
@@ -123,5 +121,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T00:44:38Z"
+  "updated_at": "2026-10-09T02:41:34Z"
 }
