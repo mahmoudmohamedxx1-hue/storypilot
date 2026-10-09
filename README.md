@@ -156,3 +156,37 @@ A Kimi-style agent console for the pipeline:
 - **Platforms / Workflows / Settings** — manage tokens, the workflow bundle and defaults
 
 See `web/src` for the source; it is a standard Next.js (App Router) + Prisma app.
+
+## Deploy the web app on Vercel (single project)
+
+The whole repo is **one Vercel project** with a single public service, defined
+in [`vercel.json`](vercel.json):
+
+| Service | Root | Framework | Visibility | Traffic |
+|---|---|---|---|---|
+| `web` | `web/` | Next.js | **public** | every path (catch-all rewrite `/(.*)` → `web`) |
+
+- **The Python pipeline is not a Vercel service.** `factory.py`, `ai_forge.py`,
+  `drive_sync.py` etc. are GitHub Actions workers (5-hour ffmpeg renders — far
+  beyond serverless limits) and expose no HTTP endpoints, so they stay on
+  Actions 24/7 and are not deployed to Vercel.
+- **No service bindings are needed.** The web app calls only public external
+  APIs (GitHub, Google Sheets/Drive, z.ai) — never another internal Vercel
+  service — so there is nothing to bind.
+
+Import the repo as a new Vercel project (the layout is picked up from
+`vercel.json`) and set the environment variables:
+
+| Variable | Required | Notes |
+|---|---|---|
+| `GITHUB_TOKEN` | yes — pipeline, Library, live statuses | PAT with repo + workflow scopes |
+| `GITHUB_REPO` | no | defaults to `mahmoudmohamedxx1-hue/storypilot` |
+| `SHEET_ID` | no | defaults to the Spark sheet |
+| `ZAI_API_KEY` | for chat | GLM-5.3-Flash via the z.ai SDK |
+| `DRIVE_WEBAPP_URL` / `DRIVE_WEBAPP_KEY` | no | the factory already syncs Drive hourly from Actions |
+| `DATABASE_URL` | no | auto-resolves to an ephemeral SQLite in `/tmp` |
+
+> **Serverless note:** SQLite is ephemeral (per-instance, reset on cold start).
+> The Library rebuilds itself from GitHub artifacts, but chat history and
+> settings saved in the UI don't persist across cold starts — provide them as
+> environment variables.
