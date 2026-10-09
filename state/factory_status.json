@@ -1,5 +1,5 @@
 {
-  "phase": "inventing",
+  "phase": "chaining_next_run",
   "mode": "continuous",
   "should_continue": true,
   "run": {
@@ -7,31 +7,20 @@
     "deadline_at": "2026-10-09T17:22:43Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true
+    "infinite_stories": true,
+    "finished_at": "2026-10-09T17:10:39Z",
+    "videos_made": 25,
+    "stop_reason": "deadline"
   },
-  "current": {
-    "title": "التضخم: اللص الصامت الذي يأكل مدخراتك",
-    "source": "ai-invented",
-    "started_at": "2026-10-09T17:07:59Z",
-    "elapsed_sec": 134
-  },
+  "current": null,
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 24,
-  "videos_total": 147,
-  "ai_invented_total": 84,
+  "videos_this_run": 25,
+  "videos_total": 148,
+  "ai_invented_total": 85,
   "recent": [
-    {
-      "title": "الاستثمار في المهارات: عائيدك الذهبي",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 476,
-      "at": "2026-10-09T15:14:18Z"
-    },
     {
       "title": "إثمار الذات: عائد لا يُقاس",
       "source": "ai-invented",
@@ -112,6 +101,15 @@
       "code_by": "generate_video.py",
       "seconds": 396,
       "at": "2026-10-09T17:04:30Z"
+    },
+    {
+      "title": "التضخم: اللص الصامت الذي يأكل مدخراتك",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "ai",
+      "code_by": "freellmpool:auto",
+      "seconds": 158,
+      "at": "2026-10-09T17:10:37Z"
     }
   ],
   "drive": {
@@ -123,5 +121,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T17:10:13Z"
+  "updated_at": "2026-10-09T17:10:39Z"
 }
