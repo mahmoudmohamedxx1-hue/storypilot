@@ -1752,14 +1752,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    "8c9f0f527fcd1f13e04ec109ff8015cd": {
+      "title": "الذهب الخفي: كيف تزرع ثروتك مع الوقت",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T19:54:17Z",
+      "fps": 60,
+      "dir": "ai16-8c9f0f52",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
     }
   },
   "failed": {},
-  "ai_invented_count": 100,
+  "ai_invented_count": 101,
   "ai_titles": [
-    {
-      "title": "سر التضاعف السريع"
-    },
     {
       "title": "الاستثمار في نفسك"
     },
@@ -1936,6 +1945,9 @@
     },
     {
       "title": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    {
+      "title": "الذهب الخفي: كيف تزرع ثروتك مع الوقت"
     }
   ]
 }
