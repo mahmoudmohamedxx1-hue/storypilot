@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "خطأ توقيت القفز",
+    "title": "ادفع لنفسك أولاً: رحلة الادخار التلقائي",
     "source": "ai-invented",
-    "started_at": "2026-10-09T06:21:17Z",
-    "elapsed_sec": 533
+    "started_at": "2026-10-09T06:30:55Z",
+    "elapsed_sec": 555
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 15,
-  "videos_total": 93,
-  "ai_invented_total": 30,
+  "videos_this_run": 16,
+  "videos_total": 94,
+  "ai_invented_total": 31,
   "recent": [
-    {
-      "title": "قوة الفائدة المركبة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 516,
-      "at": "2026-10-09T04:38:37Z"
-    },
     {
       "title": "الأصول مقابل الالتزامات: سر الثراء",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 546,
       "at": "2026-10-09T06:20:52Z"
+    },
+    {
+      "title": "خطأ توقيت القفز",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 543,
+      "at": "2026-10-09T06:30:21Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T06:30:10Z"
+  "updated_at": "2026-10-09T06:40:10Z"
 }

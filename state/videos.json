@@ -924,10 +924,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "مخاطر محاولة توقيت السوق ولماذا يخسر معظم الناس"
+    },
+    "eb3aa47bfe5cafdd1b97defe0adb0f7d": {
+      "title": "ادفع لنفسك أولاً: رحلة الادخار التلقائي",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T06:40:10Z",
+      "fps": 60,
+      "dir": "ai17-eb3aa47b",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الادخار التلقائي: ادفع لنفسك أولا"
     }
   },
   "failed": {},
-  "ai_invented_count": 31,
+  "ai_invented_count": 32,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -1021,6 +1033,9 @@
     },
     {
       "title": "خطأ توقيت القفز"
+    },
+    {
+      "title": "ادفع لنفسك أولاً: رحلة الادخار التلقائي"
     }
   ]
 }
