@@ -1776,14 +1776,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
+    },
+    "f6e873aea11449137013eba17408d282": {
+      "title": "مفاتيح الثروة: الأصول مقابل الالتزامات",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T20:17:00Z",
+      "fps": 60,
+      "dir": "ai18-f6e873ae",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الفرق بين الأصول والالتزامات ولماذا يفرق الأغنياء"
     }
   },
   "failed": {},
-  "ai_invented_count": 102,
+  "ai_invented_count": 103,
   "ai_titles": [
-    {
-      "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
-    },
     {
       "title": "قراءة القوائم: مفتاح السهم الذهبي"
     },
@@ -1960,6 +1969,9 @@
     },
     {
       "title": "الصندوق السري: سر الاحتفاظ بمستقبلك"
+    },
+    {
+      "title": "مفاتيح الثروة: الأصول مقابل الالتزامات"
     }
   ]
 }

@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الصندوق السري: سر الاحتفاظ بمستقبلك",
+    "title": "مفاتيح الثروة: الأصول مقابل الالتزامات",
     "source": "ai-invented",
-    "started_at": "2026-10-09T19:57:19Z",
-    "elapsed_sec": 516
+    "started_at": "2026-10-09T20:09:13Z",
+    "elapsed_sec": 462
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 16,
-  "videos_total": 164,
-  "ai_invented_total": 101,
+  "videos_this_run": 17,
+  "videos_total": 165,
+  "ai_invented_total": 102,
   "recent": [
-    {
-      "title": "الادخار التلقائي: على سبيل المثال",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 524,
-      "at": "2026-10-09T18:22:42Z"
-    },
     {
       "title": "قاعدة 72: كيف تتضاعف أموالك في 8 سنوات؟",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 667,
       "at": "2026-10-09T19:54:17Z"
+    },
+    {
+      "title": "الصندوق السري: سر الاحتفاظ بمستقبلك",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 530,
+      "at": "2026-10-09T20:06:09Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T20:05:55Z"
+  "updated_at": "2026-10-09T20:16:55Z"
 }
