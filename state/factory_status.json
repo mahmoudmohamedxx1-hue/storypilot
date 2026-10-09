@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
+    "title": "صراع الذهب والأسهم",
     "source": "ai-invented",
-    "started_at": "2026-10-09T17:22:32Z",
-    "elapsed_sec": 533
+    "started_at": "2026-10-09T17:35:34Z",
+    "elapsed_sec": 81
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 1,
-  "videos_total": 149,
-  "ai_invented_total": 86,
+  "videos_this_run": 2,
+  "videos_total": 150,
+  "ai_invented_total": 87,
   "recent": [
     {
       "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
@@ -31,6 +31,15 @@
       "code_by": "freellmpool:ovh/gpt-oss-120b",
       "seconds": 398,
       "at": "2026-10-09T17:22:14Z"
+    },
+    {
+      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 562,
+      "at": "2026-10-09T17:31:54Z"
     }
   ],
   "drive": {
@@ -42,5 +51,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T17:31:25Z"
+  "updated_at": "2026-10-09T17:36:55Z"
 }
