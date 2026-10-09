@@ -1032,10 +1032,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    "44ce9e87efa585590ce56c0c3f9b6470": {
+      "title": "التوافق المالي: كيف تتحول الدرهمات الصغيرى لكنوز لا تُحصى",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T08:13:23Z",
+      "fps": 60,
+      "dir": "ai04-44ce9e87",
+      "source": "ai-invented",
+      "renderer": "ai",
+      "code_by": "freellmpool:ovh/gpt-oss-120b",
+      "ai_attempts": 3,
+      "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
     }
   },
   "failed": {},
-  "ai_invented_count": 40,
+  "ai_invented_count": 41,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -1153,6 +1165,9 @@
     },
     {
       "title": "الدخل السلبي: الطريق إلى الحرية المالية"
+    },
+    {
+      "title": "التوافق المالي: كيف تتحول الدرهمات الصغيرى لكنوز لا تُحصى"
     }
   ]
 }
