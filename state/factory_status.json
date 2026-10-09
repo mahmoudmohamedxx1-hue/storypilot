@@ -10,19 +10,29 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
+    "title": "الخداع النفسي: أخطاء كل مستثمر مبتدئ",
     "source": "ai-invented",
-    "started_at": "2026-10-09T07:34:02Z",
-    "elapsed_sec": 70
+    "started_at": "2026-10-09T07:36:26Z",
+    "elapsed_sec": 316
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 0,
-  "videos_total": 100,
-  "ai_invented_total": 0,
-  "recent": [],
+  "videos_this_run": 1,
+  "videos_total": 101,
+  "ai_invented_total": 38,
+  "recent": [
+    {
+      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "ai",
+      "code_by": "freellmpool:auto",
+      "seconds": 84,
+      "at": "2026-10-09T07:35:26Z"
+    }
+  ],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -32,5 +42,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T07:35:12Z"
+  "updated_at": "2026-10-09T07:41:42Z"
 }
