@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "البداية الصغيرة: سر الاستثمار بقرشة واحدة",
+    "title": "التضخم: اللص الصامت الذي يأكل مدخراتك",
     "source": "ai-invented",
-    "started_at": "2026-10-09T05:24:41Z",
-    "elapsed_sec": 599
+    "started_at": "2026-10-09T05:35:11Z",
+    "elapsed_sec": 329
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 8,
-  "videos_total": 86,
-  "ai_invented_total": 23,
+  "videos_this_run": 9,
+  "videos_total": 87,
+  "ai_invented_total": 24,
   "recent": [
     {
       "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
@@ -94,6 +94,15 @@
       "code_by": "generate_video.py",
       "seconds": 633,
       "at": "2026-10-09T05:24:08Z"
+    },
+    {
+      "title": "البداية الصغيرة: سر الاستثمار بقرشة واحدة",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 602,
+      "at": "2026-10-09T05:34:42Z"
     }
   ],
   "drive": {
@@ -105,5 +114,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T05:34:40Z"
+  "updated_at": "2026-10-09T05:40:40Z"
 }
