@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الثروة المفقودة: كيف يسرق التضخم مستقبلك المالي",
+    "title": "سفر صغير، ثروة كبيرة",
     "source": "ai-invented",
-    "started_at": "2026-10-09T13:13:26Z",
-    "elapsed_sec": 587
+    "started_at": "2026-10-09T13:27:15Z",
+    "elapsed_sec": 538
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 4,
-  "videos_total": 127,
-  "ai_invented_total": 64,
+  "videos_this_run": 5,
+  "videos_total": 128,
+  "ai_invented_total": 65,
   "recent": [
     {
       "title": "قوة الفائدة المركبة: كيف تضاعف أموالك مع الوقت",
@@ -58,6 +58,15 @@
       "code_by": "generate_video.py",
       "seconds": 699,
       "at": "2026-10-09T13:12:14Z"
+    },
+    {
+      "title": "الثروة المفقودة: كيف يسرق التضخم مستقبلك المالي",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 615,
+      "at": "2026-10-09T13:23:41Z"
     }
   ],
   "drive": {
@@ -69,5 +78,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T13:23:13Z"
+  "updated_at": "2026-10-09T13:36:13Z"
 }
