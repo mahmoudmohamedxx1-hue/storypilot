@@ -1308,10 +1308,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الفرق بين الأصول والالتزامات ولماذا يفرق الأغنياء"
+    },
+    "4f38ffe124447fe95b2936a45ad7d9c6": {
+      "title": "القرش الأول: كيف تبدأ الاستثمار بمبلغ صغير جدا",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T13:12:14Z",
+      "fps": 60,
+      "dir": "ai04-4f38ffe1",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "كيف تبدأ الاستثمار بمبلغ صغير جدا"
     }
   },
   "failed": {},
-  "ai_invented_count": 63,
+  "ai_invented_count": 64,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -1486,6 +1498,9 @@
     },
     {
       "title": "الطريق المتقاطع: الأصول والالتزامات"
+    },
+    {
+      "title": "القرش الأول: كيف تبدأ الاستثمار بمبلغ صغير جدا"
     }
   ]
 }
