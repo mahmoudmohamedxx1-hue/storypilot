@@ -1,117 +1,28 @@
 {
-  "phase": "chaining_next_run",
+  "phase": "inventing",
   "mode": "continuous",
   "should_continue": true,
   "run": {
-    "started_at": "2026-10-09T12:22:43Z",
-    "deadline_at": "2026-10-09T17:22:43Z",
+    "started_at": "2026-10-09T17:14:25Z",
+    "deadline_at": "2026-10-09T22:14:25Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true,
-    "finished_at": "2026-10-09T17:10:39Z",
-    "videos_made": 25,
-    "stop_reason": "deadline"
+    "infinite_stories": true
   },
-  "current": null,
+  "current": {
+    "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
+    "source": "ai-invented",
+    "started_at": "2026-10-09T17:15:36Z",
+    "elapsed_sec": 379
+  },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 25,
+  "videos_this_run": 0,
   "videos_total": 148,
-  "ai_invented_total": 85,
-  "recent": [
-    {
-      "title": "إثمار الذات: عائد لا يُقاس",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 763,
-      "at": "2026-10-09T15:29:32Z"
-    },
-    {
-      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 532,
-      "at": "2026-10-09T15:39:58Z"
-    },
-    {
-      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 299,
-      "at": "2026-10-09T15:45:49Z"
-    },
-    {
-      "title": "صوت الدخل: حقيقة الدخل السلبي",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 804,
-      "at": "2026-10-09T16:04:23Z"
-    },
-    {
-      "title": "الدخل السلبي: الحقيقة بدون مبالغة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 571,
-      "at": "2026-10-09T16:15:23Z"
-    },
-    {
-      "title": "السر المذهل: كيف تضاعف أموالك مع الوقت",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 768,
-      "at": "2026-10-09T16:29:12Z"
-    },
-    {
-      "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 551,
-      "at": "2026-10-09T16:39:28Z"
-    },
-    {
-      "title": "الغني لا يعمل للمال، المال يعمل له: سر الأصول والالتزامات",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 832,
-      "at": "2026-10-09T16:54:26Z"
-    },
-    {
-      "title": "بذرة الثروة: من فلس واحد إلى محفة لا تُقاس",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 396,
-      "at": "2026-10-09T17:04:30Z"
-    },
-    {
-      "title": "التضخم: اللص الصامت الذي يأكل مدخراتك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "ai",
-      "code_by": "freellmpool:auto",
-      "seconds": 158,
-      "at": "2026-10-09T17:10:37Z"
-    }
-  ],
+  "ai_invented_total": 0,
+  "recent": [],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -121,5 +32,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T17:10:39Z"
+  "updated_at": "2026-10-09T17:21:55Z"
 }
