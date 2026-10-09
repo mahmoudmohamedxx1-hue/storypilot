@@ -1,5 +1,5 @@
 {
-  "phase": "inventing",
+  "phase": "chaining_next_run",
   "mode": "continuous",
   "should_continue": true,
   "run": {
@@ -7,31 +7,20 @@
     "deadline_at": "2026-10-09T07:45:09Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true
+    "infinite_stories": true,
+    "finished_at": "2026-10-09T07:30:09Z",
+    "videos_made": 22,
+    "stop_reason": "deadline"
   },
-  "current": {
-    "title": "كشف الأرقام: فهم القوائم قبل الشراء",
-    "source": "ai-invented",
-    "started_at": "2026-10-09T07:18:21Z",
-    "elapsed_sec": 499
-  },
+  "current": null,
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 21,
-  "videos_total": 99,
-  "ai_invented_total": 36,
+  "videos_this_run": 22,
+  "videos_total": 100,
+  "ai_invented_total": 37,
   "recent": [
-    {
-      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 333,
-      "at": "2026-10-09T05:58:58Z"
-    },
     {
       "title": "المصفوفة الذهبية: لعبة التوزيع الذكي",
       "source": "ai-invented",
@@ -112,6 +101,15 @@
       "code_by": "generate_video.py",
       "seconds": 468,
       "at": "2026-10-09T07:17:58Z"
+    },
+    {
+      "title": "كشف الأرقام: فهم القوائم قبل الشراء",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 522,
+      "at": "2026-10-09T07:27:03Z"
     }
   ],
   "drive": {
@@ -123,5 +121,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T07:26:40Z"
+  "updated_at": "2026-10-09T07:30:09Z"
 }
