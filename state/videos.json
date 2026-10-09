@@ -1692,14 +1692,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
+    },
+    "71aa1fbace1f99ab32c1bb331b71c509": {
+      "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T18:53:50Z",
+      "fps": 60,
+      "dir": "ai11-71aa1fba",
+      "source": "ai-invented",
+      "renderer": "ai",
+      "code_by": "freellmpool:auto",
+      "ai_attempts": 2,
+      "topic": "الاستثمار في نفسك: أفضل عائد على الإطلاق"
     }
   },
   "failed": {},
-  "ai_invented_count": 95,
+  "ai_invented_count": 96,
   "ai_titles": [
-    {
-      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
-    },
     {
       "title": "المصفوفة الذهبية: لعبة التوزيع الذكي"
     },
@@ -1876,6 +1885,9 @@
     },
     {
       "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
+    },
+    {
+      "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق"
     }
   ]
 }
