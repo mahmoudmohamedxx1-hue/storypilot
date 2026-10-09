@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "حسابات FIRE: الأرقام التي تغير حياتك",
+    "title": "الخطأ الذي يحدث في كل استثمار جديد",
     "source": "ai-invented",
-    "started_at": "2026-10-09T11:46:20Z",
-    "elapsed_sec": 322
+    "started_at": "2026-10-09T11:52:54Z",
+    "elapsed_sec": 438
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 20,
-  "videos_total": 120,
-  "ai_invented_total": 57,
+  "videos_this_run": 21,
+  "videos_total": 121,
+  "ai_invented_total": 58,
   "recent": [
-    {
-      "title": "الذهب أم الأسهم؟ أين تضع أموالك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 579,
-      "at": "2026-10-09T09:57:15Z"
-    },
     {
       "title": "دين الجيد والديون السيئة",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 687,
       "at": "2026-10-09T11:45:22Z"
+    },
+    {
+      "title": "حسابات FIRE: الأرقام التي تغير حياتك",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 346,
+      "at": "2026-10-09T11:52:05Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T11:51:42Z"
+  "updated_at": "2026-10-09T12:00:12Z"
 }
