@@ -1224,10 +1224,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الاستثمار في نفسك: أفضل عائد على الإطلاق"
+    },
+    "18cab3760c086b126d4066f7fce5fe2b": {
+      "title": "قراءة القوائم المالية",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T11:45:22Z",
+      "fps": 60,
+      "dir": "ai20-18cab376",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "كيف تقرأ القوائم المالية لشركة قبل شراء سهمها"
     }
   },
   "failed": {},
-  "ai_invented_count": 56,
+  "ai_invented_count": 57,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -1393,6 +1405,9 @@
     },
     {
       "title": "المعادن المتجمدة: كيف تتحول 1000 دولار إلى 100 ألف قبل العمر 50"
+    },
+    {
+      "title": "قراءة القوائم المالية"
     }
   ]
 }

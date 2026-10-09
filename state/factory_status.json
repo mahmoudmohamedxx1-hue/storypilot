@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "المعادن المتجمدة: كيف تتحول 1000 دولار إلى 100 ألف قبل العمر 50",
+    "title": "قراءة القوائم المالية",
     "source": "ai-invented",
-    "started_at": "2026-10-09T11:26:35Z",
-    "elapsed_sec": 397
+    "started_at": "2026-10-09T11:33:55Z",
+    "elapsed_sec": 677
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 18,
-  "videos_total": 118,
-  "ai_invented_total": 55,
+  "videos_this_run": 19,
+  "videos_total": 119,
+  "ai_invented_total": 56,
   "recent": [
-    {
-      "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 842,
-      "at": "2026-10-09T09:32:09Z"
-    },
     {
       "title": "صناديق المؤشرات: بداية ثوابك",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 548,
       "at": "2026-10-09T11:20:34Z"
+    },
+    {
+      "title": "المعادن المتجمدة: كيف تتحول 1000 دولار إلى 100 ألف قبل العمر 50",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 399,
+      "at": "2026-10-09T11:33:14Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T11:33:12Z"
+  "updated_at": "2026-10-09T11:45:12Z"
 }
