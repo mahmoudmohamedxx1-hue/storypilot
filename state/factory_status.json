@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "كشف الأرقام: رحلة قراءة القوائم المالية",
+    "title": "حلم التقاعد المبكر: رحلة الأرقام الحقيقية",
     "source": "ai-invented",
-    "started_at": "2026-10-09T18:57:32Z",
-    "elapsed_sec": 773
+    "started_at": "2026-10-09T19:12:17Z",
+    "elapsed_sec": 578
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 11,
-  "videos_total": 159,
-  "ai_invented_total": 96,
+  "videos_this_run": 12,
+  "videos_total": 160,
+  "ai_invented_total": 97,
   "recent": [
-    {
-      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 562,
-      "at": "2026-10-09T17:31:54Z"
-    },
     {
       "title": "صراع الذهب والأسهم",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "freellmpool:auto",
       "seconds": 163,
       "at": "2026-10-09T18:53:50Z"
+    },
+    {
+      "title": "كشف الأرقام: رحلة قراءة القوائم المالية",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 801,
+      "at": "2026-10-09T19:10:53Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T19:10:25Z"
+  "updated_at": "2026-10-09T19:21:55Z"
 }
