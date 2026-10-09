@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الادخار التلقائي: على سبيل المثال",
+    "title": "قاعدة 72: كيف تتضاعف أموالك في 8 سنوات؟",
     "source": "ai-invented",
-    "started_at": "2026-10-09T18:13:58Z",
-    "elapsed_sec": 507
+    "started_at": "2026-10-09T18:23:20Z",
+    "elapsed_sec": 635
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 6,
-  "videos_total": 154,
-  "ai_invented_total": 91,
+  "videos_this_run": 7,
+  "videos_total": 155,
+  "ai_invented_total": 92,
   "recent": [
     {
       "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
@@ -76,6 +76,15 @@
       "code_by": "generate_video.py",
       "seconds": 596,
       "at": "2026-10-09T18:12:53Z"
+    },
+    {
+      "title": "الادخار التلقائي: على سبيل المثال",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 524,
+      "at": "2026-10-09T18:22:42Z"
     }
   ],
   "drive": {
@@ -87,5 +96,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T18:22:25Z"
+  "updated_at": "2026-10-09T18:33:55Z"
 }

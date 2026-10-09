@@ -1656,14 +1656,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الادخار التلقائي: ادفع لنفسك أولا"
+    },
+    "8e76c6712b4ea129620ec285c8c30f7c": {
+      "title": "قاعدة 72: كيف تتضاعف أموالك في 8 سنوات؟",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T18:34:06Z",
+      "fps": 60,
+      "dir": "ai08-8e76c671",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
     }
   },
   "failed": {},
-  "ai_invented_count": 92,
+  "ai_invented_count": 93,
   "ai_titles": [
-    {
-      "title": "البداية الصغيرة: سر الاستثمار بقرشة واحدة"
-    },
     {
       "title": "التضخم: اللص الصامت الذي يأكل مدخراتك"
     },
@@ -1840,6 +1849,9 @@
     },
     {
       "title": "الادخار التلقائي: على سبيل المثال"
+    },
+    {
+      "title": "قاعدة 72: كيف تتضاعف أموالك في 8 سنوات؟"
     }
   ]
 }
