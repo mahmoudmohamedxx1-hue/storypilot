@@ -936,10 +936,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الادخار التلقائي: ادفع لنفسك أولا"
+    },
+    "2062723c3c940a10e5769b96c289a4ba": {
+      "title": "سر التضاعف السريع",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T06:49:18Z",
+      "fps": 60,
+      "dir": "ai18-2062723c",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
     }
   },
   "failed": {},
-  "ai_invented_count": 32,
+  "ai_invented_count": 33,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -1036,6 +1048,9 @@
     },
     {
       "title": "ادفع لنفسك أولاً: رحلة الادخار التلقائي"
+    },
+    {
+      "title": "سر التضاعف السريع"
     }
   ]
 }
