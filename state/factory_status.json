@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الاقتراض الذكي: متى يصبح الدين حليماً مصراً؟",
+    "title": "التنويع الاستثماري: لعبة السلال المتعددة",
     "source": "ai-invented",
-    "started_at": "2026-10-09T06:05:49Z",
-    "elapsed_sec": 291
+    "started_at": "2026-10-09T06:11:45Z",
+    "elapsed_sec": 535
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 13,
-  "videos_total": 91,
-  "ai_invented_total": 28,
+  "videos_this_run": 14,
+  "videos_total": 92,
+  "ai_invented_total": 29,
   "recent": [
-    {
-      "title": "خطوات الخطأ: رحلة المبتدئ في سوق المال",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 522,
-      "at": "2026-10-09T04:20:26Z"
-    },
     {
       "title": "الدخل السلبي: الحقيقة بدون مبالغة",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 347,
       "at": "2026-10-09T06:05:18Z"
+    },
+    {
+      "title": "الاقتراض الذكي: متى يصبح الدين حليماً مصراً؟",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 320,
+      "at": "2026-10-09T06:11:08Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T06:10:40Z"
+  "updated_at": "2026-10-09T06:20:40Z"
 }
