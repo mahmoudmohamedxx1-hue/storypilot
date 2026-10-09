@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الخطوة الصغيرة في عالم الأسهم",
+    "title": "الدين المزدوج: سر الاقتراض الذكي",
     "source": "ai-invented",
-    "started_at": "2026-10-09T13:40:07Z",
-    "elapsed_sec": 336
+    "started_at": "2026-10-09T13:50:04Z",
+    "elapsed_sec": 609
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 6,
-  "videos_total": 129,
-  "ai_invented_total": 66,
+  "videos_this_run": 7,
+  "videos_total": 130,
+  "ai_invented_total": 67,
   "recent": [
     {
       "title": "قوة الفائدة المركبة: كيف تضاعف أموالك مع الوقت",
@@ -76,6 +76,15 @@
       "code_by": "freellmpool:ovh/gpt-oss-120b",
       "seconds": 544,
       "at": "2026-10-09T13:36:19Z"
+    },
+    {
+      "title": "الخطوة الصغيرة في عالم الأسهم",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "ai",
+      "code_by": "pollinations:openai",
+      "seconds": 347,
+      "at": "2026-10-09T13:45:54Z"
     }
   ],
   "drive": {
@@ -87,5 +96,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T13:45:43Z"
+  "updated_at": "2026-10-09T14:00:13Z"
 }

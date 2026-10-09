@@ -1356,14 +1356,23 @@
       "code_by": "pollinations:openai",
       "ai_attempts": 1,
       "topic": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
+    },
+    "c3339a048667055bd39d651906d27972": {
+      "title": "الدين المزدوج: سر الاقتراض الذكي",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T14:00:16Z",
+      "fps": 60,
+      "dir": "ai08-c3339a04",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الذهب أم الأسهم؟ أين تضع أموالك"
     }
   },
   "failed": {},
-  "ai_invented_count": 67,
+  "ai_invented_count": 68,
   "ai_titles": [
-    {
-      "title": "الاستثمار الذكي: كيف يفرق الأغنياء بين الأصول والالتزامات؟"
-    },
     {
       "title": "أول رأس مال: سر الاستثمار بخمسة دولارات"
     },
@@ -1540,6 +1549,9 @@
     },
     {
       "title": "الخطوة الصغيرة في عالم الأسهم"
+    },
+    {
+      "title": "الدين المزدوج: سر الاقتراض الذكي"
     }
   ]
 }
