@@ -1236,10 +1236,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "كيف تقرأ القوائم المالية لشركة قبل شراء سهمها"
+    },
+    "6ae01ac88d32b61ceee5f633ed74bb4a": {
+      "title": "حسابات FIRE: الأرقام التي تغير حياتك",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-09T11:52:05Z",
+      "fps": 60,
+      "dir": "ai21-6ae01ac8",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
     }
   },
   "failed": {},
-  "ai_invented_count": 57,
+  "ai_invented_count": 58,
   "ai_titles": [
     {
       "title": "الربح المركب: سر ثروة المستقبل"
@@ -1408,6 +1420,9 @@
     },
     {
       "title": "قراءة القوائم المالية"
+    },
+    {
+      "title": "حسابات FIRE: الأرقام التي تغير حياتك"
     }
   ]
 }
