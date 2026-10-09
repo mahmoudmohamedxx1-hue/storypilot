@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الصفقة البسيطة",
+    "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
     "source": "ai-invented",
-    "started_at": "2026-10-09T05:42:52Z",
-    "elapsed_sec": 588
+    "started_at": "2026-10-09T05:53:25Z",
+    "elapsed_sec": 315
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 10,
-  "videos_total": 88,
-  "ai_invented_total": 25,
+  "videos_this_run": 11,
+  "videos_total": 89,
+  "ai_invented_total": 26,
   "recent": [
-    {
-      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 392,
-      "at": "2026-10-09T02:54:22Z"
-    },
     {
       "title": "كيف تقرأ القوائم المالية لشركة قبل شراء سهمها",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 342,
       "at": "2026-10-09T05:40:53Z"
+    },
+    {
+      "title": "الصفقة البسيطة",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 598,
+      "at": "2026-10-09T05:52:50Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T05:52:40Z"
+  "updated_at": "2026-10-09T05:58:40Z"
 }
