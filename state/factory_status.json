@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
+    "title": "الغني لا يعمل للمال، المال يعمل له: سر الأصول والالتزامات",
     "source": "ai-invented",
-    "started_at": "2026-10-09T16:30:17Z",
-    "elapsed_sec": 536
+    "started_at": "2026-10-09T16:40:34Z",
+    "elapsed_sec": 819
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 21,
-  "videos_total": 144,
-  "ai_invented_total": 81,
+  "videos_this_run": 22,
+  "videos_total": 145,
+  "ai_invented_total": 82,
   "recent": [
-    {
-      "title": "الخطوة الأولى: ادفع لنفسك قبل العالم",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 398,
-      "at": "2026-10-09T14:44:41Z"
-    },
     {
       "title": "قاعدة 72: سر النجاح المالي في ثوانٍ",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 768,
       "at": "2026-10-09T16:29:12Z"
+    },
+    {
+      "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 551,
+      "at": "2026-10-09T16:39:28Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T16:39:13Z"
+  "updated_at": "2026-10-09T16:54:13Z"
 }
