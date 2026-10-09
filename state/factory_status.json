@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "خطوات الخطأ: رحلة المبتدئ في سوق المال",
+    "title": "الدخل السلبي: الحقيقة بدون مبالغة",
     "source": "ai-invented",
-    "started_at": "2026-10-09T04:11:44Z",
-    "elapsed_sec": 505
+    "started_at": "2026-10-09T04:20:35Z",
+    "elapsed_sec": 514
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 3,
-  "videos_total": 81,
-  "ai_invented_total": 18,
+  "videos_this_run": 4,
+  "videos_total": 82,
+  "ai_invented_total": 19,
   "recent": [
     {
       "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
@@ -49,6 +49,15 @@
       "code_by": "generate_video.py",
       "seconds": 626,
       "at": "2026-10-09T04:11:34Z"
+    },
+    {
+      "title": "خطوات الخطأ: رحلة المبتدئ في سوق المال",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 522,
+      "at": "2026-10-09T04:20:26Z"
     }
   ],
   "drive": {
@@ -60,5 +69,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T04:20:09Z"
+  "updated_at": "2026-10-09T04:29:09Z"
 }
