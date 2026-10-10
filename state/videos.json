@@ -2796,14 +2796,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
+    },
+    "d072aa43b2810acad3077b76d2612d71": {
+      "title": "المستقبل المالي: الذهب أم الأسهم؟",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T16:58:16Z",
+      "fps": 60,
+      "dir": "ai32-d072aa43",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الذهب أم الأسهم؟ أين تضع أموالك"
     }
   },
   "failed": {},
-  "ai_invented_count": 187,
+  "ai_invented_count": 188,
   "ai_titles": [
-    {
-      "title": "الخطأ النفسي القاتل في استثمارك"
-    },
     {
       "title": "قوة الفائدة المركبة"
     },
@@ -2980,6 +2989,9 @@
     },
     {
       "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
+    },
+    {
+      "title": "المستقبل المالي: الذهب أم الأسهم؟"
     }
   ]
 }
