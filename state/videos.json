@@ -2124,14 +2124,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "مخاطر محاولة توقيت السوق ولماذا يخسر معظم الناس"
+    },
+    "f0e10f4cc13bc487f24a61ac5aea945a": {
+      "title": "الادخار التلقائي: ادفع لنفسك أولا",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T02:09:27Z",
+      "fps": 60,
+      "dir": "ai21-f0e10f4c",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الادخار التلقائي: ادفع لنفسك أولا"
     }
   },
   "failed": {},
-  "ai_invented_count": 131,
+  "ai_invented_count": 132,
   "ai_titles": [
-    {
-      "title": "القرش الأول: كيف تبدأ الاستثمار بمبلغ صغير جدا"
-    },
     {
       "title": "الثروة المفقودة: كيف يسرق التضخم مستقبلك المالي"
     },
@@ -2308,6 +2317,9 @@
     },
     {
       "title": "مخاطر توقيت السوق"
+    },
+    {
+      "title": "الادخار التلقائي: ادفع لنفسك أولا"
     }
   ]
 }
