@@ -2304,14 +2304,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الانضباط المالي: عادة صغيرة تغير حياتك"
+    },
+    "ac17ef8515bcd511c80ac0bf9a3169a2": {
+      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T04:42:47Z",
+      "fps": 60,
+      "dir": "ai09-ac17ef85",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
     }
   },
   "failed": {},
-  "ai_invented_count": 146,
+  "ai_invented_count": 147,
   "ai_titles": [
-    {
-      "title": "العقلية طويلة الأجل: سر كبار المستثمرين"
-    },
     {
       "title": "الاستثمار في المهارات: عائيدك الذهبي"
     },
@@ -2488,6 +2497,9 @@
     },
     {
       "title": "الانضباط المالي: عادة صغيرة تغير حياتك"
+    },
+    {
+      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
     }
   ]
 }

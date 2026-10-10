@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
+    "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
     "source": "ai-invented",
-    "started_at": "2026-10-10T04:24:09Z",
-    "elapsed_sec": 600
+    "started_at": "2026-10-10T04:35:53Z",
+    "elapsed_sec": 406
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 7,
-  "videos_total": 208,
-  "ai_invented_total": 145,
+  "videos_this_run": 8,
+  "videos_total": 209,
+  "ai_invented_total": 146,
   "recent": [
     {
       "title": "أخطاء الاستثمار: ما الذي يجعلك تفقد المال؟",
@@ -85,6 +85,15 @@
       "code_by": "generate_video.py",
       "seconds": 449,
       "at": "2026-10-10T04:22:38Z"
+    },
+    {
+      "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 617,
+      "at": "2026-10-10T04:34:26Z"
     }
   ],
   "drive": {
@@ -96,5 +105,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T04:34:09Z"
+  "updated_at": "2026-10-10T04:42:39Z"
 }
