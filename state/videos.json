@@ -3120,14 +3120,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
+    },
+    "9dd33f3653d96c0d0d00c5977090662a": {
+      "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T21:05:33Z",
+      "fps": 60,
+      "dir": "ai27-9dd33f36",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
     }
   },
   "failed": {},
-  "ai_invented_count": 214,
+  "ai_invented_count": 215,
   "ai_titles": [
-    {
-      "title": "الخيار الصحيح"
-    },
     {
       "title": "القرارات المالية الحكيمة: بين الدين النافع والضار"
     },
@@ -3304,6 +3313,9 @@
     },
     {
       "title": "الرؤية البعيدة: كيف تبني ثروتك بحكمة"
+    },
+    {
+      "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
     }
   ]
 }
