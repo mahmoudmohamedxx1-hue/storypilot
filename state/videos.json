@@ -2676,14 +2676,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "كيف تقرأ القوائم المالية لشركة قبل شراء سهمها"
+    },
+    "572d9a09c26307e24d29a4f2b22d3fd5": {
+      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T15:45:15Z",
+      "fps": 60,
+      "dir": "ai22-572d9a09",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
     }
   },
   "failed": {},
-  "ai_invented_count": 177,
+  "ai_invented_count": 178,
   "ai_titles": [
-    {
-      "title": "الميزان الذهبي: أين يُصنع الثراء؟"
-    },
     {
       "title": "الاقتراض الذكي: متى يصبح الدين صديقك المالي"
     },
@@ -2860,6 +2869,9 @@
     },
     {
       "title": "الرقم الخفي: كيف تقرأ بين السطور المالية؟"
+    },
+    {
+      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
     }
   ]
 }
