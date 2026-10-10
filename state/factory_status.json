@@ -12,24 +12,17 @@
   "current": {
     "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
     "source": "ai-invented",
-    "started_at": "2026-10-10T15:01:31Z",
-    "elapsed_sec": 495
+    "started_at": "2026-10-10T15:10:49Z",
+    "elapsed_sec": 87
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 14,
-  "videos_total": 235,
-  "ai_invented_total": 172,
+  "videos_this_run": 15,
+  "videos_total": 236,
+  "ai_invented_total": 173,
   "recent": [
-    {
-      "title": "كيف تبدأ الاستثمار بمبلغ صغير جدا",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer timed out",
-      "at": "2026-10-10T13:46:02Z"
-    },
     {
       "title": "بدء الاستثمار بمبلغ صغير: البداية تُحدث الفرق",
       "source": "ai-invented",
@@ -110,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 677,
       "at": "2026-10-10T14:59:40Z"
+    },
+    {
+      "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 500,
+      "at": "2026-10-10T15:09:50Z"
     }
   ],
   "drive": {
@@ -121,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T15:09:46Z"
+  "updated_at": "2026-10-10T15:12:16Z"
 }
