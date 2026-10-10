@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الغني لا يعمل للمال، المال يعمل له: سر الأصول والالتزامات",
+    "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
     "source": "ai-invented",
-    "started_at": "2026-10-10T00:18:43Z",
-    "elapsed_sec": 731
+    "started_at": "2026-10-10T00:36:37Z",
+    "elapsed_sec": 707
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 11,
-  "videos_total": 185,
-  "ai_invented_total": 122,
+  "videos_this_run": 12,
+  "videos_total": 186,
+  "ai_invented_total": 123,
   "recent": [
-    {
-      "title": "الاستثمار في الوقت: سر بناء الثروة الحقيقية",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 692,
-      "at": "2026-10-09T22:34:27Z"
-    },
     {
       "title": "الاستثمار في الذات: عائد لا يُقارن",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 644,
       "at": "2026-10-10T00:18:12Z"
+    },
+    {
+      "title": "الغني لا يعمل للمال، المال يعمل له: سر الأصول والالتزامات",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 755,
+      "at": "2026-10-10T00:31:17Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T00:30:54Z"
+  "updated_at": "2026-10-10T00:48:24Z"
 }
