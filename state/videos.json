@@ -3336,14 +3336,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الادخار التلقائي: ادفع لنفسك أولا"
+    },
+    "70b1d4c8b074e22d7460e2f84728ee8b": {
+      "title": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T23:30:55Z",
+      "fps": 60,
+      "dir": "ai12-70b1d4c8",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
     }
   },
   "failed": {},
-  "ai_invented_count": 232,
+  "ai_invented_count": 233,
   "ai_titles": [
-    {
-      "title": "الخطأ النفسي في الاستثمار"
-    },
     {
       "title": "قوة الفائدة المركبة: كيف تضاعف أموالك مع الوقت"
     },
@@ -3520,6 +3529,9 @@
     },
     {
       "title": "الادخار التلقائي: ادفع لنفسك أولاً"
+    },
+    {
+      "title": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
     }
   ]
 }
