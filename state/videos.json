@@ -2064,14 +2064,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الانضباط المالي: عادة صغيرة تغير حياتك"
+    },
+    "82d9fb156be18a6b27340db6c662c266": {
+      "title": "الاستثمار الذكي: كيف تبدأ مع صناديق المؤشرات",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T01:30:05Z",
+      "fps": 60,
+      "dir": "ai16-82d9fb15",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
     }
   },
   "failed": {},
-  "ai_invented_count": 126,
+  "ai_invented_count": 127,
   "ai_titles": [
-    {
-      "title": "الخطأ الذي يحدث في كل استثمار جديد"
-    },
     {
       "title": "السر الخفي للثراء المتزايد"
     },
@@ -2248,6 +2257,9 @@
     },
     {
       "title": "الانضباط المالي: عادة صغيرة تغير حياتك"
+    },
+    {
+      "title": "الاستثمار الذكي: كيف تبدأ مع صناديق المؤشرات"
     }
   ]
 }
