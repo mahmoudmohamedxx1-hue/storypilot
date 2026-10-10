@@ -2076,14 +2076,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
+    },
+    "a3c7cdba1981d00b565093eb230daa90": {
+      "title": "ذهب أم الأسهم؟ أين تضع أموالك",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T01:39:22Z",
+      "fps": 60,
+      "dir": "ai17-a3c7cdba",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الذهب أم الأسهم؟ أين تضع أموالك"
     }
   },
   "failed": {},
-  "ai_invented_count": 127,
+  "ai_invented_count": 128,
   "ai_titles": [
-    {
-      "title": "السر الخفي للثراء المتزايد"
-    },
     {
       "title": "قوة الفائدة المركبة: كيف تضاعف أموالك مع الوقت"
     },
@@ -2260,6 +2269,9 @@
     },
     {
       "title": "الاستثمار الذكي: كيف تبدأ مع صناديق المؤشرات"
+    },
+    {
+      "title": "ذهب أم الأسهم؟ أين تضع أموالك"
     }
   ]
 }
