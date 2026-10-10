@@ -2712,14 +2712,23 @@
       "code_by": "freellmpool:auto",
       "ai_attempts": 1,
       "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    "559e11264a5fa224cdd34edaef4f7345": {
+      "title": "السر المذهل: كيف تتضاعف أموالك مع الوقت",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T16:03:59Z",
+      "fps": 60,
+      "dir": "ai25-559e1126",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
     }
   },
   "failed": {},
-  "ai_invented_count": 180,
+  "ai_invented_count": 181,
   "ai_titles": [
-    {
-      "title": "التنويع الذكي: لعبة الفوز بلا نهاية"
-    },
     {
       "title": "فخ الترتيب اليدوي"
     },
@@ -2896,6 +2905,9 @@
     },
     {
       "title": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    {
+      "title": "السر المذهل: كيف تتضاعف أموالك مع الوقت"
     }
   ]
 }
