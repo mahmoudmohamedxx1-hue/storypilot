@@ -3192,14 +3192,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    "e795fc853683660bbeb20da3d17f273d": {
+      "title": "قوة الزمن في عالم الاستثمار: كيف تنمو أموالك بذكاء",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T21:47:01Z",
+      "fps": 60,
+      "dir": "ai33-e795fc85",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
     }
   },
   "failed": {},
-  "ai_invented_count": 220,
+  "ai_invented_count": 221,
   "ai_titles": [
-    {
-      "title": "الاستثمار في نفسك: رحلة التغيير"
-    },
     {
       "title": "كيف تكشف الأرقام عن أسرار الشركة؟"
     },
@@ -3376,6 +3385,9 @@
     },
     {
       "title": "النقود التي تنتظرك"
+    },
+    {
+      "title": "قوة الزمن في عالم الاستثمار: كيف تنمو أموالك بذكاء"
     }
   ]
 }

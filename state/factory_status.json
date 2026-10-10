@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "النقود التي تنتظرك",
+    "title": "قوة الزمن في عالم الاستثمار: كيف تنمو أموالك بذكاء",
     "source": "ai-invented",
-    "started_at": "2026-10-10T21:32:16Z",
-    "elapsed_sec": 399
+    "started_at": "2026-10-10T21:40:14Z",
+    "elapsed_sec": 401
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 31,
-  "videos_total": 282,
-  "ai_invented_total": 219,
+  "videos_this_run": 32,
+  "videos_total": 283,
+  "ai_invented_total": 220,
   "recent": [
-    {
-      "title": "التنويع الاستثماري: رحلة البحث عن الأمان المالي",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 479,
-      "at": "2026-10-10T20:31:03Z"
-    },
     {
       "title": "مخاطر توقيت السوق",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "freellmpool:auto",
       "seconds": 148,
       "at": "2026-10-10T21:31:45Z"
+    },
+    {
+      "title": "النقود التي تنتظرك",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 416,
+      "at": "2026-10-10T21:39:12Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T21:38:55Z"
+  "updated_at": "2026-10-10T21:46:55Z"
 }
