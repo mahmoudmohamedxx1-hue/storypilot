@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين",
+    "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
     "source": "ai-invented",
-    "started_at": "2026-10-10T17:51:12Z",
-    "elapsed_sec": 252
+    "started_at": "2026-10-10T18:05:53Z",
+    "elapsed_sec": 241
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 4,
-  "videos_total": 255,
-  "ai_invented_total": 192,
+  "videos_this_run": 5,
+  "videos_total": 256,
+  "ai_invented_total": 193,
   "recent": [
     {
       "title": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟",
@@ -58,6 +58,15 @@
       "code_by": "generate_video.py",
       "seconds": 479,
       "at": "2026-10-10T17:37:03Z"
+    },
+    {
+      "title": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 255,
+      "at": "2026-10-10T17:55:27Z"
     }
   ],
   "drive": {
@@ -69,5 +78,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T17:55:24Z"
+  "updated_at": "2026-10-10T18:09:54Z"
 }

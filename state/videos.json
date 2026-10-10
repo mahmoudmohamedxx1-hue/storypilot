@@ -2868,14 +2868,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
+    },
+    "a9814ab17d6c4f7a3a9b327289ca5e90": {
+      "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T18:10:14Z",
+      "fps": 60,
+      "dir": "ai06-a9814ab1",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
     }
   },
   "failed": {},
-  "ai_invented_count": 193,
+  "ai_invented_count": 194,
   "ai_titles": [
-    {
-      "title": "قوة الفائدة المركبة"
-    },
     {
       "title": "دخلك السلبي: الحقيقة بدون مبالغة"
     },
@@ -3052,6 +3061,9 @@
     },
     {
       "title": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
+    },
+    {
+      "title": "العقلية طويلة الأجل: سر كبار المستثمرين"
     }
   ]
 }
