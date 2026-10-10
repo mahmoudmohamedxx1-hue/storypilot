@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الادخار التلقائي: ادفع لنفسك أولا",
+    "title": "قاعدة 72: سرعة مضاعفة أموالك في ثانيتين",
     "source": "ai-invented",
-    "started_at": "2026-10-10T02:00:08Z",
-    "elapsed_sec": 556
+    "started_at": "2026-10-10T02:09:49Z",
+    "elapsed_sec": 395
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 20,
-  "videos_total": 194,
-  "ai_invented_total": 131,
+  "videos_this_run": 21,
+  "videos_total": 195,
+  "ai_invented_total": 132,
   "recent": [
-    {
-      "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 644,
-      "at": "2026-10-10T00:18:12Z"
-    },
     {
       "title": "الغني لا يعمل للمال، المال يعمل له: سر الأصول والالتزامات",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 217,
       "at": "2026-10-10T01:59:30Z"
+    },
+    {
+      "title": "الادخار التلقائي: ادفع لنفسك أولا",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 558,
+      "at": "2026-10-10T02:09:27Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T02:09:24Z"
+  "updated_at": "2026-10-10T02:16:24Z"
 }

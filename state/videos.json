@@ -2136,14 +2136,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الادخار التلقائي: ادفع لنفسك أولا"
+    },
+    "9f6afc3ab61fe88e298c4a38505e24d9": {
+      "title": "قاعدة 72: سرعة مضاعفة أموالك في ثانيتين",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T02:16:48Z",
+      "fps": 60,
+      "dir": "ai22-9f6afc3a",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
     }
   },
   "failed": {},
-  "ai_invented_count": 132,
+  "ai_invented_count": 133,
   "ai_titles": [
-    {
-      "title": "الثروة المفقودة: كيف يسرق التضخم مستقبلك المالي"
-    },
     {
       "title": "سفر صغير، ثروة كبيرة"
     },
@@ -2320,6 +2329,9 @@
     },
     {
       "title": "الادخار التلقائي: ادفع لنفسك أولا"
+    },
+    {
+      "title": "قاعدة 72: سرعة مضاعفة أموالك في ثانيتين"
     }
   ]
 }
