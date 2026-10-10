@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الغموض وراء الثروات: كيف تكتشف الفقاعة قبل انفجاره؟",
+    "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق",
     "source": "ai-invented",
-    "started_at": "2026-10-10T15:13:07Z",
-    "elapsed_sec": 459
+    "started_at": "2026-10-10T15:21:26Z",
+    "elapsed_sec": 470
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 16,
-  "videos_total": 237,
-  "ai_invented_total": 174,
+  "videos_this_run": 17,
+  "videos_total": 238,
+  "ai_invented_total": 175,
   "recent": [
-    {
-      "title": "التضخم: اللص الصامت الذي يأكل مدخراتك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 394,
-      "at": "2026-10-10T13:59:42Z"
-    },
     {
       "title": "السهم الخفي",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "freellmpool:auto",
       "seconds": 113,
       "at": "2026-10-10T15:12:41Z"
+    },
+    {
+      "title": "الغموض وراء الثروات: كيف تكتشف الفقاعة قبل انفجاره؟",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 468,
+      "at": "2026-10-10T15:20:55Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T15:20:46Z"
+  "updated_at": "2026-10-10T15:29:16Z"
 }
