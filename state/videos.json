@@ -3108,14 +3108,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
+    },
+    "9938aea4665ea4a5f37b27425ace8667": {
+      "title": "الرؤية البعيدة: كيف تبني ثروتك بحكمة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T20:57:09Z",
+      "fps": 60,
+      "dir": "ai26-9938aea4",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
     }
   },
   "failed": {},
-  "ai_invented_count": 213,
+  "ai_invented_count": 214,
   "ai_titles": [
-    {
-      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
-    },
     {
       "title": "الخيار الصحيح"
     },
@@ -3292,6 +3301,9 @@
     },
     {
       "title": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
+    },
+    {
+      "title": "الرؤية البعيدة: كيف تبني ثروتك بحكمة"
     }
   ]
 }
