@@ -2832,10 +2832,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
+    },
+    "ec6f4091bbdbd6b642d19c802a583b8d": {
+      "title": "سرعة الخسارة: لماذا يتعثر توقيت السوق لدى أغلب المستثمرين",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T17:21:50Z",
+      "fps": 60,
+      "dir": "ai03-ec6f4091",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "مخاطر محاولة توقيت السوق ولماذا يخسر معظم الناس"
     }
   },
   "failed": {},
-  "ai_invented_count": 190,
+  "ai_invented_count": 191,
   "ai_titles": [
     {
       "title": "قوة الفائدة المركبة"
@@ -3007,6 +3019,9 @@
     },
     {
       "title": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
+    },
+    {
+      "title": "سرعة الخسارة: لماذا يتعثر توقيت السوق لدى أغلب المستثمرين"
     }
   ]
 }
