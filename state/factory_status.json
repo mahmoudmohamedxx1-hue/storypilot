@@ -1,5 +1,5 @@
 {
-  "phase": "inventing",
+  "phase": "chaining_next_run",
   "mode": "continuous",
   "should_continue": true,
   "run": {
@@ -7,31 +7,20 @@
     "deadline_at": "2026-10-10T22:01:54Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true
+    "infinite_stories": true,
+    "finished_at": "2026-10-10T21:47:02Z",
+    "videos_made": 33,
+    "stop_reason": "deadline"
   },
-  "current": {
-    "title": "قوة الزمن في عالم الاستثمار: كيف تنمو أموالك بذكاء",
-    "source": "ai-invented",
-    "started_at": "2026-10-10T21:40:14Z",
-    "elapsed_sec": 401
-  },
+  "current": null,
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 32,
-  "videos_total": 283,
-  "ai_invented_total": 220,
+  "videos_this_run": 33,
+  "videos_total": 284,
+  "ai_invented_total": 221,
   "recent": [
-    {
-      "title": "مخاطر توقيت السوق",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 369,
-      "at": "2026-10-10T20:37:46Z"
-    },
     {
       "title": "الثروة الصامتة: قوة الادخار التلقائي",
       "source": "ai-invented",
@@ -112,6 +101,15 @@
       "code_by": "generate_video.py",
       "seconds": 416,
       "at": "2026-10-10T21:39:12Z"
+    },
+    {
+      "title": "قوة الزمن في عالم الاستثمار: كيف تنمو أموالك بذكاء",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 407,
+      "at": "2026-10-10T21:47:01Z"
     }
   ],
   "drive": {
@@ -123,5 +121,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T21:46:55Z"
+  "updated_at": "2026-10-10T21:47:02Z"
 }
