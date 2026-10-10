@@ -3360,14 +3360,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
+    },
+    "bb690b822bdfebc75fb15f068f720094": {
+      "title": "الفقاعة المالية: الانذار المبكر",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T23:57:50Z",
+      "fps": 60,
+      "dir": "ai14-bb690b82",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
     }
   },
   "failed": {},
-  "ai_invented_count": 234,
+  "ai_invented_count": 235,
   "ai_titles": [
-    {
-      "title": "قوة الفائدة المركبة: أموالك تتضاعف مع الوقت"
-    },
     {
       "title": "حماية مالية لحظة واحدة"
     },
@@ -3544,6 +3553,9 @@
     },
     {
       "title": "العقلية طويلة الأجل: سر كبار المستثمرين"
+    },
+    {
+      "title": "الفقاعة المالية: الانذار المبكر"
     }
   ]
 }
