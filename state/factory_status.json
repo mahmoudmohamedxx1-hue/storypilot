@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق",
+    "title": "الرقم وراء السهم: كيف تقرأ القوائم المالية؟",
     "source": "ai-invented",
-    "started_at": "2026-10-10T18:21:09Z",
-    "elapsed_sec": 435
+    "started_at": "2026-10-10T18:29:40Z",
+    "elapsed_sec": 494
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 7,
-  "videos_total": 258,
-  "ai_invented_total": 195,
+  "videos_this_run": 8,
+  "videos_total": 259,
+  "ai_invented_total": 196,
   "recent": [
     {
       "title": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟",
@@ -85,6 +85,15 @@
       "code_by": "generate_video.py",
       "seconds": 593,
       "at": "2026-10-10T18:20:34Z"
+    },
+    {
+      "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 456,
+      "at": "2026-10-10T18:28:45Z"
     }
   ],
   "drive": {
@@ -96,5 +105,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T18:28:24Z"
+  "updated_at": "2026-10-10T18:37:54Z"
 }

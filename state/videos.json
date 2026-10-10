@@ -2904,14 +2904,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الاستثمار في نفسك: أفضل عائد على الإطلاق"
+    },
+    "56faea393e5f289de46c4ef8589a3e24": {
+      "title": "الرقم وراء السهم: كيف تقرأ القوائم المالية؟",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T18:38:10Z",
+      "fps": 60,
+      "dir": "ai09-56faea39",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "كيف تقرأ القوائم المالية لشركة قبل شراء سهمها"
     }
   },
   "failed": {},
-  "ai_invented_count": 196,
+  "ai_invented_count": 197,
   "ai_titles": [
-    {
-      "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
-    },
     {
       "title": "الانضباط المالي: عادة صغيرة تغير حياتك"
     },
@@ -3088,6 +3097,9 @@
     },
     {
       "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق"
+    },
+    {
+      "title": "الرقم وراء السهم: كيف تقرأ القوائم المالية؟"
     }
   ]
 }
