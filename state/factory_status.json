@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "قوة الفائدة المركبة: أموالك تتضاعف مع الوقت",
+    "title": "حماية مالية لحظة واحدة",
     "source": "ai-invented",
-    "started_at": "2026-10-10T12:19:13Z",
-    "elapsed_sec": 452
+    "started_at": "2026-10-10T12:30:30Z",
+    "elapsed_sec": 465
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 2,
-  "videos_total": 223,
-  "ai_invented_total": 160,
+  "videos_this_run": 3,
+  "videos_total": 224,
+  "ai_invented_total": 161,
   "recent": [
     {
       "title": "الخطأ النفسي في الاستثمار",
@@ -40,6 +40,15 @@
       "code_by": "generate_video.py",
       "seconds": 455,
       "at": "2026-10-10T12:17:47Z"
+    },
+    {
+      "title": "قوة الفائدة المركبة: أموالك تتضاعف مع الوقت",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 458,
+      "at": "2026-10-10T12:26:51Z"
     }
   ],
   "drive": {
@@ -51,5 +60,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T12:26:45Z"
+  "updated_at": "2026-10-10T12:38:15Z"
 }

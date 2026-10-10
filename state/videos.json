@@ -2484,10 +2484,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
+    },
+    "46cb97dcaea0edb6d5c2baa21fce074e": {
+      "title": "حماية مالية لحظة واحدة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T12:38:38Z",
+      "fps": 60,
+      "dir": "ai04-46cb97dc",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
     }
   },
   "failed": {},
-  "ai_invented_count": 161,
+  "ai_invented_count": 162,
   "ai_titles": [
     {
       "title": "سلة البيض المتنوعة"
@@ -2662,6 +2674,9 @@
     },
     {
       "title": "قوة الفائدة المركبة: أموالك تتضاعف مع الوقت"
+    },
+    {
+      "title": "حماية مالية لحظة واحدة"
     }
   ]
 }
