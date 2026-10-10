@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "المستقبل بين يديك: الذهب أم الأسهم؟",
+    "title": "مخاطر توقيت السوق",
     "source": "ai-invented",
-    "started_at": "2026-10-10T20:02:08Z",
-    "elapsed_sec": 227
+    "started_at": "2026-10-10T20:13:12Z",
+    "elapsed_sec": 523
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 19,
-  "videos_total": 270,
-  "ai_invented_total": 207,
+  "videos_this_run": 20,
+  "videos_total": 271,
+  "ai_invented_total": 208,
   "recent": [
-    {
-      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 423,
-      "at": "2026-10-10T18:45:53Z"
-    },
     {
       "title": "أخطاء نفسية تقع فيها كل مستثمر مبتدئ",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 465,
       "at": "2026-10-10T20:01:34Z"
+    },
+    {
+      "title": "المستقبل بين يديك: الذهب أم الأسهم؟",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "ai",
+      "code_by": "freellmpool:ovh/gpt-oss-120b",
+      "seconds": 234,
+      "at": "2026-10-10T20:06:02Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T20:05:55Z"
+  "updated_at": "2026-10-10T20:21:55Z"
 }
