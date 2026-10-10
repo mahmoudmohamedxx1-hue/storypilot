@@ -12,8 +12,8 @@
   "current": {
     "title": "كيف تبدأ الاستثمار بمبلغ صغير جدا",
     "source": "ai-invented",
-    "started_at": "2026-10-10T13:01:16Z",
-    "elapsed_sec": 1229
+    "started_at": "2026-10-10T13:25:28Z",
+    "elapsed_sec": 1217
   },
   "queue": {
     "pending": 0,
@@ -67,6 +67,13 @@
       "code_by": "freellmpool:ovh/gpt-oss-120b",
       "seconds": 618,
       "at": "2026-10-10T12:57:44Z"
+    },
+    {
+      "title": "كيف تبدأ الاستثمار بمبلغ صغير جدا",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer timed out",
+      "at": "2026-10-10T13:22:15Z"
     }
   ],
   "drive": {
@@ -78,5 +85,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T13:21:45Z"
+  "updated_at": "2026-10-10T13:45:45Z"
 }
