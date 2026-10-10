@@ -2352,14 +2352,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
+    },
+    "5cef9ae7df404758d85dbbb242d19181": {
+      "title": "المخاطر التجارية: توقيت السوق والانتقاء المبكر",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T05:12:40Z",
+      "fps": 60,
+      "dir": "ai13-5cef9ae7",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "مخاطر محاولة توقيت السوق ولماذا يخسر معظم الناس"
     }
   },
   "failed": {},
-  "ai_invented_count": 150,
+  "ai_invented_count": 151,
   "ai_titles": [
-    {
-      "title": "صوت الدخل: حقيقة الدخل السلبي"
-    },
     {
       "title": "الدخل السلبي: الحقيقة بدون مبالغة"
     },
@@ -2536,6 +2545,9 @@
     },
     {
       "title": "السلسلة المفقودة: سر ثروات الأجيال"
+    },
+    {
+      "title": "المخاطر التجارية: توقيت السوق والانتقاء المبكر"
     }
   ]
 }
