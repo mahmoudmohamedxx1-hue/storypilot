@@ -2532,14 +2532,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التضخم: اللص الصامت الذي يأكل مدخراتك"
+    },
+    "d8e5b01f1945684a424e70f1ff4fd2c6": {
+      "title": "السهم الخفي",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T14:10:56Z",
+      "fps": 60,
+      "dir": "ai10-d8e5b01f",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الانضباط المالي: عادة صغيرة تغير حياتك"
     }
   },
   "failed": {},
-  "ai_invented_count": 165,
+  "ai_invented_count": 166,
   "ai_titles": [
-    {
-      "title": "قاعدة 72: كيف تتضاعف أموالك في 8 سنوات؟"
-    },
     {
       "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
     },
@@ -2716,6 +2725,9 @@
     },
     {
       "title": "التضخم: اللص الصامت الذي يأكل مدخراتك"
+    },
+    {
+      "title": "السهم الخفي"
     }
   ]
 }
