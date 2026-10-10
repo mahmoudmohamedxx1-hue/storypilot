@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "أخطاء نفسية تقع فيها كل مستثمر مبتدئ",
+    "title": "الدخل السلبي: الحقيقة بدون مبالغة",
     "source": "ai-invented",
-    "started_at": "2026-10-10T18:46:15Z",
-    "elapsed_sec": 429
+    "started_at": "2026-10-10T18:54:48Z",
+    "elapsed_sec": 486
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 10,
-  "videos_total": 261,
-  "ai_invented_total": 198,
+  "videos_this_run": 11,
+  "videos_total": 262,
+  "ai_invented_total": 199,
   "recent": [
-    {
-      "title": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "ai",
-      "code_by": "freellmpool:auto",
-      "seconds": 97,
-      "at": "2026-10-10T17:04:18Z"
-    },
     {
       "title": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 423,
       "at": "2026-10-10T18:45:53Z"
+    },
+    {
+      "title": "أخطاء نفسية تقع فيها كل مستثمر مبتدئ",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 429,
+      "at": "2026-10-10T18:53:24Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T18:53:24Z"
+  "updated_at": "2026-10-10T19:02:54Z"
 }

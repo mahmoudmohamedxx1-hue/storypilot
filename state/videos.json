@@ -2940,14 +2940,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
+    },
+    "c73e141ac0a6a7ce3008c9a29596e48d": {
+      "title": "الدخل السلبي: الحقيقة بدون مبالغة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T19:03:19Z",
+      "fps": 60,
+      "dir": "ai12-c73e141a",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
     }
   },
   "failed": {},
-  "ai_invented_count": 199,
+  "ai_invented_count": 200,
   "ai_titles": [
-    {
-      "title": "ذهب أم الأسهم؟ أين تضع أموالك"
-    },
     {
       "title": "القرارات المالية الحكيمة: بين الديون الخفية والفرص الساطعة"
     },
@@ -3124,6 +3133,9 @@
     },
     {
       "title": "أخطاء نفسية تقع فيها كل مستثمر مبتدئ"
+    },
+    {
+      "title": "الدخل السلبي: الحقيقة بدون مبالغة"
     }
   ]
 }
