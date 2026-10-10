@@ -2460,10 +2460,22 @@
       "code_by": "freellmpool:auto",
       "ai_attempts": 1,
       "topic": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
+    },
+    "7ac01ebc663f47e91da8594be9137fd4": {
+      "title": "قوة الفائدة المركبة: كيف تضاعف أموالك مع الوقت",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T12:17:47Z",
+      "fps": 60,
+      "dir": "ai02-7ac01ebc",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
     }
   },
   "failed": {},
-  "ai_invented_count": 159,
+  "ai_invented_count": 160,
   "ai_titles": [
     {
       "title": "سلة البيض المتنوعة"
@@ -2632,6 +2644,9 @@
     },
     {
       "title": "الخطأ النفسي في الاستثمار"
+    },
+    {
+      "title": "قوة الفائدة المركبة: كيف تضاعف أموالك مع الوقت"
     }
   ]
 }
