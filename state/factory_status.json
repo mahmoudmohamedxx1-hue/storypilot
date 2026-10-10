@@ -12,16 +12,16 @@
   "current": {
     "title": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين",
     "source": "ai-invented",
-    "started_at": "2026-10-10T17:29:05Z",
-    "elapsed_sec": 469
+    "started_at": "2026-10-10T17:51:12Z",
+    "elapsed_sec": 252
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 3,
-  "videos_total": 254,
-  "ai_invented_total": 191,
+  "videos_this_run": 4,
+  "videos_total": 255,
+  "ai_invented_total": 192,
   "recent": [
     {
       "title": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟",
@@ -49,6 +49,15 @@
       "code_by": "generate_video.py",
       "seconds": 463,
       "at": "2026-10-10T17:21:50Z"
+    },
+    {
+      "title": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 479,
+      "at": "2026-10-10T17:37:03Z"
     }
   ],
   "drive": {
@@ -60,5 +69,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T17:36:54Z"
+  "updated_at": "2026-10-10T17:55:24Z"
 }
