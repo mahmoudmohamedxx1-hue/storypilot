@@ -2724,14 +2724,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
+    },
+    "7b0983509e22ddceb82e27e30e5d9ea8": {
+      "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T16:11:09Z",
+      "fps": 60,
+      "dir": "ai26-7b098350",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
     }
   },
   "failed": {},
-  "ai_invented_count": 181,
+  "ai_invented_count": 182,
   "ai_titles": [
-    {
-      "title": "فخ الترتيب اليدوي"
-    },
     {
       "title": "الادخار التلقائي: ادفع لنفسك أولا"
     },
@@ -2908,6 +2917,9 @@
     },
     {
       "title": "السر المذهل: كيف تتضاعف أموالك مع الوقت"
+    },
+    {
+      "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
     }
   ]
 }
