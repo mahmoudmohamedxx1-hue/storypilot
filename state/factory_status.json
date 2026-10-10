@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "القرارات المالية الحكيمة: بين الدين النافع والضار",
+    "title": "السلسلة المفقودة: سر ثروات الأجيال",
     "source": "ai-invented",
-    "started_at": "2026-10-10T04:52:48Z",
-    "elapsed_sec": 171
+    "started_at": "2026-10-10T04:56:17Z",
+    "elapsed_sec": 532
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 10,
-  "videos_total": 211,
-  "ai_invented_total": 148,
+  "videos_this_run": 11,
+  "videos_total": 212,
+  "ai_invented_total": 149,
   "recent": [
-    {
-      "title": "أخطاء الاستثمار: ما الذي يجعلك تفقد المال؟",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 562,
-      "at": "2026-10-10T03:16:39Z"
-    },
     {
       "title": "الخطة السرية: كيف تحمي أموالك من المفاجآت",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 508,
       "at": "2026-10-10T04:52:11Z"
+    },
+    {
+      "title": "القرارات المالية الحكيمة: بين الدين النافع والضار",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "ai",
+      "code_by": "freellmpool:auto",
+      "seconds": 181,
+      "at": "2026-10-10T04:55:49Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T04:55:39Z"
+  "updated_at": "2026-10-10T05:05:09Z"
 }
