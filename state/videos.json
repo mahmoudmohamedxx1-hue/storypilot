@@ -2736,14 +2736,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
+    },
+    "d1d68eaabf2b7bf590a90d1abbb77d0c": {
+      "title": "الفرق بين الأصول والالتزامات: سر ثروات الأغنياء",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T16:19:00Z",
+      "fps": 60,
+      "dir": "ai27-d1d68eaa",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الفرق بين الأصول والالتزامات ولماذا يفرق الأغنياء"
     }
   },
   "failed": {},
-  "ai_invented_count": 182,
+  "ai_invented_count": 183,
   "ai_titles": [
-    {
-      "title": "الادخار التلقائي: ادفع لنفسك أولا"
-    },
     {
       "title": "الاستثمار في الوقت: سر بناء الثروة الحقيقية"
     },
@@ -2920,6 +2929,9 @@
     },
     {
       "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
+    },
+    {
+      "title": "الفرق بين الأصول والالتزامات: سر ثروات الأغنياء"
     }
   ]
 }
