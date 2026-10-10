@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "دخلك السلبي: الحقيقة بدون مبالغة",
+    "title": "قوة الزمن: كيف تنمو ثروتك بصمت",
     "source": "ai-invented",
-    "started_at": "2026-10-09T23:48:26Z",
-    "elapsed_sec": 568
+    "started_at": "2026-10-09T23:58:54Z",
+    "elapsed_sec": 480
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 8,
-  "videos_total": 182,
-  "ai_invented_total": 119,
+  "videos_this_run": 9,
+  "videos_total": 183,
+  "ai_invented_total": 120,
   "recent": [
     {
       "title": "الادخار التلقائي: ادفع لنفسك أولا",
@@ -94,6 +94,15 @@
       "code_by": "generate_video.py",
       "seconds": 747,
       "at": "2026-10-09T23:47:06Z"
+    },
+    {
+      "title": "دخلك السلبي: الحقيقة بدون مبالغة",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 589,
+      "at": "2026-10-09T23:58:15Z"
     }
   ],
   "drive": {
@@ -105,5 +114,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-09T23:57:54Z"
+  "updated_at": "2026-10-10T00:06:54Z"
 }

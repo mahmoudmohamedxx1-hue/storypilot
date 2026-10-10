@@ -1992,14 +1992,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    "fdcaf08cccb0d03fa2fb988e289fcbc9": {
+      "title": "قوة الزمن: كيف تنمو ثروتك بصمت",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T00:06:56Z",
+      "fps": 60,
+      "dir": "ai10-fdcaf08c",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
     }
   },
   "failed": {},
-  "ai_invented_count": 120,
+  "ai_invented_count": 121,
   "ai_titles": [
-    {
-      "title": "الادخار التلقائي: كيف تحقق من الثروة المركبة"
-    },
     {
       "title": "ثانيتان تغيران حياتك المالية: قاعدة 72 في العمل"
     },
@@ -2176,6 +2185,9 @@
     },
     {
       "title": "دخلك السلبي: الحقيقة بدون مبالغة"
+    },
+    {
+      "title": "قوة الزمن: كيف تنمو ثروتك بصمت"
     }
   ]
 }
