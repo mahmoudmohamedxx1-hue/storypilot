@@ -2112,14 +2112,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
+    },
+    "1c83f2d89f9a3f1cf746efd071415f33": {
+      "title": "مخاطر توقيت السوق",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T01:59:30Z",
+      "fps": 60,
+      "dir": "ai20-1c83f2d8",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "مخاطر محاولة توقيت السوق ولماذا يخسر معظم الناس"
     }
   },
   "failed": {},
-  "ai_invented_count": 130,
+  "ai_invented_count": 131,
   "ai_titles": [
-    {
-      "title": "الطريق المتقاطع: الأصول والالتزامات"
-    },
     {
       "title": "القرش الأول: كيف تبدأ الاستثمار بمبلغ صغير جدا"
     },
@@ -2296,6 +2305,9 @@
     },
     {
       "title": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
+    },
+    {
+      "title": "مخاطر توقيت السوق"
     }
   ]
 }

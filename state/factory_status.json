@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة",
+    "title": "مخاطر توقيت السوق",
     "source": "ai-invented",
-    "started_at": "2026-10-10T01:48:30Z",
-    "elapsed_sec": 384
+    "started_at": "2026-10-10T01:55:53Z",
+    "elapsed_sec": 211
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 18,
-  "videos_total": 192,
-  "ai_invented_total": 129,
+  "videos_this_run": 19,
+  "videos_total": 193,
+  "ai_invented_total": 130,
   "recent": [
-    {
-      "title": "دخلك السلبي: الحقيقة بدون مبالغة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 589,
-      "at": "2026-10-09T23:58:15Z"
-    },
     {
       "title": "قوة الزمن: كيف تنمو ثروتك بصمت",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 399,
       "at": "2026-10-10T01:47:30Z"
+    },
+    {
+      "title": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 390,
+      "at": "2026-10-10T01:55:01Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T01:54:54Z"
+  "updated_at": "2026-10-10T01:59:24Z"
 }
