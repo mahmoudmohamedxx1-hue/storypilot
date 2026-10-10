@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "تحليل القوائم المالية: هل شركة ما تستحق الاستثمار؟",
+    "title": "الخطأ الكبير",
     "source": "ai-invented",
-    "started_at": "2026-10-10T21:12:49Z",
-    "elapsed_sec": 336
+    "started_at": "2026-10-10T21:20:38Z",
+    "elapsed_sec": 467
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 28,
-  "videos_total": 279,
-  "ai_invented_total": 216,
+  "videos_this_run": 29,
+  "videos_total": 280,
+  "ai_invented_total": 217,
   "recent": [
-    {
-      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 465,
-      "at": "2026-10-10T20:01:34Z"
-    },
     {
       "title": "المستقبل بين يديك: الذهب أم الأسهم؟",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 385,
       "at": "2026-10-10T21:12:28Z"
+    },
+    {
+      "title": "تحليل القوائم المالية: هل شركة ما تستحق الاستثمار؟",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 347,
+      "at": "2026-10-10T21:18:36Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T21:18:25Z"
+  "updated_at": "2026-10-10T21:28:25Z"
 }

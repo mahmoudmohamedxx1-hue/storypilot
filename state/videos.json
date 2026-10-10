@@ -3156,14 +3156,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "كيف تقرأ القوائم المالية لشركة قبل شراء سهمها"
+    },
+    "84b54b2a05e2ff22910193c00c5ac2d3": {
+      "title": "الخطأ الكبير",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T21:28:40Z",
+      "fps": 60,
+      "dir": "ai30-84b54b2a",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
     }
   },
   "failed": {},
-  "ai_invented_count": 217,
+  "ai_invented_count": 218,
   "ai_titles": [
-    {
-      "title": "المخاطر التجارية: توقيت السوق والانتقاء المبكر"
-    },
     {
       "title": "الخزنة الخفية: كيف تفتح باب الثروة دون أن تشعر؟"
     },
@@ -3340,6 +3349,9 @@
     },
     {
       "title": "تحليل القوائم المالية: هل شركة ما تستحق الاستثمار؟"
+    },
+    {
+      "title": "الخطأ الكبير"
     }
   ]
 }
