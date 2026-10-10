@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "البدء الصغير: كيف تبدأ الاستثمار بمبلغ صغير جدا",
+    "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
     "source": "ai-invented",
-    "started_at": "2026-10-10T19:27:27Z",
-    "elapsed_sec": 268
+    "started_at": "2026-10-10T19:37:24Z",
+    "elapsed_sec": 421
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 15,
-  "videos_total": 266,
-  "ai_invented_total": 203,
+  "videos_this_run": 16,
+  "videos_total": 267,
+  "ai_invented_total": 204,
   "recent": [
-    {
-      "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 261,
-      "at": "2026-10-10T18:10:14Z"
-    },
     {
       "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 473,
       "at": "2026-10-10T19:26:23Z"
+    },
+    {
+      "title": "البدء الصغير: كيف تبدأ الاستثمار بمبلغ صغير جدا",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 293,
+      "at": "2026-10-10T19:32:20Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T19:31:55Z"
+  "updated_at": "2026-10-10T19:44:25Z"
 }
