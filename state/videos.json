@@ -3312,14 +3312,23 @@
       "code_by": "freellmpool:ovh/gpt-oss-120b",
       "ai_attempts": 1,
       "topic": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
+    },
+    "c4f024ef102480c6fd092a5a31f4d8f9": {
+      "title": "الادفع لنفسك أولا: سر الادخار التلقائي",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T23:10:20Z",
+      "fps": 60,
+      "dir": "ai10-c4f024ef",
+      "source": "ai-invented",
+      "renderer": "ai",
+      "code_by": "freellmpool:ovh/gpt-oss-120b",
+      "ai_attempts": 2,
+      "topic": "مخاطر محاولة توقيت السوق ولماذا يخسر معظم الناس"
     }
   },
   "failed": {},
-  "ai_invented_count": 230,
+  "ai_invented_count": 231,
   "ai_titles": [
-    {
-      "title": "كيف تكشف الأرقام عن أسرار الشركة؟"
-    },
     {
       "title": "حلم التقاعد المبكر"
     },
@@ -3496,6 +3505,9 @@
     },
     {
       "title": "الاستثمار الذكي: كيف تحمي ثروتك من المخاطر"
+    },
+    {
+      "title": "الادفع لنفسك أولا: سر الادخار التلقائي"
     }
   ]
 }
