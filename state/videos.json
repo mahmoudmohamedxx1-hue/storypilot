@@ -2232,10 +2232,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    "d45ebde7db7dc5b5c5d601f288da4a9a": {
+      "title": "قوة الزمن: كيف تنمو أموالك مثل شجرة ضخمة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T03:53:05Z",
+      "fps": 60,
+      "dir": "ai03-d45ebde7",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
     }
   },
   "failed": {},
-  "ai_invented_count": 140,
+  "ai_invented_count": 141,
   "ai_titles": [
     {
       "title": "الخطوة الأولى: ادفع لنفسك قبل العالم"
@@ -2404,6 +2416,9 @@
     },
     {
       "title": "الخطة السرية: كيف تحمي أموالك من المفاجآت"
+    },
+    {
+      "title": "قوة الزمن: كيف تنمو أموالك مثل شجرة ضخمة"
     }
   ]
 }
