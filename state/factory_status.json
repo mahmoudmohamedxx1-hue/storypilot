@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
+    "title": "الخيار الصحيح",
     "source": "ai-invented",
-    "started_at": "2026-10-10T04:35:53Z",
-    "elapsed_sec": 406
+    "started_at": "2026-10-10T04:43:43Z",
+    "elapsed_sec": 506
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 8,
-  "videos_total": 209,
-  "ai_invented_total": 146,
+  "videos_this_run": 9,
+  "videos_total": 210,
+  "ai_invented_total": 147,
   "recent": [
     {
       "title": "أخطاء الاستثمار: ما الذي يجعلك تفقد المال؟",
@@ -94,6 +94,15 @@
       "code_by": "generate_video.py",
       "seconds": 617,
       "at": "2026-10-10T04:34:26Z"
+    },
+    {
+      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 413,
+      "at": "2026-10-10T04:42:47Z"
     }
   ],
   "drive": {
@@ -105,5 +114,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T04:42:39Z"
+  "updated_at": "2026-10-10T04:52:09Z"
 }

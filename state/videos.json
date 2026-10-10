@@ -2316,14 +2316,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
+    },
+    "81c5f358879c5b01c11b66372f2d20e9": {
+      "title": "الخيار الصحيح",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T04:52:11Z",
+      "fps": 60,
+      "dir": "ai10-81c5f358",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الذهب أم الأسهم؟ أين تضع أموالك"
     }
   },
   "failed": {},
-  "ai_invented_count": 147,
+  "ai_invented_count": 148,
   "ai_titles": [
-    {
-      "title": "الاستثمار في المهارات: عائيدك الذهبي"
-    },
     {
       "title": "إثمار الذات: عائد لا يُقاس"
     },
@@ -2500,6 +2509,9 @@
     },
     {
       "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
+    },
+    {
+      "title": "الخيار الصحيح"
     }
   ]
 }
