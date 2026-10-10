@@ -1,5 +1,5 @@
 {
-  "phase": "inventing",
+  "phase": "chaining_next_run",
   "mode": "continuous",
   "should_continue": true,
   "run": {
@@ -7,31 +7,20 @@
     "deadline_at": "2026-10-10T17:07:15Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true
+    "infinite_stories": true,
+    "finished_at": "2026-10-10T16:58:24Z",
+    "videos_made": 30,
+    "stop_reason": "deadline"
   },
-  "current": {
-    "title": "المستقبل المالي: الذهب أم الأسهم؟",
-    "source": "ai-invented",
-    "started_at": "2026-10-10T16:52:15Z",
-    "elapsed_sec": 331
-  },
+  "current": null,
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 29,
-  "videos_total": 250,
-  "ai_invented_total": 187,
+  "videos_this_run": 30,
+  "videos_total": 251,
+  "ai_invented_total": 188,
   "recent": [
-    {
-      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 374,
-      "at": "2026-10-10T15:45:15Z"
-    },
     {
       "title": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ",
       "source": "ai-invented",
@@ -112,6 +101,15 @@
       "code_by": "generate_video.py",
       "seconds": 339,
       "at": "2026-10-10T16:51:41Z"
+    },
+    {
+      "title": "المستقبل المالي: الذهب أم الأسهم؟",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 361,
+      "at": "2026-10-10T16:58:16Z"
     }
   ],
   "drive": {
@@ -123,5 +121,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T16:57:46Z"
+  "updated_at": "2026-10-10T16:58:24Z"
 }
