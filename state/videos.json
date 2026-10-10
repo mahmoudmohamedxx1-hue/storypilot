@@ -2160,14 +2160,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
+    },
+    "782ebafbadb2b7ddf18892d8b694f01e": {
+      "title": "الفقاعة المالية: كيف تحديدها قبل أن تنفجر",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T02:30:31Z",
+      "fps": 60,
+      "dir": "ai24-782ebafb",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
     }
   },
   "failed": {},
-  "ai_invented_count": 134,
+  "ai_invented_count": 135,
   "ai_titles": [
-    {
-      "title": "الخطوة الصغيرة في عالم الأسهم"
-    },
     {
       "title": "الدين المزدوج: سر الاقتراض الذكي"
     },
@@ -2344,6 +2353,9 @@
     },
     {
       "title": "العقلية طويلة الأجل: سر كبار المستثمرين"
+    },
+    {
+      "title": "الفقاعة المالية: كيف تحديدها قبل أن تنفجر"
     }
   ]
 }
