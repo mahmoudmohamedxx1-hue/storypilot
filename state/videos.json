@@ -3252,10 +3252,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التضخم: اللص الصامت الذي يأكل مدخراتك"
+    },
+    "11ccb001f5661c3321067e4f173678e8": {
+      "title": "العادة الذهبية: كيف تبني ثروتك بخمسة دراهم يوميا",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T22:38:04Z",
+      "fps": 60,
+      "dir": "ai05-11ccb001",
+      "source": "ai-invented",
+      "renderer": "ai",
+      "code_by": "freellmpool:auto",
+      "ai_attempts": 3,
+      "topic": "الانضباط المالي: عادة صغيرة تغير حياتك"
     }
   },
   "failed": {},
-  "ai_invented_count": 225,
+  "ai_invented_count": 226,
   "ai_titles": [
     {
       "title": "كيف تكشف الأرقام عن أسرار الشركة؟"
@@ -3421,6 +3433,9 @@
     },
     {
       "title": "قوة الانضباط المالي: خطوة صغيرة تغير كل شيء"
+    },
+    {
+      "title": "العادة الذهبية: كيف تبني ثروتك بخمسة دراهم يوميا"
     }
   ]
 }
