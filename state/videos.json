@@ -2952,14 +2952,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    "dc01fa7fe4a05ac0be7e6c75bac2881d": {
+      "title": "أسرار النمو المالي: كيف تجعل أموالك تعمل لك؟",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T19:10:58Z",
+      "fps": 60,
+      "dir": "ai13-dc01fa7f",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
     }
   },
   "failed": {},
-  "ai_invented_count": 200,
+  "ai_invented_count": 201,
   "ai_titles": [
-    {
-      "title": "القرارات المالية الحكيمة: بين الديون الخفية والفرص الساطعة"
-    },
     {
       "title": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
     },
@@ -3136,6 +3145,9 @@
     },
     {
       "title": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    {
+      "title": "أسرار النمو المالي: كيف تجعل أموالك تعمل لك؟"
     }
   ]
 }
