@@ -1,117 +1,28 @@
 {
-  "phase": "chaining_next_run",
+  "phase": "inventing",
   "mode": "continuous",
   "should_continue": true,
   "run": {
-    "started_at": "2026-10-09T22:08:24Z",
-    "deadline_at": "2026-10-10T03:08:24Z",
+    "started_at": "2026-10-10T03:06:08Z",
+    "deadline_at": "2026-10-10T08:06:08Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true,
-    "finished_at": "2026-10-10T03:02:38Z",
-    "videos_made": 27,
-    "stop_reason": "deadline"
+    "infinite_stories": true
   },
-  "current": null,
+  "current": {
+    "title": "أخطاء الاستثمار: ما الذي يجعلك تفقد المال؟",
+    "source": "ai-invented",
+    "started_at": "2026-10-10T03:07:17Z",
+    "elapsed_sec": 561
+  },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 27,
+  "videos_this_run": 0,
   "videos_total": 201,
-  "ai_invented_total": 138,
-  "recent": [
-    {
-      "title": "القرارات المالية الحكيمة: بين الديون الخفية والفرص الساطعة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 399,
-      "at": "2026-10-10T01:47:30Z"
-    },
-    {
-      "title": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 390,
-      "at": "2026-10-10T01:55:01Z"
-    },
-    {
-      "title": "مخاطر توقيت السوق",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 217,
-      "at": "2026-10-10T01:59:30Z"
-    },
-    {
-      "title": "الادخار التلقائي: ادفع لنفسك أولا",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 558,
-      "at": "2026-10-10T02:09:27Z"
-    },
-    {
-      "title": "قاعدة 72: سرعة مضاعفة أموالك في ثانيتين",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 419,
-      "at": "2026-10-10T02:16:48Z"
-    },
-    {
-      "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 439,
-      "at": "2026-10-10T02:25:08Z"
-    },
-    {
-      "title": "الفقاعة المالية: كيف تحديدها قبل أن تنفجر",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 285,
-      "at": "2026-10-10T02:30:31Z"
-    },
-    {
-      "title": "النجم المشرق",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 545,
-      "at": "2026-10-10T02:41:07Z"
-    },
-    {
-      "title": "قوائم مالية: المفتاح الخفي",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 592,
-      "at": "2026-10-10T02:52:22Z"
-    },
-    {
-      "title": "الخطة السرية: كيف تقضي على العمل قبل الأوان",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 584,
-      "at": "2026-10-10T03:02:36Z"
-    }
-  ],
+  "ai_invented_total": 0,
+  "recent": [],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -121,5 +32,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T03:02:38Z"
+  "updated_at": "2026-10-10T03:16:38Z"
 }
