@@ -2292,14 +2292,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التضخم: اللص الصامت الذي يأكل مدخراتك"
+    },
+    "fe17f8141dee18d08a6529f24bbd264b": {
+      "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T04:34:26Z",
+      "fps": 60,
+      "dir": "ai08-fe17f814",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الانضباط المالي: عادة صغيرة تغير حياتك"
     }
   },
   "failed": {},
-  "ai_invented_count": 145,
+  "ai_invented_count": 146,
   "ai_titles": [
-    {
-      "title": "قاعدة 72: سر النجاح المالي في ثوانٍ"
-    },
     {
       "title": "العقلية طويلة الأجل: سر كبار المستثمرين"
     },
@@ -2476,6 +2485,9 @@
     },
     {
       "title": "التضخم: اللص الصامت الذي يأكل مدخراتك"
+    },
+    {
+      "title": "الانضباط المالي: عادة صغيرة تغير حياتك"
     }
   ]
 }
