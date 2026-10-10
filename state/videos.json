@@ -2976,14 +2976,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
+    },
+    "a3a63cc0a9baa511d58772054cffbb5d": {
+      "title": "الفرق بين الأصول والالتزامات",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T19:26:23Z",
+      "fps": 60,
+      "dir": "ai15-a3a63cc0",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الفرق بين الأصول والالتزامات ولماذا يفرق الأغنياء"
     }
   },
   "failed": {},
-  "ai_invented_count": 202,
+  "ai_invented_count": 203,
   "ai_titles": [
-    {
-      "title": "مخاطر توقيت السوق"
-    },
     {
       "title": "قاعدة 72: سرعة مضاعفة أموالك في ثانيتين"
     },
@@ -3160,6 +3169,9 @@
     },
     {
       "title": "صندوق الطوارئ: الدفعة الأولى ضد المفاجآت"
+    },
+    {
+      "title": "الفرق بين الأصول والالتزامات"
     }
   ]
 }
