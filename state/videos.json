@@ -2436,14 +2436,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "كيف تقرأ القوائم المالية لشركة قبل شراء سهمها"
+    },
+    "a7a3fca52ef776024d0503a9d3328c7d": {
+      "title": "حلم التقاعد المبكر",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T06:19:23Z",
+      "fps": 60,
+      "dir": "ai20-a7a3fca5",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
     }
   },
   "failed": {},
-  "ai_invented_count": 157,
+  "ai_invented_count": 158,
   "ai_titles": [
-    {
-      "title": "الديون والحكمة: أذكى وقت للتمويل"
-    },
     {
       "title": "سلة البيض المتنوعة"
     },
@@ -2620,6 +2629,9 @@
     },
     {
       "title": "كيف تكشف الأرقام عن أسرار الشركة؟"
+    },
+    {
+      "title": "حلم التقاعد المبكر"
     }
   ]
 }
