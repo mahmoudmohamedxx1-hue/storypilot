@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الرقم وراء السهم: كيف تقرأ القوائم المالية؟",
+    "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
     "source": "ai-invented",
-    "started_at": "2026-10-10T18:29:40Z",
-    "elapsed_sec": 494
+    "started_at": "2026-10-10T18:38:51Z",
+    "elapsed_sec": 393
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 8,
-  "videos_total": 259,
-  "ai_invented_total": 196,
+  "videos_this_run": 9,
+  "videos_total": 260,
+  "ai_invented_total": 197,
   "recent": [
     {
       "title": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟",
@@ -94,6 +94,15 @@
       "code_by": "generate_video.py",
       "seconds": 456,
       "at": "2026-10-10T18:28:45Z"
+    },
+    {
+      "title": "الرقم وراء السهم: كيف تقرأ القوائم المالية؟",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 510,
+      "at": "2026-10-10T18:38:10Z"
     }
   ],
   "drive": {
@@ -105,5 +114,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T18:37:54Z"
+  "updated_at": "2026-10-10T18:45:24Z"
 }
