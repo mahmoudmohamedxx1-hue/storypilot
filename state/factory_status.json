@@ -1,117 +1,28 @@
 {
-  "phase": "chaining_next_run",
+  "phase": "inventing",
   "mode": "continuous",
   "should_continue": true,
   "run": {
-    "started_at": "2026-10-10T17:01:54Z",
-    "deadline_at": "2026-10-10T22:01:54Z",
+    "started_at": "2026-10-10T21:50:40Z",
+    "deadline_at": "2026-10-11T02:50:40Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true,
-    "finished_at": "2026-10-10T21:47:02Z",
-    "videos_made": 33,
-    "stop_reason": "deadline"
+    "infinite_stories": true
   },
-  "current": null,
+  "current": {
+    "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
+    "source": "ai-invented",
+    "started_at": "2026-10-10T21:51:44Z",
+    "elapsed_sec": 686
+  },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 33,
+  "videos_this_run": 0,
   "videos_total": 284,
-  "ai_invented_total": 221,
-  "recent": [
-    {
-      "title": "الثروة الصامتة: قوة الادخار التلقائي",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "ai",
-      "code_by": "freellmpool:auto",
-      "seconds": 143,
-      "at": "2026-10-10T20:41:09Z"
-    },
-    {
-      "title": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 475,
-      "at": "2026-10-10T20:49:37Z"
-    },
-    {
-      "title": "الرؤية البعيدة: كيف تبني ثروتك بحكمة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 417,
-      "at": "2026-10-10T20:57:09Z"
-    },
-    {
-      "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 457,
-      "at": "2026-10-10T21:05:33Z"
-    },
-    {
-      "title": "الاستثمار في نفسك: عبور على الحدود",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 385,
-      "at": "2026-10-10T21:12:28Z"
-    },
-    {
-      "title": "تحليل القوائم المالية: هل شركة ما تستحق الاستثمار؟",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 347,
-      "at": "2026-10-10T21:18:36Z"
-    },
-    {
-      "title": "الخطأ الكبير",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 482,
-      "at": "2026-10-10T21:28:40Z"
-    },
-    {
-      "title": "المستثمر المبتدئ: دروس من أخطاء الماضي",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "ai",
-      "code_by": "freellmpool:auto",
-      "seconds": 148,
-      "at": "2026-10-10T21:31:45Z"
-    },
-    {
-      "title": "النقود التي تنتظرك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 416,
-      "at": "2026-10-10T21:39:12Z"
-    },
-    {
-      "title": "قوة الزمن في عالم الاستثمار: كيف تنمو أموالك بذكاء",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 407,
-      "at": "2026-10-10T21:47:01Z"
-    }
-  ],
+  "ai_invented_total": 0,
+  "recent": [],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -121,5 +32,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T21:47:02Z"
+  "updated_at": "2026-10-10T22:03:10Z"
 }
