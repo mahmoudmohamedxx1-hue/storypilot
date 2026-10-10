@@ -2688,14 +2688,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
+    },
+    "13cb67a4c27cb993b1ac73acdc7ec426": {
+      "title": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T15:53:13Z",
+      "fps": 60,
+      "dir": "ai23-13cb67a4",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
     }
   },
   "failed": {},
-  "ai_invented_count": 178,
+  "ai_invented_count": 179,
   "ai_titles": [
-    {
-      "title": "الاقتراض الذكي: متى يصبح الدين صديقك المالي"
-    },
     {
       "title": "الفائدة اللطيفة: متى يصبح الاقتراض حليماً؟"
     },
@@ -2872,6 +2881,9 @@
     },
     {
       "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
+    },
+    {
+      "title": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
     }
   ]
 }
