@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
+    "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر",
     "source": "ai-invented",
-    "started_at": "2026-10-10T18:05:53Z",
-    "elapsed_sec": 241
+    "started_at": "2026-10-10T18:10:41Z",
+    "elapsed_sec": 583
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 5,
-  "videos_total": 256,
-  "ai_invented_total": 193,
+  "videos_this_run": 6,
+  "videos_total": 257,
+  "ai_invented_total": 194,
   "recent": [
     {
       "title": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟",
@@ -67,6 +67,15 @@
       "code_by": "generate_video.py",
       "seconds": 255,
       "at": "2026-10-10T17:55:27Z"
+    },
+    {
+      "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 261,
+      "at": "2026-10-10T18:10:14Z"
     }
   ],
   "drive": {
@@ -78,5 +87,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T18:09:54Z"
+  "updated_at": "2026-10-10T18:20:24Z"
 }
