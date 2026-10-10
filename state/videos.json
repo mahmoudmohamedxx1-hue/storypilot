@@ -2964,14 +2964,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
+    },
+    "72c7cb1d9c3433d0caebd4e8374e53c6": {
+      "title": "صندوق الطوارئ: الدفعة الأولى ضد المفاجآت",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T19:18:08Z",
+      "fps": 60,
+      "dir": "ai14-72c7cb1d",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
     }
   },
   "failed": {},
-  "ai_invented_count": 201,
+  "ai_invented_count": 202,
   "ai_titles": [
-    {
-      "title": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
-    },
     {
       "title": "مخاطر توقيت السوق"
     },
@@ -3148,6 +3157,9 @@
     },
     {
       "title": "أسرار النمو المالي: كيف تجعل أموالك تعمل لك؟"
+    },
+    {
+      "title": "صندوق الطوارئ: الدفعة الأولى ضد المفاجآت"
     }
   ]
 }
