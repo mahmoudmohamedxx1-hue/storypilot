@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "البدء في الاستثمار بالمبلغ الصغير",
+    "title": "الخيط الذهبي: كيف تنسج ثروتك يوميا",
     "source": "ai-invented",
-    "started_at": "2026-10-10T16:19:33Z",
-    "elapsed_sec": 553
+    "started_at": "2026-10-10T16:31:59Z",
+    "elapsed_sec": 497
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 25,
-  "videos_total": 246,
-  "ai_invented_total": 183,
+  "videos_this_run": 26,
+  "videos_total": 247,
+  "ai_invented_total": 184,
   "recent": [
-    {
-      "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "ai",
-      "code_by": "freellmpool:auto",
-      "seconds": 113,
-      "at": "2026-10-10T15:12:41Z"
-    },
     {
       "title": "الغموض وراء الثروات: كيف تكتشف الفقاعة قبل انفجاره؟",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 426,
       "at": "2026-10-10T16:19:00Z"
+    },
+    {
+      "title": "البدء في الاستثمار بالمبلغ الصغير",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 582,
+      "at": "2026-10-10T16:29:14Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T16:28:46Z"
+  "updated_at": "2026-10-10T16:40:16Z"
 }
