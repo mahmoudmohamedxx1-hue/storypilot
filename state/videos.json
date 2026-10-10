@@ -2844,10 +2844,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "مخاطر محاولة توقيت السوق ولماذا يخسر معظم الناس"
+    },
+    "7da8fcd6f32c4dfc6b246b2c094eb230": {
+      "title": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T17:37:03Z",
+      "fps": 60,
+      "dir": "ai04-7da8fcd6",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الادخار التلقائي: ادفع لنفسك أولا"
     }
   },
   "failed": {},
-  "ai_invented_count": 191,
+  "ai_invented_count": 192,
   "ai_titles": [
     {
       "title": "قوة الفائدة المركبة"
@@ -3022,6 +3034,9 @@
     },
     {
       "title": "سرعة الخسارة: لماذا يتعثر توقيت السوق لدى أغلب المستثمرين"
+    },
+    {
+      "title": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
     }
   ]
 }
