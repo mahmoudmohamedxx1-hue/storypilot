@@ -2772,14 +2772,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التضخم: اللص الصامت الذي يأكل مدخراتك"
+    },
+    "62a1e1d816259c8d3f30102a495a9b2e": {
+      "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T16:45:41Z",
+      "fps": 60,
+      "dir": "ai30-62a1e1d8",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الانضباط المالي: عادة صغيرة تغير حياتك"
     }
   },
   "failed": {},
-  "ai_invented_count": 185,
+  "ai_invented_count": 186,
   "ai_titles": [
-    {
-      "title": "قوة الاستثمار في نفسك: أعلى عائد"
-    },
     {
       "title": "الصراع الداخلي للمستثمر: حرب العقل والشهوة"
     },
@@ -2956,6 +2965,9 @@
     },
     {
       "title": "الخيط الذهبي: كيف تنسج ثروتك يوميا"
+    },
+    {
+      "title": "الانضباط المالي: عادة صغيرة تغير حياتك"
     }
   ]
 }
