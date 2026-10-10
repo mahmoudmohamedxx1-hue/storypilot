@@ -2412,14 +2412,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
+    },
+    "e7f034c096980898a57175b5f7b96792": {
+      "title": "الاستثمار في نفسك: رحلة التغيير",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T05:56:09Z",
+      "fps": 60,
+      "dir": "ai18-e7f034c0",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الاستثمار في نفسك: أفضل عائد على الإطلاق"
     }
   },
   "failed": {},
-  "ai_invented_count": 155,
+  "ai_invented_count": 156,
   "ai_titles": [
-    {
-      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
-    },
     {
       "title": "صراع الذهب والأسهم"
     },
@@ -2596,6 +2605,9 @@
     },
     {
       "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
+    },
+    {
+      "title": "الاستثمار في نفسك: رحلة التغيير"
     }
   ]
 }
