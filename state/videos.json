@@ -2544,14 +2544,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الانضباط المالي: عادة صغيرة تغير حياتك"
+    },
+    "49e2ddbcc48ad128bdd20a51d7427d61": {
+      "title": "صناديق المؤشرات: طريقك إلى الاستثمار السهل",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T14:20:07Z",
+      "fps": 60,
+      "dir": "ai11-49e2ddbc",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
     }
   },
   "failed": {},
-  "ai_invented_count": 166,
+  "ai_invented_count": 167,
   "ai_titles": [
-    {
-      "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
-    },
     {
       "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق"
     },
@@ -2728,6 +2737,9 @@
     },
     {
       "title": "السهم الخفي"
+    },
+    {
+      "title": "صناديق المؤشرات: طريقك إلى الاستثمار السهل"
     }
   ]
 }

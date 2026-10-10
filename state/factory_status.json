@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "السهم الخفي",
+    "title": "صناديق المؤشرات: طريقك إلى الاستثمار السهل",
     "source": "ai-invented",
-    "started_at": "2026-10-10T14:02:47Z",
-    "elapsed_sec": 478
+    "started_at": "2026-10-10T14:11:37Z",
+    "elapsed_sec": 488
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 7,
-  "videos_total": 228,
-  "ai_invented_total": 165,
+  "videos_this_run": 8,
+  "videos_total": 229,
+  "ai_invented_total": 166,
   "recent": [
     {
       "title": "الخطأ النفسي في الاستثمار",
@@ -99,6 +99,15 @@
       "code_by": "generate_video.py",
       "seconds": 394,
       "at": "2026-10-10T13:59:42Z"
+    },
+    {
+      "title": "السهم الخفي",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 489,
+      "at": "2026-10-10T14:10:56Z"
     }
   ],
   "drive": {
@@ -110,5 +119,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T14:10:45Z"
+  "updated_at": "2026-10-10T14:19:45Z"
 }
