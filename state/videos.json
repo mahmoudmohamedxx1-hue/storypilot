@@ -3180,14 +3180,23 @@
       "code_by": "freellmpool:auto",
       "ai_attempts": 2,
       "topic": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
+    },
+    "9817d7a52082d4fc44f54fcc43023330": {
+      "title": "النقود التي تنتظرك",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T21:39:12Z",
+      "fps": 60,
+      "dir": "ai32-9817d7a5",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
     }
   },
   "failed": {},
-  "ai_invented_count": 219,
+  "ai_invented_count": 220,
   "ai_titles": [
-    {
-      "title": "الاستثمار في المستقبل: كيف تبني ثروتك على المدى الطويل"
-    },
     {
       "title": "الاستثمار في نفسك: رحلة التغيير"
     },
@@ -3364,6 +3373,9 @@
     },
     {
       "title": "المستثمر المبتدئ: دروس من أخطاء الماضي"
+    },
+    {
+      "title": "النقود التي تنتظرك"
     }
   ]
 }

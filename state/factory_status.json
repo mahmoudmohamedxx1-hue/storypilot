@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "المستثمر المبتدئ: دروس من أخطاء الماضي",
+    "title": "النقود التي تنتظرك",
     "source": "ai-invented",
-    "started_at": "2026-10-10T21:29:17Z",
-    "elapsed_sec": 128
+    "started_at": "2026-10-10T21:32:16Z",
+    "elapsed_sec": 399
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 30,
-  "videos_total": 281,
-  "ai_invented_total": 218,
+  "videos_this_run": 31,
+  "videos_total": 282,
+  "ai_invented_total": 219,
   "recent": [
-    {
-      "title": "مخاطر توقيت السوق",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 527,
-      "at": "2026-10-10T20:22:00Z"
-    },
     {
       "title": "التنويع الاستثماري: رحلة البحث عن الأمان المالي",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 482,
       "at": "2026-10-10T21:28:40Z"
+    },
+    {
+      "title": "المستثمر المبتدئ: دروس من أخطاء الماضي",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "ai",
+      "code_by": "freellmpool:auto",
+      "seconds": 148,
+      "at": "2026-10-10T21:31:45Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T21:31:25Z"
+  "updated_at": "2026-10-10T21:38:55Z"
 }
