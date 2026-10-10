@@ -2268,10 +2268,22 @@
       "code_by": "freellmpool:ovh/gpt-oss-120b",
       "ai_attempts": 3,
       "topic": "الفرق بين الأصول والالتزامات ولماذا يفرق الأغنياء"
+    },
+    "3d3ded76435de53181c907add79c432b": {
+      "title": "بذرة الذهب: استثمار بخمسة دولارات",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T04:14:36Z",
+      "fps": 60,
+      "dir": "ai06-3d3ded76",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "كيف تبدأ الاستثمار بمبلغ صغير جدا"
     }
   },
   "failed": {},
-  "ai_invented_count": 143,
+  "ai_invented_count": 144,
   "ai_titles": [
     {
       "title": "الخطوة الأولى: ادفع لنفسك قبل العالم"
@@ -2449,6 +2461,9 @@
     },
     {
       "title": "الفرق بين الأصول والالتزامات"
+    },
+    {
+      "title": "بذرة الذهب: استثمار بخمسة دولارات"
     }
   ]
 }
