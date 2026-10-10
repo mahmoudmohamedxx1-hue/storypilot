@@ -2052,14 +2052,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التضخم: اللص الصامت الذي يأكل مدخراتك"
+    },
+    "1495ebf06b07fc5554662a39f309f94e": {
+      "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T01:20:02Z",
+      "fps": 60,
+      "dir": "ai15-1495ebf0",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الانضباط المالي: عادة صغيرة تغير حياتك"
     }
   },
   "failed": {},
-  "ai_invented_count": 125,
+  "ai_invented_count": 126,
   "ai_titles": [
-    {
-      "title": "حسابات FIRE: الأرقام التي تغير حياتك"
-    },
     {
       "title": "الخطأ الذي يحدث في كل استثمار جديد"
     },
@@ -2236,6 +2245,9 @@
     },
     {
       "title": "التضخم: اللص الصامت الذي يأكل مدخراتك"
+    },
+    {
+      "title": "الانضباط المالي: عادة صغيرة تغير حياتك"
     }
   ]
 }
