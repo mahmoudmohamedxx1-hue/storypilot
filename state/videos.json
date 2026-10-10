@@ -2364,14 +2364,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "مخاطر محاولة توقيت السوق ولماذا يخسر معظم الناس"
+    },
+    "d85df2a028863f3087ade18ea8baa7f4": {
+      "title": "الخزنة الخفية: كيف تفتح باب الثروة دون أن تشعر؟",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T05:21:38Z",
+      "fps": 60,
+      "dir": "ai14-d85df2a0",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الادخار التلقائي: ادفع لنفسك أولا"
     }
   },
   "failed": {},
-  "ai_invented_count": 151,
+  "ai_invented_count": 152,
   "ai_titles": [
-    {
-      "title": "الدخل السلبي: الحقيقة بدون مبالغة"
-    },
     {
       "title": "السر المذهل: كيف تضاعف أموالك مع الوقت"
     },
@@ -2548,6 +2557,9 @@
     },
     {
       "title": "المخاطر التجارية: توقيت السوق والانتقاء المبكر"
+    },
+    {
+      "title": "الخزنة الخفية: كيف تفتح باب الثروة دون أن تشعر؟"
     }
   ]
 }
