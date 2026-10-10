@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر",
+    "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق",
     "source": "ai-invented",
-    "started_at": "2026-10-10T18:10:41Z",
-    "elapsed_sec": 583
+    "started_at": "2026-10-10T18:21:09Z",
+    "elapsed_sec": 435
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 6,
-  "videos_total": 257,
-  "ai_invented_total": 194,
+  "videos_this_run": 7,
+  "videos_total": 258,
+  "ai_invented_total": 195,
   "recent": [
     {
       "title": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟",
@@ -76,6 +76,15 @@
       "code_by": "generate_video.py",
       "seconds": 261,
       "at": "2026-10-10T18:10:14Z"
+    },
+    {
+      "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 593,
+      "at": "2026-10-10T18:20:34Z"
     }
   ],
   "drive": {
@@ -87,5 +96,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T18:20:24Z"
+  "updated_at": "2026-10-10T18:28:24Z"
 }
