@@ -3288,10 +3288,22 @@
       "code_by": "freellmpool:auto",
       "ai_attempts": 2,
       "topic": "الذهب أم الأسهم؟ أين تضع أموالك"
+    },
+    "b8f993351e0ba5e7e65350a59708bce1": {
+      "title": "الديون الذكية: كيف تميز بين الفائدة والفساد المالي؟",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T22:56:54Z",
+      "fps": 60,
+      "dir": "ai08-b8f99335",
+      "source": "ai-invented",
+      "renderer": "ai",
+      "code_by": "freellmpool:auto",
+      "ai_attempts": 2,
+      "topic": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟"
     }
   },
   "failed": {},
-  "ai_invented_count": 228,
+  "ai_invented_count": 229,
   "ai_titles": [
     {
       "title": "كيف تكشف الأرقام عن أسرار الشركة؟"
@@ -3466,6 +3478,9 @@
     },
     {
       "title": "الذهب أم الأسهم؟ أين تضع أموالك - المستثمر الجديد"
+    },
+    {
+      "title": "الديون الذكية: كيف تميز بين الفائدة والفساد المالي؟"
     }
   ]
 }
