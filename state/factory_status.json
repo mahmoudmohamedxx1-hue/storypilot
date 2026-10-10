@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
+    "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
     "source": "ai-invented",
-    "started_at": "2026-10-10T16:41:02Z",
-    "elapsed_sec": 254
+    "started_at": "2026-10-10T16:46:02Z",
+    "elapsed_sec": 314
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 27,
-  "videos_total": 248,
-  "ai_invented_total": 185,
+  "videos_this_run": 28,
+  "videos_total": 249,
+  "ai_invented_total": 186,
   "recent": [
-    {
-      "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 471,
-      "at": "2026-10-10T15:29:17Z"
-    },
     {
       "title": "الرقم الخفي: كيف تقرأ بين السطور المالية؟",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 511,
       "at": "2026-10-10T16:40:30Z"
+    },
+    {
+      "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 279,
+      "at": "2026-10-10T16:45:41Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T16:45:16Z"
+  "updated_at": "2026-10-10T16:51:16Z"
 }

@@ -2784,14 +2784,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الانضباط المالي: عادة صغيرة تغير حياتك"
+    },
+    "f5b7947e19d2dfc2b1878c0f860cbafd": {
+      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T16:51:41Z",
+      "fps": 60,
+      "dir": "ai31-f5b7947e",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
     }
   },
   "failed": {},
-  "ai_invented_count": 186,
+  "ai_invented_count": 187,
   "ai_titles": [
-    {
-      "title": "الصراع الداخلي للمستثمر: حرب العقل والشهوة"
-    },
     {
       "title": "الخطأ النفسي القاتل في استثمارك"
     },
@@ -2968,6 +2977,9 @@
     },
     {
       "title": "الانضباط المالي: عادة صغيرة تغير حياتك"
+    },
+    {
+      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
     }
   ]
 }
