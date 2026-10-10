@@ -2580,14 +2580,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟"
+    },
+    "d5e7da5357c38d3741416c791f233356": {
+      "title": "استراتيجيات الاستثمار: رحلة الذكاء المالي",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T14:38:48Z",
+      "fps": 60,
+      "dir": "ai14-d5e7da53",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
     }
   },
   "failed": {},
-  "ai_invented_count": 169,
+  "ai_invented_count": 170,
   "ai_titles": [
-    {
-      "title": "حلم التقاعد المبكر: رحلة الأرقام الحقيقية"
-    },
     {
       "title": "الخطأ المدمر"
     },
@@ -2764,6 +2773,9 @@
     },
     {
       "title": "الديون الذكية: كيف تتحول إلى ثروة؟"
+    },
+    {
+      "title": "استراتيجيات الاستثمار: رحلة الذكاء المالي"
     }
   ]
 }

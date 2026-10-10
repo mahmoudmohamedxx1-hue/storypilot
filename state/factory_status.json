@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الديون الذكية: كيف تتحول إلى ثروة؟",
+    "title": "استراتيجيات الاستثمار: رحلة الذكاء المالي",
     "source": "ai-invented",
-    "started_at": "2026-10-10T14:23:21Z",
-    "elapsed_sec": 444
+    "started_at": "2026-10-10T14:31:33Z",
+    "elapsed_sec": 433
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 10,
-  "videos_total": 231,
-  "ai_invented_total": 168,
+  "videos_this_run": 11,
+  "videos_total": 232,
+  "ai_invented_total": 169,
   "recent": [
-    {
-      "title": "قوة الفائدة المركبة: أموالك تتضاعف مع الوقت",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 458,
-      "at": "2026-10-10T12:26:51Z"
-    },
     {
       "title": "حماية مالية لحظة واحدة",
       "source": "ai-invented",
@@ -108,6 +99,15 @@
       "code_by": "freellmpool:auto",
       "seconds": 88,
       "at": "2026-10-10T14:22:05Z"
+    },
+    {
+      "title": "الديون الذكية: كيف تتحول إلى ثروة؟",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 452,
+      "at": "2026-10-10T14:30:53Z"
     }
   ],
   "drive": {
@@ -119,5 +119,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T14:30:45Z"
+  "updated_at": "2026-10-10T14:38:46Z"
 }
