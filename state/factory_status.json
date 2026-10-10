@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
+    "title": "المستقبل بين يديك: الذهب أم الأسهم؟",
     "source": "ai-invented",
-    "started_at": "2026-10-10T19:53:49Z",
-    "elapsed_sec": 456
+    "started_at": "2026-10-10T20:02:08Z",
+    "elapsed_sec": 227
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 18,
-  "videos_total": 269,
-  "ai_invented_total": 206,
+  "videos_this_run": 19,
+  "videos_total": 270,
+  "ai_invented_total": 207,
   "recent": [
-    {
-      "title": "الرقم وراء السهم: كيف تقرأ القوائم المالية؟",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 510,
-      "at": "2026-10-10T18:38:10Z"
-    },
     {
       "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 449,
       "at": "2026-10-10T19:53:18Z"
+    },
+    {
+      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 465,
+      "at": "2026-10-10T20:01:34Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T20:01:25Z"
+  "updated_at": "2026-10-10T20:05:55Z"
 }
