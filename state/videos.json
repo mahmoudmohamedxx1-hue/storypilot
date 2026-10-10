@@ -2328,14 +2328,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الذهب أم الأسهم؟ أين تضع أموالك"
+    },
+    "5aab5dce5cca5c8839b4a7b96d405770": {
+      "title": "القرارات المالية الحكيمة: بين الدين النافع والضار",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T04:55:49Z",
+      "fps": 60,
+      "dir": "ai11-5aab5dce",
+      "source": "ai-invented",
+      "renderer": "ai",
+      "code_by": "freellmpool:auto",
+      "ai_attempts": 3,
+      "topic": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟"
     }
   },
   "failed": {},
-  "ai_invented_count": 148,
+  "ai_invented_count": 149,
   "ai_titles": [
-    {
-      "title": "إثمار الذات: عائد لا يُقاس"
-    },
     {
       "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
     },
@@ -2512,6 +2521,9 @@
     },
     {
       "title": "الخيار الصحيح"
+    },
+    {
+      "title": "القرارات المالية الحكيمة: بين الدين النافع والضار"
     }
   ]
 }
