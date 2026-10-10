@@ -2616,14 +2616,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الادخار التلقائي: ادفع لنفسك أولا"
+    },
+    "4a5cfc869d09f02e9cabf64fdd40becc": {
+      "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T15:09:50Z",
+      "fps": 60,
+      "dir": "ai17-4a5cfc86",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
     }
   },
   "failed": {},
-  "ai_invented_count": 172,
+  "ai_invented_count": 173,
   "ai_titles": [
-    {
-      "title": "الصندوق السري: سر الاحتفاظ بمستقبلك"
-    },
     {
       "title": "مفاتيح الثروة: الأصول مقابل الالتزامات"
     },
@@ -2800,6 +2809,9 @@
     },
     {
       "title": "الادخار التلقائي: ادفع لنفسك أولا"
+    },
+    {
+      "title": "العقلية طويلة الأجل: سر كبار المستثمرين"
     }
   ]
 }
