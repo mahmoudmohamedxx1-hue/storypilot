@@ -2280,14 +2280,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "كيف تبدأ الاستثمار بمبلغ صغير جدا"
+    },
+    "02da1bea0d9cb376e8d29bed22014409": {
+      "title": "التضخم: اللص الصامت الذي يأكل مدخراتك",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T04:22:38Z",
+      "fps": 60,
+      "dir": "ai07-02da1bea",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "التضخم: اللص الصامت الذي يأكل مدخراتك"
     }
   },
   "failed": {},
-  "ai_invented_count": 144,
+  "ai_invented_count": 145,
   "ai_titles": [
-    {
-      "title": "الخطوة الأولى: ادفع لنفسك قبل العالم"
-    },
     {
       "title": "قاعدة 72: سر النجاح المالي في ثوانٍ"
     },
@@ -2464,6 +2473,9 @@
     },
     {
       "title": "بذرة الذهب: استثمار بخمسة دولارات"
+    },
+    {
+      "title": "التضخم: اللص الصامت الذي يأكل مدخراتك"
     }
   ]
 }

@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "بذرة الذهب: استثمار بخمسة دولارات",
+    "title": "التضخم: اللص الصامت الذي يأكل مدخراتك",
     "source": "ai-invented",
-    "started_at": "2026-10-10T04:07:06Z",
-    "elapsed_sec": 423
+    "started_at": "2026-10-10T04:15:09Z",
+    "elapsed_sec": 420
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 5,
-  "videos_total": 206,
-  "ai_invented_total": 143,
+  "videos_this_run": 6,
+  "videos_total": 207,
+  "ai_invented_total": 144,
   "recent": [
     {
       "title": "أخطاء الاستثمار: ما الذي يجعلك تفقد المال؟",
@@ -67,6 +67,15 @@
       "code_by": "freellmpool:ovh/gpt-oss-120b",
       "seconds": 495,
       "at": "2026-10-10T04:06:31Z"
+    },
+    {
+      "title": "بذرة الذهب: استثمار بخمسة دولارات",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 450,
+      "at": "2026-10-10T04:14:36Z"
     }
   ],
   "drive": {
@@ -78,5 +87,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T04:14:09Z"
+  "updated_at": "2026-10-10T04:22:09Z"
 }
