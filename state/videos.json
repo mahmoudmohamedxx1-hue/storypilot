@@ -2592,14 +2592,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
+    },
+    "589e4bcc1eeb71b3bab043fcaa22d76f": {
+      "title": "الرقصة مع الحظ: سر خسارة المستثمرين",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T14:47:48Z",
+      "fps": 60,
+      "dir": "ai15-589e4bcc",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "مخاطر محاولة توقيت السوق ولماذا يخسر معظم الناس"
     }
   },
   "failed": {},
-  "ai_invented_count": 170,
+  "ai_invented_count": 171,
   "ai_titles": [
-    {
-      "title": "الخطأ المدمر"
-    },
     {
       "title": "الذهب الخفي: كيف تزرع ثروتك مع الوقت"
     },
@@ -2776,6 +2785,9 @@
     },
     {
       "title": "استراتيجيات الاستثمار: رحلة الذكاء المالي"
+    },
+    {
+      "title": "الرقصة مع الحظ: سر خسارة المستثمرين"
     }
   ]
 }
