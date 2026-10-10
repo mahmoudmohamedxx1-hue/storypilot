@@ -12,26 +12,17 @@
   "current": {
     "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
     "source": "ai-invented",
-    "started_at": "2026-10-10T19:37:24Z",
-    "elapsed_sec": 421
+    "started_at": "2026-10-10T19:45:49Z",
+    "elapsed_sec": 426
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 16,
-  "videos_total": 267,
-  "ai_invented_total": 204,
+  "videos_this_run": 17,
+  "videos_total": 268,
+  "ai_invented_total": 205,
   "recent": [
-    {
-      "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 593,
-      "at": "2026-10-10T18:20:34Z"
-    },
     {
       "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 293,
       "at": "2026-10-10T19:32:20Z"
+    },
+    {
+      "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 438,
+      "at": "2026-10-10T19:44:42Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T19:44:25Z"
+  "updated_at": "2026-10-10T19:52:55Z"
 }
