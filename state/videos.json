@@ -2220,10 +2220,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
+    },
+    "19f60e44daa7c7ed385cff8c6d3e0bc5": {
+      "title": "الخطة السرية: كيف تحمي أموالك من المفاجآت",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T03:35:18Z",
+      "fps": 60,
+      "dir": "ai02-19f60e44",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
     }
   },
   "failed": {},
-  "ai_invented_count": 139,
+  "ai_invented_count": 140,
   "ai_titles": [
     {
       "title": "الخطوة الأولى: ادفع لنفسك قبل العالم"
@@ -2389,6 +2401,9 @@
     },
     {
       "title": "أخطاء الاستثمار: ما الذي يجعلك تفقد المال؟"
+    },
+    {
+      "title": "الخطة السرية: كيف تحمي أموالك من المفاجآت"
     }
   ]
 }
