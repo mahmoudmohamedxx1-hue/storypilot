@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الاستثمار في نفسك: رحلة التغيير",
+    "title": "كيف تكشف الأرقام عن أسرار الشركة؟",
     "source": "ai-invented",
-    "started_at": "2026-10-10T05:45:34Z",
-    "elapsed_sec": 635
+    "started_at": "2026-10-10T05:56:48Z",
+    "elapsed_sec": 531
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 17,
-  "videos_total": 218,
-  "ai_invented_total": 155,
+  "videos_this_run": 18,
+  "videos_total": 219,
+  "ai_invented_total": 156,
   "recent": [
-    {
-      "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 617,
-      "at": "2026-10-10T04:34:26Z"
-    },
     {
       "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 445,
       "at": "2026-10-10T05:44:00Z"
+    },
+    {
+      "title": "الاستثمار في نفسك: رحلة التغيير",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 635,
+      "at": "2026-10-10T05:56:09Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T05:56:09Z"
+  "updated_at": "2026-10-10T06:05:39Z"
 }
