@@ -1,5 +1,5 @@
 {
-  "phase": "inventing",
+  "phase": "chaining_next_run",
   "mode": "continuous",
   "should_continue": true,
   "run": {
@@ -7,31 +7,20 @@
     "deadline_at": "2026-10-10T03:08:24Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true
+    "infinite_stories": true,
+    "finished_at": "2026-10-10T03:02:38Z",
+    "videos_made": 27,
+    "stop_reason": "deadline"
   },
-  "current": {
-    "title": "الخطة السرية: كيف تقضي على العمل قبل الأوان",
-    "source": "ai-invented",
-    "started_at": "2026-10-10T02:52:53Z",
-    "elapsed_sec": 571
-  },
+  "current": null,
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 26,
-  "videos_total": 200,
-  "ai_invented_total": 137,
+  "videos_this_run": 27,
+  "videos_total": 201,
+  "ai_invented_total": 138,
   "recent": [
-    {
-      "title": "ذهب أم الأسهم؟ أين تضع أموالك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 531,
-      "at": "2026-10-10T01:39:22Z"
-    },
     {
       "title": "القرارات المالية الحكيمة: بين الديون الخفية والفرص الساطعة",
       "source": "ai-invented",
@@ -112,6 +101,15 @@
       "code_by": "generate_video.py",
       "seconds": 592,
       "at": "2026-10-10T02:52:22Z"
+    },
+    {
+      "title": "الخطة السرية: كيف تقضي على العمل قبل الأوان",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 584,
+      "at": "2026-10-10T03:02:36Z"
     }
   ],
   "drive": {
@@ -123,5 +121,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T03:02:24Z"
+  "updated_at": "2026-10-10T03:02:38Z"
 }
