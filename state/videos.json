@@ -2700,14 +2700,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
+    },
+    "1324c3b6d85912dd01640f87670285d8": {
+      "title": "الدخل السلبي: الحقيقة بدون مبالغة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T15:55:02Z",
+      "fps": 60,
+      "dir": "ai24-1324c3b6",
+      "source": "ai-invented",
+      "renderer": "ai",
+      "code_by": "freellmpool:auto",
+      "ai_attempts": 1,
+      "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
     }
   },
   "failed": {},
-  "ai_invented_count": 179,
+  "ai_invented_count": 180,
   "ai_titles": [
-    {
-      "title": "الفائدة اللطيفة: متى يصبح الاقتراض حليماً؟"
-    },
     {
       "title": "التنويع الذكي: لعبة الفوز بلا نهاية"
     },
@@ -2884,6 +2893,9 @@
     },
     {
       "title": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
+    },
+    {
+      "title": "الدخل السلبي: الحقيقة بدون مبالغة"
     }
   ]
 }
