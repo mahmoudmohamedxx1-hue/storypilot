@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "قوائم مالية: المفتاح الخفي",
+    "title": "الخطة السرية: كيف تقضي على العمل قبل الأوان",
     "source": "ai-invented",
-    "started_at": "2026-10-10T02:42:30Z",
-    "elapsed_sec": 564
+    "started_at": "2026-10-10T02:52:53Z",
+    "elapsed_sec": 571
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 25,
-  "videos_total": 199,
-  "ai_invented_total": 136,
+  "videos_this_run": 26,
+  "videos_total": 200,
+  "ai_invented_total": 137,
   "recent": [
-    {
-      "title": "الاستثمار الذكي: كيف تبدأ مع صناديق المؤشرات",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 571,
-      "at": "2026-10-10T01:30:05Z"
-    },
     {
       "title": "ذهب أم الأسهم؟ أين تضع أموالك",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 545,
       "at": "2026-10-10T02:41:07Z"
+    },
+    {
+      "title": "قوائم مالية: المفتاح الخفي",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 592,
+      "at": "2026-10-10T02:52:22Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T02:51:54Z"
+  "updated_at": "2026-10-10T03:02:24Z"
 }
