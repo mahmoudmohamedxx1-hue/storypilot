@@ -2820,10 +2820,22 @@
       "code_by": "freellmpool:auto",
       "ai_attempts": 1,
       "topic": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟"
+    },
+    "1a54b7237224644a816d02b84b01622f": {
+      "title": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T17:13:39Z",
+      "fps": 60,
+      "dir": "ai02-1a54b723",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
     }
   },
   "failed": {},
-  "ai_invented_count": 189,
+  "ai_invented_count": 190,
   "ai_titles": [
     {
       "title": "قوة الفائدة المركبة"
@@ -2992,6 +3004,9 @@
     },
     {
       "title": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟"
+    },
+    {
+      "title": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
     }
   ]
 }
