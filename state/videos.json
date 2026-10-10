@@ -2148,14 +2148,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
+    },
+    "a951e9f9ed156fe56ef8634a42e658ab": {
+      "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-10T02:25:08Z",
+      "fps": 60,
+      "dir": "ai23-a951e9f9",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
     }
   },
   "failed": {},
-  "ai_invented_count": 133,
+  "ai_invented_count": 134,
   "ai_titles": [
-    {
-      "title": "سفر صغير، ثروة كبيرة"
-    },
     {
       "title": "الخطوة الصغيرة في عالم الأسهم"
     },
@@ -2332,6 +2341,9 @@
     },
     {
       "title": "قاعدة 72: سرعة مضاعفة أموالك في ثانيتين"
+    },
+    {
+      "title": "العقلية طويلة الأجل: سر كبار المستثمرين"
     }
   ]
 }
