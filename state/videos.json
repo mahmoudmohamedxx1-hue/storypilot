@@ -3432,14 +3432,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    "8a6f2612340fa97d7cdce65cc95b3095": {
+      "title": "الغابة المالية: كيف تنمو أموالك مثل الأشجار",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T01:13:54Z",
+      "fps": 60,
+      "dir": "ai20-8a6f2612",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
     }
   },
   "failed": {},
-  "ai_invented_count": 240,
+  "ai_invented_count": 241,
   "ai_titles": [
-    {
-      "title": "الذهب أم الأسهم؟ حياة وثروة"
-    },
     {
       "title": "الديون الذكية: كيف تتحول إلى ثروة؟"
     },
@@ -3616,6 +3625,9 @@
     },
     {
       "title": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    {
+      "title": "الغابة المالية: كيف تنمو أموالك مثل الأشجار"
     }
   ]
 }
