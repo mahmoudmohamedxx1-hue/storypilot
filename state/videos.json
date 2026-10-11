@@ -3408,14 +3408,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
+    },
+    "3d7160d08fa6429d948c9c1b1652f5ee": {
+      "title": "المستثمر المتردد: كيف تتجنب شبح الخوف من الفشل؟",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T00:45:26Z",
+      "fps": 60,
+      "dir": "ai18-3d7160d0",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
     }
   },
   "failed": {},
-  "ai_invented_count": 238,
+  "ai_invented_count": 239,
   "ai_titles": [
-    {
-      "title": "السهم الخفي"
-    },
     {
       "title": "صناديق المؤشرات: طريقك إلى الاستثمار السهل"
     },
@@ -3592,6 +3601,9 @@
     },
     {
       "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
+    },
+    {
+      "title": "المستثمر المتردد: كيف تتجنب شبح الخوف من الفشل؟"
     }
   ]
 }
