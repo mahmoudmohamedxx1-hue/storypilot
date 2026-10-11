@@ -3672,14 +3672,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    "14ceb036fcb9b38d45c8959f40817178": {
+      "title": "قوة الفائدة: رحلة الأرقام",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T10:48:29Z",
+      "fps": 60,
+      "dir": "ai14-14ceb036",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
     }
   },
   "failed": {},
-  "ai_invented_count": 260,
+  "ai_invented_count": 261,
   "ai_titles": [
-    {
-      "title": "البدء في الاستثمار بالمبلغ الصغير"
-    },
     {
       "title": "الخيط الذهبي: كيف تنسج ثروتك يوميا"
     },
@@ -3856,6 +3865,9 @@
     },
     {
       "title": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    {
+      "title": "قوة الفائدة: رحلة الأرقام"
     }
   ]
 }
