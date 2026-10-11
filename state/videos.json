@@ -4056,14 +4056,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الادخار التلقائي: ادفع لنفسك أولا"
+    },
+    "6bb170647b7143fc320517f50cda5dda": {
+      "title": "ثلاث ثوانٍ، ثمانية أضعاف",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T16:11:57Z",
+      "fps": 60,
+      "dir": "ai21-6bb17064",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
     }
   },
   "failed": {},
-  "ai_invented_count": 292,
+  "ai_invented_count": 293,
   "ai_titles": [
-    {
-      "title": "البداية الصغيرة: كيف تبدأ الاستثمار بمبلغ ضئيل"
-    },
     {
       "title": "الخطوة الأولى: استثمار بعملة واحدة"
     },
@@ -4240,6 +4249,9 @@
     },
     {
       "title": "الخزنة الخفية: كيف تبني ثروتك دون أن تشعر"
+    },
+    {
+      "title": "ثلاث ثوانٍ، ثمانية أضعاف"
     }
   ]
 }

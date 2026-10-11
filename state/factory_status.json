@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الخزنة الخفية: كيف تبني ثروتك دون أن تشعر",
+    "title": "ثلاث ثوانٍ، ثمانية أضعاف",
     "source": "ai-invented",
-    "started_at": "2026-10-11T15:51:26Z",
-    "elapsed_sec": 697
+    "started_at": "2026-10-11T16:04:14Z",
+    "elapsed_sec": 439
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 19,
-  "videos_total": 354,
-  "ai_invented_total": 291,
+  "videos_this_run": 20,
+  "videos_total": 355,
+  "ai_invented_total": 292,
   "recent": [
-    {
-      "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 490,
-      "at": "2026-10-11T14:38:09Z"
-    },
     {
       "title": "الثروة المخفية: كيف يدير الأغنياء أموالهم بذكاء",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "freellmpool:auto",
       "seconds": 114,
       "at": "2026-10-11T15:50:00Z"
+    },
+    {
+      "title": "الخزنة الخفية: كيف تبني ثروتك دون أن تشعر",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 718,
+      "at": "2026-10-11T16:03:25Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T16:03:03Z"
+  "updated_at": "2026-10-11T16:11:33Z"
 }
