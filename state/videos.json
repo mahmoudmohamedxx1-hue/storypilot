@@ -3828,10 +3828,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
+    },
+    "d4d343d1629819b31b91215b675dffc8": {
+      "title": "المنطق وراء النجاح: سر كبار المستثمرين",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T13:15:36Z",
+      "fps": 60,
+      "dir": "ai02-d4d343d1",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
     }
   },
   "failed": {},
-  "ai_invented_count": 273,
+  "ai_invented_count": 274,
   "ai_titles": [
     {
       "title": "الفرق بين الأصول والالتزامات"
@@ -4003,6 +4015,9 @@
     },
     {
       "title": "قاعدة 72: سرعة مضاعفة أموالك في ثانيتين"
+    },
+    {
+      "title": "المنطق وراء النجاح: سر كبار المستثمرين"
     }
   ]
 }
