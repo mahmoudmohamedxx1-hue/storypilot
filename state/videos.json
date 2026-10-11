@@ -3984,14 +3984,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الانضباط المالي: عادة صغيرة تغير حياتك"
+    },
+    "feb9e0d15274d991107fe4952e88a48d": {
+      "title": "صناديق المؤشرات: طريقك إلى الاستثمار السهل",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T15:20:03Z",
+      "fps": 60,
+      "dir": "ai15-feb9e0d1",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
     }
   },
   "failed": {},
-  "ai_invented_count": 286,
+  "ai_invented_count": 287,
   "ai_titles": [
-    {
-      "title": "تحليل القوائم المالية: هل شركة ما تستحق الاستثمار؟"
-    },
     {
       "title": "الخطأ الكبير"
     },
@@ -4168,6 +4177,9 @@
     },
     {
       "title": "الانضباط المالي: عادة صغيرة تغير حياتك"
+    },
+    {
+      "title": "صناديق المؤشرات: طريقك إلى الاستثمار السهل"
     }
   ]
 }
