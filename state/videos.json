@@ -3972,14 +3972,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التضخم: اللص الصامت الذي يأكل مدخراتك"
+    },
+    "eff0c129036df7c6d44a755b91684c5c": {
+      "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T15:08:44Z",
+      "fps": 60,
+      "dir": "ai14-eff0c129",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الانضباط المالي: عادة صغيرة تغير حياتك"
     }
   },
   "failed": {},
-  "ai_invented_count": 285,
+  "ai_invented_count": 286,
   "ai_titles": [
-    {
-      "title": "الاستثمار في نفسك: عبور على الحدود"
-    },
     {
       "title": "تحليل القوائم المالية: هل شركة ما تستحق الاستثمار؟"
     },
@@ -4156,6 +4165,9 @@
     },
     {
       "title": "التضخم: اللص الصامت الذي يأكل مدخراتك - الجديد"
+    },
+    {
+      "title": "الانضباط المالي: عادة صغيرة تغير حياتك"
     }
   ]
 }
