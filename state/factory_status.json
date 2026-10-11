@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الفقاعة المالية: الانذار المبكر",
+    "title": "مفتاح القراءة المالية",
     "source": "ai-invented",
-    "started_at": "2026-10-10T23:42:52Z",
-    "elapsed_sec": 888
+    "started_at": "2026-10-11T00:01:41Z",
+    "elapsed_sec": 689
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 13,
-  "videos_total": 297,
-  "ai_invented_total": 234,
+  "videos_this_run": 14,
+  "videos_total": 298,
+  "ai_invented_total": 235,
   "recent": [
-    {
-      "title": "قوة الانضباط المالي: خطوة صغيرة تغير كل شيء",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 370,
-      "at": "2026-10-10T22:34:19Z"
-    },
     {
       "title": "العادة الذهبية: كيف تبني ثروتك بخمسة دراهم يوميا",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 584,
       "at": "2026-10-10T23:41:18Z"
+    },
+    {
+      "title": "الفقاعة المالية: الانذار المبكر",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 898,
+      "at": "2026-10-10T23:57:50Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-10T23:57:40Z"
+  "updated_at": "2026-10-11T00:13:10Z"
 }

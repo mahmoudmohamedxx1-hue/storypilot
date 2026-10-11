@@ -3372,14 +3372,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
+    },
+    "147a3ce948cebea4cc7d8385fc0f3c91": {
+      "title": "مفتاح القراءة المالية",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T00:13:25Z",
+      "fps": 60,
+      "dir": "ai15-147a3ce9",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الاستثمار في نفسك: أفضل عائد على الإطلاق"
     }
   },
   "failed": {},
-  "ai_invented_count": 235,
+  "ai_invented_count": 236,
   "ai_titles": [
-    {
-      "title": "حماية مالية لحظة واحدة"
-    },
     {
       "title": "التضخم: اللص الصامت الذي يأكل مدخراتك"
     },
@@ -3556,6 +3565,9 @@
     },
     {
       "title": "الفقاعة المالية: الانذار المبكر"
+    },
+    {
+      "title": "مفتاح القراءة المالية"
     }
   ]
 }
