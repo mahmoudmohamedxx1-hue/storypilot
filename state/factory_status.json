@@ -12,16 +12,16 @@
   "current": {
     "title": "الصندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
     "source": "ai-invented",
-    "started_at": "2026-10-11T23:07:26Z",
-    "elapsed_sec": 453
+    "started_at": "2026-10-11T23:15:44Z",
+    "elapsed_sec": 135
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 5,
-  "videos_total": 363,
-  "ai_invented_total": 300,
+  "videos_this_run": 6,
+  "videos_total": 364,
+  "ai_invented_total": 301,
   "recent": [
     {
       "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق",
@@ -67,6 +67,15 @@
       "code_by": "generate_video.py",
       "seconds": 370,
       "at": "2026-10-11T23:05:45Z"
+    },
+    {
+      "title": "الصندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 454,
+      "at": "2026-10-11T23:15:00Z"
     }
   ],
   "drive": {
@@ -78,5 +87,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T23:14:59Z"
+  "updated_at": "2026-10-11T23:17:59Z"
 }
