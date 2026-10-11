@@ -4080,14 +4080,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
+    },
+    "c1b4be0b5faf033534a5491336e12723": {
+      "title": "فوضى الأرقام",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T16:37:19Z",
+      "fps": 60,
+      "dir": "ai23-c1b4be0b",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
     }
   },
   "failed": {},
-  "ai_invented_count": 294,
+  "ai_invented_count": 295,
   "ai_titles": [
-    {
-      "title": "قوة الانضباط المالي: خطوة صغيرة تغير كل شيء"
-    },
     {
       "title": "العادة الذهبية: كيف تبني ثروتك بخمسة دراهم يوميا"
     },
@@ -4264,6 +4273,9 @@
     },
     {
       "title": "العقلية طويلة الأجل: سر كبار المستثمرين"
+    },
+    {
+      "title": "فوضى الأرقام"
     }
   ]
 }

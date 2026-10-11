@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
+    "title": "فوضى الأرقام",
     "source": "ai-invented",
-    "started_at": "2026-10-11T16:12:33Z",
-    "elapsed_sec": 480
+    "started_at": "2026-10-11T16:24:28Z",
+    "elapsed_sec": 755
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 21,
-  "videos_total": 356,
-  "ai_invented_total": 293,
+  "videos_this_run": 22,
+  "videos_total": 357,
+  "ai_invented_total": 294,
   "recent": [
-    {
-      "title": "البداية الصغيرة: كيف تبدأ الاستثمار بمبلغ صغير جدا",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 614,
-      "at": "2026-10-11T14:51:50Z"
-    },
     {
       "title": "التضخم: اللص الصامت الذي يأكل مدخراتك - الجديد",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 462,
       "at": "2026-10-11T16:11:57Z"
+    },
+    {
+      "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 495,
+      "at": "2026-10-11T16:20:48Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T16:20:33Z"
+  "updated_at": "2026-10-11T16:37:03Z"
 }
