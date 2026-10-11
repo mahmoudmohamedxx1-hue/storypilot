@@ -3492,14 +3492,23 @@
       "code_by": "freellmpool:auto",
       "ai_attempts": 2,
       "topic": "التضخم: اللص الصامت الذي يأكل مدخراتك"
+    },
+    "0bbfe22a039665eec2be0d6b0f8dc2ff": {
+      "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T01:59:56Z",
+      "fps": 60,
+      "dir": "ai25-0bbfe22a",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الانضباط المالي: عادة صغيرة تغير حياتك"
     }
   },
   "failed": {},
-  "ai_invented_count": 245,
+  "ai_invented_count": 246,
   "ai_titles": [
-    {
-      "title": "العقلية طويلة الأجل: سر كبار المستثمرين"
-    },
     {
       "title": "الغموض وراء الثروات: كيف تكتشف الفقاعة قبل انفجاره؟"
     },
@@ -3676,6 +3685,9 @@
     },
     {
       "title": "التضخم: اللص الصامت الذهبي"
+    },
+    {
+      "title": "الانضباط المالي: عادة صغيرة تغير حياتك"
     }
   ]
 }
