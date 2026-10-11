@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
+    "title": "الاستثمار الذكي: كيف تحقق أرباحًا مع صناديق المؤشرات",
     "source": "ai-invented",
-    "started_at": "2026-10-11T01:49:19Z",
-    "elapsed_sec": 621
+    "started_at": "2026-10-11T02:00:31Z",
+    "elapsed_sec": 1599
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 24,
-  "videos_total": 308,
-  "ai_invented_total": 245,
+  "videos_this_run": 25,
+  "videos_total": 309,
+  "ai_invented_total": 246,
   "recent": [
-    {
-      "title": "مفتاح القراءة المالية",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 704,
-      "at": "2026-10-11T00:13:25Z"
-    },
     {
       "title": "كشف أسرار القوائم المالية قبل شراء السهم",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "freellmpool:auto",
       "seconds": 159,
       "at": "2026-10-11T01:48:58Z"
+    },
+    {
+      "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 637,
+      "at": "2026-10-11T01:59:56Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T01:59:40Z"
+  "updated_at": "2026-10-11T02:27:10Z"
 }
