@@ -3,117 +3,26 @@
   "mode": "continuous",
   "should_continue": true,
   "run": {
-    "started_at": "2026-10-10T21:50:40Z",
-    "deadline_at": "2026-10-11T02:50:40Z",
+    "started_at": "2026-10-11T08:04:33Z",
+    "deadline_at": "2026-10-11T13:04:33Z",
     "budget_min": 300.0,
     "mode": "continuous",
     "infinite_stories": true
   },
   "current": {
-    "title": "الاستثمار الذكي: كيف تحقق أرباحًا مع صناديق المؤشرات",
+    "title": "الذهب أم الأسهم؟ أين تضع أموالك",
     "source": "ai-invented",
-    "started_at": "2026-10-11T02:00:31Z",
-    "elapsed_sec": 1599
+    "started_at": "2026-10-11T08:05:15Z",
+    "elapsed_sec": 408
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 25,
-  "videos_total": 309,
-  "ai_invented_total": 246,
-  "recent": [
-    {
-      "title": "كشف أسرار القوائم المالية قبل شراء السهم",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 763,
-      "at": "2026-10-11T00:28:57Z"
-    },
-    {
-      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 443,
-      "at": "2026-10-11T00:36:54Z"
-    },
-    {
-      "title": "المستثمر المتردد: كيف تتجنب شبح الخوف من الفشل؟",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 475,
-      "at": "2026-10-11T00:45:26Z"
-    },
-    {
-      "title": "الدخل السلبي: الحقيقة بدون مبالغة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 837,
-      "at": "2026-10-11T01:00:47Z"
-    },
-    {
-      "title": "الغابة المالية: كيف تنمو أموالك مثل الأشجار",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 731,
-      "at": "2026-10-11T01:13:54Z"
-    },
-    {
-      "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 683,
-      "at": "2026-10-11T01:25:41Z"
-    },
-    {
-      "title": "كيف يفكر الأغنياء في الأصول والالتزامات؟",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 569,
-      "at": "2026-10-11T01:35:51Z"
-    },
-    {
-      "title": "التضخم: اللص الصامت الذي يأكل مدخراتك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 494,
-      "at": "2026-10-11T01:45:44Z"
-    },
-    {
-      "title": "التضخم: اللص الصامت الذهبي",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "ai",
-      "code_by": "freellmpool:auto",
-      "seconds": 159,
-      "at": "2026-10-11T01:48:58Z"
-    },
-    {
-      "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 637,
-      "at": "2026-10-11T01:59:56Z"
-    }
-  ],
+  "videos_this_run": 0,
+  "videos_total": 310,
+  "ai_invented_total": 0,
+  "recent": [],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -123,5 +32,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T02:27:10Z"
+  "updated_at": "2026-10-11T08:12:03Z"
 }
