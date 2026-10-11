@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "المنطق وراء النجاح: سر كبار المستثمرين",
+    "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق",
     "source": "ai-invented",
-    "started_at": "2026-10-11T13:08:07Z",
-    "elapsed_sec": 445
+    "started_at": "2026-10-11T13:17:43Z",
+    "elapsed_sec": 139
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 1,
-  "videos_total": 336,
-  "ai_invented_total": 273,
+  "videos_this_run": 2,
+  "videos_total": 337,
+  "ai_invented_total": 274,
   "recent": [
     {
       "title": "قاعدة 72: سرعة مضاعفة أموالك في ثانيتين",
@@ -31,6 +31,15 @@
       "code_by": "generate_video.py",
       "seconds": 658,
       "at": "2026-10-11T13:07:46Z"
+    },
+    {
+      "title": "المنطق وراء النجاح: سر كبار المستثمرين",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 449,
+      "at": "2026-10-11T13:15:36Z"
     }
   ],
   "drive": {
@@ -42,5 +51,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T13:15:32Z"
+  "updated_at": "2026-10-11T13:20:02Z"
 }
