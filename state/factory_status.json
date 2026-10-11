@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "كيف تقرأ القوائم المالية لشركة قبل شراء سهمها",
+    "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
     "source": "ai-invented",
-    "started_at": "2026-10-11T22:25:31Z",
-    "elapsed_sec": 508
+    "started_at": "2026-10-11T22:34:26Z",
+    "elapsed_sec": 483
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 1,
-  "videos_total": 359,
-  "ai_invented_total": 296,
+  "videos_this_run": 2,
+  "videos_total": 360,
+  "ai_invented_total": 297,
   "recent": [
     {
       "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق",
@@ -31,6 +31,15 @@
       "code_by": "generate_video.py",
       "seconds": 587,
       "at": "2026-10-11T22:24:35Z"
+    },
+    {
+      "title": "كيف تقرأ القوائم المالية لشركة قبل شراء سهمها",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 519,
+      "at": "2026-10-11T22:34:09Z"
     }
   ],
   "drive": {
@@ -42,5 +51,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T22:33:59Z"
+  "updated_at": "2026-10-11T22:42:29Z"
 }
