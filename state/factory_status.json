@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الصندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
+    "title": "الثروة المخفية: أسرار الأغنياء في التمييز بين الأصول والالتزامات",
     "source": "ai-invented",
-    "started_at": "2026-10-11T23:15:44Z",
-    "elapsed_sec": 135
+    "started_at": "2026-10-11T23:19:30Z",
+    "elapsed_sec": 479
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 6,
-  "videos_total": 364,
-  "ai_invented_total": 301,
+  "videos_this_run": 7,
+  "videos_total": 365,
+  "ai_invented_total": 302,
   "recent": [
     {
       "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق",
@@ -76,6 +76,15 @@
       "code_by": "generate_video.py",
       "seconds": 454,
       "at": "2026-10-11T23:15:00Z"
+    },
+    {
+      "title": "الصندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 146,
+      "at": "2026-10-11T23:18:10Z"
     }
   ],
   "drive": {
@@ -87,5 +96,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T23:17:59Z"
+  "updated_at": "2026-10-11T23:27:29Z"
 }
