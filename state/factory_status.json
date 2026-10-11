@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الرقصة مع الشيطان: سرقة توقيت السوق",
+    "title": "سرعة الثروة",
     "source": "ai-invented",
-    "started_at": "2026-10-11T08:25:40Z",
-    "elapsed_sec": 683
+    "started_at": "2026-10-11T08:44:58Z",
+    "elapsed_sec": 305
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 3,
-  "videos_total": 313,
-  "ai_invented_total": 250,
+  "videos_this_run": 4,
+  "videos_total": 314,
+  "ai_invented_total": 251,
   "recent": [
     {
       "title": "الذهب أم الأسهم؟ أين تضع أموالك",
@@ -49,6 +49,15 @@
       "code_by": "freellmpool:auto",
       "seconds": 114,
       "at": "2026-10-11T08:25:16Z"
+    },
+    {
+      "title": "الرقصة مع الشيطان: سرقة توقيت السوق",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 704,
+      "at": "2026-10-11T08:37:24Z"
     }
   ],
   "drive": {
@@ -60,5 +69,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T08:37:03Z"
+  "updated_at": "2026-10-11T08:50:03Z"
 }
