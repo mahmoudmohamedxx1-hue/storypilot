@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "التضخم: اللص الصامت الذي يأكل مدخراتك",
+    "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
     "source": "ai-invented",
-    "started_at": "2026-10-11T11:22:32Z",
-    "elapsed_sec": 601
+    "started_at": "2026-10-11T11:33:26Z",
+    "elapsed_sec": 607
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 17,
-  "videos_total": 327,
-  "ai_invented_total": 264,
+  "videos_this_run": 18,
+  "videos_total": 328,
+  "ai_invented_total": 265,
   "recent": [
-    {
-      "title": "السر في الأرقام: كيف تكشف القوائم المالية الحقيقة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 687,
-      "at": "2026-10-11T09:46:40Z"
-    },
     {
       "title": "الاستثمار في الذات: عائد لا يقارن",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 494,
       "at": "2026-10-11T11:21:52Z"
+    },
+    {
+      "title": "التضخم: اللص الصامت الذي يأكل مدخراتك",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 611,
+      "at": "2026-10-11T11:32:44Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T11:32:33Z"
+  "updated_at": "2026-10-11T11:43:33Z"
 }
