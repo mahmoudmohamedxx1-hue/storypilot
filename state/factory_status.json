@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "سرعة الثروة",
+    "title": "قانون 72: سر الزيادة السريعة",
     "source": "ai-invented",
-    "started_at": "2026-10-11T08:44:58Z",
-    "elapsed_sec": 305
+    "started_at": "2026-10-11T08:53:45Z",
+    "elapsed_sec": 828
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 4,
-  "videos_total": 314,
-  "ai_invented_total": 251,
+  "videos_this_run": 5,
+  "videos_total": 315,
+  "ai_invented_total": 252,
   "recent": [
     {
       "title": "الذهب أم الأسهم؟ أين تضع أموالك",
@@ -58,6 +58,15 @@
       "code_by": "generate_video.py",
       "seconds": 704,
       "at": "2026-10-11T08:37:24Z"
+    },
+    {
+      "title": "سرعة الثروة",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "ai",
+      "code_by": "freellmpool:ovh/gpt-oss-120b",
+      "seconds": 308,
+      "at": "2026-10-11T08:50:06Z"
     }
   ],
   "drive": {
@@ -69,5 +78,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T08:50:03Z"
+  "updated_at": "2026-10-11T09:07:33Z"
 }
