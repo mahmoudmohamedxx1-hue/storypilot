@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "ثلاث ثوانٍ، ثمانية أضعاف",
+    "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
     "source": "ai-invented",
-    "started_at": "2026-10-11T16:04:14Z",
-    "elapsed_sec": 439
+    "started_at": "2026-10-11T16:12:33Z",
+    "elapsed_sec": 480
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 20,
-  "videos_total": 355,
-  "ai_invented_total": 292,
+  "videos_this_run": 21,
+  "videos_total": 356,
+  "ai_invented_total": 293,
   "recent": [
-    {
-      "title": "الثروة المخفية: كيف يدير الأغنياء أموالهم بذكاء",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "ai",
-      "code_by": "freellmpool:auto",
-      "seconds": 147,
-      "at": "2026-10-11T14:41:13Z"
-    },
     {
       "title": "البداية الصغيرة: كيف تبدأ الاستثمار بمبلغ صغير جدا",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 718,
       "at": "2026-10-11T16:03:25Z"
+    },
+    {
+      "title": "ثلاث ثوانٍ، ثمانية أضعاف",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 462,
+      "at": "2026-10-11T16:11:57Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T16:11:33Z"
+  "updated_at": "2026-10-11T16:20:33Z"
 }

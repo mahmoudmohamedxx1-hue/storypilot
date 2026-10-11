@@ -4068,14 +4068,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
+    },
+    "4543a264c66ac96149d2b190b1641b82": {
+      "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T16:20:48Z",
+      "fps": 60,
+      "dir": "ai22-4543a264",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
     }
   },
   "failed": {},
-  "ai_invented_count": 293,
+  "ai_invented_count": 294,
   "ai_titles": [
-    {
-      "title": "الخطوة الأولى: استثمار بعملة واحدة"
-    },
     {
       "title": "قوة الانضباط المالي: خطوة صغيرة تغير كل شيء"
     },
@@ -4252,6 +4261,9 @@
     },
     {
       "title": "ثلاث ثوانٍ، ثمانية أضعاف"
+    },
+    {
+      "title": "العقلية طويلة الأجل: سر كبار المستثمرين"
     }
   ]
 }
