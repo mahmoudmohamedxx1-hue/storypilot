@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الرقصة الخطيرة: سر خسارة المستثمرين في توقيت السوق",
+    "title": "المدخر الصامت: قوة الادخار التلقائي في حياتك",
     "source": "ai-invented",
-    "started_at": "2026-10-11T12:30:31Z",
-    "elapsed_sec": 692
+    "started_at": "2026-10-11T12:43:25Z",
+    "elapsed_sec": 488
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 23,
-  "videos_total": 333,
-  "ai_invented_total": 270,
+  "videos_this_run": 24,
+  "videos_total": 334,
+  "ai_invented_total": 271,
   "recent": [
-    {
-      "title": "قوة الفائدة: رحلة الأرقام",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 392,
-      "at": "2026-10-11T10:48:29Z"
-    },
     {
       "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 668,
       "at": "2026-10-11T12:29:59Z"
+    },
+    {
+      "title": "الرقصة الخطيرة: سر خسارة المستثمرين في توقيت السوق",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 712,
+      "at": "2026-10-11T12:42:22Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T12:42:03Z"
+  "updated_at": "2026-10-11T12:51:33Z"
 }

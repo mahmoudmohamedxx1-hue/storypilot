@@ -3804,14 +3804,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "مخاطر محاولة توقيت السوق ولماذا يخسر معظم الناس"
+    },
+    "35c5d03d1c5e7feb8d7bf8e537c79e3b": {
+      "title": "المدخر الصامت: قوة الادخار التلقائي في حياتك",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T12:51:47Z",
+      "fps": 60,
+      "dir": "ai25-35c5d03d",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الادخار التلقائي: ادفع لنفسك أولا"
     }
   },
   "failed": {},
-  "ai_invented_count": 271,
+  "ai_invented_count": 272,
   "ai_titles": [
-    {
-      "title": "صندوق الطوارئ: الدفعة الأولى ضد المفاجآت"
-    },
     {
       "title": "الفرق بين الأصول والالتزامات"
     },
@@ -3988,6 +3997,9 @@
     },
     {
       "title": "الرقصة الخطيرة: سر خسارة المستثمرين في توقيت السوق"
+    },
+    {
+      "title": "المدخر الصامت: قوة الادخار التلقائي في حياتك"
     }
   ]
 }
