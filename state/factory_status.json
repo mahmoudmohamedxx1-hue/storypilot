@@ -3,117 +3,26 @@
   "mode": "continuous",
   "should_continue": true,
   "run": {
-    "started_at": "2026-10-11T12:55:32Z",
-    "deadline_at": "2026-10-11T17:55:32Z",
+    "started_at": "2026-10-11T22:14:29Z",
+    "deadline_at": "2026-10-12T03:14:29Z",
     "budget_min": 300.0,
     "mode": "continuous",
     "infinite_stories": true
   },
   "current": {
-    "title": "فوضى الأرقام",
+    "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق",
     "source": "ai-invented",
-    "started_at": "2026-10-11T16:24:28Z",
-    "elapsed_sec": 755
+    "started_at": "2026-10-11T22:14:49Z",
+    "elapsed_sec": 580
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 22,
-  "videos_total": 357,
-  "ai_invented_total": 294,
-  "recent": [
-    {
-      "title": "التضخم: اللص الصامت الذي يأكل مدخراتك - الجديد",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 528,
-      "at": "2026-10-11T15:01:07Z"
-    },
-    {
-      "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 420,
-      "at": "2026-10-11T15:08:44Z"
-    },
-    {
-      "title": "صناديق المؤشرات: طريقك إلى الاستثمار السهل",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 656,
-      "at": "2026-10-11T15:20:03Z"
-    },
-    {
-      "title": "الذهب أم الأسهم؟ أين تضع أموالك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 626,
-      "at": "2026-10-11T15:31:09Z"
-    },
-    {
-      "title": "القرارات المالية: بين القسط والديون",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 399,
-      "at": "2026-10-11T15:38:43Z"
-    },
-    {
-      "title": "التنويع الاستثماري: بيض المستثمرين",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 491,
-      "at": "2026-10-11T15:47:29Z"
-    },
-    {
-      "title": "الوقت ليس في صالحك: كم مرة حاولت التنبؤ بالسوق؟",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "ai",
-      "code_by": "freellmpool:auto",
-      "seconds": 114,
-      "at": "2026-10-11T15:50:00Z"
-    },
-    {
-      "title": "الخزنة الخفية: كيف تبني ثروتك دون أن تشعر",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 718,
-      "at": "2026-10-11T16:03:25Z"
-    },
-    {
-      "title": "ثلاث ثوانٍ، ثمانية أضعاف",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 462,
-      "at": "2026-10-11T16:11:57Z"
-    },
-    {
-      "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 495,
-      "at": "2026-10-11T16:20:48Z"
-    }
-  ],
+  "videos_this_run": 0,
+  "videos_total": 358,
+  "ai_invented_total": 0,
+  "recent": [],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -123,5 +32,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T16:37:03Z"
+  "updated_at": "2026-10-11T22:24:29Z"
 }
