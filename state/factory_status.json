@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الثروة المخفية: كيف يدير الأغنياء أموالهم بذكاء",
+    "title": "البداية الصغيرة: كيف تبدأ الاستثمار بمبلغ صغير جدا",
     "source": "ai-invented",
-    "started_at": "2026-10-11T14:38:46Z",
-    "elapsed_sec": 137
+    "started_at": "2026-10-11T14:41:37Z",
+    "elapsed_sec": 596
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 10,
-  "videos_total": 345,
-  "ai_invented_total": 282,
+  "videos_this_run": 11,
+  "videos_total": 346,
+  "ai_invented_total": 283,
   "recent": [
-    {
-      "title": "قاعدة 72: سرعة مضاعفة أموالك في ثانيتين",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 658,
-      "at": "2026-10-11T13:07:46Z"
-    },
     {
       "title": "المنطق وراء النجاح: سر كبار المستثمرين",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 490,
       "at": "2026-10-11T14:38:09Z"
+    },
+    {
+      "title": "الثروة المخفية: كيف يدير الأغنياء أموالهم بذكاء",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "ai",
+      "code_by": "freellmpool:auto",
+      "seconds": 147,
+      "at": "2026-10-11T14:41:13Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T14:41:03Z"
+  "updated_at": "2026-10-11T14:51:33Z"
 }
