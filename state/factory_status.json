@@ -12,26 +12,17 @@
   "current": {
     "title": "الدخل السلبي: الحقيقة بدون مبالغة",
     "source": "ai-invented",
-    "started_at": "2026-10-11T10:18:14Z",
-    "elapsed_sec": 559
+    "started_at": "2026-10-11T10:29:00Z",
+    "elapsed_sec": 663
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 11,
-  "videos_total": 321,
-  "ai_invented_total": 258,
+  "videos_this_run": 12,
+  "videos_total": 322,
+  "ai_invented_total": 259,
   "recent": [
-    {
-      "title": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 609,
-      "at": "2026-10-11T08:22:53Z"
-    },
     {
       "title": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 464,
       "at": "2026-10-11T10:16:34Z"
+    },
+    {
+      "title": "الدخل السلبي: الحقيقة بدون مبالغة",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 568,
+      "at": "2026-10-11T10:27:43Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T10:27:33Z"
+  "updated_at": "2026-10-11T10:40:03Z"
 }

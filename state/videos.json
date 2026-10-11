@@ -3660,14 +3660,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
+    },
+    "3c15ed8396665a56ae6c748b9faf8909": {
+      "title": "الدخل السلبي: الحقيقة بدون مبالغة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T10:40:33Z",
+      "fps": 60,
+      "dir": "ai13-3c15ed83",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
     }
   },
   "failed": {},
-  "ai_invented_count": 259,
+  "ai_invented_count": 260,
   "ai_titles": [
-    {
-      "title": "الفرق بين الأصول والالتزامات: سر ثروات الأغنياء"
-    },
     {
       "title": "البدء في الاستثمار بالمبلغ الصغير"
     },
@@ -3841,6 +3850,9 @@
     },
     {
       "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
+    },
+    {
+      "title": "الدخل السلبي: الحقيقة بدون مبالغة"
     },
     {
       "title": "الدخل السلبي: الحقيقة بدون مبالغة"
