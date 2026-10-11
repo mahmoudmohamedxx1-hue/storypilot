@@ -4140,14 +4140,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
+    },
+    "af770f2f01004ea9a9420972c09c2ca7": {
+      "title": "التوافق المالي: سر التضاعيف العاصمي",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T23:05:45Z",
+      "fps": 60,
+      "dir": "ai05-af770f2f",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
     }
   },
   "failed": {},
-  "ai_invented_count": 299,
+  "ai_invented_count": 300,
   "ai_titles": [
-    {
-      "title": "الذهب أم الأسهم؟ أين تضع أموالك - المستثمر الجديد"
-    },
     {
       "title": "الديون الذكية: كيف تميز بين الفائدة والفساد المالي؟"
     },
@@ -4324,6 +4333,9 @@
     },
     {
       "title": "فخاخ العقل للمستثمر المبتدئ"
+    },
+    {
+      "title": "التوافق المالي: سر التضاعيف العاصمي"
     }
   ]
 }
