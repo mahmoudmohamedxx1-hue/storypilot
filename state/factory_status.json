@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "تجنب الفقر المالي",
+    "title": "الرقصة الخطيرة: سر خسارة المستثمرين في توقيت السوق",
     "source": "ai-invented",
-    "started_at": "2026-10-11T12:18:51Z",
-    "elapsed_sec": 642
+    "started_at": "2026-10-11T12:30:31Z",
+    "elapsed_sec": 692
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 22,
-  "videos_total": 332,
-  "ai_invented_total": 269,
+  "videos_this_run": 23,
+  "videos_total": 333,
+  "ai_invented_total": 270,
   "recent": [
-    {
-      "title": "الدخل السلبي: الحقيقة بدون مبالغة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 693,
-      "at": "2026-10-11T10:40:33Z"
-    },
     {
       "title": "قوة الفائدة: رحلة الأرقام",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 639,
       "at": "2026-10-11T12:17:26Z"
+    },
+    {
+      "title": "تجنب الفقر المالي",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 668,
+      "at": "2026-10-11T12:29:59Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T12:29:33Z"
+  "updated_at": "2026-10-11T12:42:03Z"
 }
