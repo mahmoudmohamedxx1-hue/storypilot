@@ -3684,14 +3684,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
+    },
+    "e16d50391e032193add612be15721eef": {
+      "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T11:01:45Z",
+      "fps": 60,
+      "dir": "ai15-e16d5039",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
     }
   },
   "failed": {},
-  "ai_invented_count": 261,
+  "ai_invented_count": 262,
   "ai_titles": [
-    {
-      "title": "الخيط الذهبي: كيف تنسج ثروتك يوميا"
-    },
     {
       "title": "المستقبل المالي: الذهب أم الأسهم؟"
     },
@@ -3868,6 +3877,9 @@
     },
     {
       "title": "قوة الفائدة: رحلة الأرقام"
+    },
+    {
+      "title": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
     }
   ]
 }
