@@ -10,19 +10,29 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق",
+    "title": "كيف تقرأ القوائم المالية لشركة قبل شراء سهمها",
     "source": "ai-invented",
-    "started_at": "2026-10-11T22:14:49Z",
-    "elapsed_sec": 580
+    "started_at": "2026-10-11T22:25:31Z",
+    "elapsed_sec": 508
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 0,
-  "videos_total": 358,
-  "ai_invented_total": 0,
-  "recent": [],
+  "videos_this_run": 1,
+  "videos_total": 359,
+  "ai_invented_total": 296,
+  "recent": [
+    {
+      "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 587,
+      "at": "2026-10-11T22:24:35Z"
+    }
+  ],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -32,5 +42,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T22:24:29Z"
+  "updated_at": "2026-10-11T22:33:59Z"
 }
