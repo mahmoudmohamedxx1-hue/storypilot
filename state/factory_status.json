@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "البداية الصغيرة: كيف تبدأ الاستثمار بمبلغ صغير جدا",
+    "title": "التضخم: اللص الصامت الذي يأكل مدخراتك - الجديد",
     "source": "ai-invented",
-    "started_at": "2026-10-11T14:41:37Z",
-    "elapsed_sec": 596
+    "started_at": "2026-10-11T14:52:19Z",
+    "elapsed_sec": 524
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 11,
-  "videos_total": 346,
-  "ai_invented_total": 283,
+  "videos_this_run": 12,
+  "videos_total": 347,
+  "ai_invented_total": 284,
   "recent": [
-    {
-      "title": "المنطق وراء النجاح: سر كبار المستثمرين",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 449,
-      "at": "2026-10-11T13:15:36Z"
-    },
     {
       "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "freellmpool:auto",
       "seconds": 147,
       "at": "2026-10-11T14:41:13Z"
+    },
+    {
+      "title": "البداية الصغيرة: كيف تبدأ الاستثمار بمبلغ صغير جدا",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 614,
+      "at": "2026-10-11T14:51:50Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T14:51:33Z"
+  "updated_at": "2026-10-11T15:01:03Z"
 }

@@ -3960,14 +3960,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "كيف تبدأ الاستثمار بمبلغ صغير جدا"
+    },
+    "2a52a069303e58eeea7d3fcc50fdf6fd": {
+      "title": "التضخم: اللص الصامت الذي يأكل مدخراتك - الجديد",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T15:01:07Z",
+      "fps": 60,
+      "dir": "ai13-2a52a069",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "التضخم: اللص الصامت الذي يأكل مدخراتك"
     }
   },
   "failed": {},
-  "ai_invented_count": 284,
+  "ai_invented_count": 285,
   "ai_titles": [
-    {
-      "title": "الرؤية البعيدة: كيف تبني ثروتك بحكمة"
-    },
     {
       "title": "الاستثمار في نفسك: عبور على الحدود"
     },
@@ -4144,6 +4153,9 @@
     },
     {
       "title": "البداية الصغيرة: كيف تبدأ الاستثمار بمبلغ صغير جدا"
+    },
+    {
+      "title": "التضخم: اللص الصامت الذي يأكل مدخراتك - الجديد"
     }
   ]
 }
