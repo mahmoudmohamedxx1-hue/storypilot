@@ -3900,14 +3900,23 @@
       "code_by": "freellmpool:ovh/gpt-oss-120b",
       "ai_attempts": 1,
       "topic": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
+    },
+    "00170be37328d161885f2a13e9d9989c": {
+      "title": "الخيال الرقمي: الدخل السلبي الحقيقي",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T14:19:30Z",
+      "fps": 60,
+      "dir": "ai08-00170be3",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
     }
   },
   "failed": {},
-  "ai_invented_count": 279,
+  "ai_invented_count": 280,
   "ai_titles": [
-    {
-      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع"
-    },
     {
       "title": "المستقبل بين يديك: الذهب أم الأسهم؟"
     },
@@ -4084,6 +4093,9 @@
     },
     {
       "title": "المستثمر المبتدئ: أخطاء تهدد نجاحك"
+    },
+    {
+      "title": "الخيال الرقمي: الدخل السلبي الحقيقي"
     }
   ]
 }
