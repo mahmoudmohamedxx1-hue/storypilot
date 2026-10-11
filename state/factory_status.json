@@ -1,117 +1,28 @@
 {
-  "phase": "chaining_next_run",
+  "phase": "inventing",
   "mode": "continuous",
   "should_continue": true,
   "run": {
-    "started_at": "2026-10-11T08:04:33Z",
-    "deadline_at": "2026-10-11T13:04:33Z",
+    "started_at": "2026-10-11T12:55:32Z",
+    "deadline_at": "2026-10-11T17:55:32Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true,
-    "finished_at": "2026-10-11T12:51:49Z",
-    "videos_made": 25,
-    "stop_reason": "deadline"
+    "infinite_stories": true
   },
-  "current": null,
+  "current": {
+    "title": "قاعدة 72: سرعة مضاعفة أموالك في ثانيتين",
+    "source": "ai-invented",
+    "started_at": "2026-10-11T12:56:48Z",
+    "elapsed_sec": 644
+  },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 25,
+  "videos_this_run": 0,
   "videos_total": 335,
-  "ai_invented_total": 272,
-  "recent": [
-    {
-      "title": "كيف تتحول 10 دراهم إلى ثروة؟",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 543,
-      "at": "2026-10-11T11:13:07Z"
-    },
-    {
-      "title": "البداية الصغيرة: كيف تبدأ الاستثمار بمبلغ صغير جدا",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 494,
-      "at": "2026-10-11T11:21:52Z"
-    },
-    {
-      "title": "التضخم: اللص الصامت الذي يأكل مدخراتك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 611,
-      "at": "2026-10-11T11:32:44Z"
-    },
-    {
-      "title": "الانضباط المالي: عادة صغيرة تغير حياتك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 637,
-      "at": "2026-10-11T11:44:03Z"
-    },
-    {
-      "title": "القرارات المالية الحكيمة: بين الدين النافع والضار",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 497,
-      "at": "2026-10-11T11:55:10Z"
-    },
-    {
-      "title": "الذهب أم الأسهم؟ 2: الاستثمار الذكي",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 419,
-      "at": "2026-10-11T12:03:26Z"
-    },
-    {
-      "title": "دينٌ ذكي أم دينٌ مميت؟",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 639,
-      "at": "2026-10-11T12:17:26Z"
-    },
-    {
-      "title": "تجنب الفقر المالي",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 668,
-      "at": "2026-10-11T12:29:59Z"
-    },
-    {
-      "title": "الرقصة الخطيرة: سر خسارة المستثمرين في توقيت السوق",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 712,
-      "at": "2026-10-11T12:42:22Z"
-    },
-    {
-      "title": "المدخر الصامت: قوة الادخار التلقائي في حياتك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 502,
-      "at": "2026-10-11T12:51:47Z"
-    }
-  ],
+  "ai_invented_total": 0,
+  "recent": [],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -121,5 +32,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T12:51:49Z"
+  "updated_at": "2026-10-11T13:07:32Z"
 }
