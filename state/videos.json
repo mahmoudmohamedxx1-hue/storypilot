@@ -3384,14 +3384,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الاستثمار في نفسك: أفضل عائد على الإطلاق"
+    },
+    "5b70eaa57b8ceaa412a4be112d3b6901": {
+      "title": "كشف أسرار القوائم المالية قبل شراء السهم",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T00:28:57Z",
+      "fps": 60,
+      "dir": "ai16-5b70eaa5",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "كيف تقرأ القوائم المالية لشركة قبل شراء سهمها"
     }
   },
   "failed": {},
-  "ai_invented_count": 236,
+  "ai_invented_count": 237,
   "ai_titles": [
-    {
-      "title": "التضخم: اللص الصامت الذي يأكل مدخراتك"
-    },
     {
       "title": "بدء الاستثمار بمبلغ صغير: البداية تُحدث الفرق"
     },
@@ -3568,6 +3577,9 @@
     },
     {
       "title": "مفتاح القراءة المالية"
+    },
+    {
+      "title": "كشف أسرار القوائم المالية قبل شراء السهم"
     }
   ]
 }
