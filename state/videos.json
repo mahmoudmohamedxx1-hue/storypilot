@@ -3648,14 +3648,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
+    },
+    "81979226d090ce36c23fd954aa57feec": {
+      "title": "الدخل السلبي: الحقيقة بدون مبالغة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T10:27:43Z",
+      "fps": 60,
+      "dir": "ai12-81979226",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
     }
   },
   "failed": {},
-  "ai_invented_count": 258,
+  "ai_invented_count": 259,
   "ai_titles": [
-    {
-      "title": "السر المذهل: كيف تتضاعف أموالك مع الوقت"
-    },
     {
       "title": "الفرق بين الأصول والالتزامات: سر ثروات الأغنياء"
     },
@@ -3832,6 +3841,9 @@
     },
     {
       "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
+    },
+    {
+      "title": "الدخل السلبي: الحقيقة بدون مبالغة"
     }
   ]
 }

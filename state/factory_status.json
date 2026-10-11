@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
+    "title": "الدخل السلبي: الحقيقة بدون مبالغة",
     "source": "ai-invented",
-    "started_at": "2026-10-11T10:08:51Z",
-    "elapsed_sec": 462
+    "started_at": "2026-10-11T10:18:14Z",
+    "elapsed_sec": 559
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 10,
-  "videos_total": 320,
-  "ai_invented_total": 257,
+  "videos_this_run": 11,
+  "videos_total": 321,
+  "ai_invented_total": 258,
   "recent": [
-    {
-      "title": "الذهب أم الأسهم؟ أين تضع أموالك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 409,
-      "at": "2026-10-11T08:12:04Z"
-    },
     {
       "title": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 701,
       "at": "2026-10-11T10:07:41Z"
+    },
+    {
+      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 464,
+      "at": "2026-10-11T10:16:34Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-11T10:16:33Z"
+  "updated_at": "2026-10-11T10:27:33Z"
 }
