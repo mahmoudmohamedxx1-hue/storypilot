@@ -3540,10 +3540,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟"
+    },
+    "35f61f2e9e379fea96a1ec8675f5a60e": {
+      "title": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T08:25:16Z",
+      "fps": 60,
+      "dir": "ai03-35f61f2e",
+      "source": "ai-invented",
+      "renderer": "ai",
+      "code_by": "freellmpool:auto",
+      "ai_attempts": 1,
+      "topic": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
     }
   },
   "failed": {},
-  "ai_invented_count": 249,
+  "ai_invented_count": 250,
   "ai_titles": [
     {
       "title": "الاستثمار في نفسك: أفضل عائد على الإطلاق"
@@ -3712,6 +3724,9 @@
     },
     {
       "title": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟"
+    },
+    {
+      "title": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
     }
   ]
 }
