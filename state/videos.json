@@ -3600,14 +3600,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
+    },
+    "fd31b3ab63f1c54d8065906a62820b0c": {
+      "title": "السر في الأرقام: كيف تكشف القوائم المالية الحقيقة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-11T09:46:40Z",
+      "fps": 60,
+      "dir": "ai08-fd31b3ab",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر"
     }
   },
   "failed": {},
-  "ai_invented_count": 254,
+  "ai_invented_count": 255,
   "ai_titles": [
-    {
-      "title": "الرقم الخفي: كيف تقرأ بين السطور المالية؟"
-    },
     {
       "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
     },
@@ -3784,6 +3793,9 @@
     },
     {
       "title": "ثقة المستقبل"
+    },
+    {
+      "title": "السر في الأرقام: كيف تكشف القوائم المالية الحقيقة"
     }
   ]
 }
