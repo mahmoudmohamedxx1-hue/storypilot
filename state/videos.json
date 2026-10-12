@@ -4392,14 +4392,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    "60447d75510eeddbb9d41c286b9bfc6c": {
+      "title": "قوة الزمن في الاستثمار",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-12T02:12:49Z",
+      "fps": 60,
+      "dir": "ai26-60447d75",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
     }
   },
   "failed": {},
-  "ai_invented_count": 320,
+  "ai_invented_count": 321,
   "ai_titles": [
-    {
-      "title": "ثقة المستقبل"
-    },
     {
       "title": "السر في الأرقام: كيف تكشف القوائم المالية الحقيقة"
     },
@@ -4576,6 +4585,9 @@
     },
     {
       "title": "الدخل السلبي: الحقيقة بدون مبالغة"
+    },
+    {
+      "title": "قوة الزمن في الاستثمار"
     }
   ]
 }
