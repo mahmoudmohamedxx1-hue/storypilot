@@ -4380,14 +4380,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
+    },
+    "8a3f42bf457aaec7b88d6326927b0f2b": {
+      "title": "الدخل السلبي: الحقيقة بدون مبالغة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-12T02:01:22Z",
+      "fps": 60,
+      "dir": "ai25-8a3f42bf",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الدخل السلبي: الحقيقة بدون مبالغة"
     }
   },
   "failed": {},
-  "ai_invented_count": 319,
+  "ai_invented_count": 320,
   "ai_titles": [
-    {
-      "title": "قانون 72: سر الزيادة السريعة"
-    },
     {
       "title": "ثقة المستقبل"
     },
@@ -4561,6 +4570,9 @@
     },
     {
       "title": "التقاعد المبكر: خارق الأرقام"
+    },
+    {
+      "title": "الدخل السلبي: الحقيقة بدون مبالغة"
     },
     {
       "title": "الدخل السلبي: الحقيقة بدون مبالغة"

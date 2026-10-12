@@ -12,26 +12,17 @@
   "current": {
     "title": "الدخل السلبي: الحقيقة بدون مبالغة",
     "source": "ai-invented",
-    "started_at": "2026-10-12T01:38:35Z",
-    "elapsed_sec": 685
+    "started_at": "2026-10-12T01:50:30Z",
+    "elapsed_sec": 630
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 23,
-  "videos_total": 381,
-  "ai_invented_total": 318,
+  "videos_this_run": 24,
+  "videos_total": 382,
+  "ai_invented_total": 319,
   "recent": [
-    {
-      "title": "الاقتراض الذكي: متى يصبح الدين سلاحًا؟",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 447,
-      "at": "2026-10-12T00:17:44Z"
-    },
     {
       "title": "التنويع الاستثماري: لا تضع كل البيج في سلة واحدة",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 482,
       "at": "2026-10-12T01:37:16Z"
+    },
+    {
+      "title": "الدخل السلبي: الحقيقة بدون مبالغة",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 689,
+      "at": "2026-10-12T01:50:05Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T01:50:00Z"
+  "updated_at": "2026-10-12T02:01:00Z"
 }
