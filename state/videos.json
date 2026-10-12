@@ -4404,14 +4404,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "قوة الفائدة المركبة وكيف تضاعف أموالك مع الوقت"
+    },
+    "da9b898f9d8c6ed60d67279bb01b65a3": {
+      "title": "ثروة الأصول: الفرق الذي يفرق الأغنياء",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-12T02:21:52Z",
+      "fps": 60,
+      "dir": "ai27-da9b898f",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
     }
   },
   "failed": {},
-  "ai_invented_count": 321,
+  "ai_invented_count": 322,
   "ai_titles": [
-    {
-      "title": "السر في الأرقام: كيف تكشف القوائم المالية الحقيقة"
-    },
     {
       "title": "الاستثمار في الذات: عائد لا يقارن"
     },
@@ -4588,6 +4597,9 @@
     },
     {
       "title": "قوة الزمن في الاستثمار"
+    },
+    {
+      "title": "ثروة الأصول: الفرق الذي يفرق الأغنياء"
     }
   ]
 }
