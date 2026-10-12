@@ -4356,14 +4356,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "كيف تقرأ القوائم المالية لشركة قبل شراء سهمها"
+    },
+    "41dfca1bbce7fdfd4497615d7230b714": {
+      "title": "التقاعد المبكر: خارق الأرقام",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-12T01:37:16Z",
+      "fps": 60,
+      "dir": "ai23-41dfca1b",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
     }
   },
   "failed": {},
-  "ai_invented_count": 317,
+  "ai_invented_count": 318,
   "ai_titles": [
-    {
-      "title": "الرقصة مع الشيطان: سرقة توقيت السوق"
-    },
     {
       "title": "سرعة الثروة"
     },
@@ -4540,6 +4549,9 @@
     },
     {
       "title": "كشف النوافذ المالية: قراءة القوائم قبل الشراء"
+    },
+    {
+      "title": "التقاعد المبكر: خارق الأرقام"
     }
   ]
 }
