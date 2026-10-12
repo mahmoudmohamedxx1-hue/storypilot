@@ -4284,14 +4284,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "مخاطر محاولة توقيت السوق ولماذا يخسر معظم الناس"
+    },
+    "fa894544bd0c42dc7b2c0c91c64c1fa8": {
+      "title": "الخزينة الخفية: كيف تبدأ بادخار تلقائي",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-12T00:50:36Z",
+      "fps": 60,
+      "dir": "ai17-fa894544",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الادخار التلقائي: ادفع لنفسك أولا"
     }
   },
   "failed": {},
-  "ai_invented_count": 311,
+  "ai_invented_count": 312,
   "ai_titles": [
-    {
-      "title": "التضخم: اللص الصامت الذي يأكل مدخراتك"
-    },
     {
       "title": "التضخم: اللص الصامت الذهبي"
     },
@@ -4468,6 +4477,9 @@
     },
     {
       "title": "ادفع لنفسك أولا"
+    },
+    {
+      "title": "الخزينة الخفية: كيف تبدأ بادخار تلقائي"
     }
   ]
 }
