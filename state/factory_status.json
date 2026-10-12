@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "نظرة الأفق: سر المستثمرين المستقبليين",
+    "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر",
     "source": "ai-invented",
-    "started_at": "2026-10-12T01:02:32Z",
-    "elapsed_sec": 148
+    "started_at": "2026-10-12T01:05:54Z",
+    "elapsed_sec": 426
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 18,
-  "videos_total": 376,
-  "ai_invented_total": 313,
+  "videos_this_run": 19,
+  "videos_total": 377,
+  "ai_invented_total": 314,
   "recent": [
-    {
-      "title": "البداية الصغيرة: كيف تبدأ الاستثمار بمبلغ صغير جدا",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 340,
-      "at": "2026-10-11T23:34:59Z"
-    },
     {
       "title": "الطائر الجاف: كيف يسرق التضخم أموالك؟",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 494,
       "at": "2026-10-12T01:00:02Z"
+    },
+    {
+      "title": "نظرة الأفق: سر المستثمرين المستقبليين",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "ai",
+      "code_by": "freellmpool:auto",
+      "seconds": 172,
+      "at": "2026-10-12T01:05:24Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T01:05:00Z"
+  "updated_at": "2026-10-12T01:13:00Z"
 }
