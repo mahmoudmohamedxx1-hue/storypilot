@@ -1,117 +1,28 @@
 {
-  "phase": "chaining_next_run",
+  "phase": "inventing",
   "mode": "continuous",
   "should_continue": true,
   "run": {
-    "started_at": "2026-10-11T22:14:29Z",
-    "deadline_at": "2026-10-12T03:14:29Z",
+    "started_at": "2026-10-12T03:11:53Z",
+    "deadline_at": "2026-10-12T08:11:53Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true,
-    "finished_at": "2026-10-12T03:08:15Z",
-    "videos_made": 31,
-    "stop_reason": "deadline"
+    "infinite_stories": true
   },
-  "current": null,
+  "current": {
+    "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
+    "source": "ai-invented",
+    "started_at": "2026-10-12T03:12:30Z",
+    "elapsed_sec": 413
+  },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 31,
+  "videos_this_run": 0,
   "videos_total": 389,
-  "ai_invented_total": 326,
-  "recent": [
-    {
-      "title": "كشف النوافذ المالية: قراءة القوائم قبل الشراء",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 474,
-      "at": "2026-10-12T01:28:40Z"
-    },
-    {
-      "title": "التقاعد المبكر: خارق الأرقام",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 482,
-      "at": "2026-10-12T01:37:16Z"
-    },
-    {
-      "title": "الدخل السلبي: الحقيقة بدون مبالغة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 689,
-      "at": "2026-10-12T01:50:05Z"
-    },
-    {
-      "title": "الدخل السلبي: الحقيقة بدون مبالغة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 653,
-      "at": "2026-10-12T02:01:22Z"
-    },
-    {
-      "title": "قوة الزمن في الاستثمار",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 618,
-      "at": "2026-10-12T02:12:49Z"
-    },
-    {
-      "title": "ثروة الأصول: الفرق الذي يفرق الأغنياء",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 295,
-      "at": "2026-10-12T02:21:52Z"
-    },
-    {
-      "title": "البداية الصغيرة: كيف تبدأ الاستثمار بمبلغ صغير جدا",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 507,
-      "at": "2026-10-12T02:30:55Z"
-    },
-    {
-      "title": "أحجار الأساس: كيف تبدأ الاستثمار بمبلغ صغير جدا",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 704,
-      "at": "2026-10-12T02:43:15Z"
-    },
-    {
-      "title": "لماذا يختفي المال من جيبك دون أن تشعر؟",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 582,
-      "at": "2026-10-12T02:53:37Z"
-    },
-    {
-      "title": "مِسْكِرَةٌ صغيرة، ثروةٌ كبيرة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 691,
-      "at": "2026-10-12T03:08:14Z"
-    }
-  ],
+  "ai_invented_total": 0,
+  "recent": [],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -121,5 +32,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T03:08:15Z"
+  "updated_at": "2026-10-12T03:19:23Z"
 }
