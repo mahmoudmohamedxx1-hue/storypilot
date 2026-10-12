@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "لماذا يختفي المال من جيبك دون أن تشعر؟",
+    "title": "مِسْكِرَةٌ صغيرة، ثروةٌ كبيرة",
     "source": "ai-invented",
-    "started_at": "2026-10-12T02:43:55Z",
-    "elapsed_sec": 575
+    "started_at": "2026-10-12T02:56:43Z",
+    "elapsed_sec": 677
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 29,
-  "videos_total": 387,
-  "ai_invented_total": 324,
+  "videos_this_run": 30,
+  "videos_total": 388,
+  "ai_invented_total": 325,
   "recent": [
-    {
-      "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 449,
-      "at": "2026-10-12T01:13:24Z"
-    },
     {
       "title": "الاستثمار في المعرفة: مفتاح الثروة الماغنة",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 704,
       "at": "2026-10-12T02:43:15Z"
+    },
+    {
+      "title": "لماذا يختفي المال من جيبك دون أن تشعر؟",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 582,
+      "at": "2026-10-12T02:53:37Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T02:53:30Z"
+  "updated_at": "2026-10-12T03:08:00Z"
 }

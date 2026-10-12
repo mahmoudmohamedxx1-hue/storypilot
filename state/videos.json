@@ -4452,14 +4452,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التضخم: اللص الصامت الذي يأكل مدخراتك"
+    },
+    "e5e221823e159c84a9d1f91ac8cfd684": {
+      "title": "مِسْكِرَةٌ صغيرة، ثروةٌ كبيرة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-12T03:08:14Z",
+      "fps": 60,
+      "dir": "ai31-e5e22182",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الانضباط المالي: عادة صغيرة تغير حياتك"
     }
   },
   "failed": {},
-  "ai_invented_count": 325,
+  "ai_invented_count": 326,
   "ai_titles": [
-    {
-      "title": "الدخل السلبي: الحقيقة بدون مبالغة"
-    },
     {
       "title": "قوة الفائدة: رحلة الأرقام"
     },
@@ -4636,6 +4645,9 @@
     },
     {
       "title": "لماذا يختفي المال من جيبك دون أن تشعر؟"
+    },
+    {
+      "title": "مِسْكِرَةٌ صغيرة، ثروةٌ كبيرة"
     }
   ]
 }
