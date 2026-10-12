@@ -1,5 +1,5 @@
 {
-  "phase": "inventing",
+  "phase": "chaining_next_run",
   "mode": "continuous",
   "should_continue": true,
   "run": {
@@ -7,31 +7,20 @@
     "deadline_at": "2026-10-12T03:14:29Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true
+    "infinite_stories": true,
+    "finished_at": "2026-10-12T03:08:15Z",
+    "videos_made": 31,
+    "stop_reason": "deadline"
   },
-  "current": {
-    "title": "مِسْكِرَةٌ صغيرة، ثروةٌ كبيرة",
-    "source": "ai-invented",
-    "started_at": "2026-10-12T02:56:43Z",
-    "elapsed_sec": 677
-  },
+  "current": null,
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 30,
-  "videos_total": 388,
-  "ai_invented_total": 325,
+  "videos_this_run": 31,
+  "videos_total": 389,
+  "ai_invented_total": 326,
   "recent": [
-    {
-      "title": "الاستثمار في المعرفة: مفتاح الثروة الماغنة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 355,
-      "at": "2026-10-12T01:19:54Z"
-    },
     {
       "title": "كشف النوافذ المالية: قراءة القوائم قبل الشراء",
       "source": "ai-invented",
@@ -112,6 +101,15 @@
       "code_by": "generate_video.py",
       "seconds": 582,
       "at": "2026-10-12T02:53:37Z"
+    },
+    {
+      "title": "مِسْكِرَةٌ صغيرة، ثروةٌ كبيرة",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 691,
+      "at": "2026-10-12T03:08:14Z"
     }
   ],
   "drive": {
@@ -123,5 +121,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T03:08:00Z"
+  "updated_at": "2026-10-12T03:08:15Z"
 }
