@@ -4368,14 +4368,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية"
+    },
+    "1a3d88db99485ed4bf82c9f4fb776e9c": {
+      "title": "الدخل السلبي: الحقيقة بدون مبالغة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-12T01:50:05Z",
+      "fps": 60,
+      "dir": "ai24-1a3d88db",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "أخطاء نفسية يقع فيها كل مستثمر مبتدئ"
     }
   },
   "failed": {},
-  "ai_invented_count": 318,
+  "ai_invented_count": 319,
   "ai_titles": [
-    {
-      "title": "سرعة الثروة"
-    },
     {
       "title": "قانون 72: سر الزيادة السريعة"
     },
@@ -4552,6 +4561,9 @@
     },
     {
       "title": "التقاعد المبكر: خارق الأرقام"
+    },
+    {
+      "title": "الدخل السلبي: الحقيقة بدون مبالغة"
     }
   ]
 }
