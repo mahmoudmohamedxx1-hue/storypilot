@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الذهب أم الأسهم؟ أين تضع أموالك",
+    "title": "الذهب أم الأسهم؟ رحلة الاستثمار بين الماضي والحاضر",
     "source": "ai-invented",
-    "started_at": "2026-10-12T22:42:35Z",
-    "elapsed_sec": 588
+    "started_at": "2026-10-12T22:53:44Z",
+    "elapsed_sec": 489
   },
   "queue": {
     "pending": 0,
@@ -22,7 +22,15 @@
   "videos_this_run": 0,
   "videos_total": 390,
   "ai_invented_total": 0,
-  "recent": [],
+  "recent": [
+    {
+      "title": "الذهب أم الأسهم؟ أين تضع أموالك",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2686/2694 [02:52<00:00, 24.08it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-12T22:52:52Z"
+    }
+  ],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -32,5 +40,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T22:52:23Z"
+  "updated_at": "2026-10-12T23:01:53Z"
 }
