@@ -12,8 +12,8 @@
   "current": {
     "title": "القرن المالي: الدين الجيد مقابل السيئ",
     "source": "ai-invented",
-    "started_at": "2026-10-12T21:54:53Z",
-    "elapsed_sec": 661
+    "started_at": "2026-10-12T22:21:18Z",
+    "elapsed_sec": 456
   },
   "queue": {
     "pending": 0,
@@ -23,13 +23,6 @@
   "videos_total": 390,
   "ai_invented_total": 327,
   "recent": [
-    {
-      "title": "صناديق المؤشرات: سر الاستثمار الذكي",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2284/2289 [03:03<00:00, 15.81it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-12T20:16:17Z"
-    },
     {
       "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع - المستثمر المبتدئ والتنويع",
       "source": "ai-invented",
@@ -94,6 +87,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2992/2997 [04:03<00:00, 16.88it/s, now=None]\nframe_index: 10",
       "at": "2026-10-12T21:40:57Z"
+    },
+    {
+      "title": "القرن المالي: الدين الجيد مقابل السيئ",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2594/2598 [03:33<00:00, 16.62it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-12T22:06:16Z"
     }
   ],
   "drive": {
@@ -105,5 +105,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T22:05:54Z"
+  "updated_at": "2026-10-12T22:28:54Z"
 }
