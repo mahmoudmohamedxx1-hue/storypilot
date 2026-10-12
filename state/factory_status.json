@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر",
+    "title": "الاستثمار في المعرفة: مفتاح الثروة الماغنة",
     "source": "ai-invented",
-    "started_at": "2026-10-12T01:05:54Z",
-    "elapsed_sec": 426
+    "started_at": "2026-10-12T01:14:00Z",
+    "elapsed_sec": 330
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 19,
-  "videos_total": 377,
-  "ai_invented_total": 314,
+  "videos_this_run": 20,
+  "videos_total": 378,
+  "ai_invented_total": 315,
   "recent": [
-    {
-      "title": "الطائر الجاف: كيف يسرق التضخم أموالك؟",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 781,
-      "at": "2026-10-11T23:50:58Z"
-    },
     {
       "title": "العادة الذهبية: سر الإنضباط المالي",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "freellmpool:auto",
       "seconds": 172,
       "at": "2026-10-12T01:05:24Z"
+    },
+    {
+      "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 449,
+      "at": "2026-10-12T01:13:24Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T01:13:00Z"
+  "updated_at": "2026-10-12T01:19:30Z"
 }
