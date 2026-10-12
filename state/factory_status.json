@@ -1,18 +1,20 @@
 {
-  "phase": "chaining_next_run",
+  "phase": "inventing",
   "mode": "continuous",
   "should_continue": true,
   "run": {
-    "started_at": "2026-10-12T13:02:40Z",
-    "deadline_at": "2026-10-12T18:02:40Z",
+    "started_at": "2026-10-12T17:52:54Z",
+    "deadline_at": "2026-10-12T22:52:54Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true,
-    "finished_at": "2026-10-12T17:49:08Z",
-    "videos_made": 0,
-    "stop_reason": "deadline"
+    "infinite_stories": true
   },
-  "current": null,
+  "current": {
+    "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
+    "source": "ai-invented",
+    "started_at": "2026-10-12T17:53:05Z",
+    "elapsed_sec": 469
+  },
   "queue": {
     "pending": 0,
     "total": 61
@@ -20,78 +22,7 @@
   "videos_this_run": 0,
   "videos_total": 389,
   "ai_invented_total": 0,
-  "recent": [
-    {
-      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2497/2502 [03:26<00:00, 15.80it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-12T15:48:43Z"
-    },
-    {
-      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1705/1710 [02:15<00:00, 16.47it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-12T15:55:26Z"
-    },
-    {
-      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع - المستثمر المبتدئ والتنويع",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2162/2166 [02:51<00:00, 17.39it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-12T16:04:04Z"
-    },
-    {
-      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2135/2139 [02:58<00:00, 16.74it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-12T16:12:38Z"
-    },
-    {
-      "title": "ذهب أم أسهم؟",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2522/2526 [03:29<00:00, 17.08it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-12T16:27:42Z"
-    },
-    {
-      "title": "صيد الذهب: كيف تختار صندوق المؤشرات؟",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2509/2514 [03:21<00:00, 16.91it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-12T16:39:44Z"
-    },
-    {
-      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1410/1415 [01:46<00:00, 16.91it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-12T16:48:30Z"
-    },
-    {
-      "title": "صيد الذهب: كيف تختار صندوق المؤشرات؟",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2510/2514 [03:24<00:00, 16.11it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-12T17:00:02Z"
-    },
-    {
-      "title": "صيد الذهب: كيف تختار صندوق المؤشرات؟",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2510/2514 [03:21<00:00, 16.53it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-12T17:10:30Z"
-    },
-    {
-      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2758/2763 [03:44<00:00, 17.12it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-12T17:19:18Z"
-    }
-  ],
+  "recent": [],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -101,5 +32,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T17:49:08Z"
+  "updated_at": "2026-10-12T18:00:54Z"
 }
