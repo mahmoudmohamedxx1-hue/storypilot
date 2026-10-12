@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "مستقبلك في صندوق المؤشرات: استثمار سهل للمبتدئين",
+    "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
     "source": "ai-invented",
-    "started_at": "2026-10-12T04:30:48Z",
-    "elapsed_sec": 575
+    "started_at": "2026-10-12T04:41:16Z",
+    "elapsed_sec": 517
   },
   "queue": {
     "pending": 0,
@@ -85,6 +85,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2174/2178 [02:54<00:00, 17.09it/s, now=None]\nframe_index: 10",
       "at": "2026-10-12T04:27:42Z"
+    },
+    {
+      "title": "مستقبلك في صندوق المؤشرات: استثمار سهل للمبتدئين",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2678/2682 [03:40<00:00, 16.89it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-12T04:40:39Z"
     }
   ],
   "drive": {
@@ -96,5 +103,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T04:40:23Z"
+  "updated_at": "2026-10-12T04:49:53Z"
 }
