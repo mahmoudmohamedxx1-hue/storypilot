@@ -12,8 +12,8 @@
   "current": {
     "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
     "source": "ai-invented",
-    "started_at": "2026-10-12T14:55:33Z",
-    "elapsed_sec": 457
+    "started_at": "2026-10-12T15:04:16Z",
+    "elapsed_sec": 384
   },
   "queue": {
     "pending": 0,
@@ -23,13 +23,6 @@
   "videos_total": 389,
   "ai_invented_total": 0,
   "recent": [
-    {
-      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2083/2088 [02:44<00:00, 16.31it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-12T13:19:54Z"
-    },
     {
       "title": "ذهب أم أسهم؟",
       "source": "ai-invented",
@@ -92,6 +85,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2114/2118 [02:43<00:00, 17.12it/s, now=None]\nframe_index: 10",
       "at": "2026-10-12T14:54:54Z"
+    },
+    {
+      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2072/2076 [02:47<00:00, 17.06it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-12T15:03:34Z"
     }
   ],
   "drive": {
@@ -103,5 +103,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T15:03:10Z"
+  "updated_at": "2026-10-12T15:10:40Z"
 }
