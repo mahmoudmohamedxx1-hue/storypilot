@@ -4296,14 +4296,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الادخار التلقائي: ادفع لنفسك أولا"
+    },
+    "edd38c1273306a0e0017a80b6edcc97b": {
+      "title": "سر الزمن المالي: قاعدة 72 في عالم الاستثمار",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-12T01:00:02Z",
+      "fps": 60,
+      "dir": "ai18-edd38c12",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
     }
   },
   "failed": {},
-  "ai_invented_count": 312,
+  "ai_invented_count": 313,
   "ai_titles": [
-    {
-      "title": "التضخم: اللص الصامت الذهبي"
-    },
     {
       "title": "الاستثمار الذكي: كيف تحقق أرباحًا مع صناديق المؤشرات"
     },
@@ -4480,6 +4489,9 @@
     },
     {
       "title": "الخزينة الخفية: كيف تبدأ بادخار تلقائي"
+    },
+    {
+      "title": "سر الزمن المالي: قاعدة 72 في عالم الاستثمار"
     }
   ]
 }
