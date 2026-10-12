@@ -12,8 +12,8 @@
   "current": {
     "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
     "source": "ai-invented",
-    "started_at": "2026-10-12T15:28:14Z",
-    "elapsed_sec": 507
+    "started_at": "2026-10-12T15:38:47Z",
+    "elapsed_sec": 594
   },
   "queue": {
     "pending": 0,
@@ -23,13 +23,6 @@
   "videos_total": 389,
   "ai_invented_total": 0,
   "recent": [
-    {
-      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2296/2301 [03:06<00:00, 16.85it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-12T14:14:07Z"
-    },
     {
       "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
       "source": "ai-invented",
@@ -92,6 +85,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1432/1437 [01:48<00:00, 16.80it/s, now=None]\nframe_index: 10",
       "at": "2026-10-12T15:27:51Z"
+    },
+    {
+      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2335/2340 [03:09<00:00, 16.94it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-12T15:37:10Z"
     }
   ],
   "drive": {
@@ -103,5 +103,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T15:36:41Z"
+  "updated_at": "2026-10-12T15:48:41Z"
 }
