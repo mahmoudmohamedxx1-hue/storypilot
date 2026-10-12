@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الذهب أم الأسهم؟ أين تضع أموالك",
+    "title": "الاقتراض الذكي: متى يصبح الدين سلاحًا؟",
     "source": "ai-invented",
-    "started_at": "2026-10-12T00:04:34Z",
-    "elapsed_sec": 296
+    "started_at": "2026-10-12T00:10:17Z",
+    "elapsed_sec": 433
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 12,
-  "videos_total": 370,
-  "ai_invented_total": 307,
+  "videos_this_run": 13,
+  "videos_total": 371,
+  "ai_invented_total": 308,
   "recent": [
-    {
-      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 498,
-      "at": "2026-10-11T22:42:45Z"
-    },
     {
       "title": "فخاخ العقل للمستثمر المبتدئ",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "freellmpool:auto",
       "seconds": 167,
       "at": "2026-10-12T00:04:02Z"
+    },
+    {
+      "title": "الذهب أم الأسهم؟ أين تضع أموالك",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 317,
+      "at": "2026-10-12T00:09:50Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T00:09:30Z"
+  "updated_at": "2026-10-12T00:17:30Z"
 }
