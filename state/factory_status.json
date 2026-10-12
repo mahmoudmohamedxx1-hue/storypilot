@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع - المستثمر المبتدئ والتنويع",
+    "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
     "source": "ai-invented",
-    "started_at": "2026-10-12T20:36:48Z",
-    "elapsed_sec": 306
+    "started_at": "2026-10-12T20:42:25Z",
+    "elapsed_sec": 419
   },
   "queue": {
     "pending": 0,
@@ -23,13 +23,6 @@
   "videos_total": 389,
   "ai_invented_total": 0,
   "recent": [
-    {
-      "title": "الذهب أم الأسهم؟ أين تضع أموالك - التنويع الاستثماري",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1432/1437 [01:51<00:00, 15.65it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-12T19:05:24Z"
-    },
     {
       "title": "صناديق المؤشرات: سر الاستثمار الذكي",
       "source": "ai-invented",
@@ -92,6 +85,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2285/2289 [03:02<00:00, 16.78it/s, now=None]\nframe_index: 10",
       "at": "2026-10-12T20:36:08Z"
+    },
+    {
+      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع - المستثمر المبتدئ والتنويع",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1433/1437 [01:47<00:00, 16.49it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-12T20:42:00Z"
     }
   ],
   "drive": {
@@ -103,5 +103,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T20:41:54Z"
+  "updated_at": "2026-10-12T20:49:24Z"
 }
