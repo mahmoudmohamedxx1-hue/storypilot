@@ -4416,14 +4416,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "صندوق الطوارئ: درعك المالي الأول ضد المفاجآت"
+    },
+    "8159aba75be19af5d3ef3dc156b33177": {
+      "title": "البداية الصغيرة: كيف تبدأ الاستثمار بمبلغ صغير جدا",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-12T02:30:55Z",
+      "fps": 60,
+      "dir": "ai28-8159aba7",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الفرق بين الأصول والالتزامات ولماذا يفرق الأغنياء"
     }
   },
   "failed": {},
-  "ai_invented_count": 322,
+  "ai_invented_count": 323,
   "ai_titles": [
-    {
-      "title": "الاستثمار في الذات: عائد لا يقارن"
-    },
     {
       "title": "النار التي تحرك التقاعد المبكر"
     },
@@ -4600,6 +4609,9 @@
     },
     {
       "title": "ثروة الأصول: الفرق الذي يفرق الأغنياء"
+    },
+    {
+      "title": "البداية الصغيرة: كيف تبدأ الاستثمار بمبلغ صغير جدا"
     }
   ]
 }

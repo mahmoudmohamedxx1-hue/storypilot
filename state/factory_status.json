@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "ثروة الأصول: الفرق الذي يفرق الأغنياء",
+    "title": "البداية الصغيرة: كيف تبدأ الاستثمار بمبلغ صغير جدا",
     "source": "ai-invented",
-    "started_at": "2026-10-12T02:16:57Z",
-    "elapsed_sec": 273
+    "started_at": "2026-10-12T02:22:28Z",
+    "elapsed_sec": 482
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 26,
-  "videos_total": 384,
-  "ai_invented_total": 321,
+  "videos_this_run": 27,
+  "videos_total": 385,
+  "ai_invented_total": 322,
   "recent": [
-    {
-      "title": "الخزينة الخفية: كيف تبدأ بادخار تلقائي",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 708,
-      "at": "2026-10-12T00:50:36Z"
-    },
     {
       "title": "سر الزمن المالي: قاعدة 72 في عالم الاستثمار",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 618,
       "at": "2026-10-12T02:12:49Z"
+    },
+    {
+      "title": "ثروة الأصول: الفرق الذي يفرق الأغنياء",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 295,
+      "at": "2026-10-12T02:21:52Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T02:21:30Z"
+  "updated_at": "2026-10-12T02:30:30Z"
 }
