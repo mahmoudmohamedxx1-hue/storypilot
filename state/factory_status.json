@@ -10,28 +10,19 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الاستثمار في المعرفة: مفتاح الثروة الماغنة",
+    "title": "كشف النوافذ المالية: قراءة القوائم قبل الشراء",
     "source": "ai-invented",
-    "started_at": "2026-10-12T01:14:00Z",
-    "elapsed_sec": 330
+    "started_at": "2026-10-12T01:20:46Z",
+    "elapsed_sec": 464
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 20,
-  "videos_total": 378,
-  "ai_invented_total": 315,
+  "videos_this_run": 21,
+  "videos_total": 379,
+  "ai_invented_total": 316,
   "recent": [
-    {
-      "title": "العادة الذهبية: سر الإنضباط المالي",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 513,
-      "at": "2026-10-12T00:00:02Z"
-    },
     {
       "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
       "source": "ai-invented",
@@ -112,6 +103,15 @@
       "code_by": "generate_video.py",
       "seconds": 449,
       "at": "2026-10-12T01:13:24Z"
+    },
+    {
+      "title": "الاستثمار في المعرفة: مفتاح الثروة الماغنة",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 355,
+      "at": "2026-10-12T01:19:54Z"
     }
   ],
   "drive": {
@@ -123,5 +123,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T01:19:30Z"
+  "updated_at": "2026-10-12T01:28:30Z"
 }
