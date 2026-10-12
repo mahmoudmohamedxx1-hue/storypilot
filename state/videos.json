@@ -4272,14 +4272,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
+    },
+    "3662d95f0a0192f534046854bac3637c": {
+      "title": "ادفع لنفسك أولا",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-12T00:37:50Z",
+      "fps": 60,
+      "dir": "ai16-3662d95f",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "مخاطر محاولة توقيت السوق ولماذا يخسر معظم الناس"
     }
   },
   "failed": {},
-  "ai_invented_count": 310,
+  "ai_invented_count": 311,
   "ai_titles": [
-    {
-      "title": "كيف يفكر الأغنياء في الأصول والالتزامات؟"
-    },
     {
       "title": "التضخم: اللص الصامت الذي يأكل مدخراتك"
     },
@@ -4456,6 +4465,9 @@
     },
     {
       "title": "التنويع الاستثماري: لا تضع كل البيج في سلة واحدة"
+    },
+    {
+      "title": "ادفع لنفسك أولا"
     }
   ]
 }
