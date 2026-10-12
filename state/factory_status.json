@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الذهب أم الأسهم؟ أين تضع أموالك",
+    "title": "الذهب أم الأسهم؟ أين تضع أموالك - التنويع الاستثماري",
     "source": "ai-invented",
-    "started_at": "2026-10-12T18:38:59Z",
-    "elapsed_sec": 745
+    "started_at": "2026-10-12T18:56:13Z",
+    "elapsed_sec": 551
   },
   "queue": {
     "pending": 0,
@@ -43,6 +43,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2510/2514 [03:24<00:00, 16.63it/s, now=None]\nframe_index: 10",
       "at": "2026-10-12T18:34:48Z"
+    },
+    {
+      "title": "الذهب أم الأسهم؟ أين تضع أموالك",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1945/1950 [02:35<00:00, 16.11it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-12T18:51:38Z"
     }
   ],
   "drive": {
@@ -54,5 +61,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T18:51:24Z"
+  "updated_at": "2026-10-12T19:05:24Z"
 }
