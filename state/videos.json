@@ -4308,14 +4308,23 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين"
+    },
+    "5aa2d09b9e290c08e1af0fc3feb0274e": {
+      "title": "نظرة الأفق: سر المستثمرين المستقبليين",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-12T01:05:24Z",
+      "fps": 60,
+      "dir": "ai19-5aa2d09b",
+      "source": "ai-invented",
+      "renderer": "ai",
+      "code_by": "freellmpool:auto",
+      "ai_attempts": 2,
+      "topic": "العقلية طويلة الأجل: سر كبار المستثمرين"
     }
   },
   "failed": {},
-  "ai_invented_count": 313,
+  "ai_invented_count": 314,
   "ai_titles": [
-    {
-      "title": "الاستثمار الذكي: كيف تحقق أرباحًا مع صناديق المؤشرات"
-    },
     {
       "title": "الذهب أم الأسهم؟ أين تضع أموالك"
     },
@@ -4492,6 +4501,9 @@
     },
     {
       "title": "سر الزمن المالي: قاعدة 72 في عالم الاستثمار"
+    },
+    {
+      "title": "نظرة الأفق: سر المستثمرين المستقبليين"
     }
   ]
 }
