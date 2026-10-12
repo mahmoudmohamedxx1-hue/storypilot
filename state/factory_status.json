@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الذهب أم الأسهم",
+    "title": "القرن المالي: الدين الجيد مقابل السيئ",
     "source": "ai-invented",
-    "started_at": "2026-10-12T21:29:42Z",
-    "elapsed_sec": 672
+    "started_at": "2026-10-12T21:54:53Z",
+    "elapsed_sec": 661
   },
   "queue": {
     "pending": 0,
@@ -23,13 +23,6 @@
   "videos_total": 390,
   "ai_invented_total": 327,
   "recent": [
-    {
-      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1741/1746 [02:16<00:00, 17.43it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-12T20:06:03Z"
-    },
     {
       "title": "صناديق المؤشرات: سر الاستثمار الذكي",
       "source": "ai-invented",
@@ -94,6 +87,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1043/1047 [01:14<00:00, 17.19it/s, now=None]\nframe_index: 10",
       "at": "2026-10-12T21:29:08Z"
+    },
+    {
+      "title": "الذهب أم الأسهم",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2992/2997 [04:03<00:00, 16.88it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-12T21:40:57Z"
     }
   ],
   "drive": {
@@ -105,5 +105,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T21:40:54Z"
+  "updated_at": "2026-10-12T22:05:54Z"
 }
