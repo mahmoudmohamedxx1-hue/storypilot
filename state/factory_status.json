@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "صيد الذهب: كيف تختار صندوق المؤشرات؟",
+    "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
     "source": "ai-invented",
-    "started_at": "2026-10-12T13:55:27Z",
-    "elapsed_sec": 433
+    "started_at": "2026-10-12T14:04:13Z",
+    "elapsed_sec": 567
   },
   "queue": {
     "pending": 0,
@@ -50,6 +50,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2510/2514 [03:29<00:00, 16.38it/s, now=None]\nframe_index: 10",
       "at": "2026-10-12T13:52:01Z"
+    },
+    {
+      "title": "صيد الذهب: كيف تختار صندوق المؤشرات؟",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2510/2514 [03:30<00:00, 16.40it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-12T14:02:55Z"
     }
   ],
   "drive": {
@@ -61,5 +68,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T14:02:40Z"
+  "updated_at": "2026-10-12T14:13:40Z"
 }
