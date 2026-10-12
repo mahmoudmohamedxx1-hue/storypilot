@@ -12,8 +12,8 @@
   "current": {
     "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
     "source": "ai-invented",
-    "started_at": "2026-10-12T03:12:30Z",
-    "elapsed_sec": 413
+    "started_at": "2026-10-12T03:19:32Z",
+    "elapsed_sec": 411
   },
   "queue": {
     "pending": 0,
@@ -22,7 +22,15 @@
   "videos_this_run": 0,
   "videos_total": 389,
   "ai_invented_total": 0,
-  "recent": [],
+  "recent": [
+    {
+      "title": "صناديق المؤشرات للمبتدئين: الاستثمار بدون صداع",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2378/2382 [03:09<00:00, 17.05it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-12T03:19:25Z"
+    }
+  ],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -32,5 +40,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T03:19:23Z"
+  "updated_at": "2026-10-12T03:26:23Z"
 }
