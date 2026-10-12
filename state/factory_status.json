@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "صيد الذهب: كيف تختار صندوق المؤشرات؟",
+    "title": "الذهب أم الأسهم؟ أين تضع أموالك",
     "source": "ai-invented",
-    "started_at": "2026-10-12T18:22:06Z",
-    "elapsed_sec": 738
+    "started_at": "2026-10-12T18:38:59Z",
+    "elapsed_sec": 745
   },
   "queue": {
     "pending": 0,
@@ -36,6 +36,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2533/2538 [03:29<00:00, 16.61it/s, now=None]\nframe_index: 10",
       "at": "2026-10-12T18:18:52Z"
+    },
+    {
+      "title": "صيد الذهب: كيف تختار صندوق المؤشرات؟",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2510/2514 [03:24<00:00, 16.63it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-12T18:34:48Z"
     }
   ],
   "drive": {
@@ -47,5 +54,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-12T18:34:24Z"
+  "updated_at": "2026-10-12T18:51:24Z"
 }
