@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الذهب أم الأسهم",
+    "title": "الذهب أم الأسهم؟ أين تضع أموالك - المستثمر الجديد",
     "source": "ai-invented",
-    "started_at": "2026-10-13T02:05:22Z",
-    "elapsed_sec": 572
+    "started_at": "2026-10-13T02:15:57Z",
+    "elapsed_sec": 297
   },
   "queue": {
     "pending": 0,
@@ -23,13 +23,6 @@
   "videos_total": 390,
   "ai_invented_total": 0,
   "recent": [
-    {
-      "title": "الذهب أم الأسهم؟ أين تضع أموالك",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1685/1692 [01:40<00:00, 25.09it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T00:50:59Z"
-    },
     {
       "title": "ميزان الثروة",
       "source": "ai-invented",
@@ -92,6 +85,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1856/1863 [01:54<00:00, 25.61it/s, now=None]\nframe_index: 10",
       "at": "2026-10-13T02:04:27Z"
+    },
+    {
+      "title": "الذهب أم الأسهم",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2938/2946 [03:09<00:00, 23.27it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-13T02:14:59Z"
     }
   ],
   "drive": {
@@ -103,5 +103,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T02:14:54Z"
+  "updated_at": "2026-10-13T02:20:54Z"
 }
