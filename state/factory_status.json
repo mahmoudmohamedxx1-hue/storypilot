@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة",
+    "title": "الثمار المتعددة",
     "source": "ai-invented",
-    "started_at": "2026-10-13T17:58:11Z",
-    "elapsed_sec": 449
+    "started_at": "2026-10-13T18:08:20Z",
+    "elapsed_sec": 650
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 1,
-  "videos_total": 391,
-  "ai_invented_total": 328,
+  "videos_this_run": 2,
+  "videos_total": 392,
+  "ai_invented_total": 329,
   "recent": [
     {
       "title": "الذهب أم الأسهم؟ أين تضع أموالك",
@@ -31,6 +31,15 @@
       "code_by": "generate_video.py",
       "seconds": 498,
       "at": "2026-10-13T17:54:44Z"
+    },
+    {
+      "title": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 475,
+      "at": "2026-10-13T18:06:06Z"
     }
   ],
   "drive": {
@@ -42,5 +51,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T18:05:40Z"
+  "updated_at": "2026-10-13T18:19:10Z"
 }
