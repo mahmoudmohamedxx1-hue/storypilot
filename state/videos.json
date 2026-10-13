@@ -4488,10 +4488,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "الذهب أم الأسهم؟ أين تضع أموالك"
+    },
+    "f8ab0ef9a19c54dab647f26034ee8e16": {
+      "title": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-13T18:06:06Z",
+      "fps": 60,
+      "dir": "ai02-f8ab0ef9",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "الدين الجيد والدين السيئ: متى الاقتراض ذكي؟"
     }
   },
   "failed": {},
-  "ai_invented_count": 328,
+  "ai_invented_count": 329,
   "ai_titles": [
     {
       "title": "قوة الفائدة: رحلة الأرقام"
@@ -4663,6 +4675,9 @@
     },
     {
       "title": "الذهب أم الأسهم؟ أين تضع أموالك"
+    },
+    {
+      "title": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
     }
   ]
 }
