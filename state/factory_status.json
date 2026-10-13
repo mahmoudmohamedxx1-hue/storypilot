@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الدين الجيد والدين السيئ",
+    "title": "ذهب أم الأسهم؟ أين تضع أموالك",
     "source": "ai-invented",
-    "started_at": "2026-10-13T08:42:37Z",
-    "elapsed_sec": 710
+    "started_at": "2026-10-13T08:54:54Z",
+    "elapsed_sec": 934
   },
   "queue": {
     "pending": 0,
@@ -29,6 +29,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1895/1899 [02:31<00:00, 16.68it/s, now=None]\nframe_index: 10",
       "at": "2026-10-13T08:40:23Z"
+    },
+    {
+      "title": "الدين الجيد والدين السيئ",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2285/2289 [03:02<00:00, 17.08it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-13T08:54:30Z"
     }
   ],
   "drive": {
@@ -40,5 +47,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T08:54:27Z"
+  "updated_at": "2026-10-13T09:10:28Z"
 }
