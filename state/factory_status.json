@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الذهب أم الأسهم",
+    "title": "المستقبل المالي: الذهب أم الأسهم؟",
     "source": "ai-invented",
-    "started_at": "2026-10-13T01:46:54Z",
-    "elapsed_sec": 510
+    "started_at": "2026-10-13T01:56:40Z",
+    "elapsed_sec": 464
   },
   "queue": {
     "pending": 0,
@@ -23,13 +23,6 @@
   "videos_total": 390,
   "ai_invented_total": 0,
   "recent": [
-    {
-      "title": "الذهب أم الأسهم: اختبار المحرك",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1431/1437 [01:24<00:00, 23.28it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T00:34:08Z"
-    },
     {
       "title": "الاقتراض الذكي: سلاح أو فخ؟",
       "source": "ai-invented",
@@ -92,6 +85,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2644/2652 [02:50<00:00, 24.87it/s, now=None]\nframe_index: 10",
       "at": "2026-10-13T01:45:33Z"
+    },
+    {
+      "title": "الذهب أم الأسهم",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2281/2289 [02:25<00:00, 24.54it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-13T01:55:35Z"
     }
   ],
   "drive": {
@@ -103,5 +103,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T01:55:24Z"
+  "updated_at": "2026-10-13T02:04:24Z"
 }
