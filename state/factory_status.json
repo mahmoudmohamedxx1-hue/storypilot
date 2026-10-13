@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "ذهب أم الأسهم؟ أين تضع أموالك",
+    "title": "الذهب أم الأسهم؟ رحلة استثمارية",
     "source": "ai-invented",
-    "started_at": "2026-10-13T05:54:39Z",
-    "elapsed_sec": 434
+    "started_at": "2026-10-13T06:03:11Z",
+    "elapsed_sec": 852
   },
   "queue": {
     "pending": 0,
@@ -23,13 +23,6 @@
   "videos_total": 390,
   "ai_invented_total": 0,
   "recent": [
-    {
-      "title": "الذهب أم الأسهم؟ رحلة الاستثمار بين الماضي والحاضر",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2464/2469 [03:10<00:00, 16.80it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T04:21:13Z"
-    },
     {
       "title": "المستقبل المالي: الذهب أم الأسهم؟",
       "source": "ai-invented",
@@ -92,6 +85,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2101/2106 [02:51<00:00, 16.59it/s, now=None]\nframe_index: 10",
       "at": "2026-10-13T05:53:11Z"
+    },
+    {
+      "title": "ذهب أم الأسهم؟ أين تضع أموالك",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1693/1698 [02:12<00:00, 16.07it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-13T06:02:15Z"
     }
   ],
   "drive": {
@@ -103,5 +103,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T06:01:53Z"
+  "updated_at": "2026-10-13T06:17:23Z"
 }
