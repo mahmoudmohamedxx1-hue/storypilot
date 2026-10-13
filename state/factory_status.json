@@ -1,5 +1,5 @@
 {
-  "phase": "inventing",
+  "phase": "chaining_next_run",
   "mode": "continuous",
   "should_continue": true,
   "run": {
@@ -7,14 +7,12 @@
     "deadline_at": "2026-10-13T08:36:53Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true
+    "infinite_stories": true,
+    "finished_at": "2026-10-13T08:24:14Z",
+    "videos_made": 0,
+    "stop_reason": "deadline"
   },
-  "current": {
-    "title": "القرن المالي: الدين الجيد مقابل السيئ",
-    "source": "ai-invented",
-    "started_at": "2026-10-13T08:15:15Z",
-    "elapsed_sec": 519
-  },
+  "current": null,
   "queue": {
     "pending": 0,
     "total": 61
@@ -23,13 +21,6 @@
   "videos_total": 390,
   "ai_invented_total": 0,
   "recent": [
-    {
-      "title": "المستقبل المالي: الذهب أم الأسهم؟",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1625/1629 [02:06<00:00, 17.08it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T06:37:08Z"
-    },
     {
       "title": "قوة الدين: متى يصبح القرض ذكيًا؟",
       "source": "ai-invented",
@@ -92,6 +83,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2156/2160 [03:04<00:00, 15.08it/s, now=None]\nframe_index: 10",
       "at": "2026-10-13T08:08:34Z"
+    },
+    {
+      "title": "القرن المالي: الدين الجيد مقابل السيئ",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2593/2598 [03:28<00:00, 16.28it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-13T08:24:12Z"
     }
   ],
   "drive": {
@@ -103,5 +101,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T08:23:54Z"
+  "updated_at": "2026-10-13T08:24:14Z"
 }
