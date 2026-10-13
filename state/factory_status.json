@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الدين الجيد والدين السيئ: متى الاقتراح الذكي؟",
+    "title": "ذهب أم الأسهم؟ أين تضع أموالك",
     "source": "ai-invented",
-    "started_at": "2026-10-13T10:31:41Z",
-    "elapsed_sec": 287
+    "started_at": "2026-10-13T10:38:10Z",
+    "elapsed_sec": 288
   },
   "queue": {
     "pending": 0,
@@ -85,6 +85,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2348/2352 [03:04<00:00, 16.78it/s, now=None]\nframe_index: 10",
       "at": "2026-10-13T10:26:57Z"
+    },
+    {
+      "title": "الدين الجيد والدين السيئ: متى الاقتراح الذكي؟",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1468/1473 [01:51<00:00, 16.93it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-13T10:36:54Z"
     }
   ],
   "drive": {
@@ -96,5 +103,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T10:36:28Z"
+  "updated_at": "2026-10-13T10:42:58Z"
 }
