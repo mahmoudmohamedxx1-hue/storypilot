@@ -12,8 +12,8 @@
   "current": {
     "title": "القرن المالي: الدين الجيد مقابل السيئ",
     "source": "ai-invented",
-    "started_at": "2026-10-13T09:18:05Z",
-    "elapsed_sec": 653
+    "started_at": "2026-10-13T09:37:07Z",
+    "elapsed_sec": 621
   },
   "queue": {
     "pending": 0,
@@ -43,6 +43,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2455/2460 [03:10<00:00, 17.56it/s, now=None]\nframe_index: 10",
       "at": "2026-10-13T09:10:38Z"
+    },
+    {
+      "title": "القرن المالي: الدين الجيد مقابل السيئ",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2593/2598 [03:29<00:00, 16.55it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-13T09:29:15Z"
     }
   ],
   "drive": {
@@ -54,5 +61,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T09:28:58Z"
+  "updated_at": "2026-10-13T09:47:28Z"
 }
