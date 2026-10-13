@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الدين الجيد والدين السيئ",
+    "title": "ذهب أم الأسهم؟ أين تضع أموالك",
     "source": "ai-invented",
-    "started_at": "2026-10-13T01:16:48Z",
-    "elapsed_sec": 546
+    "started_at": "2026-10-13T01:26:30Z",
+    "elapsed_sec": 444
   },
   "queue": {
     "pending": 0,
@@ -23,13 +23,6 @@
   "videos_total": 390,
   "ai_invented_total": 0,
   "recent": [
-    {
-      "title": "المستقبل المالي: الذهب أم الأسهم؟",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2476/2484 [02:39<00:00, 24.23it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T00:04:47Z"
-    },
     {
       "title": "الذهب أم الأسهم",
       "source": "ai-invented",
@@ -92,6 +85,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1751/1758 [01:47<00:00, 23.42it/s, now=None]\nframe_index: 10",
       "at": "2026-10-13T01:15:16Z"
+    },
+    {
+      "title": "الدين الجيد والدين السيئ",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2783/2790 [03:03<00:00, 23.98it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-13T01:26:02Z"
     }
   ],
   "drive": {
@@ -103,5 +103,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T01:25:54Z"
+  "updated_at": "2026-10-13T01:33:54Z"
 }
