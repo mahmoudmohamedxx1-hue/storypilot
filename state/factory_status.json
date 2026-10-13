@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "قوة الدين: متى يصبح القرض ذكيًا؟",
+    "title": "الذهب أم الأسهم؟ أين تضع أموالك - المستثمر الجديد",
     "source": "ai-invented",
-    "started_at": "2026-10-13T06:43:25Z",
-    "elapsed_sec": 268
+    "started_at": "2026-10-13T06:49:32Z",
+    "elapsed_sec": 502
   },
   "queue": {
     "pending": 0,
@@ -23,13 +23,6 @@
   "videos_total": 390,
   "ai_invented_total": 0,
   "recent": [
-    {
-      "title": "الذهب أم الأسهم",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2285/2289 [03:08<00:00, 16.80it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T05:05:25Z"
-    },
     {
       "title": "المستقبل المالي: الذهب أم الأسهم؟",
       "source": "ai-invented",
@@ -92,6 +85,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1625/1629 [02:06<00:00, 17.08it/s, now=None]\nframe_index: 10",
       "at": "2026-10-13T06:37:08Z"
+    },
+    {
+      "title": "قوة الدين: متى يصبح القرض ذكيًا؟",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1369/1374 [01:41<00:00, 17.09it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-13T06:48:22Z"
     }
   ],
   "drive": {
@@ -103,5 +103,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T06:47:53Z"
+  "updated_at": "2026-10-13T06:57:54Z"
 }
