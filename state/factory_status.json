@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "المستقبل المالي: الذهب أم الأسهم؟",
+    "title": "ذهب أم أسهم؟ رحلة مالية",
     "source": "ai-invented",
-    "started_at": "2026-10-13T04:21:55Z",
-    "elapsed_sec": 658
+    "started_at": "2026-10-13T04:33:57Z",
+    "elapsed_sec": 626
   },
   "queue": {
     "pending": 0,
@@ -50,6 +50,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2464/2469 [03:10<00:00, 16.80it/s, now=None]\nframe_index: 10",
       "at": "2026-10-13T04:21:13Z"
+    },
+    {
+      "title": "المستقبل المالي: الذهب أم الأسهم؟",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2026/2031 [02:37<00:00, 15.61it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-13T04:33:08Z"
     }
   ],
   "drive": {
@@ -61,5 +68,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T04:32:53Z"
+  "updated_at": "2026-10-13T04:44:23Z"
 }
