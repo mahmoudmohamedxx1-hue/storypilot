@@ -1,18 +1,20 @@
 {
-  "phase": "chaining_next_run",
+  "phase": "inventing",
   "mode": "continuous",
   "should_continue": true,
   "run": {
-    "started_at": "2026-10-12T22:42:23Z",
-    "deadline_at": "2026-10-13T03:42:23Z",
+    "started_at": "2026-10-13T03:36:53Z",
+    "deadline_at": "2026-10-13T08:36:53Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true,
-    "finished_at": "2026-10-13T03:33:09Z",
-    "videos_made": 0,
-    "stop_reason": "deadline"
+    "infinite_stories": true
   },
-  "current": null,
+  "current": {
+    "title": "الذهب أم الأسهم",
+    "source": "ai-invented",
+    "started_at": "2026-10-13T03:37:27Z",
+    "elapsed_sec": 776
+  },
   "queue": {
     "pending": 0,
     "total": 61
@@ -20,78 +22,7 @@
   "videos_this_run": 0,
   "videos_total": 390,
   "ai_invented_total": 0,
-  "recent": [
-    {
-      "title": "الذهب أم الأسهم",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2938/2946 [03:09<00:00, 23.27it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T02:14:59Z"
-    },
-    {
-      "title": "الذهب أم الأسهم؟ أين تضع أموالك - المستثمر الجديد",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1430/1437 [01:23<00:00, 24.39it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T02:21:02Z"
-    },
-    {
-      "title": "معركة اللمعان: الذهب أم الأسهم؟",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: w=None]\nframe_index:  99%|█████████▉| 840/846 [00:43<00:00, 23.49it/s, now=None]\nframe_ind",
-      "at": "2026-10-13T02:24:59Z"
-    },
-    {
-      "title": "المستقبل المالي: الذهب أم الأسهم؟",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2011/2019 [02:01<00:00, 24.64it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T02:34:10Z"
-    },
-    {
-      "title": "الذهب أم الأسهم",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2070/2076 [02:08<00:00, 24.61it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T02:43:54Z"
-    },
-    {
-      "title": "المستقبل المالي: الذهب أم الأسهم؟",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1953/1959 [01:57<00:00, 24.71it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T02:52:46Z"
-    },
-    {
-      "title": "لا تُضع كل البيض في سلة واحدة",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2638/2645 [02:49<00:00, 24.35it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T03:06:54Z"
-    },
-    {
-      "title": "معركة الثراء: الذهب أم الأسهم",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1692/1698 [01:41<00:00, 23.71it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T03:15:59Z"
-    },
-    {
-      "title": "ذهب أم الأسهم؟ أين تضع أموالك",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2117/2124 [02:12<00:00, 24.23it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T03:23:30Z"
-    },
-    {
-      "title": "الذهب أم الأسهم؟ أين تضع أموالك - المستثمر الجديد",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1656/1662 [01:42<00:00, 23.25it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T03:33:08Z"
-    }
-  ],
+  "recent": [],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -101,5 +32,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T03:33:09Z"
+  "updated_at": "2026-10-13T03:50:23Z"
 }
