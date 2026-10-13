@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "ذهب أم الأسهم؟ أين تضع أموالك",
+    "title": "الدين الجيد والدين السيئ: متى الاقتراح الذكي؟",
     "source": "ai-invented",
-    "started_at": "2026-10-13T07:16:34Z",
-    "elapsed_sec": 440
+    "started_at": "2026-10-13T07:30:09Z",
+    "elapsed_sec": 375
   },
   "queue": {
     "pending": 0,
@@ -23,13 +23,6 @@
   "videos_total": 390,
   "ai_invented_total": 0,
   "recent": [
-    {
-      "title": "الذهب أم الأسهم؟ رحلة الاستثمار بين الماضي والحاضر",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2408/2412 [03:14<00:00, 17.00it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T05:45:19Z"
-    },
     {
       "title": "الذهب أم الأسهم؟ أين تضع أموالك - المستثمر الجديد",
       "source": "ai-invented",
@@ -92,6 +85,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1646/1650 [02:12<00:00, 16.74it/s, now=None]\nframe_index: 10",
       "at": "2026-10-13T07:15:19Z"
+    },
+    {
+      "title": "ذهب أم الأسهم؟ أين تضع أموالك",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2288/2292 [03:04<00:00, 16.76it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-13T07:24:08Z"
     }
   ],
   "drive": {
@@ -103,5 +103,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T07:23:54Z"
+  "updated_at": "2026-10-13T07:36:24Z"
 }
