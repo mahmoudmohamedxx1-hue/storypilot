@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الادخار التلقائي: ادفع لنفسك أولا",
+    "title": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين",
     "source": "ai-invented",
-    "started_at": "2026-10-13T18:29:11Z",
-    "elapsed_sec": 209
+    "started_at": "2026-10-13T18:34:03Z",
+    "elapsed_sec": 337
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 4,
-  "videos_total": 394,
-  "ai_invented_total": 331,
+  "videos_this_run": 5,
+  "videos_total": 395,
+  "ai_invented_total": 332,
   "recent": [
     {
       "title": "الذهب أم الأسهم؟ أين تضع أموالك",
@@ -58,6 +58,15 @@
       "code_by": "generate_video.py",
       "seconds": 458,
       "at": "2026-10-13T18:28:07Z"
+    },
+    {
+      "title": "الادخار التلقائي: ادفع لنفسك أولا",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "ai",
+      "code_by": "freellmpool:auto",
+      "seconds": 219,
+      "at": "2026-10-13T18:32:50Z"
     }
   ],
   "drive": {
@@ -69,5 +78,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T18:32:40Z"
+  "updated_at": "2026-10-13T18:39:40Z"
 }
