@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر",
+    "title": "السراب المالي",
     "source": "ai-invented",
-    "started_at": "2026-10-13T18:54:45Z",
-    "elapsed_sec": 655
+    "started_at": "2026-10-13T19:10:55Z",
+    "elapsed_sec": 555
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 7,
-  "videos_total": 397,
-  "ai_invented_total": 334,
+  "videos_this_run": 8,
+  "videos_total": 398,
+  "ai_invented_total": 335,
   "recent": [
     {
       "title": "الذهب أم الأسهم؟ أين تضع أموالك",
@@ -85,6 +85,15 @@
       "code_by": "freellmpool:ovh/gpt-oss-120b",
       "seconds": 592,
       "at": "2026-10-13T18:53:17Z"
+    },
+    {
+      "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 671,
+      "at": "2026-10-13T19:05:56Z"
     }
   ],
   "drive": {
@@ -96,5 +105,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T19:05:40Z"
+  "updated_at": "2026-10-13T19:20:10Z"
 }
