@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الثمار المتعددة",
+    "title": "الرهان الخاسر: لماذا يفشل معظم الناس في التوقيت الدقيق للسوق",
     "source": "ai-invented",
-    "started_at": "2026-10-13T18:08:20Z",
-    "elapsed_sec": 650
+    "started_at": "2026-10-13T18:20:29Z",
+    "elapsed_sec": 431
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 2,
-  "videos_total": 392,
-  "ai_invented_total": 329,
+  "videos_this_run": 3,
+  "videos_total": 393,
+  "ai_invented_total": 330,
   "recent": [
     {
       "title": "الذهب أم الأسهم؟ أين تضع أموالك",
@@ -40,6 +40,15 @@
       "code_by": "generate_video.py",
       "seconds": 475,
       "at": "2026-10-13T18:06:06Z"
+    },
+    {
+      "title": "الثمار المتعددة",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 655,
+      "at": "2026-10-13T18:19:15Z"
     }
   ],
   "drive": {
@@ -51,5 +60,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T18:19:10Z"
+  "updated_at": "2026-10-13T18:27:40Z"
 }

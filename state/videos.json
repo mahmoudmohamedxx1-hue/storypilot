@@ -4512,10 +4512,22 @@
       "code_by": "generate_video.py",
       "ai_attempts": 3,
       "topic": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة"
+    },
+    "cf92b46effdf282d3b60fda823035001": {
+      "title": "الرهان الخاسر: لماذا يفشل معظم الناس في التوقيت الدقيق للسوق",
+      "tab": "ai-invented",
+      "renderedAt": "2026-10-13T18:28:07Z",
+      "fps": 60,
+      "dir": "ai04-cf92b46e",
+      "source": "ai-invented",
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "ai_attempts": 3,
+      "topic": "مخاطر محاولة توقيت السوق ولماذا يخسر معظم الناس"
     }
   },
   "failed": {},
-  "ai_invented_count": 330,
+  "ai_invented_count": 331,
   "ai_titles": [
     {
       "title": "قوة الفائدة: رحلة الأرقام"
@@ -4693,6 +4705,9 @@
     },
     {
       "title": "الثمار المتعددة"
+    },
+    {
+      "title": "الرهان الخاسر: لماذا يفشل معظم الناس في التوقيت الدقيق للسوق"
     }
   ]
 }
