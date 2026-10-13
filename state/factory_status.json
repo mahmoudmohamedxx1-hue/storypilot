@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "المستقبل المالي: الذهب أم الأسهم؟",
+    "title": "لا تُضع كل البيض في سلة واحدة",
     "source": "ai-invented",
-    "started_at": "2026-10-13T02:45:09Z",
-    "elapsed_sec": 435
+    "started_at": "2026-10-13T02:59:05Z",
+    "elapsed_sec": 469
   },
   "queue": {
     "pending": 0,
@@ -23,13 +23,6 @@
   "videos_total": 390,
   "ai_invented_total": 0,
   "recent": [
-    {
-      "title": "الدين الجيد والدين السيئ",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2783/2790 [03:03<00:00, 23.98it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T01:26:02Z"
-    },
     {
       "title": "ذهب أم الأسهم؟ أين تضع أموالك",
       "source": "ai-invented",
@@ -92,6 +85,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2070/2076 [02:08<00:00, 24.61it/s, now=None]\nframe_index: 10",
       "at": "2026-10-13T02:43:54Z"
+    },
+    {
+      "title": "المستقبل المالي: الذهب أم الأسهم؟",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1953/1959 [01:57<00:00, 24.71it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-13T02:52:46Z"
     }
   ],
   "drive": {
@@ -103,5 +103,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T02:52:24Z"
+  "updated_at": "2026-10-13T03:06:54Z"
 }
