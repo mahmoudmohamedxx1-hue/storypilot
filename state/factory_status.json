@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "معركة اللمعان: الذهب أم الأسهم؟",
+    "title": "المستقبل المالي: الذهب أم الأسهم؟",
     "source": "ai-invented",
-    "started_at": "2026-10-13T02:22:13Z",
-    "elapsed_sec": 161
+    "started_at": "2026-10-13T02:25:37Z",
+    "elapsed_sec": 497
   },
   "queue": {
     "pending": 0,
@@ -23,13 +23,6 @@
   "videos_total": 390,
   "ai_invented_total": 0,
   "recent": [
-    {
-      "title": "الذهب أم الأسهم؟ أين تضع أموالك",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1823/1830 [01:57<00:00, 23.25it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T01:02:11Z"
-    },
     {
       "title": "الذهب أم الأسهم؟ أين تضع أموالك",
       "source": "ai-invented",
@@ -92,6 +85,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1430/1437 [01:23<00:00, 24.39it/s, now=None]\nframe_index: 10",
       "at": "2026-10-13T02:21:02Z"
+    },
+    {
+      "title": "معركة اللمعان: الذهب أم الأسهم؟",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: w=None]\nframe_index:  99%|█████████▉| 840/846 [00:43<00:00, 23.49it/s, now=None]\nframe_ind",
+      "at": "2026-10-13T02:24:59Z"
     }
   ],
   "drive": {
@@ -103,5 +103,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T02:24:54Z"
+  "updated_at": "2026-10-13T02:33:54Z"
 }
