@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الذهب أم الأسهم",
+    "title": "ذهب أم الأسهم؟ أين تضع أموالك",
     "source": "ai-invented",
-    "started_at": "2026-10-13T00:05:17Z",
-    "elapsed_sec": 546
+    "started_at": "2026-10-13T00:14:55Z",
+    "elapsed_sec": 598
   },
   "queue": {
     "pending": 0,
@@ -85,6 +85,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2476/2484 [02:39<00:00, 24.23it/s, now=None]\nframe_index: 10",
       "at": "2026-10-13T00:04:47Z"
+    },
+    {
+      "title": "الذهب أم الأسهم",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2282/2289 [02:28<00:00, 23.99it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-13T00:14:26Z"
     }
   ],
   "drive": {
@@ -96,5 +103,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T00:14:23Z"
+  "updated_at": "2026-10-13T00:24:53Z"
 }
