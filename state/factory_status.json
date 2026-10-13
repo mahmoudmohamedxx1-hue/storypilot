@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "معركة الثراء: الذهب أم الأسهم",
+    "title": "ذهب أم الأسهم؟ أين تضع أموالك",
     "source": "ai-invented",
-    "started_at": "2026-10-13T03:09:20Z",
-    "elapsed_sec": 394
+    "started_at": "2026-10-13T03:16:28Z",
+    "elapsed_sec": 416
   },
   "queue": {
     "pending": 0,
@@ -23,13 +23,6 @@
   "videos_total": 390,
   "ai_invented_total": 0,
   "recent": [
-    {
-      "title": "المستقبل المالي: الذهب أم الأسهم؟",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2644/2652 [02:50<00:00, 24.87it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T01:45:33Z"
-    },
     {
       "title": "الذهب أم الأسهم",
       "source": "ai-invented",
@@ -92,6 +85,13 @@
       "ok": false,
       "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2638/2645 [02:49<00:00, 24.35it/s, now=None]\nframe_index: 10",
       "at": "2026-10-13T03:06:54Z"
+    },
+    {
+      "title": "معركة الثراء: الذهب أم الأسهم",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1692/1698 [01:41<00:00, 23.71it/s, now=None]\nframe_index: 10",
+      "at": "2026-10-13T03:15:59Z"
     }
   ],
   "drive": {
@@ -103,5 +103,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T03:15:54Z"
+  "updated_at": "2026-10-13T03:23:24Z"
 }
