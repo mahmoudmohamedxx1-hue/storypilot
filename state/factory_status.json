@@ -10,18 +10,18 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "الرهان الخاسر: لماذا يفشل معظم الناس في التوقيت الدقيق للسوق",
+    "title": "الادخار التلقائي: ادفع لنفسك أولا",
     "source": "ai-invented",
-    "started_at": "2026-10-13T18:20:29Z",
-    "elapsed_sec": 431
+    "started_at": "2026-10-13T18:29:11Z",
+    "elapsed_sec": 209
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 3,
-  "videos_total": 393,
-  "ai_invented_total": 330,
+  "videos_this_run": 4,
+  "videos_total": 394,
+  "ai_invented_total": 331,
   "recent": [
     {
       "title": "الذهب أم الأسهم؟ أين تضع أموالك",
@@ -49,6 +49,15 @@
       "code_by": "generate_video.py",
       "seconds": 655,
       "at": "2026-10-13T18:19:15Z"
+    },
+    {
+      "title": "الرهان الخاسر: لماذا يفشل معظم الناس في التوقيت الدقيق للسوق",
+      "source": "ai-invented",
+      "ok": true,
+      "renderer": "builtin",
+      "code_by": "generate_video.py",
+      "seconds": 458,
+      "at": "2026-10-13T18:28:07Z"
     }
   ],
   "drive": {
@@ -60,5 +69,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T18:27:40Z"
+  "updated_at": "2026-10-13T18:32:40Z"
 }
