@@ -1,18 +1,20 @@
 {
-  "phase": "chaining_next_run",
+  "phase": "inventing",
   "mode": "continuous",
   "should_continue": true,
   "run": {
-    "started_at": "2026-10-13T03:36:53Z",
-    "deadline_at": "2026-10-13T08:36:53Z",
+    "started_at": "2026-10-13T08:27:57Z",
+    "deadline_at": "2026-10-13T13:27:57Z",
     "budget_min": 300.0,
     "mode": "continuous",
-    "infinite_stories": true,
-    "finished_at": "2026-10-13T08:24:14Z",
-    "videos_made": 0,
-    "stop_reason": "deadline"
+    "infinite_stories": true
   },
-  "current": null,
+  "current": {
+    "title": "الذهب أم الأسهم؟ أين تضع أموالك",
+    "source": "ai-invented",
+    "started_at": "2026-10-13T08:28:11Z",
+    "elapsed_sec": 706
+  },
   "queue": {
     "pending": 0,
     "total": 61
@@ -20,78 +22,7 @@
   "videos_this_run": 0,
   "videos_total": 390,
   "ai_invented_total": 0,
-  "recent": [
-    {
-      "title": "قوة الدين: متى يصبح القرض ذكيًا؟",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1369/1374 [01:41<00:00, 17.09it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T06:48:22Z"
-    },
-    {
-      "title": "الذهب أم الأسهم؟ أين تضع أموالك - المستثمر الجديد",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1680/1685 [02:14<00:00, 16.18it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T06:58:04Z"
-    },
-    {
-      "title": "ذهب أم الأسهم؟ أين تضع أموالك",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2083/2088 [02:42<00:00, 17.30it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T07:06:29Z"
-    },
-    {
-      "title": "الذهب أم الأسهم؟ أين تضع أموالك - المستثمر الجديد",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1646/1650 [02:12<00:00, 16.74it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T07:15:19Z"
-    },
-    {
-      "title": "ذهب أم الأسهم؟ أين تضع أموالك",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2288/2292 [03:04<00:00, 16.76it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T07:24:08Z"
-    },
-    {
-      "title": "الدين الجيد والدين السيئ: متى الاقتراح الذكي؟",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 1469/1473 [01:57<00:00, 16.21it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T07:36:29Z"
-    },
-    {
-      "title": "ذهب أم الأسهم؟ أين تضع أموالك",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2300/2304 [03:09<00:00, 16.51it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T07:47:32Z"
-    },
-    {
-      "title": "الذهب أم الأسهم؟ أين تضع أموالك",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2551/2556 [03:35<00:00, 16.19it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T07:57:43Z"
-    },
-    {
-      "title": "الذهب أم الأسهم؟ رحلة الاستثمار بين الماضي والحاضر",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2156/2160 [03:04<00:00, 15.08it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T08:08:34Z"
-    },
-    {
-      "title": "القرن المالي: الدين الجيد مقابل السيئ",
-      "source": "ai-invented",
-      "ok": false,
-      "error": "built-in renderer failed: rc=0 no audio stream (narration missing) :: frame_index: 100%|█████████▉| 2593/2598 [03:28<00:00, 16.28it/s, now=None]\nframe_index: 10",
-      "at": "2026-10-13T08:24:12Z"
-    }
-  ],
+  "recent": [],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -101,5 +32,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T08:24:14Z"
+  "updated_at": "2026-10-13T08:39:57Z"
 }
