@@ -3,108 +3,26 @@
   "mode": "continuous",
   "should_continue": true,
   "run": {
-    "started_at": "2026-10-13T17:46:10Z",
-    "deadline_at": "2026-10-13T22:46:10Z",
+    "started_at": "2026-10-15T19:00:43Z",
+    "deadline_at": "2026-10-16T00:00:43Z",
     "budget_min": 300.0,
     "mode": "continuous",
     "infinite_stories": true
   },
   "current": {
-    "title": "القراءة قبل الشراء",
+    "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
     "source": "ai-invented",
-    "started_at": "2026-10-13T19:24:09Z",
-    "elapsed_sec": 691
+    "started_at": "2026-10-15T19:01:33Z",
+    "elapsed_sec": 1030
   },
   "queue": {
     "pending": 0,
     "total": 61
   },
-  "videos_this_run": 9,
-  "videos_total": 399,
-  "ai_invented_total": 336,
-  "recent": [
-    {
-      "title": "الذهب أم الأسهم؟ أين تضع أموالك",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 498,
-      "at": "2026-10-13T17:54:44Z"
-    },
-    {
-      "title": "التنويع الاستثماري: لا تضع كل البيض في سلة واحدة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 475,
-      "at": "2026-10-13T18:06:06Z"
-    },
-    {
-      "title": "الثمار المتعددة",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 655,
-      "at": "2026-10-13T18:19:15Z"
-    },
-    {
-      "title": "الرهان الخاسر: لماذا يفشل معظم الناس في التوقيت الدقيق للسوق",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 458,
-      "at": "2026-10-13T18:28:07Z"
-    },
-    {
-      "title": "الادخار التلقائي: ادفع لنفسك أولا",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "ai",
-      "code_by": "freellmpool:auto",
-      "seconds": 219,
-      "at": "2026-10-13T18:32:50Z"
-    },
-    {
-      "title": "قاعدة 72: احسب سرعة مضاعفة أموالك في ثانيتين",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "ai",
-      "code_by": "freellmpool:ovh/gpt-oss-120b",
-      "seconds": 349,
-      "at": "2026-10-13T18:39:52Z"
-    },
-    {
-      "title": "العقلية طويلة الأجل: سر كبار المستثمرين",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "ai",
-      "code_by": "freellmpool:ovh/gpt-oss-120b",
-      "seconds": 592,
-      "at": "2026-10-13T18:53:17Z"
-    },
-    {
-      "title": "الفقاعة المالية: كيف تعرفها قبل أن تنفجر",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "builtin",
-      "code_by": "generate_video.py",
-      "seconds": 671,
-      "at": "2026-10-13T19:05:56Z"
-    },
-    {
-      "title": "السراب المالي",
-      "source": "ai-invented",
-      "ok": true,
-      "renderer": "ai",
-      "code_by": "freellmpool:ovh/gpt-oss-120b",
-      "seconds": 562,
-      "at": "2026-10-13T19:20:17Z"
-    }
-  ],
+  "videos_this_run": 0,
+  "videos_total": 400,
+  "ai_invented_total": 0,
+  "recent": [],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -114,5 +32,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-13T19:35:40Z"
+  "updated_at": "2026-10-15T19:18:43Z"
 }
