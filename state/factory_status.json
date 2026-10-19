@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
+    "title": "النقود الحرة",
     "source": "ai-invented",
-    "started_at": "2026-10-19T04:04:36Z",
-    "elapsed_sec": 919
+    "started_at": "2026-10-19T04:21:16Z",
+    "elapsed_sec": 879
   },
   "queue": {
     "pending": 0,
@@ -22,7 +22,15 @@
   "videos_this_run": 0,
   "videos_total": 400,
   "ai_invented_total": 0,
-  "recent": [],
+  "recent": [
+    {
+      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer timed out",
+      "at": "2026-10-19T04:20:00Z"
+    }
+  ],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -32,5 +40,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-19T04:19:55Z"
+  "updated_at": "2026-10-19T04:35:55Z"
 }
