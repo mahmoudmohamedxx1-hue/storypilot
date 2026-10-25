@@ -3,8 +3,8 @@
   "mode": "continuous",
   "should_continue": true,
   "run": {
-    "started_at": "2026-10-21T12:47:37Z",
-    "deadline_at": "2026-10-21T17:47:37Z",
+    "started_at": "2026-10-25T14:57:16Z",
+    "deadline_at": "2026-10-25T19:57:16Z",
     "budget_min": 300.0,
     "mode": "continuous",
     "infinite_stories": true
@@ -12,8 +12,8 @@
   "current": {
     "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
     "source": "ai-invented",
-    "started_at": "2026-10-21T12:47:43Z",
-    "elapsed_sec": 1374
+    "started_at": "2026-10-25T14:58:10Z",
+    "elapsed_sec": 1386
   },
   "queue": {
     "pending": 0,
@@ -32,5 +32,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-10-21T13:10:37Z"
+  "updated_at": "2026-10-25T15:21:16Z"
 }
