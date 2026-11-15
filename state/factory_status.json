@@ -10,10 +10,10 @@
     "infinite_stories": true
   },
   "current": {
-    "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
+    "title": "معادلة الحرية المالية: الأرقام الحقيقية للتقاعد المبكر",
     "source": "ai-invented",
-    "started_at": "2026-11-15T16:58:21Z",
-    "elapsed_sec": 1068
+    "started_at": "2026-11-15T17:17:24Z",
+    "elapsed_sec": 795
   },
   "queue": {
     "pending": 0,
@@ -22,7 +22,15 @@
   "videos_this_run": 0,
   "videos_total": 400,
   "ai_invented_total": 0,
-  "recent": [],
+  "recent": [
+    {
+      "title": "التقاعد المبكر: خطة FIRE بالأرقام الحقيقية",
+      "source": "ai-invented",
+      "ok": false,
+      "error": "built-in renderer timed out",
+      "at": "2026-11-15T17:16:11Z"
+    }
+  ],
   "drive": {
     "configured": false,
     "root_folder": "",
@@ -32,5 +40,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-11-15T17:16:09Z"
+  "updated_at": "2026-11-15T17:30:39Z"
 }
