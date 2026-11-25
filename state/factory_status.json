@@ -3,17 +3,17 @@
   "mode": "continuous",
   "should_continue": true,
   "run": {
-    "started_at": "2026-11-16T10:30:30Z",
-    "deadline_at": "2026-11-16T15:30:30Z",
+    "started_at": "2026-11-25T17:35:17Z",
+    "deadline_at": "2026-11-25T22:35:17Z",
     "budget_min": 300.0,
     "mode": "continuous",
     "infinite_stories": true
   },
   "current": {
-    "title": "خطة FIRE: معادلة التقاعد المبكر بالأرقام",
+    "title": "الطريق إلى الحرية المالية: أرقام FIRE الحقيقية",
     "source": "ai-invented",
-    "started_at": "2026-11-16T10:30:35Z",
-    "elapsed_sec": 325
+    "started_at": "2026-11-25T17:37:49Z",
+    "elapsed_sec": 298
   },
   "queue": {
     "pending": 0,
@@ -32,5 +32,5 @@
     "last_error": null,
     "interval_sec": 3600
   },
-  "updated_at": "2026-11-16T10:36:00Z"
+  "updated_at": "2026-11-25T17:42:47Z"
 }
